@@ -1,0 +1,7 @@
+@use "src/styles/variables";
+
+.BB-avatar-group {
+  &__avatar.BB-avatar-group__avatar.MuiAvatar-root {
+    border-color: variables.$primary-color-2;
+  }
+}

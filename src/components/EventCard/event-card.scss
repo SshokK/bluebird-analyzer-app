@@ -1,0 +1,52 @@
+@use "src/styles/variables";
+
+.BB-event-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  width: fit-content;
+
+  &__paper {
+    &.BB-event-card__paper {
+      padding: variables.$spacing-xxxl 0 variables.$spacing-s variables.$spacing-l;
+      background-color: variables.$primary-color-2;
+      max-width: 20rem;
+      min-width: 15rem;
+      position: relative;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: variables.$primary-color-3;
+    }
+
+    &--is-finished-event {
+      &::before {
+        background-color: variables.$primary-color-4;
+      }
+    }
+  }
+
+  &__avatar-container {
+    position: relative;
+    margin-bottom: -2.5rem;
+    z-index: variables.$elevation-lowest;
+  }
+
+  &__player-names {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+  }
+}

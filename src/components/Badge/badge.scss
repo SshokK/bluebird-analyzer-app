@@ -1,0 +1,15 @@
+@use "src/styles/variables";
+
+.BB-badge {
+  &.BB-badge {
+    &--is-restricted {
+      background-color: variables.$primary-color-6;
+      color: variables.$primary-color-3;
+    }
+
+    &--info {
+      background-color: variables.$primary-color-1;
+      color: variables.$primary-color-2;
+    }
+  }
+}

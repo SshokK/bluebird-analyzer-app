@@ -1,0 +1,15 @@
+@use "src/styles/variables";
+
+.BB-view {
+  flex: 1;
+  position: relative;
+  background-color: variables.$secondary-color-3;
+
+  &__title {
+    padding: variables.$spacing-s;
+  }
+
+  &__content {
+    padding: variables.$spacing-l;
+  }
+}

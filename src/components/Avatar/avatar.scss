@@ -1,0 +1,25 @@
+@use "src/styles/variables";
+
+.BB-avatar {
+  &.BB-avatar {
+    background-color: variables.$primary-color-3;
+
+    &--is-small {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &--is-medium {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    &--is-large {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  &__fallback {
+  }
+}

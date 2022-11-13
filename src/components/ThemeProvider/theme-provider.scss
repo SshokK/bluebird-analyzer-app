@@ -1,0 +1,47 @@
+@use "src/styles/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: variables.$font-size-base;
+  color: variables.$primary-color-3;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+button,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: unset;
+  padding: unset;
+}
+
+.MuiSvgIcon-root.MuiSvgIcon-root {
+  font-size: inherit;
+}
+
+.MuiTouchRipple-root > * {
+  color: inherit;
+}
+
+button {
+  border: unset;
+  display: block;
+}

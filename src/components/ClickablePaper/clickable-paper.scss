@@ -1,0 +1,53 @@
+@use "src/styles/variables";
+
+.BB-clickable-paper {
+  &.BB-clickable-paper {
+    cursor: pointer;
+    padding: variables.$spacing-l;
+    transition: variables.$animation-time-short;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: variables.$primary-color-3;
+    border-bottom: variables.$border-primary-1-xl;
+    background-color: variables.$primary-color-2;
+    outline: none;
+
+    &:not(.BB-clickable-paper--is-disabled) {
+      &:hover,
+      &:focus {
+        background-color: variables.$secondary-color-2;
+        box-shadow: variables.$shadow-center-m;
+      }
+    }
+
+    &--is-disabled.Mui-disabled {
+      cursor: not-allowed;
+      pointer-events: all;
+      border-bottom: variables.$border-primary-5-xl;
+      background-color: variables.$primary-color-2;
+
+
+      .BB-clickable-paper__icon {
+        color: variables.$primary-color-5;
+      }
+    }
+
+    &--is-active {
+      border-bottom: variables.$border-primary-6-xl;
+
+      .BB-clickable-paper__icon {
+        color: variables.$primary-color-6;
+        transition: color variables.$animation-time-medium;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    font-size: variables.$font-size-xxl;
+    color: variables.$primary-color-1;
+    margin-bottom: variables.$spacing-s;
+    transition: color variables.$animation-time-medium;
+  }
+}

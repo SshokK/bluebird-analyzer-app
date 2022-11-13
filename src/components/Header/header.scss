@@ -1,0 +1,33 @@
+@use "src/styles/variables";
+
+.BB-header {
+  &__container.BB-header__container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: variables.$spacing-xl;
+    background-color: variables.$primary-color-2;
+    border-bottom: variables.$border-primary-1-l;
+    box-shadow: variables.$shadow-center-l;
+  }
+
+  &__logo {
+  }
+
+  &__nav-links-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: variables.$primary-color-3;
+    transition: variables.$animation-time-short;
+    font-family: variables.$font-family-primary-medium;
+
+    &:hover {
+      color: variables.$primary-color-1;
+    }
+  }
+}

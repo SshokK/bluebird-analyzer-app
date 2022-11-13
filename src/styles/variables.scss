@@ -1,0 +1,73 @@
+@use "colors";
+
+
+$primary-color-1: colors.$curious-blue;
+$primary-color-2: colors.$white;
+$primary-color-3: colors.$oxford-blue;
+$primary-color-4: colors.$shadow;
+$primary-color-5: colors.$cadet-blue;
+$primary-color-6: colors.$calico;
+
+$secondary-color-1: #{$primary-color-3}30;
+$secondary-color-2: #{$primary-color-5}10;
+$secondary-color-3: #{$primary-color-5}20;
+$secondary-color-4: #{$primary-color-5}40;
+$secondary-color-5: #{$primary-color-1}50;
+$secondary-color-6: #{$primary-color-6}50;
+
+
+$font-size-base: 16px;
+
+$font-size-xxs: 0.2rem;
+$font-size-xs: 0.5rem;
+$font-size-s: 0.8rem;
+$font-size-m: 1rem;
+$font-size-l: 1.2rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+$font-size-xxxl: 3rem;
+
+$spacing-xxs: 0.2rem;
+$spacing-xs: 0.5rem;
+$spacing-s: 0.8rem;
+$spacing-m: 1rem;
+$spacing-l: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3rem;
+$spacing-xxxl: 4rem;
+
+$border-primary-1-s: 1px solid $primary-color-1;
+$border-primary-1-m: 2px solid $primary-color-1;
+$border-primary-1-l: 3px solid $primary-color-1;
+$border-primary-1-xl: 4px solid $primary-color-1;
+
+$border-primary-5-s: 1px solid $primary-color-5;
+$border-primary-5-m: 2px solid $primary-color-5;
+$border-primary-5-l: 3px solid $primary-color-5;
+$border-primary-5-xl: 4px solid $primary-color-5;
+
+$border-primary-6-s: 1px solid $primary-color-6;
+$border-primary-6-m: 2px solid $primary-color-6;
+$border-primary-6-l: 3px solid $primary-color-6;
+$border-primary-6-xl: 4px solid $primary-color-6;
+
+$border-primary-3-s: 1px solid $primary-color-3;
+$border-primary-3-m: 2px solid $primary-color-3;
+$border-primary-3-l: 3px solid $primary-color-3;
+$border-primary-3-xl: 4px solid $primary-color-3;
+
+$animation-time-very-short: 150ms;
+$animation-time-short: 300ms;
+$animation-time-medium: 500ms;
+
+$shadow-center-m: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+$shadow-center-l: 0px 3px 50px 2px rgba(34, 60, 80, 0.2);
+$shadow-right-bottom: 5px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+$elevation-lowest: 1;
+$elevation-low: 10;
+$elevation-medium: 100;
+$elevation-high: 1300;
+$elevation-highest: 5000;
+
+$font-family-primary-medium: 'Arial', sans-serif;

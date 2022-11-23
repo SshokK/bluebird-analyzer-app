@@ -5,9 +5,10 @@ import {ROUTES, URL_PARAMS} from "../constants/global.constants";
 import {Navigate} from "react-router";
 import {LazyComponent} from "../components";
 
+const Admin = lazy(() => import("../views/AdminSports"))
 const AppContent = lazy(() => import('../views/AppContent'));
 const Dashboard = lazy(() => import("../views/Dashboard"))
-const SportEvents = lazy(() => import("../views/SportEvents"))
+const SportFamilyEvents = lazy(() => import("../views/SportFamilyEvents"))
 
 export const ROUTES_CONFIG:  RouteObject[] = [
   {
@@ -19,6 +20,14 @@ export const ROUTES_CONFIG:  RouteObject[] = [
     ),
     children: [
       {
+        path: ROUTES.ADMIN,
+        element: (
+          <LazyComponent>
+            <Admin />
+          </LazyComponent>
+        )
+      },
+      {
         path: ROUTES.DASHBOARD,
         element: (
           <LazyComponent>
@@ -27,10 +36,10 @@ export const ROUTES_CONFIG:  RouteObject[] = [
         )
       },
       {
-        path: `${ROUTES.SPORT_EVENTS}/:${URL_PARAMS.SPORT_ID}`,
+        path: `${ROUTES.SPORT_FAMILY_EVENTS}/:${URL_PARAMS.SPORT_FAMILY_ID}`,
         element: (
           <LazyComponent>
-            <SportEvents />
+            <SportFamilyEvents />
           </LazyComponent>
         )
       },

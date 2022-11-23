@@ -7,8 +7,8 @@ export const LeftNav = () => {
 
   return (
     <LeftPanel
-      isLoading={queries.fetchSports.isLoading}
-      options={queries.fetchSports.data}
+      isLoading={queries.fetchSportFamilies.isLoading}
+      options={queries.fetchSportFamilies.data}
     />
   )
 }

@@ -3,5 +3,9 @@ import type {ReactNode} from "react";
 export type ViewProps = {
   title?: ReactNode;
   children?: ReactNode;
-  className?: string;
+  isLoading?: boolean;
+  classNames?: {
+    container?: string;
+    content?: string;
+  };
 }

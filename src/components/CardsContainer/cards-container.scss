@@ -1,0 +1,45 @@
+@use "src/styles/variables";
+
+.BB-cards-container {
+  &__outer-container {
+    padding: variables.$spacing-m 0 0 variables.$spacing-m;
+    width: 100%;
+  }
+
+  &__container.BB-cards-container__container {
+    background-color: variables.$primary-color-2;
+    position: relative;
+    padding: variables.$spacing-l;
+    overflow: unset;
+  }
+
+  &__title-container {
+    display: block;
+    position: absolute;
+    top: -#{variables.$spacing-m};
+    left: -#{variables.$spacing-m};
+    background-color: variables.$primary-color-6;
+    color: variables.$primary-color-2;
+    padding: variables.$spacing-xxs variables.$spacing-s;
+    z-index: variables.$elevation-low + 1;
+    box-shadow: variables.$shadow-center-m;
+  }
+
+  &__no-data-message {
+    padding-top: variables.$spacing-m;
+    display: flex;
+    justify-content: center;
+    color: variables.$secondary-color-4;
+  }
+
+  &__cards-container {
+    display: flex;
+    row-gap: variables.$spacing-l;
+    overflow: auto;
+    column-gap: variables.$spacing-l;
+
+    &:not(:empty) {
+      padding: variables.$spacing-m variables.$spacing-xs variables.$spacing-xs variables.$spacing-xs;
+    }
+  }
+}

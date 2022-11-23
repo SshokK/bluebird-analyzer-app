@@ -9,11 +9,12 @@ export enum SORT_ORDERS {
 
 export enum ROUTES {
   DASHBOARD = 'dashboard',
-  SPORT_EVENTS = 'sport-events'
+  SPORT_FAMILY_EVENTS = 'sport-family-events',
+  ADMIN = 'admin'
 }
 
 export enum URL_PARAMS {
-  SPORT_ID = 'sportId'
+  SPORT_FAMILY_ID = 'sportFamilyId'
 }
 
 export enum DATE_FORMATS {

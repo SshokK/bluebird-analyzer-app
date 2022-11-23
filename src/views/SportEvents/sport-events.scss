@@ -1,9 +1,0 @@
-@use "src/styles/variables";
-
-.BB-sport-events {
-  &__event-card {
-    &:not(:last-child) {
-      margin-bottom: variables.$spacing-xl;
-    }
-  }
-}

@@ -1,0 +1,2 @@
+export const SPORT_EVENTS_ANIMATION_DELAY = 500;
+

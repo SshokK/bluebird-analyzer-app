@@ -1,0 +1,44 @@
+@use "src/styles/variables";
+
+.BB-modal {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__inner-container {
+    position: relative;
+  }
+
+  &__close-button.BB-modal__close-button {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+  }
+
+  &__content {
+    min-width: 10rem;
+    background-color: variables.$primary-color-2;
+  }
+
+  &__content-title {
+    padding: variables.$spacing-l;
+    color: variables.$primary-color-3;
+  }
+
+  &__content-body {
+    border-top: variables.$border-primary-5-s;
+    background-color: variables.$secondary-color-3;
+    padding: variables.$spacing-l;
+    box-shadow: variables.$shadow-inset-center-m;
+  }
+
+  &__content-footer {
+    border-top: variables.$border-primary-5-s;
+    background-color: variables.$primary-color-2;
+    padding: variables.$spacing-l;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

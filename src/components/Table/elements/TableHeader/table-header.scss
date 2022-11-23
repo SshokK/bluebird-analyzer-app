@@ -1,0 +1,9 @@
+@use "src/styles/variables";
+
+.BB-table-header {
+  background-color: variables.$primary-color-5;
+
+  &__cell {
+    text-align: left;
+  }
+}

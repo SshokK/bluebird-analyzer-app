@@ -31,6 +31,10 @@
       &::before {
         background-color: variables.$primary-color-4;
       }
+
+      .BB-event-card__date-icon {
+        color: variables.$primary-color-4;
+      }
     }
   }
 
@@ -43,6 +47,11 @@
   &__player-names {
     display: flex;
     justify-content: center;
+  }
+
+  &__date-icon.BB-event-card__date-icon {
+    font-size: variables.$font-size-xl;
+    margin-left: -#{variables.$spacing-xxs};
   }
 
   &__date {

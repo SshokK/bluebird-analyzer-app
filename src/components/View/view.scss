@@ -4,6 +4,9 @@
   flex: 1;
   position: relative;
   background-color: variables.$secondary-color-3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   &__title {
     padding: variables.$spacing-s;
@@ -11,5 +14,7 @@
 
   &__content {
     padding: variables.$spacing-l;
+    overflow: auto;
+    position: relative;
   }
 }

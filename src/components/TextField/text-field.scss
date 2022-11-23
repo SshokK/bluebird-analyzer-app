@@ -1,0 +1,16 @@
+@use "src/styles/variables";
+
+.BB-text-field {
+  &#{&} .MuiInputBase-root {
+    color: variables.$primary-color-3;
+
+    &:after {
+      border-bottom: variables.$border-primary-1-s;
+    }
+
+    &:hover:before,
+    &:before {
+      border-bottom: variables.$border-primary-3-s;
+    }
+  }
+}

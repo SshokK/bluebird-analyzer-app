@@ -6,5 +6,9 @@ export const NAV_LINKS: NavLink[] = [
   {
     path: ROUTES.DASHBOARD,
     title: 'Dashboard'
+  },
+  {
+    path: ROUTES.ADMIN,
+    title: 'Admin'
   }
 ]

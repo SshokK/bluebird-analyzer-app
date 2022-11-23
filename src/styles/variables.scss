@@ -8,12 +8,10 @@ $primary-color-4: colors.$shadow;
 $primary-color-5: colors.$cadet-blue;
 $primary-color-6: colors.$calico;
 
-$secondary-color-1: #{$primary-color-3}30;
-$secondary-color-2: #{$primary-color-5}10;
-$secondary-color-3: #{$primary-color-5}20;
-$secondary-color-4: #{$primary-color-5}40;
-$secondary-color-5: #{$primary-color-1}50;
-$secondary-color-6: #{$primary-color-6}50;
+$secondary-color-1: colors.$bermuda-gray;
+$secondary-color-2: colors.$alabaster;
+$secondary-color-3: colors.$catskill-white;
+$secondary-color-4: colors.$blue-bayoux;
 
 
 $font-size-base: 16px;
@@ -56,6 +54,10 @@ $border-primary-3-m: 2px solid $primary-color-3;
 $border-primary-3-l: 3px solid $primary-color-3;
 $border-primary-3-xl: 4px solid $primary-color-3;
 
+$border-radius-s: 2px;
+$border-radius-m: 5px;
+$border-radius-l: 7px;
+
 $animation-time-very-short: 150ms;
 $animation-time-short: 300ms;
 $animation-time-medium: 500ms;
@@ -63,6 +65,8 @@ $animation-time-medium: 500ms;
 $shadow-center-m: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 $shadow-center-l: 0px 3px 50px 2px rgba(34, 60, 80, 0.2);
 $shadow-right-bottom: 5px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+$shadow-inset-center-m: inset 0px 0px 14px -5px rgba(34, 60, 80, 0.2);
 
 $elevation-lowest: 1;
 $elevation-low: 10;

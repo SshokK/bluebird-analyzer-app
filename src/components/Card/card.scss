@@ -1,0 +1,7 @@
+@use "src/styles/variables";
+
+.BB-card {
+  &.BB-card {
+    background-color: variables.$primary-color-2;
+  }
+}

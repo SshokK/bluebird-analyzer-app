@@ -1,10 +1,9 @@
 import type {ClickablePaperProps} from "./ClickablePaper.types";
 import type {FC} from 'react';
-
 import React from 'react';
 import {Button, Paper} from "@mui/material";
 import classnames from 'classnames';
-import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
+import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
 import {RestrictedBadge} from "../RestrictedBadge";
 import './clickable-paper.scss';
 
@@ -37,7 +36,7 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
           {icon}
         </span>
       )}
-      <Typography type={titleTypographyType}>
+      <Typography type={titleTypographyType} alignment={TYPOGRAPHY_ALIGNMENT.CENTER}>
         {title}
       </Typography>
     </Paper>

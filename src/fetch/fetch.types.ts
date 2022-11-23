@@ -1,9 +1,9 @@
 import type {Method} from "axios";
 import type {AxiosRequestConfig} from "axios";
 
-export type FetchConfig<Data = unknown> = AxiosRequestConfig<Data> & {
+export type FetchConfig<Params = unknown> = AxiosRequestConfig<Params> & {
   url: string;
   method: Method
 }
 
-export type Fetch = <Data = unknown>(config: FetchConfig<Data>) => Promise<Data>
+export type Fetch = <Return = unknown, Params = unknown>(config: FetchConfig<Params>) => Promise<Return>

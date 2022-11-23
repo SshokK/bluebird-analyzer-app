@@ -2,19 +2,23 @@
 
 .BB-left-panel {
   &__container {
-    border-right: variables.$border-primary-5-s;
-    padding: variables.$spacing-xl;
+    position: relative;
+    width: 10rem;
+  }
+
+  &__inner-container {
     display: flex;
     flex-direction: column;
-    position: relative;
+    row-gap: variables.$spacing-xl;
+    padding: variables.$spacing-xl;
+    width: 100%;
+    height: 100%;
+    border-right: variables.$border-primary-5-s;
   }
 
   &__button {
     width: 100%;
     text-decoration: unset;
-
-    &:not(:last-child) {
-      margin-bottom: variables.$spacing-xl;
-    }
+    aspect-ratio: 1 / 1;
   }
 }

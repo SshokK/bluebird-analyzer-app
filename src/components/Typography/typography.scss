@@ -1,5 +1,5 @@
-.BB-typography {
-  &--h4 {
+@use "src/styles/variables";
 
-  }
+.BB-typography {
+  color: inherit;
 }

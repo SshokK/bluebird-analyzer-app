@@ -6,10 +6,10 @@ import {Avatar, AVATAR_SIZES} from "../Avatar";
 import {AvatarGroup} from "../AvatarGroup";
 import classnames from 'classnames';
 import * as dateUtils from "../../utils/date-utils";
-import './event-card.scss';
 import {DATE_FORMATS} from "../../constants/global.constants";
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {IconEvent} from "../Icons";
+import './event-card.scss';
 
 export const EventCard = ({ event, players, isAnimated, animationDelay, classNames, children }: EventCardProps) => {
   return (
@@ -27,6 +27,7 @@ export const EventCard = ({ event, players, isAnimated, animationDelay, classNam
           ))}
         </AvatarGroup>
         <Paper
+          elevation={2}
           classes={{ root: classnames(classNames?.paper, {
             'BB-event-card__paper': true,
             'BB-event-card__paper--is-finished-event': dateUtils.isAfter({
@@ -36,7 +37,7 @@ export const EventCard = ({ event, players, isAnimated, animationDelay, classNam
             'BB-event-card__paper--is-ongoing-event': false, // TODO Add when DB will support this
           })
         }}>
-          <IconEvent />
+          <IconEvent className="BB-event-card__date-icon" />
           <Typography type={TYPOGRAPHY_TYPES.SUBTITLE2}>
             Starts at
           </Typography>

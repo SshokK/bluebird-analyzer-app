@@ -1,0 +1,24 @@
+@use "src/styles/variables";
+
+.BB-tabs {
+  &__container {
+    background-color: variables.$primary-color-2;
+  }
+
+  &__header {
+    background-color: variables.$primary-color-2;
+    border-bottom: variables.$border-primary-5-s;
+  }
+
+  &__header-indicator.BB-tabs__header-indicator {
+    background-color: variables.$primary-color-1;
+  }
+
+  &__header-button.BB-tabs__header-button.BB-tabs__header-button {
+    color: variables.$primary-color-3;
+
+    &--is-selected {
+      color: variables.$primary-color-1;
+    }
+  }
+}

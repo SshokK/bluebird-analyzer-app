@@ -1,0 +1,8 @@
+@use "src/styles/variables";
+
+.BB-sport-family-events {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: variables.$spacing-l;
+  column-gap: variables.$spacing-l;
+}

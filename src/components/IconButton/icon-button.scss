@@ -1,35 +1,91 @@
 @use "src/styles/variables";
 
-.BB-icon-button {
-  &.BB-icon-button {
-    background-color: variables.$primary-color-3;
-    width: fit-content;
-    min-width: unset;
-    cursor: pointer;
-    z-index: variables.$elevation-lowest;
-    aspect-ratio: 1 / 1;
+@mixin icon-button(
+  $background-color,
+  $background-disabled-color,
+  $background-hover-color,
+  $icon-color,
+  $shadow
+) {
+  background-color: $background-color;
+  width: fit-content;
+  min-width: unset;
+  cursor: pointer;
+  z-index: variables.$elevation-lowest;
+  aspect-ratio: 1 / 1;
+  outline: none;
+  box-shadow: $shadow;
+
+  &.BB-icon-button--is-squared {
     border-radius: 0;
-    outline: none;
+  }
 
-    &:disabled {
-      cursor: not-allowed;
-      background-color: variables.$primary-color-5;
-      pointer-events: all;
-    }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $background-disabled-color;
+    pointer-events: all;
+  }
 
-    &:focus:not(:disabled),
-    &:hover:not(:disabled) {
-      background-color: variables.$secondary-color-4;
+  &:focus:not(:disabled),
+  &:hover:not(:disabled) {
+    background-color: $background-hover-color;
+  }
+
+  .BB-icon-button__icon {
+    color: $icon-color;
+    display: flex;
+    margin: unset;
+  }
+
+  &.BB-icon-button--small {
+    height: variables.$button-height-s;
+    aspect-ratio: 1 / 1;
+
+    .BB-icon-button__icon > *:nth-of-type(1) {
+      font-size: variables.$font-size-m;
     }
   }
 
-  &__icon.BB-icon-button__icon {
-    color: variables.$primary-color-2;
-    display: flex;
-    margin: unset;
+  &.BB-icon-button--medium {
+    height: variables.$button-height-m;
+    aspect-ratio: 1 / 1;
 
-    & > *:nth-of-type(1) {
-      font-size: variables.$font-size-m;
+    .BB-icon-button__icon > *:nth-of-type(1) {
+      font-size: variables.$font-size-l;
+    }
+  }
+}
+
+.BB-icon-button {
+  &.BB-icon-button {
+    &--primary {
+      @include icon-button(
+        variables.$primary-color-1,
+        variables.$primary-color-5,
+        variables.$secondary-color-5,
+        variables.$primary-color-2,
+        none
+      );
+    }
+
+    &--secondary {
+      @include icon-button(
+        variables.$primary-color-2,
+        variables.$primary-color-5,
+        variables.$secondary-color-3,
+        variables.$primary-color-3,
+        variables.$shadow-center-s
+      );
+    }
+
+    &--tertiary {
+      @include icon-button(
+        variables.$primary-color-3,
+        variables.$primary-color-5,
+        variables.$secondary-color-4,
+        variables.$primary-color-2,
+        none
+      );
     }
   }
 }

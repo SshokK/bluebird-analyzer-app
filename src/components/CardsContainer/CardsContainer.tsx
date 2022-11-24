@@ -10,6 +10,7 @@ import './cards-container.scss';
 
 export const CardsContainer: FC<CardsContainerProps> = ({
   title,
+  titleActions,
   isLoading,
   children,
   isAnimated,
@@ -26,9 +27,12 @@ export const CardsContainer: FC<CardsContainerProps> = ({
         <Loader isVisible={isLoading} shouldFitContainer />
         {title && (
           <span className={classnames("BB-cards-container__title-container")}>
-            <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
-              {title}
-            </Typography>
+            <span className={classnames("BB-cards-container__title")}>
+              <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
+                {title}
+              </Typography>
+            </span>
+            {titleActions}
           </span>
         )}
         {!isLoading && shouldShowNoDataMessage && (

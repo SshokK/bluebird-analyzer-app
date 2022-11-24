@@ -6,3 +6,5 @@ export * from './IconLock';
 export * from './IconCloseSquared';
 export * from './IconClose';
 export * from './IconDelete';
+export * from './IconRename';
+export * from './IconAdd';

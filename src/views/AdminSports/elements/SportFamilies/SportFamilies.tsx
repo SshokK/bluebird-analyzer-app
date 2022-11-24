@@ -1,5 +1,13 @@
 import React from "react";
-import {Button, Chiclet, CardsContainer} from "components";
+import {
+  CardsContainer,
+  Chiclet,
+  ICON_BUTTON_SIZES,
+  ICON_BUTTON_TYPES,
+  IconAdd,
+  IconButton,
+  IconRename
+} from "components";
 import {AddSportFamilyModal} from "./elements";
 import {
   useSportFamiliesData,
@@ -39,9 +47,17 @@ export const SportFamilies = () => {
           {sportFamily.name}
         </Chiclet>
       ))}
-      <Button onClick={handlers.handleAddModalToggle(true)}>
-        + Add sport family
-      </Button>
+      <IconButton
+        type={ICON_BUTTON_TYPES.SECONDARY}
+        size={ICON_BUTTON_SIZES.MEDIUM}
+        icon={<IconAdd />}
+        onClick={handlers.handleAddModalToggle(true)}
+      />
+      <IconButton
+        type={ICON_BUTTON_TYPES.SECONDARY}
+        size={ICON_BUTTON_SIZES.MEDIUM}
+        icon={<IconRename />}
+      />
       <AddSportFamilyModal
         isOpen={localState.isAddModalOpen}
         onClose={handlers.handleAddModalToggle(false)}

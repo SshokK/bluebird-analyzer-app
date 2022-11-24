@@ -2,6 +2,7 @@ import type {ReactNode} from "react";
 
 export type CardsContainerProps = {
   title?: ReactNode;
+  titleActions?: ReactNode;
   children?: ReactNode;
   isLoading?: boolean;
   isAnimated?: boolean;

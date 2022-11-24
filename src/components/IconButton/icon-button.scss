@@ -9,6 +9,7 @@
     z-index: variables.$elevation-lowest;
     aspect-ratio: 1 / 1;
     border-radius: 0;
+    outline: none;
 
     &:disabled {
       cursor: not-allowed;

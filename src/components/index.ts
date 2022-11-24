@@ -21,3 +21,4 @@ export * from './Button';
 export * from './Modal';
 export * from './TextField';
 export * from './IconButton';
+export * from './Chiclet';

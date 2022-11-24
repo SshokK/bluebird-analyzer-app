@@ -11,6 +11,7 @@
     position: relative;
     padding: variables.$spacing-l;
     overflow: unset;
+    min-height: 4rem;
   }
 
   &__title-container {
@@ -30,6 +31,10 @@
     display: flex;
     justify-content: center;
     color: variables.$secondary-color-4;
+
+    &--without-padding {
+      padding-top: 0;
+    }
   }
 
   &__cards-container {
@@ -37,6 +42,7 @@
     row-gap: variables.$spacing-l;
     overflow: auto;
     column-gap: variables.$spacing-l;
+    flex-wrap: wrap;
 
     &:not(:empty) {
       padding: variables.$spacing-m variables.$spacing-xs variables.$spacing-xs variables.$spacing-xs;

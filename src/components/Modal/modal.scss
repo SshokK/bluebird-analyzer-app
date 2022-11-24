@@ -5,10 +5,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none;
   }
 
   &__inner-container {
     position: relative;
+    outline: none;
   }
 
   &__close-button.BB-modal__close-button {

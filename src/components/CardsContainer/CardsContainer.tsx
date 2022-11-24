@@ -31,8 +31,10 @@ export const CardsContainer: FC<CardsContainerProps> = ({
             </Typography>
           </span>
         )}
-        {shouldShowNoDataMessage && (
-          <div className={classnames("BB-cards-container__no-data-message", classNames?.noDataMessage)}>
+        {!isLoading && shouldShowNoDataMessage && (
+          <div className={classnames("BB-cards-container__no-data-message", classNames?.noDataMessage, {
+            "BB-cards-container__no-data-message--without-padding": !title
+          })}>
             <Typography type={TYPOGRAPHY_TYPES.BODY2}>
               {noDataMessage}
             </Typography>
@@ -57,3 +59,11 @@ export const CardsContainer: FC<CardsContainerProps> = ({
 
   return content
 }
+
+CardsContainer.defaultProps = {
+  title: null,
+  isLoading: false,
+  isAnimated: true,
+  shouldShowNoDataMessage: false,
+  noDataMessage: 'No data'
+} as CardsContainerProps

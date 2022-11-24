@@ -21,11 +21,20 @@ export const ROUTES_CONFIG:  RouteObject[] = [
     children: [
       {
         path: ROUTES.ADMIN,
-        element: (
-          <LazyComponent>
-            <Admin />
-          </LazyComponent>
-        )
+        children: [
+          {
+            path: ROUTES.SPORTS_CONFIGURATION,
+            element: (
+              <LazyComponent>
+                <Admin />
+              </LazyComponent>
+            )
+          },
+          {
+            path: '*',
+            element: <Navigate replace to={ROUTES.SPORTS_CONFIGURATION} />
+          }
+        ]
       },
       {
         path: ROUTES.DASHBOARD,

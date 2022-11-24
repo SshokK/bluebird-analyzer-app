@@ -9,10 +9,10 @@ $primary-color-5: colors.$cadet-blue;
 $primary-color-6: colors.$calico;
 
 $secondary-color-1: colors.$bermuda-gray;
-$secondary-color-2: colors.$alabaster;
+$secondary-color-2: colors.$athens-gray;
 $secondary-color-3: colors.$catskill-white;
 $secondary-color-4: colors.$blue-bayoux;
-
+$secondary-color-5: colors.$science-blue;
 
 $font-size-base: 16px;
 
@@ -34,6 +34,8 @@ $spacing-xl: 2rem;
 $spacing-xxl: 3rem;
 $spacing-xxxl: 4rem;
 
+$button-height-m: 2rem;
+
 $border-primary-1-s: 1px solid $primary-color-1;
 $border-primary-1-m: 2px solid $primary-color-1;
 $border-primary-1-l: 3px solid $primary-color-1;
@@ -53,6 +55,16 @@ $border-primary-3-s: 1px solid $primary-color-3;
 $border-primary-3-m: 2px solid $primary-color-3;
 $border-primary-3-l: 3px solid $primary-color-3;
 $border-primary-3-xl: 4px solid $primary-color-3;
+
+$border-secondary-1-s: 1px solid $secondary-color-1;
+$border-secondary-1-m: 2px solid $secondary-color-1;
+$border-secondary-1-l: 3px solid $secondary-color-1;
+$border-secondary-1-xl: 4px solid $secondary-color-1;
+
+$border-secondary-5-s: 1px solid $secondary-color-5;
+$border-secondary-5-m: 2px solid $secondary-color-5;
+$border-secondary-5-l: 3px solid $secondary-color-5;
+$border-secondary-5-xl: 4px solid $secondary-color-5;
 
 $border-radius-s: 2px;
 $border-radius-m: 5px;

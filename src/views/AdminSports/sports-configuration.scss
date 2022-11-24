@@ -1,0 +1,7 @@
+@use "src/styles/variables";
+
+.BB-sports-configuration {
+  &__container {
+    row-gap: variables.$spacing-xl;
+  }
+}

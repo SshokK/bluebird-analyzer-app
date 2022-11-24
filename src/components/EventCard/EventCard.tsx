@@ -5,7 +5,7 @@ import {Grow, Paper} from "@mui/material";
 import {Avatar, AVATAR_SIZES} from "../Avatar";
 import {AvatarGroup} from "../AvatarGroup";
 import classnames from 'classnames';
-import * as dateUtils from "../../utils/date-utils";
+import * as dateUtils from "utils";
 import {DATE_FORMATS} from "../../constants/global.constants";
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {IconEvent} from "../Icons";

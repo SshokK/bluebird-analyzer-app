@@ -20,13 +20,16 @@ export const Button: FC<ButtonProps> = ({
       variant="contained"
       onClick={onClick}
       disabled={isDisabled}
+      onMouseDown={e => e.preventDefault()} // Removes focus once button clicked. Required for correct styling
       classes={{
         root: classnames("BB-button"),
         startIcon: classnames("BB-button__start-icon"),
         endIcon: classnames("BB-button__end-icon"),
       }}
     >
-      {children}
+      <span className="BB-button__content">
+        {children}
+      </span>
     </MUIButton>
   )
 }

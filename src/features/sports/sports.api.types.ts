@@ -1,4 +1,4 @@
-import type {SportFamilySchema} from "../sportFamilies/sportFamilies.api.types";
+import type {SportFamilySchema} from "../sport-families/sportFamilies.api.types";
 
 export type SportSchema = {
   id: number;

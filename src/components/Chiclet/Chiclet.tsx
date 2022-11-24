@@ -2,20 +2,51 @@ import type {FC} from 'react';
 import type {ChicletProps} from "./Chiclet.types";
 
 import React from 'react';
-import {Button} from "../Button";
+import {Button} from "@mui/material";
+import classnames from 'classnames';
+import { IconDelete} from "../Icons";
+import './chiclet.scss';
 
 export const Chiclet: FC<ChicletProps> = ({
-  label,
   isDisabled,
   isDeletable,
+  isSelected,
   onClick,
-  classNames
+  onDelete,
+  classNames,
+  children
 }) => {
   return (
-    <Button
-      isDisabled={isDisabled}
-    >
-      {label}
-    </Button>
+    <div className={classnames('BB-chiclet', classNames?.container)}>
+      {isDisabled && <div className="BB-chiclet__disabled-overlay"/>}
+      <Button
+        disabled={isDisabled}
+        onClick={onClick}
+        disableFocusRipple
+        onMouseDown={e => e.preventDefault()} // Removes focus once button clicked. Required for correct styling
+        classes={{
+          root: classnames('BB-chiclet__button', classNames?.button, {
+            'BB-chiclet__button--is-selected': isSelected,
+            'BB-chiclet__button--is-deletable': isDeletable
+          })
+        }}
+      >
+        <span className={classnames("BB-chiclet__content", classNames?.content)}>
+          {children}
+        </span>
+      </Button>
+      {isDeletable && (
+        <button
+          disabled={isDisabled}
+          className={classnames("BB-chiclet__delete-button", classNames?.deleteButton, {
+            'BB-chiclet__delete-button--is-selected': isSelected
+          })}
+          onClick={onDelete}
+          onMouseDown={e => e.preventDefault()} // Removes focus once button clicked. Required for correct styling
+        >
+          <IconDelete />
+        </button>
+      )}
+    </div>
   )
 }

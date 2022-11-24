@@ -3,6 +3,17 @@
 .BB-button {
   &.BB-button {
     background-color: variables.$primary-color-1;
-    text-transform: none;
+    height: variables.$button-height-m;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      background-color: variables.$secondary-color-5;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

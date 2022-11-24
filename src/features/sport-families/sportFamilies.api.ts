@@ -24,3 +24,10 @@ export const createSportFamily: apiTypes.CreateSportFamily = (data) => {
     data
   })
 }
+
+export const deleteSportFamily: apiTypes.DeleteSportFamily = (id) => {
+  return fetch<apiTypes.DeleteSportFamilyResponse>({
+    url: `/api/v1/sport-families/${id}`,
+    method: 'DELETE'
+  })
+}

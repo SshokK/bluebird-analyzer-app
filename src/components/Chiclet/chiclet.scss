@@ -1,0 +1,108 @@
+@use "src/styles/variables";
+
+.BB-chiclet {
+  display: flex;
+  align-items: center;
+  max-width: 20rem;
+  height: variables.$button-height-m;
+  position: relative;
+
+  &__disabled-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background-color: variables.$primary-color-2;
+    z-index: 1;
+    cursor: not-allowed;
+  }
+
+  &__button.BB-chiclet__button {
+    background-color: variables.$secondary-color-2;
+    color: variables.$primary-color-3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    height: 100%;
+    transition-duration: variables.$animation-time-short;
+    border: variables.$border-primary-3-s;
+    border-radius: variables.$border-radius-m;
+
+    &:hover,
+    &:focus {
+      background-color: #{variables.$primary-color-3}30;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: all;
+      border: variables.$border-secondary-1-s;
+    }
+
+    &--is-deletable {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: none;
+    }
+
+    &--is-selected,
+    &:disabled.BB-chiclet__button--is-selected {
+      color: variables.$secondary-color-5;
+      border-color: variables.$secondary-color-5;
+
+      &:hover,
+      &:focus {
+        background-color: #{variables.$secondary-color-5}30;
+      }
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__delete-button {
+    position: relative;
+    background-color: variables.$primary-color-3;
+    color: variables.$primary-color-2;
+    padding: variables.$spacing-xxs;
+    font-size: variables.$font-size-l;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    transition: variables.$animation-time-short;
+    outline: none;
+
+    border: variables.$border-primary-3-s;
+    border-top-right-radius: variables.$border-radius-m;
+    border-bottom-right-radius: variables.$border-radius-m;
+
+    &:hover,
+    &:focus {
+      background-color: variables.$secondary-color-4;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: all;
+      background-color: variables.$secondary-color-1;
+      border-color: variables.$secondary-color-1;
+    }
+
+    &--is-selected,
+    &:disabled.BB-chiclet__delete-button--is-selected {
+      background-color: variables.$secondary-color-5;
+      border-color: variables.$secondary-color-5;
+
+      &:hover,
+      &:focus {
+        background-color: variables.$primary-color-1;
+        border-color: variables.$primary-color-1;
+      }
+    }
+  }
+}

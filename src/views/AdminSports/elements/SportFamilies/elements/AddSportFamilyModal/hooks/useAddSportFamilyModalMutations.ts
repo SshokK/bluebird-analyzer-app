@@ -3,7 +3,7 @@ import type {AddSportFamilyModalProps} from "../AddSportFamilyModal.types";
 
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {QUERY_KEYS} from "constants/queries.constants";
-import * as sportFamiliesApi from "features/sportFamilies/sportFamilies.api";
+import * as sportFamiliesApi from "features/sport-families/sportFamilies.api";
 
 export const useAddSportFamilyModalMutations = ({
   props,

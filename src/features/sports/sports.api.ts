@@ -16,3 +16,26 @@ export const fetchSport: apiTypes.FetchSport = (sportFamilyId, sportId) => {
     method: 'GET'
   })
 }
+
+export const createSport: apiTypes.CreateSport = (sportFamilyId, data) => {
+  return fetch<apiTypes.CreateSportResponse>({
+    url: `/api/v1/sport-families/${sportFamilyId}/sports`,
+    method: 'POST',
+    data
+  })
+}
+
+export const updateSport: apiTypes.UpdateSport = (sportFamilyId, sportId,  data) => {
+  return fetch<apiTypes.UpdateSportResponse>({
+    url: `/api/v1/sport-families/${sportFamilyId}/sports/${sportId}`,
+    method: 'PATCH',
+    data
+  })
+}
+
+export const deleteSport: apiTypes.DeleteSport = (sportFamilyId, sportId) => {
+  return fetch<apiTypes.DeleteSportResponse>({
+    url: `/api/v1/sport-families/${sportFamilyId}/sports/${sportId}`,
+    method: 'DELETE'
+  })
+}

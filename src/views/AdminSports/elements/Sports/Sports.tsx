@@ -2,8 +2,8 @@ import type {FC} from "react";
 import type {SportsProps} from "./Sports.types";
 
 import React from 'react';
-import {CardsContainer, Chiclet} from "components";
-import {useSportsData, useSportsHandlers, useSportsQueries} from "./hooks";
+import { Actions, CardsContainer, Chiclet} from "components";
+import {useSportsActionsConfig, useSportsData, useSportsHandlers, useSportsMutations, useSportsQueries} from "./hooks";
 
 export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
   const { formattedData } = useSportsData();
@@ -14,7 +14,19 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
     }
   });
 
-  const handlers = useSportsHandlers();
+  const mutations = useSportsMutations();
+
+  const handlers = useSportsHandlers({
+    formattedData,
+    mutations
+  });
+
+  const actionsConfig = useSportsActionsConfig({
+    queries,
+    formattedData,
+    onAdd: handlers.handleModalAddModalSubmit,
+    onEdit: handlers.handleModalEditModalSubmit
+  })
 
   return (
     <CardsContainer
@@ -32,10 +44,12 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
           isDeletable
           isSelected={formattedData.sportId === sport.id}
           onClick={handlers.handleSportClick(sport.id)}
+          onDelete={handlers.handleSportDelete(sport.id)}
         >
           {sport.name}
         </Chiclet>
       ))}
+      <Actions actions={actionsConfig} />
     </CardsContainer>
   )
 }

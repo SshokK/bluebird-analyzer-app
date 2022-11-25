@@ -1,3 +1,4 @@
+export * from './Actions';
 export * from './Header';
 export * from './ErrorBoundary';
 export * from './Loader';
@@ -21,4 +22,6 @@ export * from './Button';
 export * from './Modal';
 export * from './TextField';
 export * from './IconButton';
+export * from './IconButtonGroup';
 export * from './Chiclet';
+export * from './ModalForm';

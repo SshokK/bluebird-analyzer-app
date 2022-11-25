@@ -1,30 +1,34 @@
 import React from "react";
 import {
+  Actions,
   CardsContainer,
-  Chiclet,
-  ICON_BUTTON_SIZES,
-  ICON_BUTTON_TYPES,
-  IconAdd,
-  IconButton,
-  IconRename
+  Chiclet
 } from "components";
-import {AddSportFamilyModal} from "./elements";
 import {
   useSportFamiliesData,
   useSportFamiliesHandlers,
+  useSportFamiliesActionsConfig,
   useSportFamiliesMutations,
   useSportFamiliesQueries
 } from "./hooks";
 
 export const SportFamilies = () => {
-  const { localState, localActions, formattedData } = useSportFamiliesData();
+  const { formattedData } = useSportFamiliesData();
 
   const queries = useSportFamiliesQueries();
 
   const mutations = useSportFamiliesMutations();
 
   const handlers = useSportFamiliesHandlers({
-    localActions
+    formattedData,
+    mutations
+  });
+
+  const actionsConfig = useSportFamiliesActionsConfig({
+    queries,
+    formattedData,
+    onAdd: handlers.handleModalAddModalSubmit,
+    onEdit: handlers.handleModalEditModalSubmit
   })
 
   return (
@@ -42,26 +46,12 @@ export const SportFamilies = () => {
           isDeletable
           isSelected={formattedData.sportFamilyId === sportFamily.id}
           onClick={handlers.handleSportFamilyClick(sportFamily.id)}
-          onDelete={() => mutations.deleteSportFamily.mutateAsync([sportFamily.id])}
+          onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}
         >
           {sportFamily.name}
         </Chiclet>
       ))}
-      <IconButton
-        type={ICON_BUTTON_TYPES.SECONDARY}
-        size={ICON_BUTTON_SIZES.MEDIUM}
-        icon={<IconAdd />}
-        onClick={handlers.handleAddModalToggle(true)}
-      />
-      <IconButton
-        type={ICON_BUTTON_TYPES.SECONDARY}
-        size={ICON_BUTTON_SIZES.MEDIUM}
-        icon={<IconRename />}
-      />
-      <AddSportFamilyModal
-        isOpen={localState.isAddModalOpen}
-        onClose={handlers.handleAddModalToggle(false)}
-      />
+      <Actions actions={actionsConfig}/>
     </CardsContainer>
   )
 }

@@ -5,6 +5,7 @@
   $background-disabled-color,
   $background-hover-color,
   $icon-color,
+  $icon-disabled-color,
   $shadow
 ) {
   background-color: $background-color;
@@ -24,6 +25,10 @@
     cursor: not-allowed;
     background-color: $background-disabled-color;
     pointer-events: all;
+
+    .BB-icon-button__icon {
+      color: $icon-disabled-color;
+    }
   }
 
   &:focus:not(:disabled),
@@ -64,6 +69,7 @@
         variables.$primary-color-5,
         variables.$secondary-color-5,
         variables.$primary-color-2,
+        variables.$primary-color-2,
         none
       );
     }
@@ -71,9 +77,10 @@
     &--secondary {
       @include icon-button(
         variables.$primary-color-2,
-        variables.$primary-color-5,
+        variables.$secondary-color-2,
         variables.$secondary-color-3,
         variables.$primary-color-3,
+        variables.$primary-color-5,
         variables.$shadow-center-s
       );
     }
@@ -83,6 +90,7 @@
         variables.$primary-color-3,
         variables.$primary-color-5,
         variables.$secondary-color-4,
+        variables.$primary-color-2,
         variables.$primary-color-2,
         none
       );

@@ -1,0 +1,9 @@
+@use "src/styles/variables";
+
+.BB-icon-button-group {
+  display: flex;
+  align-items: center;
+  column-gap: variables.$spacing-s;
+  row-gap: variables.$spacing-s;
+  flex-wrap: wrap;
+}

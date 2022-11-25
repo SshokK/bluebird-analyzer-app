@@ -21,3 +21,22 @@ export type FetchSports = (...args: FetchSportsPayload) => Promise<FetchSportsRe
 export type FetchSportPayload = [sportFamilyId: SportFamilySchema['id'], sportId: SportSchema['id']];
 export type FetchSportResponse = SportSchema;
 export type FetchSport = (...args: FetchSportPayload) => Promise<FetchSportResponse>
+
+
+export type CreateSportPayload = [sportFamilyId: SportFamilySchema['id'], body: {
+  name: SportSchema['name']
+}];
+export type CreateSportResponse = SportSchema;
+export type CreateSport = (...args: CreateSportPayload) => Promise<CreateSportResponse>
+
+
+export type UpdateSportPayload = [sportFamilyId: SportFamilySchema['id'], sportId: SportSchema['id'], body: {
+  name?: SportFamilySchema['name']
+}];
+export type UpdateSportResponse = SportSchema;
+export type UpdateSport = (...args: UpdateSportPayload) => Promise<UpdateSportResponse>
+
+
+export type DeleteSportPayload = [sportFamilyId: SportFamilySchema['id'], sportId: SportSchema['id']];
+export type DeleteSportResponse = void;
+export type DeleteSport = (...args: DeleteSportPayload) => Promise<DeleteSportResponse>

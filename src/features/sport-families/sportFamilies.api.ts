@@ -25,6 +25,14 @@ export const createSportFamily: apiTypes.CreateSportFamily = (data) => {
   })
 }
 
+export const updateSportFamily: apiTypes.UpdateSportFamily = (id, data) => {
+  return fetch<apiTypes.UpdateSportFamilyResponse>({
+    url: `/api/v1/sport-families/${id}`,
+    method: 'PATCH',
+    data
+  })
+}
+
 export const deleteSportFamily: apiTypes.DeleteSportFamily = (id) => {
   return fetch<apiTypes.DeleteSportFamilyResponse>({
     url: `/api/v1/sport-families/${id}`,

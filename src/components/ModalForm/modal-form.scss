@@ -1,0 +1,13 @@
+@use "src/styles/variables";
+
+.BB-modal-form {
+  &__body {
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &__content {
+
+  }
+}

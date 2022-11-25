@@ -9,8 +9,14 @@ export const useActionsHandlers = ({
   props: Pick<ActionsProps, 'actions'>;
   localActions: ActionsData['localActions']
 }): ActionsHandlers => {
-  const handleModalOpen: ActionsHandlers['handleModalOpen'] = (modalKey) => () => {
-    localActions.setOpenedModalKey(modalKey);
+  const handleClick: ActionsHandlers['handleClick'] = (actionKey) => () => {
+    const action = props.actions[actionKey as keyof typeof props.actions];
+
+    if (action.shouldShowModal) {
+      localActions.setOpenedModalKey(actionKey);
+    }
+
+    action.onClick?.(action);
   }
 
   const handleModalClose: ActionsHandlers['handleModalClose'] = () => {
@@ -27,7 +33,7 @@ export const useActionsHandlers = ({
   }
 
   return {
-    handleModalOpen,
+    handleClick,
     handleModalClose,
     handleModalSubmit
   }

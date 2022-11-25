@@ -21,6 +21,7 @@ export const useSportsActionsConfig = ({
     [MODAL_KEYS.ADD]: {
       icon: <IconAdd />,
       onSubmit: onAdd,
+      shouldShowModal: true,
       modalTitle: 'Create a new sport',
       modalSize: MODAL_SIZES.MEDIUM,
       modalFields: {
@@ -35,6 +36,7 @@ export const useSportsActionsConfig = ({
       icon: <IconRename />,
       isDisabled: !formattedData.sportId,
       onSubmit: onEdit,
+      shouldShowModal: true,
       modalTitle: 'Rename sport',
       modalSize: MODAL_SIZES.MEDIUM,
       modalFields: {

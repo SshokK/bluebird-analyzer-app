@@ -50,3 +50,15 @@ button {
   border: unset;
   display: block;
 }
+
+a {
+  text-decoration: none;
+  color: variables.$primary-color-1;
+  transition: variables.$animation-time-short;
+  outline: none;
+
+  &:focus,
+  &:hover {
+    color: variables.$secondary-color-5;
+  }
+}

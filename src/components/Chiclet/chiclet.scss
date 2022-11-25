@@ -25,7 +25,7 @@
     display: flex;
     height: 100%;
     transition-duration: variables.$animation-time-short;
-    border: variables.$border-primary-3-s;
+    border: variables.$border-secondary-4-s;
     border-radius: variables.$border-radius-m;
 
     &:hover,
@@ -47,12 +47,14 @@
 
     &--is-selected,
     &:disabled.BB-chiclet__button--is-selected {
-      color: variables.$secondary-color-5;
-      border-color: variables.$secondary-color-5;
+      color: variables.$primary-color-1;
+      border-color: variables.$primary-color-1;
 
       &:hover,
       &:focus {
-        background-color: #{variables.$secondary-color-5}30;
+        background-color: #{variables.$primary-color-1}30;
+        border-color: variables.$secondary-color-5;
+        color: variables.$secondary-color-5;
       }
     }
   }
@@ -64,7 +66,7 @@
 
   &__delete-button {
     position: relative;
-    background-color: variables.$primary-color-3;
+    background-color: variables.$secondary-color-4;
     color: variables.$primary-color-2;
     padding: variables.$spacing-xxs;
     font-size: variables.$font-size-l;
@@ -77,13 +79,14 @@
     transition: variables.$animation-time-short;
     outline: none;
 
-    border: variables.$border-primary-3-s;
+    border: variables.$border-secondary-4-s;
     border-top-right-radius: variables.$border-radius-m;
     border-bottom-right-radius: variables.$border-radius-m;
 
     &:hover,
     &:focus {
-      background-color: variables.$secondary-color-4;
+      border: variables.$border-primary-3-s;
+      background-color: variables.$primary-color-3;
     }
 
     &:disabled {
@@ -95,13 +98,13 @@
 
     &--is-selected,
     &:disabled.BB-chiclet__delete-button--is-selected {
-      background-color: variables.$secondary-color-5;
-      border-color: variables.$secondary-color-5;
+      background-color: variables.$primary-color-1;
+      border-color: variables.$primary-color-1;
 
       &:hover,
       &:focus {
-        background-color: variables.$primary-color-1;
-        border-color: variables.$primary-color-1;
+        background-color: variables.$secondary-color-5;
+        border-color: variables.$secondary-color-5;
       }
     }
   }

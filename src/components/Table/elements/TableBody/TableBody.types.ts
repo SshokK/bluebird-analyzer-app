@@ -1,5 +1,5 @@
-import type {useTable} from "react-table";
+import type {useReactTable} from "@tanstack/react-table";
 
 export type TableBodyProps = {
-  table: ReturnType<typeof useTable>;
+  table: ReturnType<typeof useReactTable<object>>;
 }

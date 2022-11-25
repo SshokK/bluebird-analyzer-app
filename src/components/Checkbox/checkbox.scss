@@ -1,0 +1,16 @@
+@use "src/styles/variables";
+
+.BB-checkbox {
+  &.BB-checkbox {
+    font-size: variables.$font-size-l;
+    color: variables.$primary-color-3;
+  }
+
+  &--is-checked.BB-checkbox--is-checked.BB-checkbox--is-checked {
+    color: variables.$primary-color-1;
+  }
+
+  &__container {
+
+  }
+}

@@ -1,0 +1,19 @@
+@use "src/styles/variables";
+
+.BB-table-cell {
+  text-align: left;
+  white-space: nowrap;
+  padding: variables.$spacing-xs variables.$spacing-m;
+  background-color: variables.$primary-color-2;
+  color: variables.$secondary-color-4;
+
+  &:first-child {
+    border-top-left-radius: variables.$border-radius-m;
+    border-bottom-left-radius: variables.$border-radius-m;
+  }
+
+  &:last-child {
+    border-top-right-radius: variables.$border-radius-m;
+    border-bottom-right-radius: variables.$border-radius-m;
+  }
+}

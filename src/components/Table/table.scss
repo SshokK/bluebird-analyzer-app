@@ -1,7 +1,16 @@
+@use "src/styles/variables";
+
 .BB-table {
-  &__container {
+  &__container.BB-table__container {
     position: relative;
     width: 100%;
+    border-radius: variables.$border-radius-m;
+    overflow: auto;
+
+    // These lines ensure that the rows shadows will be visible
+    padding: variables.$spacing-xxs;
+    left: -#{variables.$spacing-xxs};
+    top: -#{variables.$spacing-xxs};
   }
 
   &__table {

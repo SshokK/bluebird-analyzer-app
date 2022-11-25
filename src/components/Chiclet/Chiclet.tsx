@@ -4,7 +4,7 @@ import type {ChicletProps} from "./Chiclet.types";
 import React from 'react';
 import {Button} from "@mui/material";
 import classnames from 'classnames';
-import { IconDelete} from "../Icons";
+import {IconClose} from "../Icons";
 import './chiclet.scss';
 
 export const Chiclet: FC<ChicletProps> = ({
@@ -44,7 +44,7 @@ export const Chiclet: FC<ChicletProps> = ({
           onClick={onDelete}
           onMouseDown={e => e.preventDefault()} // Removes focus once button clicked. Required for correct styling
         >
-          <IconDelete />
+          <IconClose />
         </button>
       )}
     </div>

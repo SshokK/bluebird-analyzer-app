@@ -9,3 +9,7 @@ export const fetchEventCrawlers: FetchEventCrawlers = async (params) => {
     params
   })
 }
+
+export const createEventCrawler = () => {
+
+}

@@ -1,5 +1,5 @@
 import type {FetchSportFamiliesResponse} from "./sportFamilies.api.types";
-import type {LeftPanelOption, TableProps} from "../../components";
+import type {LeftPanelOption} from "../../components";
 
 import { IconBasketball, IconQuestion, IconSoccer } from "../../components";
 import {ROUTES} from "../../constants/global.constants";

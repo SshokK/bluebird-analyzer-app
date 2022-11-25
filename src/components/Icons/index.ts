@@ -8,3 +8,5 @@ export * from './IconClose';
 export * from './IconDelete';
 export * from './IconRename';
 export * from './IconAdd';
+export * from './IconStop';
+export * from './IconPlay';

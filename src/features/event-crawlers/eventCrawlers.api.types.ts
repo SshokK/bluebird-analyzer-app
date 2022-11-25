@@ -2,6 +2,7 @@ import type {SportSchema} from "../sports/sports.api.types";
 import type {BookmakerSchema} from "../bookmakers/bookmakers.api.types";
 import type {CrawlerSchema} from "../crawlers/crawlers.api.types";
 import type {SORT_ORDERS} from "../../constants/global.constants";
+import {WithRequiredProperty} from "../../types/global.types";
 
 export type EventCrawlerSchema = {
   id: number;
@@ -29,5 +30,8 @@ export type FetchEventCrawlersPayload = [params: {
   sortField?: Pick<EventCrawlerSchema, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
   sortOrder?: SORT_ORDERS;
 }]
-export type FetchEventCrawlersResponse = Omit<EventCrawlerSchema, 'Bookmaker' | 'Sport'>[];
+export type FetchEventCrawlersResponse = {
+  results: WithRequiredProperty<Omit<EventCrawlerSchema, 'Sport'>, 'Crawler'>[],
+  total: number;
+};
 export type FetchEventCrawlers = (...args: FetchEventCrawlersPayload) => Promise<FetchEventCrawlersResponse>

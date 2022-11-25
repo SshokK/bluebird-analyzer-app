@@ -4,6 +4,7 @@ export * from './ErrorBoundary';
 export * from './Loader';
 export * from './Card';
 export * from './CardsContainer';
+export * from './Checkbox';
 export * from './LazyComponent';
 export * from './List';
 export * from './ThemeProvider';

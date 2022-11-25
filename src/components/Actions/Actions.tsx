@@ -32,7 +32,7 @@ export const Actions: FC<ActionsProps> = ({
             size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
             icon={action.icon}
             isDisabled={action.isDisabled}
-            onClick={handlers.handleModalOpen(actionKey)}
+            onClick={handlers.handleClick(actionKey)}
           />
         ))}
       </IconButtonGroup>

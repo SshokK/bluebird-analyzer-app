@@ -40,6 +40,7 @@
     color: $icon-color;
     display: flex;
     margin: unset;
+    transition: variables.$animation-time-short;
   }
 
   &.BB-icon-button--small {

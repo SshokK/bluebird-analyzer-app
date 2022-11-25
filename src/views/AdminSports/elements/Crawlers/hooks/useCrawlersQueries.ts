@@ -5,6 +5,7 @@ import {QUERY_KEYS} from "constants/queries.constants";
 
 import * as sportsApi from "features/sports/sports.api";
 import * as evnetCrawlersApi from "features/event-crawlers/eventCrawlers.api";
+import * as eventCrawlersApiSelectors from "features/event-crawlers/eventCrawlers.api.selectors";
 
 import {useQuery} from "@tanstack/react-query";
 
@@ -21,7 +22,8 @@ export const useCrawlersQueries = ({ props }: {
 
   const fetchCrawlers = useQuery<
     Awaited<ReturnType<typeof evnetCrawlersApi.fetchEventCrawlers>>,
-    RequestError
+    RequestError,
+    ReturnType<typeof eventCrawlersApiSelectors.formatEventCrawlersForTable>
   >({
     queryKey: [QUERY_KEYS.CRAWLERS, {
       SportId: props.sportId
@@ -31,6 +33,7 @@ export const useCrawlersQueries = ({ props }: {
       limit: 10,
       offset: 0
     }),
+    select: eventCrawlersApiSelectors.formatEventCrawlersForTable
   });
 
   return {

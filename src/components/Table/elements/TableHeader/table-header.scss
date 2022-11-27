@@ -1,15 +1,19 @@
 @use "src/styles/variables";
 
 .BB-table-header {
-  background-color: variables.$primary-color-1;
-  box-shadow: variables.$shadow-center-s;
-  border-radius: variables.$border-radius-m;
-  color: variables.$primary-color-2;
+
+  &__row {
+    background-color: variables.$primary-color-1;
+    color: variables.$primary-color-2;
+    box-shadow: variables.$shadow-center-s;
+    border-radius: variables.$border-radius-m;
+  }
 
   &__cell {
     text-align: left;
     white-space: nowrap;
     padding: variables.$spacing-xs variables.$spacing-m;
+
 
     &:first-child {
       border-top-left-radius: variables.$border-radius-m;
@@ -20,5 +24,9 @@
       border-top-right-radius: variables.$border-radius-m;
       border-bottom-right-radius: variables.$border-radius-m;
     }
+  }
+
+  &__spacer {
+    padding-top: 1rem;
   }
 }

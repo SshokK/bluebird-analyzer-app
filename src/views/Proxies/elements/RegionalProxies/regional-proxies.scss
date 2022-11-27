@@ -1,0 +1,9 @@
+@use "src/styles/variables";
+
+.BB-regional-proxies {
+  height: 28.5rem;
+
+  &__list {
+    width: 15rem;
+  }
+}

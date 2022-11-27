@@ -1,0 +1,17 @@
+@use "src/styles/variables";
+
+.BB-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: variables.$spacing-s;
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    column-gap: variables.$spacing-l;
+  }
+
+  &__option {
+    border-left: variables.$border-primary-1-xl;
+  }
+}

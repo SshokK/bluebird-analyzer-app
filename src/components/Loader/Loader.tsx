@@ -1,10 +1,9 @@
 import type {LoaderProps} from "./Loader.types";
 import type {FC} from 'react';
-
 import React from 'react';
 import classnames from 'classnames';
 import {LOADER_SIZES} from "./Loader.constants";
-import { Grow } from '@mui/material';
+import {Animation, ANIMATION_TYPES} from "../Animation";
 import './loader.scss';
 
 export const Loader: FC<LoaderProps> = ({ shouldFitContainer, size, isVisible }) => {
@@ -17,7 +16,7 @@ export const Loader: FC<LoaderProps> = ({ shouldFitContainer, size, isVisible })
   )
 
   return shouldFitContainer ? (
-    <Grow in={isVisible}>
+    <Animation type={ANIMATION_TYPES.GROW} shouldAppear={isVisible}>
       <div className={classnames("BB-loader__container", {
         'BB-loader__container--is-visible': isVisible
       })}>
@@ -26,7 +25,7 @@ export const Loader: FC<LoaderProps> = ({ shouldFitContainer, size, isVisible })
         })} />
         {loader}
       </div>
-    </Grow>
+    </Animation>
   ): loader
 }
 

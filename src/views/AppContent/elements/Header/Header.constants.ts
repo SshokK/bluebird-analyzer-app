@@ -8,7 +8,11 @@ export const NAV_LINKS: NavLink[] = [
     title: 'Dashboard'
   },
   {
-    path: ROUTES.ADMIN,
-    title: 'Admin'
+    path: ROUTES.PROXIES,
+    title: 'Proxies'
+  },
+  {
+    path: ROUTES.SPORTS_CONFIGURATION,
+    title: 'Sports Configuration'
   }
 ]

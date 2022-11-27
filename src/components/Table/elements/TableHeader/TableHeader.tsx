@@ -10,7 +10,7 @@ export const TableHeader: FC<TableHeaderProps> = ({ table }) => {
   return (
     <thead className="BB-table-header">
       {table.getHeaderGroups().map(headerGroup => (
-        <tr key={headerGroup.id}>
+        <tr key={headerGroup.id} className="BB-table-header__row">
           {headerGroup.headers.map(headerColumn => (
             <th key={headerColumn.id} className="BB-table-header__cell">
               <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
@@ -25,6 +25,9 @@ export const TableHeader: FC<TableHeaderProps> = ({ table }) => {
           ))}
         </tr>
       ))}
+      <tr>
+        <th className="BB-table-header__spacer"/>
+      </tr>
     </thead>
   )
 }

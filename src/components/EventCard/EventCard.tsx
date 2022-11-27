@@ -1,7 +1,7 @@
 import type {EventCardProps} from "./EventCard.types";
 
 import React from 'react';
-import {Grow, Paper} from "@mui/material";
+import { Paper} from "@mui/material";
 import {Avatar, AVATAR_SIZES} from "../Avatar";
 import {AvatarGroup} from "../AvatarGroup";
 import classnames from 'classnames';
@@ -9,11 +9,12 @@ import * as dateUtils from "utils";
 import {DATE_FORMATS} from "../../constants/global.constants";
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {IconEvent} from "../Icons";
+import { Animation, ANIMATION_TYPES} from "../Animation";
 import './event-card.scss';
 
 export const EventCard = ({ event, players, isAnimated, animationDelay, classNames, children }: EventCardProps) => {
   return (
-    <Grow in={isAnimated} timeout={animationDelay}>
+    <Animation type={ANIMATION_TYPES.GROW} shouldAppear={isAnimated} animationDelay={animationDelay} >
       <div className={classnames('BB-event-card', classNames?.container)}>
         <AvatarGroup classNames={{
           container: classnames('BB-event-card__avatar-container', classNames?.avatarContainer)
@@ -53,7 +54,7 @@ export const EventCard = ({ event, players, isAnimated, animationDelay, classNam
           {children}
         </Paper>
       </div>
-    </Grow>
+    </Animation>
   )
 }
 

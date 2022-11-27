@@ -6,4 +6,12 @@
   column-gap: variables.$spacing-s;
   row-gap: variables.$spacing-s;
   flex-wrap: wrap;
+
+  &--is-column {
+    flex-direction: column;
+  }
+
+  &--is-row {
+    flex-direction: row;
+  }
 }

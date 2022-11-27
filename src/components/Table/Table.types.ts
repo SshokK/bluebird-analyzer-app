@@ -1,4 +1,4 @@
-import type {FC, ReactElement } from "react";
+import type {FC, ReactElement} from "react";
 import type {COLUMN_TYPES, COLUMN_DATA_TYPES } from "./Table.constants";
 import type {CellContext} from "@tanstack/table-core/build/lib/core/cell";
 
@@ -20,4 +20,6 @@ export type TableProps = {
   rows?: TableRow[];
   areRowsSelectable?: boolean;
   onSelectedRowsChange?: (rows: TableRow[]) => void;
+  isFullWidth?: boolean;
+  noDataMessage?: string;
 }

@@ -26,3 +26,5 @@ export * from './IconButton';
 export * from './IconButtonGroup';
 export * from './Chiclet';
 export * from './ModalForm';
+export * from './Animation';
+export * from './Separator';

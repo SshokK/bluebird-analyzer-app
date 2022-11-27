@@ -1,4 +1,4 @@
-import type { IconButtonProps, ModalFormProps} from "components/index";
+import type {IconButtonGroupProps, IconButtonProps, ModalFormProps} from "components/index";
 
 export type Action = {
   iconType?: IconButtonProps['type'];
@@ -16,4 +16,8 @@ export type Action = {
 
 export type ActionsProps = {
   actions: Record<string, Action>;
+  orientation?: IconButtonGroupProps['orientation'];
+  classNames?: {
+    container?: string;
+  }
 }

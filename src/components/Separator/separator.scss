@@ -1,0 +1,15 @@
+@use "src/styles/variables";
+
+.BB-separator {
+  border-left: none;
+  border-right: none;
+
+  border-top: variables.$border-primary-5-l;
+  border-color: #{variables.$primary-color-5}90;
+
+  &--is-vertical {
+    border-top: none;
+    border-right: variables.$border-primary-5-m;
+    border-color: #{variables.$primary-color-5}20;
+  }
+}

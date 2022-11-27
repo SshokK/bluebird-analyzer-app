@@ -11,7 +11,9 @@ import {
 import {useActionsData, useActionsHandlers} from "./hooks";
 
 export const Actions: FC<ActionsProps> = ({
-  actions
+  actions,
+  orientation,
+  classNames
 }) => {
   const { localState, localActions } = useActionsData();
 
@@ -24,7 +26,7 @@ export const Actions: FC<ActionsProps> = ({
 
   return (
     <>
-      <IconButtonGroup>
+      <IconButtonGroup orientation={orientation} className={classNames?.container}>
         {Object.entries(actions).map(([actionKey, action]) => (
           <IconButton
             key={actionKey}

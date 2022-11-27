@@ -2,17 +2,9 @@
 
 .BB-table-body {
   padding-top: variables.$spacing-l;
+  box-shadow: variables.$shadow-center-s;
   border-radius: variables.$border-radius-m;
 
-  &:before {
-    content:"@";
-    display:block;
-    line-height: variables.$spacing-m;
-    text-indent:-99999px;
-}
-
   &__row {
-    box-shadow: variables.$shadow-center-s;
-    border-radius: variables.$border-radius-m;
   }
 }

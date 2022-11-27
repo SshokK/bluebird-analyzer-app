@@ -4,8 +4,7 @@ import type {FC} from 'react';
 import React from 'react';
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import classnames from 'classnames';
-import { Card, Loader } from "components";
-import { Grow} from "@mui/material";
+import {Animation, ANIMATION_TYPES, Card, Loader} from "components";
 import './cards-container.scss';
 
 export const CardsContainer: FC<CardsContainerProps> = ({
@@ -16,6 +15,7 @@ export const CardsContainer: FC<CardsContainerProps> = ({
   isAnimated,
   animationDelay,
   shouldShowNoDataMessage,
+  shouldDisableWrap,
   noDataMessage,
   classNames
 }) => {
@@ -45,7 +45,9 @@ export const CardsContainer: FC<CardsContainerProps> = ({
           </div>
         )}
         {!shouldShowNoDataMessage && children && (
-          <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer)}>
+          <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
+            "BB-cards-container__cards-container--is-wrap-disabled": shouldDisableWrap
+          })}>
             {children}
           </div>
         )}
@@ -55,9 +57,9 @@ export const CardsContainer: FC<CardsContainerProps> = ({
 
   if (isAnimated) {
     return (
-      <Grow in timeout={animationDelay}>
+      <Animation type={ANIMATION_TYPES.GROW} shouldAppear animationDelay={animationDelay}>
         {content}
-      </Grow>
+      </Animation>
     )
   }
 

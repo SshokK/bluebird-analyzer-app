@@ -50,6 +50,10 @@
     column-gap: variables.$spacing-l;
     flex-wrap: wrap;
 
+    &--is-wrap-disabled {
+      flex-wrap: nowrap;
+    }
+
     &:not(:empty) {
       padding: variables.$spacing-m variables.$spacing-xs variables.$spacing-xs variables.$spacing-xs;
     }

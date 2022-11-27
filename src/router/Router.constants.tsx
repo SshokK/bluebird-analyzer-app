@@ -5,10 +5,11 @@ import {ROUTES, URL_PARAMS} from "../constants/global.constants";
 import {Navigate} from "react-router";
 import {LazyComponent} from "../components";
 
-const Admin = lazy(() => import("../views/AdminSports"))
 const AppContent = lazy(() => import('../views/AppContent'));
 const Dashboard = lazy(() => import("../views/Dashboard"))
 const SportFamilyEvents = lazy(() => import("../views/SportFamilyEvents"))
+const SportsConfiguration = lazy(() => import("../views/SportsConfiguration"))
+const Proxies = lazy(() => import("../views/Proxies"))
 
 export const ROUTES_CONFIG:  RouteObject[] = [
   {
@@ -20,21 +21,20 @@ export const ROUTES_CONFIG:  RouteObject[] = [
     ),
     children: [
       {
-        path: ROUTES.ADMIN,
-        children: [
-          {
-            path: ROUTES.SPORTS_CONFIGURATION,
-            element: (
-              <LazyComponent>
-                <Admin />
-              </LazyComponent>
-            )
-          },
-          {
-            path: '*',
-            element: <Navigate replace to={ROUTES.SPORTS_CONFIGURATION} />
-          }
-        ]
+        path: ROUTES.PROXIES,
+        element: (
+          <LazyComponent>
+            <Proxies />
+          </LazyComponent>
+        )
+      },
+      {
+        path: ROUTES.SPORTS_CONFIGURATION,
+        element: (
+          <LazyComponent>
+            <SportsConfiguration />
+          </LazyComponent>
+        )
       },
       {
         path: ROUTES.DASHBOARD,

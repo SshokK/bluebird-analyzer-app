@@ -10,10 +10,18 @@ export const formatRedirectUrl = ({ path, params = {}, shouldKeepExistingParams 
 }) => {
   const existingParams = queryString.parse(location?.search ?? '');
 
-  const queryParams = queryString.stringify({
+  const queryParams = {
     ...shouldKeepExistingParams && existingParams,
     ...params
-  });
+  }
 
-  return queryParams ? `${path}?${queryParams}` : path;
+  const queryParamsWithNonEmptyValues = Object.fromEntries(
+    Object.entries(queryParams).filter(([, paramValue]) => paramValue)
+  )
+
+  if (!Object.keys(queryParamsWithNonEmptyValues).length) {
+    return path
+  }
+
+  return `${path}?${queryString.stringify(queryParamsWithNonEmptyValues)}`
 };

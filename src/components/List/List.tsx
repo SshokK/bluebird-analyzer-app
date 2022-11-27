@@ -2,26 +2,79 @@ import type {ListProps} from "./List.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import { List as MUIList, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import {ICON_BUTTON_GROUP_ORIENTATIONS} from "../IconButtonGroup";
+import {
+  List as MUIList,
+  ListItem as MUIListItem,
+  ListItemButton as MUIListItemButton,
+  ListItemIcon as MUIListItemIcon,
+  ListItemText as MUIListItemTExt
+} from '@mui/material';
+import {Actions} from "../Actions";
+import classnames from 'classnames';
+import {useListData, useListHandlers, useListLifecycle} from "./hooks";
+import './list.scss';
 
-export const List: FC<ListProps> = ({ options }) => {
+export const List: FC<ListProps> = (props) => {
+  const { localState, localActions, prevProps } = useListData(props);
+
+  const handlers = useListHandlers({
+    props,
+    localActions,
+    prevProps
+  });
+
+  useListLifecycle({
+    onSelectedOptionKeysPropChange: handlers.handleSelectedOptionKeysPropChange
+  })
+
   return (
-    <MUIList disablePadding>
-      {options?.map?.(option => (
-        <ListItem key={String(option.value)}   disablePadding>
-          <ListItemButton>
-            {option.icon && (
-              <ListItemIcon>
-                {option.icon}
-              </ListItemIcon>
-            )}
-            <ListItemText
-              primary={option.label}
-              secondary={option.caption}
-            />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </MUIList>
+    <div className={classnames('BB-list__container', props.classNames?.container)}>
+      {props.actions && (
+        <Actions
+          actions={props.actions}
+          orientation={ICON_BUTTON_GROUP_ORIENTATIONS.COLUMN}
+          classNames={{
+            container: props.classNames?.actions
+          }}
+        />
+      )}
+      <MUIList
+        disablePadding
+        classes={{
+          root: classnames('BB-list', props.classNames?.list)
+        }}
+      >
+        {props.options?.map?.(option => {
+          const isSelected = Boolean(localState.selectedOptions.find(({ key }) => key === option.key))
+
+          return (
+            <MUIListItem
+              key={String(option.key)}
+              classes={{ root: 'BB-list__option' }}
+              disablePadding
+            >
+              <MUIListItemButton
+                selected={isSelected}
+                onClick={handlers.handleOptionClick({
+                  option,
+                  isSelected
+                })}
+              >
+                {option.icon && (
+                  <MUIListItemIcon>
+                    {option.icon}
+                  </MUIListItemIcon>
+                )}
+                <MUIListItemTExt
+                  primary={option.label}
+                  secondary={option.caption}
+                />
+              </MUIListItemButton>
+            </MUIListItem>
+          )
+        })}
+      </MUIList>
+    </div>
   )
 }

@@ -10,8 +10,8 @@ export enum SORT_ORDERS {
 export enum ROUTES {
   DASHBOARD = 'dashboard',
   SPORT_FAMILY_EVENTS = 'sport-family-events',
-  ADMIN = 'admin',
-  SPORTS_CONFIGURATION = 'sports-configuration'
+  SPORTS_CONFIGURATION = 'sports-configuration',
+  PROXIES = 'proxies'
 }
 
 export enum URL_PARAMS {

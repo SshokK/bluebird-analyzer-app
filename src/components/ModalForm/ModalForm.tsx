@@ -41,18 +41,20 @@ export const ModalForm:FC<ModalFormProps> = ({
         ...classNames
     }}
     >
-      {Object.entries(localState.fields).map(([fieldKey, field]) => {
-        const Component = MODAL_FORM_COMPONENTS[field.type];
+      {
+        Boolean(Object.keys(localState.fields).length) &&
+        Object.entries(localState.fields).map(([fieldKey, field]) => {
+          const Component = MODAL_FORM_COMPONENTS[field.type];
 
-        return (
-          <Component
-            key={fieldKey}
-            label={field.label}
-            value={field.value as ComponentProps<typeof Component>['value']}
-            onChange={handlers.handleFieldChange(fieldKey)}
-            shouldEnableAutoComplete={shouldEnableAutoComplete}
-          />
-        )
+          return (
+            <Component
+              key={fieldKey}
+              label={field.label}
+              value={field.value as ComponentProps<typeof Component>['value']}
+              onChange={handlers.handleFieldChange(fieldKey)}
+              shouldEnableAutoComplete={shouldEnableAutoComplete}
+            />
+          )
       })}
     </Modal>
   )

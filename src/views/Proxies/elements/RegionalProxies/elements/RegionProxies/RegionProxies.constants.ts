@@ -1,5 +1,6 @@
 import {COLUMN_DATA_TYPES, COLUMN_TYPES, TableProps} from "components";
 import {StatusCell} from "./elements";
+import {SORT_ORDERS} from "../../../../../../constants/global.constants";
 
 export const ANIMATION_DELAY = 300;
 
@@ -17,18 +18,15 @@ export enum REGION_PROXIES_TABLE_COLUMN_KEYS {
   LAST_PING_RESPONSE_TIME = 'lastPingResponseTime'
 }
 
-export enum REGION_PROXIES_SORT_KEYS {
-  STATUS = 'status',
-  LAST_PING_RESPONSE_TIME = 'lastPingResponseTime'
-}
-
 export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.STATUS,
     title: 'Status',
     type: COLUMN_TYPES.DATA_COLUMN,
     CellComponent: StatusCell,
-    sortKey: REGION_PROXIES_SORT_KEYS.STATUS
+    isSortable: true,
+    isInitialSortColumn: true,
+    initialSortOrder: SORT_ORDERS.ASC
   },
   {
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.IP,
@@ -53,6 +51,6 @@ export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     title: 'Delay',
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.TEXT,
-    sortKey: REGION_PROXIES_SORT_KEYS.LAST_PING_RESPONSE_TIME
+    isSortable: true
   }
 ]

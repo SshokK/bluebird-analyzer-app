@@ -7,3 +7,7 @@ export enum REGION_ACTIONS {
 export enum QUERY_PARAMS {
   REGION_ID = 'regionId'
 }
+
+export enum MODAL_FORM_FIELDS {
+  NAME = 'name'
+}

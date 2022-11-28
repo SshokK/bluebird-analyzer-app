@@ -6,6 +6,7 @@ export type ListOption = {
   label?: ReactNode;
   caption?: ReactNode;
   icon?: ReactNode;
+  [key: string]: unknown;
 }
 
 export type ListProps = {

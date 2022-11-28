@@ -7,7 +7,7 @@ import {ICON_BUTTON_SIZES, IconButton} from "../../../../../IconButton";
 import {IconSortAsc, IconSortDesc, IconSortInitial} from "../../../../../Icons";
 
 export const SortButton: FC<SortButtonProps> = ({ column, onClick }) => {
-  if (!(column.columnDef.meta as TableColumn)?.sortKey) {
+  if (!(column.columnDef.meta as TableColumn)?.isSortable) {
     return null
   }
 

@@ -11,7 +11,9 @@ export type TableColumn = {
   dataType?: COLUMN_DATA_TYPES;
   title?: ReactElement | string;
   CellComponent?: FC<CellContext<object, unknown>>;
-  sortKey?: string;
+  isSortable?: boolean;
+  isInitialSortColumn?: boolean;
+  initialSortOrder?: SORT_ORDERS
 }
 
 export type TableRow = {

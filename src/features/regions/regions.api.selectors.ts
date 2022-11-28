@@ -6,6 +6,7 @@ export const formatRegionsForList = (
 ): components.ListOption[] => {
   return response.results?.map?.(region => ({
     key: region.id,
-    label: region.name
+    label: region.name,
+    name: region.name
   })) ?? []
 }

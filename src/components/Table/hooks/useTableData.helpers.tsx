@@ -1,9 +1,23 @@
-import type {TableColumn} from "../Table.types";
-import type {ColumnDef as ReactTableColumnDef} from "@tanstack/react-table";
+import type {TableColumn, TableProps} from "../Table.types";
+import type {ColumnDef, SortingState} from "@tanstack/react-table";
 
 import {createColumnHelper} from "@tanstack/react-table";
 import {CHECKBOX_COLUMN_ID, COLUMN_TYPES} from "../Table.constants";
 import {TableCheckboxCell} from "../elements";
+import {SORT_ORDERS} from "../../../constants/global.constants";
+
+export const getInitialSortingState = (columns: TableProps['columns']): SortingState => {
+  return columns?.flatMap((column) => {
+    if (column.isInitialSortColumn) {
+      return [{
+        id: column.key,
+        desc: column.initialSortOrder === SORT_ORDERS.DESC
+      }]
+    }
+
+    return []
+  }) ?? []
+}
 
 export const formatColumns = ({
   columns,
@@ -11,7 +25,7 @@ export const formatColumns = ({
 }: {
   columns: TableColumn[];
   areRowsSelectable: boolean;
-}): ReactTableColumnDef<object, any>[] => {
+}): ColumnDef<object, any>[] => {
   const columnHelper = createColumnHelper<object>()
 
   const tableColumns =  columns.map(column => {
@@ -29,9 +43,9 @@ export const formatColumns = ({
       header: () => column.title,
       cell: column.CellComponent ?? ((data) => data.getValue()),
       meta: column,
-      enableSorting: Boolean(column.sortKey),
+      enableSorting: Boolean(column.isSortable)
     })
-  }) as ReactTableColumnDef<object, any>[];
+  }) as ColumnDef<object, any>[];
 
   if (areRowsSelectable) {
     tableColumns.unshift(columnHelper.display({
@@ -43,22 +57,3 @@ export const formatColumns = ({
 
   return tableColumns
 }
-
-export const getPage = ({ offset, limit }: {
-  offset: number;
-  limit: number;
-}): number => {
-  return Math.floor((offset + limit) / limit);
-};
-
-export const getPageIndex = ({ offset, limit }: {
-  offset: number;
-  limit: number;
-}): number => {
-  const page = getPage({
-    offset,
-    limit
-  })
-
-  return page > 0 ? page - 1 : 0
-};

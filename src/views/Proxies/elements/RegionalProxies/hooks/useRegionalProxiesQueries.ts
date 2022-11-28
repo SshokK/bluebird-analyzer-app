@@ -1,4 +1,4 @@
-import type {RegionalProxiesQueriesHandlers} from "./useRegionalProxiesQueriesHandlers.types";
+import type {RegionalProxiesHandlers} from "./useRegionalProxiesHandlers.types";
 
 import {useQuery} from "@tanstack/react-query";
 
@@ -12,7 +12,7 @@ import * as regionsApiSelectors from "features/regions/regions.api.selectors";
 export const useRegionalProxiesQueries = ({
   onFetchRegionsSuccess
 }: {
-  onFetchRegionsSuccess: RegionalProxiesQueriesHandlers['handleRegionsFetchSuccess']
+  onFetchRegionsSuccess: RegionalProxiesHandlers['handleRegionsFetchSuccess']
 }) => {
   const fetchRegions = useQuery({
     queryKey: [QUERY_KEYS.REGIONS],

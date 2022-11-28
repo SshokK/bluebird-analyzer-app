@@ -59,9 +59,11 @@ export const Modal: FC<ModalProps> = ({
                   {title}
                 </Typography>
               </header>
-              <main className={classnames("BB-modal__content-body", classNames?.body)}>
-                {children}
-              </main>
+              {children && (
+                <main className={classnames("BB-modal__content-body", classNames?.body)}>
+                  {children}
+                </main>
+              )}
               {shouldRenderFooter && (
                 <footer className={classnames("BB-modal__content-footer", classNames?.footer)}>
                   <Button

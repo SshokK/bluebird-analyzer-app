@@ -10,3 +10,8 @@ export * from './IconEdit';
 export * from './IconAdd';
 export * from './IconStop';
 export * from './IconPlay';
+export * from './IconArrowLeft';
+export * from './IconArrowRight';
+export * from './IconSortInitial';
+export * from './IconSortAsc';
+export * from './IconSortDesc';

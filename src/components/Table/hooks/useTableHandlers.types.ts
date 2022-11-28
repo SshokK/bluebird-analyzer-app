@@ -1,5 +1,5 @@
 import type {TableData} from "./useTableData.types";
 
 export type TableHandlers = {
-  handleRowSelectionChange: TableData['localActions']['setRowSelection']
+  handleRowSelectionChange: TableData['localActions']['setRowSelection'];
 }

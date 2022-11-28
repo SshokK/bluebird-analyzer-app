@@ -10,10 +10,7 @@
   }
 
   &__cell {
-    text-align: left;
-    white-space: nowrap;
     padding: variables.$spacing-xs variables.$spacing-m;
-
 
     &:first-child {
       border-top-left-radius: variables.$border-radius-m;
@@ -24,6 +21,15 @@
       border-top-right-radius: variables.$border-radius-m;
       border-bottom-right-radius: variables.$border-radius-m;
     }
+  }
+
+  &__cell-content {
+    display: flex;
+    text-align: left;
+    white-space: nowrap;
+    align-items: center;
+
+    column-gap: variables.$spacing-xs;
   }
 
   &__spacer {

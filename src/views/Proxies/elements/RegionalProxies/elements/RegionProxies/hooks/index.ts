@@ -1,1 +1,2 @@
-export * from './useRegionProxiesQueries';
+export * from './useRegionProxiesQueryOptions';
+export * from './useRegionProxiesActions';

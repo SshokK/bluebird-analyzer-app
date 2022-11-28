@@ -2,18 +2,20 @@ import type {FC} from "react";
 import type {RegionProxiesProps} from "./RegionProxies.types";
 
 import React from 'react';
-import {Animation, ANIMATION_DIRECTION, ANIMATION_ORIENTATION, ANIMATION_TYPES, Table } from "components";
+import {Animation, ANIMATION_DIRECTION, ANIMATION_ORIENTATION, ANIMATION_TYPES, Table} from "components";
 import {ANIMATION_DELAY, REGION_PROXIES_TABLE_COLUMNS} from "./RegionProxies.constants";
-import {useRegionProxiesQueries} from "./hooks";
+import {useRegionProxiesActions, useRegionProxiesQueryOptions} from "./hooks";
 
 export const RegionProxies: FC<RegionProxiesProps> = ({
   regionId
 }) => {
-  const queries = useRegionProxiesQueries({
+  const actions = useRegionProxiesActions();
+
+  const tableQueryOptions = useRegionProxiesQueryOptions({
     props: {
       regionId
     }
-  })
+  });
 
   return (
     <Animation
@@ -24,9 +26,12 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
       animationDelay={ANIMATION_DELAY}
     >
       <Table
-        rows={queries.fetchProxies.data}
+        actions={actions}
         columns={REGION_PROXIES_TABLE_COLUMNS}
-        isLoading={queries.fetchProxies.isFetching}
+        queryOptions={tableQueryOptions}
+        queryParams={{
+          regionId
+        }}
       />
     </Animation>
   )

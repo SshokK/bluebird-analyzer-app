@@ -1,0 +1,17 @@
+@use "src/styles/variables";
+
+.BB-table-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: variables.$spacing-l;
+
+  &__table-actions {
+    margin-left: auto;
+  }
+
+  &__pagination-container {
+    display: flex;
+    align-items: center;
+    column-gap: variables.$spacing-m;
+  }
+}

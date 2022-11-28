@@ -1,6 +1,7 @@
 import type {ElementType, ReactNode} from "react";
 import type {TYPOGRAPHY_TYPES} from "./Typography.constants";
 import type {TYPOGRAPHY_ALIGNMENT} from "./Typography.constants";
+import {TYPOGRAPHY_STATUS} from "./Typography.constants";
 
 export type TypographyProps = {
   /**
@@ -15,6 +16,10 @@ export type TypographyProps = {
    * Text alignment
    */
   alignment?: TYPOGRAPHY_ALIGNMENT;
+  /**
+   * Enables colors to indicate provided status
+   */
+  status?: TYPOGRAPHY_STATUS;
   /**
    * Custom class name
    */

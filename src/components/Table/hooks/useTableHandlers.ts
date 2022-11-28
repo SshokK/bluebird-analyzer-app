@@ -3,29 +3,30 @@ import type {TableData} from "./useTableData.types";
 import type {TableProps} from "../Table.types";
 
 import {useCallback} from "react";
+import {useTableQuery} from "./useTableQuery";
 
 export const useTableHandlers = ({
   props,
+  query,
   localState,
-  localActions,
-  formattedData
+  localActions
 }: {
   props: Pick<TableProps, 'onSelectedRowsChange'>;
+  query: ReturnType<typeof useTableQuery>;
   localState: TableData['localState'];
   localActions: TableData['localActions'];
-  formattedData: TableData['formattedData'];
 }): TableHandlers => {
   const handleRowSelectionChange: TableHandlers['handleRowSelectionChange'] = useCallback((callback) => {
     if (typeof callback === 'function') {
       const selection = callback(localState.rowSelection);
 
-      const selectedRows = formattedData.rows.filter((_, i) => selection[i])
+      const selectedRows = query.data?.rows?.filter?.((_, i) => selection[i]) ?? []
 
       localActions.setRowSelection(selection);
 
       props.onSelectedRowsChange?.(selectedRows);
     }
-  }, [formattedData.rows, localActions, localState.rowSelection, props]);
+  }, [localActions, localState.rowSelection, props, query.data?.rows]);
 
   return {
     handleRowSelectionChange

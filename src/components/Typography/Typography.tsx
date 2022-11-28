@@ -3,7 +3,7 @@ import type {TypographyProps} from "./Typography.types";
 
 import React from 'react';
 import {Typography as MUITypography} from '@mui/material';
-import {TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "./Typography.constants";
+import {TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_STATUS, TYPOGRAPHY_TYPES} from "./Typography.constants";
 import classnames from 'classnames';
 import './typography.scss';
 
@@ -11,6 +11,7 @@ export const Typography: FC<TypographyProps> = ({
   type,
   children,
   alignment,
+  status,
   className,
   component,
   shouldTruncate,
@@ -26,7 +27,9 @@ export const Typography: FC<TypographyProps> = ({
       paragraph={shouldRenderParagraph}
       gutterBottom={shouldAddBottomMargin}
       classes={{
-        root: classnames('BB-typography', className),
+        root: classnames('BB-typography', className, {
+          [`BB-typography--is-${status ?? TYPOGRAPHY_STATUS.INITIAL}`]: true
+        }),
         inherit: 'BB-typography--inherit',
         h1: 'BB-typography--h1',
         h2: 'BB-typography--h2',

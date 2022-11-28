@@ -3,6 +3,7 @@
 .BB-separator {
   border-left: none;
   border-right: none;
+  margin: unset;
 
   border-top: variables.$border-primary-5-l;
   border-color: #{variables.$primary-color-5}90;

@@ -15,6 +15,13 @@ export enum TYPOGRAPHY_TYPES {
   BODY2 = 'body2'
 }
 
+export enum TYPOGRAPHY_STATUS {
+  INITIAL = 'initial',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  ERROR = 'error'
+}
+
 export enum TYPOGRAPHY_ALIGNMENT {
   CENTER = 'center',
   INHERIT = 'inherit',

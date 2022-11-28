@@ -20,7 +20,7 @@ export const formatColumns = ({
         id: column.key,
         header: () => column.title,
         cell: column.CellComponent,
-        meta: column
+        meta: column,
       })
     }
 
@@ -28,7 +28,8 @@ export const formatColumns = ({
       id: column.key,
       header: () => column.title,
       cell: column.CellComponent ?? ((data) => data.getValue()),
-      meta: column
+      meta: column,
+      enableSorting: Boolean(column.sortKey),
     })
   }) as ReactTableColumnDef<object, any>[];
 
@@ -42,3 +43,22 @@ export const formatColumns = ({
 
   return tableColumns
 }
+
+export const getPage = ({ offset, limit }: {
+  offset: number;
+  limit: number;
+}): number => {
+  return Math.floor((offset + limit) / limit);
+};
+
+export const getPageIndex = ({ offset, limit }: {
+  offset: number;
+  limit: number;
+}): number => {
+  const page = getPage({
+    offset,
+    limit
+  })
+
+  return page > 0 ? page - 1 : 0
+};

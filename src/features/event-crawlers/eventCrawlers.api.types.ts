@@ -32,6 +32,6 @@ export type FetchEventCrawlersPayload = [params: {
 }]
 export type FetchEventCrawlersResponse = {
   results: WithRequiredProperty<Omit<EventCrawlerSchema, 'Sport'>, 'Crawler'>[],
-  total: number;
+  totalCount: number;
 };
 export type FetchEventCrawlers = (...args: FetchEventCrawlersPayload) => Promise<FetchEventCrawlersResponse>

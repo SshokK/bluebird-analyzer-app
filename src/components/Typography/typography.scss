@@ -2,4 +2,20 @@
 
 .BB-typography {
   color: inherit;
+
+  &--is-initial {
+    color: inherit;
+  }
+
+  &--is-success {
+    color: variables.$status-color-success;
+  }
+
+  &--is-error {
+     color: variables.$status-color-error;
+  }
+
+  &--is-warning {
+     color: variables.$status-color-warning;
+  }
 }

@@ -5,6 +5,9 @@ import React from 'react';
 import {Actions, CardsContainer, Table} from "components";
 import {EVENT_CRAWLERS_TABLE_COLUMNS} from "./Crawlers.constants";
 import {useCrawlersActions, useCrawlersData, useCrawlersHandlers, useCrawlersQueries} from "./hooks";
+import {QUERY_KEYS} from "../../../../constants/queries.constants";
+import * as evnetCrawlersApi from "../../../../features/event-crawlers/eventCrawlers.api";
+import * as eventCrawlersApiSelectors from "../../../../features/event-crawlers/eventCrawlers.api.selectors";
 
 export const Crawlers: FC<CrawlersProps> = ({ sportFamilyId, sportId }) => {
   const { localState, localActions } = useCrawlersData();
@@ -36,8 +39,17 @@ export const Crawlers: FC<CrawlersProps> = ({ sportFamilyId, sportId }) => {
     >
       <Actions actions={actions} />
       <Table
-        isLoading={queries.fetchCrawlers.isLoading}
-        rows={queries.fetchCrawlers.data ?? []}
+        queryOptions={{
+          queryKey: [QUERY_KEYS.CRAWLERS, {
+            SportId: sportId
+          }],
+          queryFn: () => evnetCrawlersApi.fetchEventCrawlers({
+            SportId: sportId,
+            limit: 10,
+            offset: 0
+          }),
+          select: eventCrawlersApiSelectors.formatEventCrawlersForTable
+        }}
         columns={EVENT_CRAWLERS_TABLE_COLUMNS}
         areRowsSelectable
         onSelectedRowsChange={handlers.handleSelectedRowsChange}

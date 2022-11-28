@@ -11,4 +11,6 @@ export enum COLUMN_DATA_TYPES {
   DATE_TIME = 'dateTime'
 }
 
-export const CHECKBOX_COLUMN_ID = 'checkboxColumn'
+export const CHECKBOX_COLUMN_ID = 'checkboxColumn';
+
+export const TABLE_LIMIT = 10;

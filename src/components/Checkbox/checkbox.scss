@@ -3,14 +3,17 @@
 .BB-checkbox {
   &.BB-checkbox {
     font-size: variables.$font-size-l;
-    color: variables.$primary-color-3;
+    color: variables.$secondary-color-1;
   }
 
   &--is-checked.BB-checkbox--is-checked.BB-checkbox--is-checked {
     color: variables.$primary-color-1;
   }
 
-  &__container {
+  &__container.BB-checkbox__container {
+    margin-right: 0;
+  }
 
+  &__label {
   }
 }

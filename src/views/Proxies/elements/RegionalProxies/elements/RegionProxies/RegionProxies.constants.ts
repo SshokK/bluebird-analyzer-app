@@ -1,6 +1,7 @@
+import {ActionsCell, DelayCell, StatusCell} from "./elements";
+
+import {SORT_ORDERS} from "constants/global.constants";
 import {COLUMN_DATA_TYPES, COLUMN_TYPES, TableProps} from "components";
-import {StatusCell} from "./elements";
-import {SORT_ORDERS} from "../../../../../../constants/global.constants";
 
 export const ANIMATION_DELAY = 300;
 
@@ -15,7 +16,8 @@ export enum REGION_PROXIES_TABLE_COLUMN_KEYS {
   PORT= 'port',
   TYPE= 'type',
   STATUS = 'status',
-  LAST_PING_RESPONSE_TIME = 'lastPingResponseTime'
+  LAST_PING_RESPONSE_TIME = 'lastPingResponseTime',
+  ACTIONS = 'actions'
 }
 
 export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
@@ -50,7 +52,12 @@ export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.LAST_PING_RESPONSE_TIME,
     title: 'Delay',
     type: COLUMN_TYPES.DATA_COLUMN,
-    dataType: COLUMN_DATA_TYPES.TEXT,
-    isSortable: true
+    isSortable: true,
+    CellComponent: DelayCell
+  },
+  {
+    key: REGION_PROXIES_TABLE_COLUMN_KEYS.ACTIONS,
+    type: COLUMN_TYPES.DISPLAY_COLUMN,
+    CellComponent: ActionsCell
   }
 ]

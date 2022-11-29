@@ -6,7 +6,7 @@ import { REGION_PROXIES_TABLE_COLUMN_KEYS } from "../../views/Proxies/elements/R
 
 export const formatProxiesForRegionProxiesTable = (response: Awaited<ReturnType<typeof fetchProxies>>): TableQuerySelectorReturn => {
   return {
-    rows: response.results.map((proxy): Record<REGION_PROXIES_TABLE_COLUMN_KEYS, ReactNode> => ({
+    rows: response.results.map((proxy): Record<Exclude<REGION_PROXIES_TABLE_COLUMN_KEYS, REGION_PROXIES_TABLE_COLUMN_KEYS.ACTIONS>, ReactNode> => ({
       [REGION_PROXIES_TABLE_COLUMN_KEYS.ID]: proxy.id,
       [REGION_PROXIES_TABLE_COLUMN_KEYS.STATUS]: proxy.status,
       [REGION_PROXIES_TABLE_COLUMN_KEYS.IP]: proxy.ip,

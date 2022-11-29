@@ -22,12 +22,12 @@ export const useSportsActionsConfig = ({
       icon: <IconAdd />,
       onSubmit: onAdd,
       shouldShowModal: true,
-      modalTitle: 'Create a new sport',
-      modalSize: MODAL_SIZES.MEDIUM,
+      modalTitle: 'Add new sport',
+      modalSize: MODAL_SIZES.SMALL,
       modalFields: {
         [MODAL_FIELD_KEYS.NAME]: {
           type: MODAL_FORM_FIELD_TYPES.TEXT,
-          label: 'Name',
+          label: 'name',
           value: '',
         }
       }
@@ -38,7 +38,7 @@ export const useSportsActionsConfig = ({
       onSubmit: onEdit,
       shouldShowModal: true,
       modalTitle: 'Rename sport',
-      modalSize: MODAL_SIZES.MEDIUM,
+      modalSize: MODAL_SIZES.SMALL,
       modalFields: {
         [MODAL_FIELD_KEYS.NAME]: {
           type: MODAL_FORM_FIELD_TYPES.TEXT,

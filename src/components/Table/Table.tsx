@@ -12,42 +12,33 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
   isLoading,
   columns,
   areRowsSelectable,
+  rowId,
   onSelectedRowsChange,
   isFullWidth,
   noDataMessage,
   actions,
-  shouldResetPageOnDataChange,
   queryOptions,
   queryParams,
   ...props
 }, ref) => {
   const { localState, localActions, formattedData } = useTableData({ columns, areRowsSelectable });
 
-  const query = useTableQuery({
-    props: {
-      queryOptions,
-      queryParams
-    },
-    localState
-  })
-
   const handlers = useTableHandlers({
     props: {
       onSelectedRowsChange
     },
-    query,
     localState,
     localActions
   });
 
   const table = useReactTable({
     columns: formattedData.columns,
-    data: query.data?.rows ?? [],
+    data: localState.rows,
 
     manualSorting: true,
     manualPagination: true,
 
-    pageCount: Math.ceil((query.data?.totalCount ?? 0) / (TABLE_LIMIT ?? 0)),
+    pageCount: Math.ceil(localState.totalCount / (TABLE_LIMIT ?? 0)),
     enableRowSelection: areRowsSelectable,
 
     onPaginationChange: localActions.setPagination,
@@ -57,14 +48,24 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-
+    getRowId: (row) => row[rowId as keyof typeof row],
 
     state: {
       sorting: localState.sorting,
       pagination: localState.pagination,
       rowSelection: localState.rowSelection
     }
-  })
+  });
+
+  const query = useTableQuery({
+    props: {
+      queryOptions,
+      queryParams
+    },
+    localState,
+    localActions,
+    table
+  });
 
   return (
     <div ref={ref} className="BB-table__container" {...props}>
@@ -86,5 +87,6 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
 })
 
 Table.defaultProps = {
+  rowId: 'id',
   noDataMessage: 'No data'
 }

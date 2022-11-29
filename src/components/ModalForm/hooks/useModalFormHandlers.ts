@@ -1,6 +1,7 @@
 import type {ModalFormData} from "./useModalFormData.types";
 import type {ModalFormProps} from "../ModalForm.types";
 import type {ModalFormHandlers} from "./useModalFormHandlers.types";
+import {VALIDATORS} from "./useModalFormHandlers.helpers";
 
 export const useModalFormHandlers = ({
   props,
@@ -29,12 +30,14 @@ export const useModalFormHandlers = ({
     props.onClose?.(localState.fields);
   }
 
-  const handleFieldChange: ModalFormHandlers['handleFieldChange'] = (key) => (value) => {
+  const handleFieldChange: ModalFormHandlers['handleFieldChange'] = ({ fieldKey, field }) => (value) => {
+    const validatedValue = VALIDATORS[field.type]({ field, value });
+
     localActions.setFields(fields => ({
       ...fields,
-      [key]: {
-        ...fields[key],
-        value
+      [fieldKey]: {
+        ...fields[fieldKey],
+        value: validatedValue
       }
     }))
   }

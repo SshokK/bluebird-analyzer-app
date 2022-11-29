@@ -9,5 +9,6 @@ export type CheckboxProps = {
   classNames?: {
     container?: string;
     checkbox?: string;
+    label?: string;
   }
 }

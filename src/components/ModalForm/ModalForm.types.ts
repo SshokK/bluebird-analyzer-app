@@ -1,5 +1,5 @@
 import type {MODAL_FORM_FIELD_TYPES} from "./ModalForm.constants";
-import type {ReactNode} from "react";
+import type { ReactNode} from "react";
 import type {ModalProps} from "../Modal";
 
 export type ModalFormField = {

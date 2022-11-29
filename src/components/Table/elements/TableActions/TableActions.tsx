@@ -23,10 +23,16 @@ export const TableActions: FC<TableActionsProps> = ({
     }
   });
 
-
   return (
     <section className="BB-table-actions">
-      {actions && <Actions actions={actions} />}
+      <div className="BB-table-actions__actions-container">
+        {actions && <Actions actions={actions} />}
+        {formattedData.selectedRowsCount > 0 && (
+          <Typography type={TYPOGRAPHY_TYPES.CAPTION}>
+            {formattedData.selectedRowsCount} rows are selected
+          </Typography>
+        )}
+      </div>
       <div className="BB-table-actions__pagination-container">
         <span className="BB-table-actions__pagination-info">
           <Typography type={TYPOGRAPHY_TYPES.CAPTION}>

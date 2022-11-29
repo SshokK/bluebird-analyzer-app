@@ -6,13 +6,18 @@ import {TABLE_LIMIT} from "../Table.constants";
 
 import {useQuery} from "@tanstack/react-query";
 import {useMemo} from "react";
+import {useReactTable} from "@tanstack/react-table";
 
 export const useTableQuery = ({
   props,
-  localState
+  localState,
+  localActions,
+  table
 }: {
   props: Pick<TableProps, 'queryOptions' | 'queryParams'>;
   localState: TableData['localState'];
+  localActions: TableData['localActions'];
+  table: ReturnType<typeof useReactTable<object>>;
 }) => {
   const queryParams = useMemo(() => ({
     limit: TABLE_LIMIT,
@@ -31,6 +36,12 @@ export const useTableQuery = ({
   >({
     enabled: Boolean(props.queryOptions),
     ...props.queryOptions,
+    onSuccess: (...args) => {
+      localActions.setRows(args[0].rows ?? []);
+      localActions.setTotalCount(args[0].totalCount ?? 0);
+
+      props.queryOptions?.onSuccess?.(...args);
+    },
     keepPreviousData: true,
     queryFn: () => props.queryOptions?.queryFn(queryParams),
     queryKey: [...(props.queryOptions?.queryKey ?? []), queryParams]

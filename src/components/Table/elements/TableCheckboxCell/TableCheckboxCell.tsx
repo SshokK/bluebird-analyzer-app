@@ -5,7 +5,7 @@ import React from 'react';
 import {Checkbox} from "../../../Checkbox";
 
 export const TableCheckboxCell: FC<TableCheckboxCellProps> = ({
-  row
+  row,
 }) => {
   return (
     <Checkbox

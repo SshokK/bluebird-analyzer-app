@@ -2,6 +2,10 @@
 
 .BB-modal-form {
   &__body {
+    row-gap: variables.$spacing-m;
+    display: flex;
+    flex-direction: column;
+
     & > * {
       width: 100%;
     }

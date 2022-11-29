@@ -6,6 +6,8 @@ import {useMemo, useState} from "react";
 import * as helpers from "./useTableData.helpers";
 
 export const useTableData = (props: Pick<TableProps, 'columns' | 'areRowsSelectable'>): TableData => {
+  const [rows, setRows] = useState<TableData['localState']['rows']>([]);
+  const [totalCount, setTotalCount] = useState<TableData['localState']['totalCount']>(0);
   const [rowSelection, setRowSelection] = useState<TableData['localState']['rowSelection']>({});
   const [pagination, setPagination] = useState<TableData['localState']['pagination']>( {
     pageSize: 0,
@@ -16,12 +18,16 @@ export const useTableData = (props: Pick<TableProps, 'columns' | 'areRowsSelecta
   );
 
   const localState: TableData['localState'] = {
+    rows,
+    totalCount,
     rowSelection,
     pagination,
     sorting
   }
 
   const localActions: TableData['localActions'] = useMemo(() => ({
+    setRows,
+    setTotalCount,
     setRowSelection,
     setPagination,
     setSorting
@@ -29,7 +35,7 @@ export const useTableData = (props: Pick<TableProps, 'columns' | 'areRowsSelecta
 
   const columns = useMemo(() => helpers.formatColumns({
     columns: props.columns ?? [],
-    areRowsSelectable: Boolean(props.areRowsSelectable)
+    areRowsSelectable: Boolean(props.areRowsSelectable),
   }), [props.areRowsSelectable, props.columns]);
 
   return {

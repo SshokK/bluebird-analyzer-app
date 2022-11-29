@@ -6,6 +6,7 @@ import {TABLE_LIMIT} from "../../../Table.constants";
 export const useTableActionsData = ({ totalCount, table }: Pick<TableActionsProps, 'totalCount' | 'table'>) => {
   const currentPageIndex = table.getState().pagination.pageIndex;
   const nextPageIndex = 1 + table.getState().pagination.pageIndex;
+  const selectedRowsCount = Object.keys(table.getState().rowSelection).length;
 
   const formattedData = useMemo(() => {
     const intervalStart = 1 + currentPageIndex * TABLE_LIMIT;
@@ -15,9 +16,10 @@ export const useTableActionsData = ({ totalCount, table }: Pick<TableActionsProp
 
     return {
       intervalStart,
-      intervalEnd
+      intervalEnd,
+      selectedRowsCount
     }
-  }, [currentPageIndex, nextPageIndex, totalCount]);
+  }, [currentPageIndex, nextPageIndex, selectedRowsCount, totalCount]);
 
   return {
     formattedData

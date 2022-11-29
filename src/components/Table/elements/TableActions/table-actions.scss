@@ -9,6 +9,12 @@
     margin-left: auto;
   }
 
+  &__actions-container {
+    display: flex;
+    align-items: center;
+    column-gap: variables.$spacing-m;
+  }
+
   &__pagination-container {
     display: flex;
     align-items: center;

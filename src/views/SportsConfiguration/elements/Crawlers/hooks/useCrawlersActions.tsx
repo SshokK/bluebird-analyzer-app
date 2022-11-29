@@ -16,7 +16,7 @@ export const useCrawlersActions = ({
     [ACTION_KEYS.CREATE]: {
       icon: <IconAdd />,
       shouldShowModal: true,
-      modalTitle: `Create a new ${queries.fetchSport.data?.name} crawler`,
+      modalTitle: `Add new ${queries.fetchSport.data?.name} crawler`,
       modalSize: MODAL_SIZES.MEDIUM
     },
     [ACTION_KEYS.BULK_MAKE_INACTIVE]: {

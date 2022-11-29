@@ -42,12 +42,12 @@ export type TableProps = {
   isLoading?: boolean;
   columns?: TableColumn[];
   areRowsSelectable?: boolean;
-  onSelectedRowsChange?: (rows: TableRow[]) => void;
+  rowId?: unknown;
+  onSelectedRowsChange?: <T extends any[] = any[]>(rowKeys: T) => void;
   queryOptions?: TableQueryOptions;
   queryParams?: Record<string, unknown>;
   isFullWidth?: boolean;
   isAutoPaginationEnabled?: boolean;
-  shouldResetPageOnDataChange?: boolean;
   noDataMessage?: string;
   actions?: ActionsProps['actions'];
 }

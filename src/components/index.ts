@@ -28,3 +28,4 @@ export * from './Chiclet';
 export * from './ModalForm';
 export * from './Animation';
 export * from './Separator';
+export * from './NumberField';

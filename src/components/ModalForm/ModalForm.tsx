@@ -3,7 +3,7 @@ import type {ComponentProps, FC} from 'react';
 import React from 'react';
 import {Modal} from "../Modal";
 import {useModalFormData, useModalFormHandlers} from "./hooks";
-import {MODAL_FORM_COMPONENTS } from "./ModalForm.constants";
+import {MODAL_FORM_COMPONENT_PROPS, MODAL_FORM_COMPONENTS} from "./ModalForm.constants";
 import './modal-form.scss';
 
 export const ModalForm:FC<ModalFormProps> = ({
@@ -45,13 +45,18 @@ export const ModalForm:FC<ModalFormProps> = ({
         Boolean(Object.keys(localState.fields).length) &&
         Object.entries(localState.fields).map(([fieldKey, field]) => {
           const Component = MODAL_FORM_COMPONENTS[field.type];
+          const props = MODAL_FORM_COMPONENT_PROPS[field.type];
 
           return (
             <Component
+              {...props}
               key={fieldKey}
               label={field.label}
               value={field.value as ComponentProps<typeof Component>['value']}
-              onChange={handlers.handleFieldChange(fieldKey)}
+              onChange={handlers.handleFieldChange({
+                fieldKey: fieldKey,
+                field
+              })}
               shouldEnableAutoComplete={shouldEnableAutoComplete}
             />
           )

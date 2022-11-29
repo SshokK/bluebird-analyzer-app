@@ -1,5 +1,10 @@
+import type {ModalFormField} from "../ModalForm.types";
+
 export type ModalFormHandlers = {
   handleSubmit: () => Promise<void>;
   handleClose: () => void;
-  handleFieldChange: (key: string) => (value: unknown) => void;
+  handleFieldChange: (data: {
+    fieldKey: string;
+    field: ModalFormField;
+  }) => (value: unknown) => void;
 }

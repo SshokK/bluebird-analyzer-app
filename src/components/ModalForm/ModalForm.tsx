@@ -1,5 +1,6 @@
 import type {ModalFormProps} from "./ModalForm.types";
-import type {ComponentProps, FC} from 'react';
+import type { FC} from 'react';
+
 import React from 'react';
 import {Modal} from "../Modal";
 import {useModalFormData, useModalFormHandlers} from "./hooks";
@@ -16,7 +17,7 @@ export const ModalForm:FC<ModalFormProps> = ({
   onSubmit,
   classNames
 }) => {
-  const { localState, localActions } = useModalFormData({ fields });
+  const { localState, localActions, formattedData } = useModalFormData({ fields });
 
   const handlers = useModalFormHandlers({
     props: {
@@ -36,6 +37,7 @@ export const ModalForm:FC<ModalFormProps> = ({
       shouldRenderFooter
       isLoading={localState.isLoading}
       onSubmit={handlers.handleSubmit}
+      isSubmitDisabled={!formattedData.areAllRequiredFieldsFilled}
       classNames={{
         body: "BB-modal-form__body",
         ...classNames
@@ -50,14 +52,16 @@ export const ModalForm:FC<ModalFormProps> = ({
           return (
             <Component
               {...props}
+              {...field.props}
               key={fieldKey}
               label={field.label}
-              value={field.value as ComponentProps<typeof Component>['value']}
+              value={field.value as any}
+              isRequired={field.isRequired}
+              shouldEnableAutoComplete={shouldEnableAutoComplete}
               onChange={handlers.handleFieldChange({
                 fieldKey: fieldKey,
                 field
               })}
-              shouldEnableAutoComplete={shouldEnableAutoComplete}
             />
           )
       })}

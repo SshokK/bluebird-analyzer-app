@@ -7,6 +7,8 @@ export type TextFieldProps = {
   onChange?: (value: string) => void;
   onBlur?: MUITextFieldProps['onBlur'];
   label?: string;
+  isRequired?: boolean;
+  isDisabled?: boolean;
   shouldEnableAutoComplete?: boolean;
   inputProps?: MUITextFieldProps['inputProps'];
   classNames?: {

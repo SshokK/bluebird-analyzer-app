@@ -1,7 +1,6 @@
 import type {ElementType, ReactNode} from "react";
-import type {TYPOGRAPHY_TYPES} from "./Typography.constants";
-import type {TYPOGRAPHY_ALIGNMENT} from "./Typography.constants";
-import {TYPOGRAPHY_STATUS} from "./Typography.constants";
+import type {TYPOGRAPHY_TYPES, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_STATUS } from "./Typography.constants";
+import type { TypographyProps as MUITypographyProps } from '@mui/material'
 
 export type TypographyProps = {
   /**
@@ -41,4 +40,8 @@ export type TypographyProps = {
    * If true, the text will have a bottom margin.
    */
   shouldAddBottomMargin?: boolean;
+  /**
+   * Text line height
+   */
+  lineHeight?: MUITypographyProps['lineHeight'];
 }

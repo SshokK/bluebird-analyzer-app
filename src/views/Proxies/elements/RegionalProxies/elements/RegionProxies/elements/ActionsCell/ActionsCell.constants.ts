@@ -6,5 +6,6 @@ export enum ACTION_KEYS {
 export enum MODAL_FIELD_KEYS {
   IP = 'ip',
   PORT = 'port',
-  PROTOCOL = 'protocol'
+  PROTOCOL = 'protocol',
+  REGION = 'region'
 }

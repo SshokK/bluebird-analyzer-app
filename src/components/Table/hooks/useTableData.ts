@@ -5,10 +5,12 @@ import {useMemo, useState} from "react";
 
 import * as helpers from "./useTableData.helpers";
 
-export const useTableData = (props: Pick<TableProps, 'columns' | 'areRowsSelectable'>): TableData => {
+export const useTableData = (props: Pick<TableProps, 'columns' | 'areRowsSelectable' | 'selectedRowKeys'>): TableData => {
   const [rows, setRows] = useState<TableData['localState']['rows']>([]);
   const [totalCount, setTotalCount] = useState<TableData['localState']['totalCount']>(0);
-  const [rowSelection, setRowSelection] = useState<TableData['localState']['rowSelection']>({});
+  const [rowSelection, setRowSelection] = useState<TableData['localState']['rowSelection']>(
+    helpers.getInitialRowSelection(props.selectedRowKeys)
+  );
   const [pagination, setPagination] = useState<TableData['localState']['pagination']>( {
     pageSize: 0,
     pageIndex: 0

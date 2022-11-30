@@ -14,6 +14,8 @@ export const TextField: FC<TextFieldProps> = ({
   shouldEnableAutoComplete,
   inputType,
   onBlur,
+  isRequired,
+  isDisabled,
   inputProps,
   classNames
 }) => {
@@ -27,6 +29,8 @@ export const TextField: FC<TextFieldProps> = ({
       onBlur={onBlur}
       autoComplete={shouldEnableAutoComplete ? 'on' : 'off'}
       inputProps={inputProps}
+      required={isRequired}
+      disabled={isDisabled}
       classes={{
         root: classnames("BB-text-field", classNames?.container)
       }}

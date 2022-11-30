@@ -10,3 +10,12 @@ export const formatRegionsForList = (
     name: region.name
   })) ?? []
 }
+
+export const formatRegionsForSelect = (
+  response: Awaited<ReturnType<typeof regionsApi.fetchRegions>>
+): components.SelectOption[] => {
+  return response.results?.map?.(region => ({
+    value: region.id,
+    label: region.name
+  }))
+}

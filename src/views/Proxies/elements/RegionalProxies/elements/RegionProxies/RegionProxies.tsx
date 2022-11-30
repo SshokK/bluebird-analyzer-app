@@ -21,10 +21,14 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
   const { localState, localActions } = useRegionProxiesData();
 
   const mutations = useRegionProxiesMutations({
-    localState
+    localState,
+    localActions
   })
 
   const actions = useRegionProxiesActions({
+    props: {
+      regionId
+    },
     localState,
     mutations
   });
@@ -49,6 +53,7 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
         queryOptions={tableQueryOptions}
         rowId={REGION_PROXIES_TABLE_COLUMN_KEYS.ID}
         areRowsSelectable
+        selectedRowKeys={localState.selectedRowKeys}
         onSelectedRowsChange={localActions.setSelectedRowKeys}
         queryParams={{
           regionId

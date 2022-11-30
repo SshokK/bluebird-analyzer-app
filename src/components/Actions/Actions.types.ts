@@ -17,6 +17,7 @@ export type Action = {
 export type ActionsProps = {
   actions: Record<string, Action>;
   orientation?: IconButtonGroupProps['orientation'];
+  isWrapDisabled?: IconButtonGroupProps['isWrapDisabled'];
   classNames?: {
     container?: string;
   }

@@ -10,6 +10,14 @@ export const fetchProxies: apiTypes.FetchProxies = (params) => {
   })
 }
 
+export const createProxy: apiTypes.CreateProxy = (body) => {
+  return fetch({
+    url: `/api/v1/proxies`,
+    method: "POST",
+    data: body
+  })
+}
+
 export const deleteProxies: apiTypes.DeleteProxies = (proxyIds) => {
   return fetch({
     url: '/api/v1/proxies',

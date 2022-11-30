@@ -5,4 +5,5 @@ export type IconButtonGroupProps = {
   children?: ReactNode;
   className?: string;
   orientation?: ICON_BUTTON_GROUP_ORIENTATIONS;
+  isWrapDisabled?: boolean;
 }

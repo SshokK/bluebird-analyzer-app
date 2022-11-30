@@ -1,10 +1,14 @@
 import type {TableColumn, TableProps} from "../Table.types";
-import type {ColumnDef, SortingState} from "@tanstack/react-table";
+import type {ColumnDef, RowSelectionState, SortingState} from "@tanstack/react-table";
 
 import {createColumnHelper} from "@tanstack/react-table";
 import {CHECKBOX_COLUMN_ID, COLUMN_TYPES} from "../Table.constants";
 import {TableCheckboxCell} from "../elements";
 import {SORT_ORDERS} from "../../../constants/global.constants";
+
+export const getInitialRowSelection = (selectedRowKeys: TableProps['selectedRowKeys']): RowSelectionState => {
+  return Object.fromEntries(selectedRowKeys?.map(key => [key, true]) ?? [])
+}
 
 export const getInitialSortingState = (columns: TableProps['columns']): SortingState => {
   return columns?.flatMap((column) => {

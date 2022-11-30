@@ -19,8 +19,19 @@ export const useModalFormData = (props: Pick<ModalFormProps, 'fields'>): ModalFo
     setIsLoading
   }), []);
 
+  const formattedData: ModalFormData['formattedData'] = useMemo(() => {
+    const areAllRequiredFieldsFilled = Object.values(fields)
+      .filter(field => field.isRequired)
+      .every(field => Array.isArray(field.value) ? field.value.length : Boolean(field.value));
+
+    return {
+      areAllRequiredFieldsFilled
+    }
+  }, [fields])
+
   return {
     localState,
-    localActions
+    localActions,
+    formattedData
   }
 }

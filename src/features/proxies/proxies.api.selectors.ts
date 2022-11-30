@@ -13,6 +13,7 @@ export const formatProxiesForRegionProxiesTable = (response: Awaited<ReturnType<
       [REGION_PROXIES_TABLE_COLUMN_KEYS.PORT]: proxy.port,
       [REGION_PROXIES_TABLE_COLUMN_KEYS.TYPE]: proxy.type,
       [REGION_PROXIES_TABLE_COLUMN_KEYS.LAST_PING_RESPONSE_TIME]: proxy.lastPingResponseTime,
+      [REGION_PROXIES_TABLE_COLUMN_KEYS.REGION_ID]: proxy.RegionId
     })),
     totalCount: response.totalCount
   }

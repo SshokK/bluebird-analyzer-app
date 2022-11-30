@@ -14,4 +14,8 @@
   &--is-row {
     flex-direction: row;
   }
+
+  &--is-wrap-disabled {
+    flex-wrap: nowrap;
+  }
 }

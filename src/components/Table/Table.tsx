@@ -4,7 +4,7 @@ import type {TableProps} from "./Table.types";
 import React, {forwardRef} from "react";
 import {TableActions, TableBody, TableHeader} from "./elements";
 import {useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel} from '@tanstack/react-table';
-import {useTableData, useTableHandlers, useTableQuery } from "./hooks";
+import {useTableData, useTableHandlers, useTableLifecycle, useTableQuery} from "./hooks";
 import {TABLE_LIMIT} from "./Table.constants";
 import './table.scss';
 
@@ -13,6 +13,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
   columns,
   areRowsSelectable,
   rowId,
+  selectedRowKeys,
   onSelectedRowsChange,
   isFullWidth,
   noDataMessage,
@@ -21,10 +22,11 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
   queryParams,
   ...props
 }, ref) => {
-  const { localState, localActions, formattedData } = useTableData({ columns, areRowsSelectable });
+  const { localState, localActions, formattedData } = useTableData({ columns, areRowsSelectable, selectedRowKeys });
 
   const handlers = useTableHandlers({
     props: {
+      selectedRowKeys,
       onSelectedRowsChange
     },
     localState,
@@ -66,6 +68,10 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
     localActions,
     table
   });
+
+  useTableLifecycle({
+    onSelectedRowKeysPropChange: handlers.handleSelectedRowKeysPropChange
+  })
 
   return (
     <div ref={ref} className="BB-table__container" {...props}>

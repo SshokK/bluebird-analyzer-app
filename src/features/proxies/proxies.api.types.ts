@@ -32,15 +32,26 @@ export type FetchProxiesResponse = {
 export type FetchProxies = (...args: FetchProxiesPayload) => Promise<FetchProxiesResponse>;
 
 
+export type CreateProxyPayload = [params: {
+  ip: ProxySchema['ip'];
+  port: ProxySchema['port'];
+  type: ProxySchema['type'];
+  regionId: ProxySchema['RegionId'];
+}]
+export type CreateProxyReturn = ProxySchema;
+export type CreateProxy = (...args: CreateProxyPayload) => Promise<CreateProxyReturn>
+
+
 export type DeleteProxiesPayload = [proxyIds: ProxySchema['id'][]]
-export type DeleteProxiesResponse = number;
+export type DeleteProxiesResponse = void;
 export type DeleteProxies = (...args: DeleteProxiesPayload) => Promise<DeleteProxiesResponse>;
 
 
 export type UpdateProxyPayload = [proxyId: ProxySchema['id'], params: {
-  ip: ProxySchema['ip'];
-  port: ProxySchema['port'];
-  type: ProxySchema['type'];
+  ip?: ProxySchema['ip'];
+  port?: ProxySchema['port'];
+  type?: ProxySchema['type'];
+  regionId?: ProxySchema['RegionId'];
 }]
 export type UpdateProxyResponse = ProxySchema;
 export type UpdateProxy = (...args: UpdateProxyPayload) => Promise<UpdateProxyResponse>

@@ -13,6 +13,7 @@ import {useActionsData, useActionsHandlers} from "./hooks";
 export const Actions: FC<ActionsProps> = ({
   actions,
   orientation,
+  isWrapDisabled,
   classNames
 }) => {
   const { localState, localActions } = useActionsData();
@@ -26,7 +27,11 @@ export const Actions: FC<ActionsProps> = ({
 
   return (
     <>
-      <IconButtonGroup orientation={orientation} className={classNames?.container}>
+      <IconButtonGroup
+        orientation={orientation}
+        className={classNames?.container}
+        isWrapDisabled={isWrapDisabled}
+      >
         {Object.entries(actions).map(([actionKey, action]) => (
           <IconButton
             key={actionKey}

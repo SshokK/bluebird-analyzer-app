@@ -17,6 +17,7 @@ export enum REGION_PROXIES_TABLE_COLUMN_KEYS {
   TYPE= 'type',
   STATUS = 'status',
   LAST_PING_RESPONSE_TIME = 'lastPingResponseTime',
+  REGION_ID = 'regionId',
   ACTIONS = 'actions'
 }
 
@@ -54,6 +55,11 @@ export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     type: COLUMN_TYPES.DATA_COLUMN,
     isSortable: true,
     CellComponent: DelayCell
+  },
+  {
+    key: REGION_PROXIES_TABLE_COLUMN_KEYS.REGION_ID,
+    type: COLUMN_TYPES.DATA_COLUMN,
+    CellComponent: () => null
   },
   {
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.ACTIONS,

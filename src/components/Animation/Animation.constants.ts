@@ -1,4 +1,5 @@
 import * as MUI from "@mui/material";
+import type {AnimationComponent} from "./Animation.types";
 
 export enum ANIMATION_TYPES {
   FADE = 'fade',
@@ -22,7 +23,7 @@ export enum ANIMATION_DIRECTION {
 
 export const ANIMATION_COMPONENTS: Record<
   ANIMATION_TYPES,
-  typeof MUI.Grow | typeof MUI.Fade | typeof MUI.Slide | typeof MUI.Zoom | typeof MUI.Collapse
+  AnimationComponent
 > = {
   [ANIMATION_TYPES.FADE]: MUI.Fade,
   [ANIMATION_TYPES.GROW]: MUI.Grow,

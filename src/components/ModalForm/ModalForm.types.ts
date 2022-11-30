@@ -1,11 +1,19 @@
 import type {MODAL_FORM_FIELD_TYPES} from "./ModalForm.constants";
-import type { ReactNode} from "react";
+import type {ComponentProps, ReactNode} from "react";
 import type {ModalProps} from "../Modal";
+import type {TextField} from "../TextField";
+import type {NumberField} from "../NumberField";
+import type {Select} from "../Select";
+
+export type ModalFormFieldComponent = typeof TextField | typeof NumberField | typeof Select;
+export type ModalFormFieldProps = ComponentProps<ModalFormFieldComponent>
 
 export type ModalFormField = {
   type: MODAL_FORM_FIELD_TYPES;
   value?: unknown;
   label?: string;
+  props?: ModalFormFieldProps;
+  isRequired?: boolean;
 }
 
 export type ModalFormProps = {

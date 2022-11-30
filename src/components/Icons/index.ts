@@ -15,3 +15,7 @@ export * from './IconArrowRight';
 export * from './IconSortInitial';
 export * from './IconSortAsc';
 export * from './IconSortDesc';
+export * from './IconInfo';
+export * from './IconWarning';
+export * from './IconSuccess';
+export * from './IconError';

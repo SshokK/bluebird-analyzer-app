@@ -9,11 +9,13 @@ import './icon-button-group.scss';
 export const IconButtonGroup: FC<IconButtonGroupProps> = ({
   children,
   className,
-  orientation
+  orientation,
+  isWrapDisabled
 }) => {
   return (
     <div className={classnames('BB-icon-button-group', className, {
-      [`BB-icon-button-group--is-${orientation ?? ICON_BUTTON_GROUP_ORIENTATIONS.ROW}`]: true
+      [`BB-icon-button-group--is-${orientation ?? ICON_BUTTON_GROUP_ORIENTATIONS.ROW}`]: true,
+      [`BB-icon-button-group--is-wrap-disabled`]: isWrapDisabled
     })}>
       {children}
     </div>

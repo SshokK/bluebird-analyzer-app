@@ -10,6 +10,7 @@ export const Animation: FC<AnimationProps> = ({
   animationDelay,
   direction,
   orientation,
+  onExit,
   children
 }) => {
   const Component = ANIMATION_COMPONENTS[type];
@@ -18,8 +19,9 @@ export const Animation: FC<AnimationProps> = ({
     <Component
       in={shouldAppear}
       timeout={animationDelay}
-      // direction={direction}
-      // orientation={orientation}
+      onExit={onExit}
+      direction={direction}
+      orientation={orientation}
     >
       {children}
     </Component>

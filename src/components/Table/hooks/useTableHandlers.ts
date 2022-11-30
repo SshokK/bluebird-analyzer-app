@@ -9,7 +9,7 @@ export const useTableHandlers = ({
   localState,
   localActions
 }: {
-  props: Pick<TableProps, 'onSelectedRowsChange'>;
+  props: Pick<TableProps, 'onSelectedRowsChange' | 'selectedRowKeys'>;
   localState: TableData['localState'];
   localActions: TableData['localActions'];
 }): TableHandlers => {
@@ -23,7 +23,12 @@ export const useTableHandlers = ({
     }
   }, [localActions, localState.rowSelection, props]);
 
+  const handleSelectedRowKeysPropChange: TableHandlers['handleSelectedRowKeysPropChange'] = useCallback(() => {
+    localActions.setRowSelection(Object.fromEntries(props.selectedRowKeys?.map(key => [key, true]) ?? []));
+  }, [localActions, props.selectedRowKeys])
+
   return {
-    handleRowSelectionChange
+    handleRowSelectionChange,
+    handleSelectedRowKeysPropChange
   }
 }

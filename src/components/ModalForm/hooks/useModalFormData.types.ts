@@ -11,7 +11,12 @@ export type ModalFormLocalActions = {
   setIsLoading: Dispatch<SetStateAction<ModalFormLocalState['isLoading']>>
 }
 
+export type ModalFormFormattedData = {
+  areAllRequiredFieldsFilled: boolean;
+}
+
 export type ModalFormData = {
   localState: ModalFormLocalState;
   localActions: ModalFormLocalActions;
+  formattedData: ModalFormFormattedData;
 }

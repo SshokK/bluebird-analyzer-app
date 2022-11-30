@@ -20,6 +20,6 @@ export const ActionsCell: FC<ActionsCellProps> = ({ row }) => {
   });
 
   return (
-    <Actions actions={actions} />
+    <Actions actions={actions} isWrapDisabled />
   )
 }

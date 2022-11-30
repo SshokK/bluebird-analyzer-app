@@ -1,5 +1,5 @@
-import type {AlertsProviderLocalState} from "../hooks/useAlertProviderData.types";
+import type {AlertProviderLocalState} from "../hooks/useAlertProviderData.types";
 
 export type AlertProviderContext = {
-  showAlert: (args: AlertsProviderLocalState['alertProps']) => void;
+  showAlert: (args: AlertProviderLocalState['alertProps']) => void;
 };

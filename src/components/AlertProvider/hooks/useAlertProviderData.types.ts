@@ -1,7 +1,8 @@
 import type {ALERT_TYPES} from "../../Alert";
 import type {Dispatch, SetStateAction} from "react";
 
-export type AlertsProviderLocalState = {
+export type AlertProviderLocalState = {
+  isOpen: boolean;
   alertProps: {
     type?: ALERT_TYPES;
     title?: string;
@@ -11,11 +12,12 @@ export type AlertsProviderLocalState = {
   } | null
 }
 
-export type AlertsProviderLocalActions = {
-  setAlertProps: Dispatch<SetStateAction<AlertsProviderLocalState['alertProps']>>
+export type AlertProviderLocalActions = {
+  setIsOpen: Dispatch<SetStateAction<AlertProviderLocalState['isOpen']>>
+  setAlertProps: Dispatch<SetStateAction<AlertProviderLocalState['alertProps']>>
 }
 
-export type AlertsProviderData = {
-  localState: AlertsProviderLocalState;
-  localActions: AlertsProviderLocalActions;
+export type AlertProviderData = {
+  localState: AlertProviderLocalState;
+  localActions: AlertProviderLocalActions;
 }

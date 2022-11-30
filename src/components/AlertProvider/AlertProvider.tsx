@@ -7,6 +7,7 @@ import {DEFAULT_TIMEOUT} from "./AlertProvider.constants";
 import * as MUI from "@mui/material";
 import {Alert} from "../Alert";
 import {useAlertProviderData} from "./hooks";
+import {useAlertProviderHandlers} from "./hooks/useAlertProviderHandlers";
 
 const Transition = (props: ComponentProps<typeof MUI.Slide>) => {
   return (
@@ -21,18 +22,20 @@ export const AlertProvider = ({
 }: AlertProviderProps): ReactElement => {
   const { localState, localActions } = useAlertProviderData();
 
+  const handlers = useAlertProviderHandlers({
+    localState,
+    localActions
+  });
+
   return (
     <AlertProviderContext.Provider
       value={{
-        showAlert: localActions.setAlertProps
+        showAlert: handlers.handleOpen
       }}
     >
       <MUI.Snackbar
-        open={Boolean(localState.alertProps)}
-        onClose={() => {
-          localActions.setAlertProps(null);
-          localState.alertProps?.onClose?.()
-        }}
+        open={localState.isOpen}
+        onClose={handlers.handleClose}
         autoHideDuration={localState.alertProps?.timeout ?? DEFAULT_TIMEOUT}
         TransitionComponent={Transition}
       >

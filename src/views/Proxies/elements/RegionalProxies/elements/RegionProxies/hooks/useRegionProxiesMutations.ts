@@ -1,12 +1,13 @@
 import type {RegionProxiesData} from "./useRegionProxiesData.types";
 
 import {QUERY_KEYS} from "constants/queries.constants";
-import {ALERT_TYPES, useAlert} from "components";
+import {ALERT_TYPES} from "components";
+import {PROXY_STATUSES} from "features/proxies/proxies.constants";
 
 import * as proxiesApi from "features/proxies/proxies.api";
 
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {PROXY_STATUSES} from "../../../../../../../features/proxies/proxies.constants";
+import { useAlert} from "components";
 
 export const useRegionProxiesMutations = ({ localState, localActions }: {
   localState: RegionProxiesData['localState'];

@@ -1,15 +1,18 @@
-import type {AlertsProviderData} from "./useAlertProviderData.types";
+import type {AlertProviderData} from "./useAlertProviderData.types";
 
 import {useMemo, useState} from "react";
 
-export const useAlertProviderData = (): AlertsProviderData => {
-  const [alertProps, setAlertProps] = useState<AlertsProviderData['localState']['alertProps']>(null)
+export const useAlertProviderData = (): AlertProviderData => {
+  const [isOpen, setIsOpen] = useState<AlertProviderData['localState']['isOpen']>(false)
+  const [alertProps, setAlertProps] = useState<AlertProviderData['localState']['alertProps']>(null)
 
-  const localState: AlertsProviderData['localState'] = {
+  const localState: AlertProviderData['localState'] = {
+    isOpen,
     alertProps
   }
 
-  const localActions: AlertsProviderData['localActions'] = useMemo(() => ({
+  const localActions: AlertProviderData['localActions'] = useMemo(() => ({
+    setIsOpen,
     setAlertProps
   }), []);
 

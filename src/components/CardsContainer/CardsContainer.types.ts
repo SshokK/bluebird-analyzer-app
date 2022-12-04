@@ -9,6 +9,7 @@ export type CardsContainerProps = {
   animationDelay?: number;
   shouldShowNoDataMessage?: boolean;
   shouldDisableWrap?: boolean;
+  isFullHeight?: boolean;
   noDataMessage?: ReactNode;
   classNames?: {
     outerContainer?: string;

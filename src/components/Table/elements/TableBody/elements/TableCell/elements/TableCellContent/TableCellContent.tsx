@@ -7,7 +7,7 @@ import {COLUMN_DATA_TYPES, COLUMN_TYPES} from "../../../../../../Table.constants
 import {DATE_FORMATS} from "constants/global.constants";
 
 import * as utils from "utils";
-import {Typography, TYPOGRAPHY_TYPES} from "../../../../../../../Typography";
+import {Typography, TYPOGRAPHY_TYPES, Avatar} from "components";
 
 export const TableCellContent: FC<TableCellContentProps> = ({
   column,
@@ -57,6 +57,15 @@ export const TableCellContent: FC<TableCellContentProps> = ({
       <a href={cellValue as string} target="_blank" rel="noreferrer">
         {cellValue as string}
       </a>
+    )
+  }
+
+  if (column.dataType === COLUMN_DATA_TYPES.AVATAR) {
+    return (
+      <Avatar
+        src={cellValue as string}
+        alt={cellValue as string}
+      />
     )
   }
 

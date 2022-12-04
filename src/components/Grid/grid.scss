@@ -1,0 +1,11 @@
+.BB-grid {
+  &__child {
+    &--is-block {
+      display: block;
+    }
+
+    &--is-flex {
+      display: flex;
+    }
+  }
+}

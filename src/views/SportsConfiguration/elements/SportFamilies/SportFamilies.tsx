@@ -1,13 +1,17 @@
 import React from "react";
+
 import {
   Actions,
+  ACTIONS_ORIENTATIONS,
   CardsContainer,
-  Chiclet
+  Chiclet,
+  Grid,
+  GRID_SPACING
 } from "components";
 import {
+  useSportFamiliesActionsConfig,
   useSportFamiliesData,
   useSportFamiliesHandlers,
-  useSportFamiliesActionsConfig,
   useSportFamiliesMutations,
   useSportFamiliesQueries
 } from "./hooks";
@@ -35,23 +39,45 @@ export const SportFamilies = () => {
     <CardsContainer
       title="Sport families"
       isAnimated
+      isFullHeight
       isLoading={
         queries.fetchSportFamilies.isLoading ||
         mutations.deleteSportFamily.isLoading
       }
     >
-      {queries.fetchSportFamilies.data?.map(sportFamily => (
-        <Chiclet
-          key={sportFamily.id}
-          isDeletable
-          isSelected={formattedData.sportFamilyId === sportFamily.id}
-          onClick={handlers.handleSportFamilyClick(sportFamily.id)}
-          onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}
+      <Grid
+        isContainer
+        spacing={GRID_SPACING.L}
+      >
+        <Grid
+          isChild
+          isContainer
+          xs={12}
+          spacing={GRID_SPACING.L}
+          isWrapDisabled
         >
-          {sportFamily.name}
-        </Chiclet>
-      ))}
-      <Actions actions={actionsConfig}/>
+          <Grid isChild>
+            <Actions
+              actions={actionsConfig}
+              orientation={ACTIONS_ORIENTATIONS.COLUMN}
+            />
+          </Grid>
+          <Grid isChild isContainer spacing={GRID_SPACING.L}>
+            {queries.fetchSportFamilies.data?.map(sportFamily => (
+              <Grid key={sportFamily.id} isChild>
+                <Chiclet
+                  isDeletable
+                  isSelected={formattedData.sportFamilyId === sportFamily.id}
+                  onClick={handlers.handleSportFamilyClick(sportFamily.id)}
+                  onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}
+                >
+                  {sportFamily.name}
+                </Chiclet>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
     </CardsContainer>
   )
 }

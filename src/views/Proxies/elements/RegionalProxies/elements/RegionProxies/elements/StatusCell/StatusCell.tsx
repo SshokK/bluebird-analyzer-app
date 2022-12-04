@@ -7,6 +7,7 @@ import { TYPOGRAPHY_TYPES, TYPOGRAPHY_STATUS } from "components";
 import {Typography } from "components";
 
 export const StatusCell: FC<StatusCellProps> = ({ getValue, renderValue }) => {
+  console.log(getValue())
   return (
     <Typography
       type={TYPOGRAPHY_TYPES.OVERLINE}

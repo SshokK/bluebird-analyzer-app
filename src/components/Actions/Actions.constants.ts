@@ -1,4 +1,3 @@
-export enum ACTIONS_ORIENTATION{
-  ROW = 'row',
-  COLUMN = 'column'
-}
+import {ICON_BUTTON_GROUP_ORIENTATIONS} from "../IconButtonGroup";
+
+export const ACTIONS_ORIENTATIONS = ICON_BUTTON_GROUP_ORIENTATIONS;

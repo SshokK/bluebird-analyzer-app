@@ -1,7 +1,5 @@
 import type { SORT_ORDERS } from "constants/global.constants";
 import type { BookmakerSchema } from "../bookmakers/bookmakers.api.types";
-import type { EventPlayerCoefficientSchema } from "../players/players.api.types";
-import type { EventPlayerSchema } from "../players/players.api.types";
 
 export type CoefficientSchema = {
   id: number;
@@ -21,10 +19,7 @@ export type FetchCoefficientsPayload = [params: {
 }];
 
 export type FetchCoefficientsResponse = (CoefficientSchema & {
-  Bookmaker: BookmakerSchema,
-  EventPlayers: (EventPlayerSchema & {
-    EventPlayerCoefficient: EventPlayerCoefficientSchema
-  })[]
+  Bookmaker: BookmakerSchema
 })[];
 
 export type FetchCoefficients = (...args: FetchCoefficientsPayload) => Promise<FetchCoefficientsResponse>;

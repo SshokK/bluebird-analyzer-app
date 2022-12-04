@@ -8,7 +8,8 @@ export enum COLUMN_DATA_TYPES {
   TEXT = 'text',
   URL = 'url',
   DATE = 'date',
-  DATE_TIME = 'dateTime'
+  DATE_TIME = 'dateTime',
+  AVATAR = 'avatar'
 }
 
 export const CHECKBOX_COLUMN_ID = 'checkboxColumn';

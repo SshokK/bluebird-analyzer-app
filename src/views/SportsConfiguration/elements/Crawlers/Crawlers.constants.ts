@@ -1,7 +1,10 @@
 import type {TableProps} from "components";
+
 import {COLUMN_DATA_TYPES, COLUMN_TYPES} from "components";
 
 import {CrawlerActions} from "./elements";
+
+export const ANIMATION_DELAY = 1000;
 
 export enum EVENT_CRAWLERS_TABLE_COLUMN_KEYS {
   ID= 'id',

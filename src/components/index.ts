@@ -32,3 +32,5 @@ export * from './Animation';
 export * from './Separator';
 export * from './NumberField';
 export * from './Select';
+export * from './Grid';
+export * from './Avatar';

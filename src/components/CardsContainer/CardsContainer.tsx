@@ -17,12 +17,17 @@ export const CardsContainer: FC<CardsContainerProps> = ({
   shouldShowNoDataMessage,
   shouldDisableWrap,
   noDataMessage,
+  isFullHeight,
   classNames
 }) => {
   const content = (
-    <div className={classnames("BB-cards-container__outer-container", classNames?.outerContainer)}>
+    <div className={classnames("BB-cards-container__outer-container", classNames?.outerContainer, {
+      "BB-cards-container__outer-container--is-full-height": isFullHeight
+    })}>
       <Card classNames={{
-        container: classnames("BB-cards-container__container", classNames?.container)
+        container: classnames("BB-cards-container__container", classNames?.container, {
+          "BB-cards-container__container--is-full-height": isFullHeight
+        })
       }}>
         <Loader isVisible={isLoading} shouldFitContainer />
         {title && (

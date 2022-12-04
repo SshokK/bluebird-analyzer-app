@@ -5,5 +5,7 @@ export enum QUERY_KEYS {
   COEFFICIENTS = 'coefficients',
   CRAWLERS = 'crawlers',
   REGIONS = 'regions',
-  PROXIES = 'proxies'
+  PROXIES = 'proxies',
+  TEAMS = 'teams',
+  PLAYERS = 'players'
 }

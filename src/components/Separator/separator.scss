@@ -1,16 +1,29 @@
 @use "src/styles/variables";
 
 .BB-separator {
-  border-left: none;
-  border-right: none;
+  border: none;
   margin: unset;
+  padding: variables.$spacing-l 0;
 
-  border-top: variables.$border-primary-5-l;
-  border-color: #{variables.$primary-color-5}90;
+  &::after {
+    content: "";
+    display: block;
+    border-top: variables.$border-primary-5-l;
+    border-color: #{variables.$primary-color-5}90;
+    width: 100%;
+  }
 
   &--is-vertical {
-    border-top: none;
-    border-right: variables.$border-primary-5-m;
-    border-color: #{variables.$primary-color-5}20;
+    &::after {
+      content: "";
+      display: block;
+      border-top: none;
+      border-right: variables.$border-primary-5-m;
+      border-color: #{variables.$primary-color-5}20;
+      height: 100%;
+      width: fit-content;
+    }
+
+    padding: 0 variables.$spacing-l;
   }
 }

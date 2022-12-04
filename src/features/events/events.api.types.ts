@@ -1,6 +1,6 @@
 import type { SORT_ORDERS } from "constants/global.constants";
 import type {SportSchema} from "../sports/sports.api.types";
-import type {EventPlayerSchema, PlayerSchema} from "../players/players.api.types";
+import type { PlayerSchema} from "../players/players.api.types";
 
 export type EventSchema = {
   id: number;
@@ -18,9 +18,7 @@ export type FetchEventsPayload = [params: {
 }];
 
 export type FetchEventsResponse = (EventSchema & {
-  Players: (PlayerSchema & {
-    EventPlayer: EventPlayerSchema;
-  })[]
+  Players: PlayerSchema[]
 })[];
 
 export type FetchEvents = (...args: FetchEventsPayload) => Promise<FetchEventsResponse>;

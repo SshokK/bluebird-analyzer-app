@@ -8,7 +8,7 @@ import {LazyComponent} from "../components";
 const AppContent = lazy(() => import('../views/AppContent'));
 const Dashboard = lazy(() => import("../views/Dashboard"))
 const SportFamilyEvents = lazy(() => import("../views/SportFamilyEvents"))
-const SportsConfiguration = lazy(() => import("../views/SportsConfiguration"))
+const SportsConfiguration = lazy(() => import("../views/SportsConfiguration"));
 const Proxies = lazy(() => import("../views/Proxies"))
 
 export const ROUTES_CONFIG:  RouteObject[] = [

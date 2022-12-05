@@ -34,3 +34,4 @@ export * from './NumberField';
 export * from './Select';
 export * from './Grid';
 export * from './Avatar';
+export * from './Dropzone';

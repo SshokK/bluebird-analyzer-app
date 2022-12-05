@@ -18,6 +18,7 @@ const ALERT_ICONS: Record<ALERT_TYPES, ReactNode> = {
 export const Alert: FC<AlertProps> = forwardRef<HTMLDivElement, AlertProps>(({
   type,
   title,
+  icon,
   message,
   classNames,
   dataTestId,
@@ -26,7 +27,7 @@ export const Alert: FC<AlertProps> = forwardRef<HTMLDivElement, AlertProps>(({
   children,
   ...restProps
 }, ref): ReactElement => {
-  const icon = type ? ALERT_ICONS[type] : null;
+  const iconToRender = icon ?? (type ? ALERT_ICONS[type] : null);
 
   const handlers = useAlertHandlers({
     props: {
@@ -51,7 +52,7 @@ export const Alert: FC<AlertProps> = forwardRef<HTMLDivElement, AlertProps>(({
           [`BB-alert__content-wrapper--is-centered`]: !title
         })}
       >
-        <div className={`BB-alert__icon-wrapper`}>{icon}</div>
+        <div className={`BB-alert__icon-wrapper`}>{iconToRender}</div>
         <div className={`BB-alert__body`}>
           {title && (
             <Typography type={TYPOGRAPHY_TYPES.H6} className="BB-alert__title">

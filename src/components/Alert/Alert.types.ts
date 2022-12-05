@@ -11,6 +11,10 @@ export type AlertProps = {
    */
   title?: ReactNode;
   /**
+   * Custom icon
+   */
+  icon?: ReactNode;
+  /**
    * Content of the alert
    */
   message?: ReactNode;

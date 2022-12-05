@@ -4,8 +4,9 @@ import type {ModalProps} from "../Modal";
 import type {TextField} from "../TextField";
 import type {NumberField} from "../NumberField";
 import type {Select} from "../Select";
+import type {Dropzone} from "../Dropzone";
 
-export type ModalFormFieldComponent = typeof TextField | typeof NumberField | typeof Select;
+export type ModalFormFieldComponent = typeof TextField | typeof NumberField | typeof Select | typeof Dropzone;
 export type ModalFormFieldProps = ComponentProps<ModalFormFieldComponent>
 
 export type ModalFormField = {

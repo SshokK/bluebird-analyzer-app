@@ -1,6 +1,6 @@
 import type {SportFamilySchema} from "../sport-families/sportFamilies.api.types";
-import {SORT_ORDERS} from "../../constants/global.constants";
-import {TeamSchema} from "../teams/teams.api.types";
+import type {SORT_ORDERS} from "../../constants/global.constants";
+import type {TeamSchema} from "../teams/teams.api.types";
 
 export type PlayerSchema = {
   id: number;
@@ -27,3 +27,20 @@ export type FetchPlayersResponse = {
   totalCount: number;
 }
 export type FetchPlayers = (...args: FetchPlayersPayload) => Promise<FetchPlayersResponse>;
+
+
+
+export type CreatePlayerPayload = [{
+  name: PlayerSchema['name'];
+  sportFamilyId: PlayerSchema['SportFamilyId'];
+  imageUrl?: PlayerSchema['imageUrl'] | null;
+}]
+export type CreatePlayerResponse = PlayerSchema;
+export type CreatePlayer = (...args: CreatePlayerPayload) => Promise<CreatePlayerResponse>
+
+
+export type DeletePlayersPayload = [{
+  playerIds: PlayerSchema['id'][]
+}]
+export type DeletePlayersResponse = void;
+export type DeletePlayers = (...args: DeletePlayersPayload) => Promise<DeletePlayersResponse>

@@ -39,11 +39,7 @@ export const AlertProvider = ({
         autoHideDuration={localState.alertProps?.timeout ?? DEFAULT_TIMEOUT}
         TransitionComponent={Transition}
       >
-        <Alert
-          type={localState.alertProps?.type}
-          title={localState.alertProps?.title}
-          message={localState.alertProps?.message}
-        />
+        <Alert {...localState.alertProps} />
       </MUI.Snackbar>
       {children}
     </AlertProviderContext.Provider>

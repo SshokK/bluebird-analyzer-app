@@ -60,10 +60,10 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
           </Grid>
           <Grid isChild isContainer spacing={GRID_SPACING.L}>
             {queries.fetchSports.data?.map(sport => (
-              <Grid isChild>
+              <Grid key={sport.id} isChild>
                 <Chiclet
-                  key={sport.id}
                   isDeletable
+                  isClickable
                   isSelected={formattedData.sportId === sport.id}
                   onClick={handlers.handleSportClick(sport.id)}
                   onDelete={handlers.handleSportDelete(sport.id)}

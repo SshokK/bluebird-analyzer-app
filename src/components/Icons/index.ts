@@ -19,3 +19,6 @@ export * from './IconInfo';
 export * from './IconWarning';
 export * from './IconSuccess';
 export * from './IconError';
+export * from './IconNetworkError';
+export * from './IconAddImage';
+export * from './IconAddFile';

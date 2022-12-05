@@ -9,3 +9,19 @@ export const fetchPlayers: apiTypes.FetchPlayers = (params) => {
     params
   })
 }
+
+export const createPlayer: apiTypes.CreatePlayer = (data) => {
+  return fetch({
+    url: '/api/v1/players',
+    method: 'POST',
+    data
+  })
+}
+
+export const deletePlayers: apiTypes.DeletePlayers = (params) => {
+  return fetch({
+    url: `/api/v1/players`,
+    method: 'DELETE',
+    params
+  })
+}

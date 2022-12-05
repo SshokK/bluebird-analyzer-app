@@ -16,7 +16,9 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
   isDisabled,
   isRestricted,
   isActive,
-  classNames
+  classNames,
+  children,
+  ...restProps
 }) => {
   const paper = (
     <Paper
@@ -30,6 +32,7 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
           'BB-clickable-paper--is-active': isActive
         }),
       }}
+      {...restProps}
     >
       {icon && (
         <span className={classnames('BB-clickable-paper__icon', classNames?.icon)}>
@@ -39,6 +42,7 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
       <Typography type={titleTypographyType} alignment={TYPOGRAPHY_ALIGNMENT.CENTER}>
         {title}
       </Typography>
+      {children}
     </Paper>
   )
 

@@ -31,6 +31,10 @@ export type ClickablePaperProps = {
    */
   isRestricted?: boolean;
   /**
+   * Children
+   */
+  children?: ReactNode;
+  /**
    * Paper restricted click event handler
    */
   onRestrictedClick?: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -41,4 +45,9 @@ export type ClickablePaperProps = {
     container?: string;
     icon?: string;
   };
+
+  /**
+   * Any other prop
+   */
+  [key: string]: unknown;
 }

@@ -67,6 +67,7 @@ export const SportFamilies = () => {
               <Grid key={sportFamily.id} isChild>
                 <Chiclet
                   isDeletable
+                  isClickable
                   isSelected={formattedData.sportFamilyId === sportFamily.id}
                   onClick={handlers.handleSportFamilyClick(sportFamily.id)}
                   onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}

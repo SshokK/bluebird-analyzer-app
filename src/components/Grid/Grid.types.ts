@@ -20,4 +20,4 @@ export type GridProps = {
   classNames?: {
     container?: string;
   }
-} & Partial<Record<GRID_DEVICE_SCREEN, ArrayItem<typeof GRID_COLUMNS>>>
+} & Partial<Record<GRID_DEVICE_SCREEN, ArrayItem<typeof GRID_COLUMNS> | 'auto' | true>>

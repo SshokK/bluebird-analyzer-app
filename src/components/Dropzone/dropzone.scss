@@ -1,0 +1,43 @@
+@use "src/styles/variables";
+
+.BB-dropzone {
+  border-bottom: variables.$border-primary-5-m;
+  background-color: variables.$primary-color-2;
+  padding: variables.$spacing-l;
+  cursor: pointer;
+  outline: none;
+  transition: variables.$animation-time-short;
+  display: flex;
+  align-items: stretch;
+  margin-top: variables.$spacing-s;
+
+  &__item.BB-dropzone__item.BB-dropzone__item {
+    max-width: 100%;
+  }
+
+  &__icon.BB-dropzone__icon {
+    font-size: variables.$font-size-xxxl;
+    transition: variables.$animation-time-short;
+    color: variables.$secondary-color-4;
+  }
+
+  &__message {
+    display: block;
+    padding-left: variables.$spacing-m;
+    color: variables.$primary-color-5;
+    transition: variables.$animation-time-short;
+  }
+
+  &:focus,
+  &:hover {
+    border-bottom: variables.$border-primary-1-m;
+
+    .BB-dropzone__icon.BB-dropzone__icon {
+      color: variables.$secondary-color-5;
+    }
+
+    .BB-dropzone__message {
+      color: variables.$secondary-color-5;
+    }
+  }
+}

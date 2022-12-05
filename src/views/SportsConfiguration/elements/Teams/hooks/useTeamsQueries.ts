@@ -15,7 +15,7 @@ export const useTeamsQueries = ({ props }: {
     Awaited<ReturnType<typeof sportsApi.fetchSport>>,
     RequestError
   >({
-    queryKey: [QUERY_KEYS.SPORTS, props.sportFamilyId, props.sportId],
+    queryKey: [QUERY_KEYS.SPORT_FAMILIES, props.sportFamilyId, QUERY_KEYS.SPORTS, props.sportId],
     queryFn: () => sportsApi.fetchSport(props.sportFamilyId, props.sportId as SportSchema['id']),
     enabled: Boolean(props.sportId && props.sportFamilyId)
   });

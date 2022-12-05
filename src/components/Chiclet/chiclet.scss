@@ -7,6 +7,16 @@
   height: variables.$button-height-m;
   position: relative;
 
+  &--is-small {
+    height: variables.$button-height-s;
+    max-width: 5rem;
+  }
+
+  &--is-full-width {
+    max-width: 100%;
+    width: 100%;
+  }
+
   &__disabled-overlay {
     position: absolute;
     width: 100%;
@@ -27,10 +37,11 @@
     transition-duration: variables.$animation-time-short;
     border: variables.$border-secondary-4-s;
     border-radius: variables.$border-radius-m;
+    cursor: default;
 
     &:hover,
     &:focus {
-      background-color: #{variables.$primary-color-3}30;
+      background-color: variables.$secondary-color-2;
     }
 
     &:disabled {
@@ -39,17 +50,33 @@
       border: variables.$border-secondary-1-s;
     }
 
+    &--is-small {
+      font-size: variables.$font-size-s;
+      padding: variables.$spacing-xs;
+    }
+
     &--is-deletable {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border-right: none;
     }
 
+    &--is-clickable {
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        background-color: #{variables.$primary-color-3}30;
+      }
+    }
+
     &--is-selected,
     &:disabled.BB-chiclet__button--is-selected {
       color: variables.$primary-color-1;
       border-color: variables.$primary-color-1;
+    }
 
+    &--is-selected.BB-chiclet__button--is-clickable {
       &:hover,
       &:focus {
         background-color: #{variables.$primary-color-1}30;

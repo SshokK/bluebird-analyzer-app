@@ -48,3 +48,13 @@ export const PLAYERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     isSortable: true
   }
 ]
+
+export enum PLAYERS_ACTIONS {
+  ADD = 'ADD',
+  DELETE = 'DELETE'
+}
+
+export enum MODAL_FIELD_KEYS {
+  NAME = 'name',
+  IMAGE_URL = 'imageUrl'
+}

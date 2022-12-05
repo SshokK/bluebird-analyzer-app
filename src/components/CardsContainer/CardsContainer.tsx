@@ -24,11 +24,12 @@ export const CardsContainer: FC<CardsContainerProps> = ({
     <div className={classnames("BB-cards-container__outer-container", classNames?.outerContainer, {
       "BB-cards-container__outer-container--is-full-height": isFullHeight
     })}>
-      <Card classNames={{
-        container: classnames("BB-cards-container__container", classNames?.container, {
-          "BB-cards-container__container--is-full-height": isFullHeight
-        })
-      }}>
+      <Card
+        isFullHeight={isFullHeight}
+        classNames={{
+          container: classnames("BB-cards-container__container", classNames?.container)
+        }}
+      >
         <Loader isVisible={isLoading} shouldFitContainer />
         {title && (
           <span className={classnames("BB-cards-container__title-container")}>
@@ -51,7 +52,8 @@ export const CardsContainer: FC<CardsContainerProps> = ({
         )}
         {!shouldShowNoDataMessage && children && (
           <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
-            "BB-cards-container__cards-container--is-wrap-disabled": shouldDisableWrap
+            "BB-cards-container__cards-container--is-wrap-disabled": shouldDisableWrap,
+            "BB-cards-container__cards-container--is-full-height": isFullHeight
           })}>
             {children}
           </div>

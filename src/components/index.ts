@@ -35,3 +35,4 @@ export * from './Select';
 export * from './Grid';
 export * from './Avatar';
 export * from './Dropzone';
+export * from './PlayerCard';

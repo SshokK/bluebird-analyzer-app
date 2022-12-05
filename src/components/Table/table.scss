@@ -8,9 +8,7 @@
     overflow: auto;
 
     // These lines ensure that the rows shadows will be visible
-    padding: variables.$spacing-xxs;
-    left: -#{variables.$spacing-xxs};
-    top: -#{variables.$spacing-xxs};
+    padding: 0.1rem;
   }
 
   &__table {

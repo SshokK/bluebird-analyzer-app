@@ -12,6 +12,8 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
   alignItems,
   isContainer,
   isChild,
+  height,
+  shouldSetOverflowAuto,
   shouldSetZeroMinWidth,
   spacing,
   rowSpacing,
@@ -39,8 +41,12 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
       zeroMinWidth={shouldSetZeroMinWidth}
       {...isContainer && { wrap: isWrapDisabled ? 'nowrap' : 'wrap' }}
       {...restProps}
+      style={{
+        height
+      }}
       classes={{
-        root: classnames(classNames?.container, {
+        root: classnames(classNames?.container, 'BB-grid', {
+          'BB-grid--overflow-auto': shouldSetOverflowAuto,
           [`BB-grid__child--is-${childDisplay}`]: isChild && !isContainer && childDisplay
         })
       }}

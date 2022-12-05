@@ -48,3 +48,16 @@ export enum GRID_SPACING {
   XXL = '3rem',
   XXXL = '4rem'
 }
+
+export enum GRID_HEIGHT {
+  AUTO = 'auto',
+  XXS = '2rem',
+  XS = '5rem',
+  S = '8rem',
+  M = '10em',
+  L = '15rem',
+  XL = '20rem',
+  XXL = '30rem',
+  XXXL = '40rem',
+  FULL = '100%'
+}

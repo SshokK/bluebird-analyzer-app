@@ -1,9 +1,8 @@
 import type {TableProps} from "components";
 import type {PlayersProps} from "../Players.types";
-import type {PlayersData} from "./usePlayersData.types";
 import type {PlayerSchema} from "features/players/players.api.types";
 
-import { IconAdd, IconDelete, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+import { IconAdd, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
 
 import {PLAYERS_ACTIONS, MODAL_FIELD_KEYS} from "../Players.constants";
 
@@ -11,11 +10,9 @@ import {usePlayersMutations} from "./usePlayersMutations";
 
 export const usePlayersTableActions = ({
   props,
-  localState,
   mutations
 }: {
   props: Pick<PlayersProps, 'sportFamilyId'>
-  localState: PlayersData['localState'];
   mutations: ReturnType<typeof usePlayersMutations>
 }): Required<TableProps>['actions'] => {
   return {
@@ -41,14 +38,6 @@ export const usePlayersTableActions = ({
         imageUrl: fields[MODAL_FIELD_KEYS.IMAGE_URL].value as PlayerSchema['imageUrl'],
         sportFamilyId: props.sportFamilyId as PlayerSchema['SportFamilyId']
       }])
-    },
-    [PLAYERS_ACTIONS.DELETE]: {
-      icon: <IconDelete />,
-      isDisabled: !localState.selectedRowKeys.length,
-      shouldShowModal: true,
-      modalTitle: "Are you sure?",
-      modalSize: MODAL_SIZES.SMALL,
-      onSubmit: mutations.deletePlayers.mutate
     }
   }
 }

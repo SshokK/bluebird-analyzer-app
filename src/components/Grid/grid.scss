@@ -1,4 +1,8 @@
 .BB-grid {
+  &--overflow-auto {
+    overflow: auto;
+  }
+
   &__child {
     &--is-block {
       display: block;

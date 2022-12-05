@@ -13,6 +13,8 @@ export enum PLAYERS_TABLE_COLUMN_KEYS {
   DELETED_AT = 'deletedAt'
 }
 
+export const PLAYERS_PER_PAGE = 5;
+
 export const PLAYERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: PLAYERS_TABLE_COLUMN_KEYS.IMAGE_URL,

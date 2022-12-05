@@ -3,9 +3,9 @@ import type {TableProps} from "./Table.types";
 
 import React, {forwardRef} from "react";
 import {TableActions, TableBody, TableHeader} from "./elements";
+import {DEFAULT_TABLE_LIMIT} from "./Table.constants";
 import {useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel} from '@tanstack/react-table';
 import {useTableData, useTableHandlers, useTableLifecycle, useTableQuery} from "./hooks";
-import {TABLE_LIMIT} from "./Table.constants";
 import './table.scss';
 
 export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProps>(({
@@ -13,6 +13,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
   columns,
   areRowsSelectable,
   rowId,
+  limit = DEFAULT_TABLE_LIMIT,
   selectedRowKeys,
   onSelectedRowsChange,
   isFullWidth,
@@ -40,7 +41,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
     manualSorting: true,
     manualPagination: true,
 
-    pageCount: Math.ceil(localState.totalCount / (TABLE_LIMIT ?? 0)),
+    pageCount: Math.ceil(localState.totalCount / limit),
     enableRowSelection: areRowsSelectable,
 
     onPaginationChange: localActions.setPagination,
@@ -61,12 +62,12 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
 
   const query = useTableQuery({
     props: {
+      limit,
       queryOptions,
       queryParams
     },
     localState,
-    localActions,
-    table
+    localActions
   });
 
   useTableLifecycle({
@@ -78,6 +79,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
       <TableActions
         table={table}
         actions={actions}
+        limit={limit}
         totalCount={query.data?.totalCount}
       />
       <table className="BB-table__table">

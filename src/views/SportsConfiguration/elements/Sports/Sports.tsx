@@ -1,7 +1,6 @@
 import type {FC} from "react";
-import type {SportsProps} from "./Sports.types";
-
 import React from 'react';
+import type {SportsProps} from "./Sports.types";
 import {Actions, ACTIONS_ORIENTATIONS, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
 import {useSportsActionsConfig, useSportsData, useSportsHandlers, useSportsMutations, useSportsQueries} from "./hooks";
 import {ANIMATION_DELAY} from "./Sports.constants";
@@ -58,20 +57,22 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
               orientation={ACTIONS_ORIENTATIONS.COLUMN}
             />
           </Grid>
-          <Grid isChild isContainer spacing={GRID_SPACING.L}>
-            {queries.fetchSports.data?.map(sport => (
-              <Grid key={sport.id} isChild>
-                <Chiclet
-                  isDeletable
-                  isClickable
-                  isSelected={formattedData.sportId === sport.id}
-                  onClick={handlers.handleSportClick(sport.id)}
-                  onDelete={handlers.handleSportDelete(sport.id)}
-                >
-                  {sport.name}
-                </Chiclet>
-              </Grid>
-            ))}
+          <Grid isChild>
+            <Grid isContainer spacing={GRID_SPACING.L}>
+              {queries.fetchSports.data?.map(sport => (
+                <Grid key={sport.id} isChild>
+                  <Chiclet
+                    isDeletable
+                    isClickable
+                    isSelected={formattedData.sportId === sport.id}
+                    onClick={handlers.handleSportClick(sport.id)}
+                    onDelete={handlers.handleSportDelete(sport.id)}
+                  >
+                    {sport.name}
+                  </Chiclet>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

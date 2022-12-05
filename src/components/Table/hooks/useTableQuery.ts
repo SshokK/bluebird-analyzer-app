@@ -2,32 +2,29 @@ import type {TableProps, TableQueryFn, TableQuerySelectorReturn} from "../Table.
 import type {TableData} from "./useTableData.types";
 
 import {SORT_ORDERS} from "../../../constants/global.constants";
-import {TABLE_LIMIT} from "../Table.constants";
+import {DEFAULT_TABLE_LIMIT} from "../Table.constants";
 
 import {useQuery} from "@tanstack/react-query";
 import {useMemo} from "react";
-import {useReactTable} from "@tanstack/react-table";
 
 export const useTableQuery = ({
   props,
   localState,
   localActions,
-  table
 }: {
-  props: Pick<TableProps, 'queryOptions' | 'queryParams'>;
+  props: Pick<TableProps, 'queryOptions' | 'queryParams' | 'limit'>;
   localState: TableData['localState'];
   localActions: TableData['localActions'];
-  table: ReturnType<typeof useReactTable<object>>;
 }) => {
   const queryParams = useMemo(() => ({
-    limit: TABLE_LIMIT,
-    offset: localState.pagination.pageIndex * TABLE_LIMIT,
+    limit: props.limit ?? DEFAULT_TABLE_LIMIT,
+    offset: localState.pagination.pageIndex * (props.limit ?? DEFAULT_TABLE_LIMIT),
     ...Boolean(localState.sorting[0]) && {
       sortField: localState.sorting[0].id,
       sortOrder: localState.sorting[0].desc ? SORT_ORDERS.DESC : SORT_ORDERS.ASC
     },
     ...props.queryParams
-  }), [localState.pagination.pageIndex, localState.sorting, props.queryParams])
+  }), [localState.pagination.pageIndex, localState.sorting, props.limit, props.queryParams])
 
   return useQuery<
     Awaited<ReturnType<TableQueryFn>>,

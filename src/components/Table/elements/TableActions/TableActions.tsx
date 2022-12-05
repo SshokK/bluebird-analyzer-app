@@ -10,16 +10,18 @@ import './table-actions.scss';
 export const TableActions: FC<TableActionsProps> = ({
   table,
   actions,
+  limit,
   totalCount
 }) => {
   const { formattedData } = useTableActionsData({
     table,
+    limit,
     totalCount
   })
 
   const tableActions = useTableActions({
     props: {
-      table
+      table,
     }
   });
 

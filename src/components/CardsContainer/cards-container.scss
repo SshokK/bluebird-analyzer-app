@@ -2,7 +2,7 @@
 
 .BB-cards-container {
   &__outer-container {
-    padding: variables.$spacing-m 0 0 variables.$spacing-m;
+    padding: variables.$spacing-l 0 0 variables.$spacing-m;
     width: 100%;
 
     &--is-full-height {
@@ -68,8 +68,12 @@
       flex-wrap: nowrap;
     }
 
+    &--is-full-height {
+      height: 100%;
+    }
+
     &:not(:empty) {
-      padding: variables.$spacing-m variables.$spacing-xs variables.$spacing-xs variables.$spacing-xs;
+      padding: variables.$spacing-m variables.$spacing-xxs 0 variables.$spacing-xxs;
     }
   }
 }

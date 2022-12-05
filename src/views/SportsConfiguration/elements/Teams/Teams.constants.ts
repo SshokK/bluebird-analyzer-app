@@ -13,6 +13,8 @@ export enum TEAMS_TABLE_COLUMN_KEYS {
   DELETED_AT = 'deletedAt'
 }
 
+export const TEAMS_PER_PAGE = 5;
+
 export const TEAMS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: TEAMS_TABLE_COLUMN_KEYS.IMAGE_URL,

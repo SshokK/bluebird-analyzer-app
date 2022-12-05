@@ -7,7 +7,7 @@ import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {Loader} from "../Loader";
 import './view.scss';
 
-export const View: FC<ViewProps> = ({ title, children, isLoading, classNames }) => {
+export const View: FC<ViewProps> = ({ title, children, isLoading, isFullHeight, classNames }) => {
   return (
     <section className={classnames("BB-view", classNames?.container)}>
       {title && (
@@ -15,11 +15,13 @@ export const View: FC<ViewProps> = ({ title, children, isLoading, classNames }) 
           {title}
         </Typography>
       )}
-      <div className={classnames("BB-view__content", classNames?.content)}>
-        <Loader
-          isVisible={isLoading}
-          shouldFitContainer
-        />
+      <Loader
+        isVisible={isLoading}
+        shouldFitContainer
+      />
+      <div className={classnames("BB-view__content", classNames?.content, {
+        "BB-view__content--is-full-height": isFullHeight
+      })}>
         {children}
       </div>
     </section>

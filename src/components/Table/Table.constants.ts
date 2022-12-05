@@ -14,4 +14,4 @@ export enum COLUMN_DATA_TYPES {
 
 export const CHECKBOX_COLUMN_ID = 'checkboxColumn';
 
-export const TABLE_LIMIT = 10;
+export const DEFAULT_TABLE_LIMIT = 10;

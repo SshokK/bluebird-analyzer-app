@@ -4,7 +4,7 @@ import type {TeamsProps} from "./Teams.types";
 import React from 'react';
 import {CardsContainer, Table} from "components";
 import {useTeamsQueries, useTeamsTableQueryOptions} from './hooks';
-import {ANIMATION_DELAY, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
+import {ANIMATION_DELAY, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
 
 export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
   const queries = useTeamsQueries({
@@ -32,6 +32,7 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
       noDataMessage="Select a sport"
     >
       <Table
+        limit={TEAMS_PER_PAGE}
         columns={TEAMS_TABLE_COLUMNS}
         queryOptions={tableQueryOptions}
         queryParams={{

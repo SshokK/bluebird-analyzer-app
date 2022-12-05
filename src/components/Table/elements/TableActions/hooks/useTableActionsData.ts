@@ -1,25 +1,27 @@
 import type {TableActionsProps} from "../TableActions.types";
 
 import {useMemo} from "react";
-import {TABLE_LIMIT} from "../../../Table.constants";
+import {DEFAULT_TABLE_LIMIT} from "../../../Table.constants";
 
-export const useTableActionsData = ({ totalCount, table }: Pick<TableActionsProps, 'totalCount' | 'table'>) => {
-  const currentPageIndex = table.getState().pagination.pageIndex;
-  const nextPageIndex = 1 + table.getState().pagination.pageIndex;
-  const selectedRowsCount = Object.keys(table.getState().rowSelection).length;
+export const useTableActionsData = (props: Pick<TableActionsProps, 'totalCount' | 'table' | 'limit'>) => {
+  const currentPageIndex = props.table.getState().pagination.pageIndex;
+  const nextPageIndex = 1 + props.table.getState().pagination.pageIndex;
+  const selectedRowsCount = Object.keys(props.table.getState().rowSelection).length;
 
   const formattedData = useMemo(() => {
-    const intervalStart = 1 + currentPageIndex * TABLE_LIMIT;
-    const intervalEnd = nextPageIndex * TABLE_LIMIT > (totalCount ?? 0)
-      ? totalCount
-      : nextPageIndex * TABLE_LIMIT;
+    const limit = props.limit ?? DEFAULT_TABLE_LIMIT
+
+    const intervalStart = 1 + currentPageIndex * limit ?? DEFAULT_TABLE_LIMIT;
+    const intervalEnd = nextPageIndex * limit > (props.totalCount ?? 0)
+      ? props.totalCount
+      : nextPageIndex * limit;
 
     return {
       intervalStart,
       intervalEnd,
       selectedRowsCount
     }
-  }, [currentPageIndex, nextPageIndex, selectedRowsCount, totalCount]);
+  }, [props.limit, props.totalCount, currentPageIndex, nextPageIndex, selectedRowsCount]);
 
   return {
     formattedData

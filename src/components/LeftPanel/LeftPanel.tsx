@@ -12,7 +12,7 @@ export const LeftPanel: FC<LeftPanelProps> = ({ options, onOptionClick, onOption
 
   return (
     <nav className="BB-left-panel__container">
-      <Card isSquared classNames={{ container: "BB-left-panel__inner-container" }} elevation={0}>
+      <Card isSquared classNames={{ container: "BB-left-panel__inner-container" }} elevation={0} isFullHeight>
         <Loader isVisible={isLoading} shouldFitContainer />
         {options?.map?.((option, i) => {
           const paper = (

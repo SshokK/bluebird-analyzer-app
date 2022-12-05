@@ -2,28 +2,23 @@ import type {FC} from "react";
 import type {PlayersProps} from "./Players.types";
 
 import React from 'react';
-import {ANIMATION_DELAY, PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMNS} from "./Players.constants";
-import {CardsContainer, Table} from "components";
+import {ANIMATION_DELAY, PLAYERS_PER_PAGE, PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMNS} from "./Players.constants";
+import { CardsContainer, Table} from "components";
 import {
-  usePlayersData,
-  usePlayersQueries,
-  usePlayersTableQueryOptions,
   usePlayersMutations,
-  usePlayersTableActions
+  usePlayersQueries,
+  usePlayersTableActions,
+  usePlayersTableQueryOptions
 } from './hooks';
 
 export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
-  const { localState, localActions } = usePlayersData();
-
   const queries = usePlayersQueries({
     props: {
       sportFamilyId
     }
   });
 
-  const mutations = usePlayersMutations({
-    localState
-  })
+  const mutations = usePlayersMutations()
 
   const tableQueryOptions = usePlayersTableQueryOptions({
     props: {
@@ -35,7 +30,6 @@ export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
     props: {
       sportFamilyId
     },
-    localState,
     mutations
   })
 
@@ -54,9 +48,7 @@ export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
         columns={PLAYERS_TABLE_COLUMNS}
         actions={tableActions}
         rowId={PLAYERS_TABLE_COLUMN_KEYS.ID}
-        areRowsSelectable
-        selectedRowKeys={localState.selectedRowKeys}
-        onSelectedRowsChange={localActions.setSelectedRowKeys}
+        limit={PLAYERS_PER_PAGE}
         queryOptions={tableQueryOptions}
         queryParams={{
           sportFamilyId: sportFamilyId

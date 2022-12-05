@@ -1,13 +1,6 @@
 import React from "react";
 
-import {
-  Actions,
-  ACTIONS_ORIENTATIONS,
-  CardsContainer,
-  Chiclet,
-  Grid,
-  GRID_SPACING
-} from "components";
+import {Actions, ACTIONS_ORIENTATIONS, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
 import {
   useSportFamiliesActionsConfig,
   useSportFamiliesData,
@@ -62,20 +55,22 @@ export const SportFamilies = () => {
               orientation={ACTIONS_ORIENTATIONS.COLUMN}
             />
           </Grid>
-          <Grid isChild isContainer spacing={GRID_SPACING.L}>
-            {queries.fetchSportFamilies.data?.map(sportFamily => (
-              <Grid key={sportFamily.id} isChild>
-                <Chiclet
-                  isDeletable
-                  isClickable
-                  isSelected={formattedData.sportFamilyId === sportFamily.id}
-                  onClick={handlers.handleSportFamilyClick(sportFamily.id)}
-                  onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}
-                >
-                  {sportFamily.name}
-                </Chiclet>
-              </Grid>
-            ))}
+          <Grid isChild>
+            <Grid isContainer spacing={GRID_SPACING.L}>
+              {queries.fetchSportFamilies.data?.map(sportFamily => (
+                <Grid key={sportFamily.id} isChild>
+                  <Chiclet
+                    isDeletable
+                    isClickable
+                    isSelected={formattedData.sportFamilyId === sportFamily.id}
+                    onClick={handlers.handleSportFamilyClick(sportFamily.id)}
+                    onDelete={handlers.handleSportFamilyDelete(sportFamily.id)}
+                  >
+                    {sportFamily.name}
+                  </Chiclet>
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

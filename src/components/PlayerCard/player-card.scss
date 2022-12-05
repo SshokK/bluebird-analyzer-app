@@ -1,0 +1,7 @@
+@use "src/styles/variables";
+
+.BB-player-card {
+  &__container {
+    padding: 0 variables.$spacing-m variables.$spacing-m variables.$spacing-m;
+  }
+}

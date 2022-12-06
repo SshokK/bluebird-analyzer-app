@@ -29,3 +29,26 @@ export type FetchTeamsResponse = {
   totalCount: number;
 }
 export type FetchTeams = (...args: FetchTeamsPayload) => Promise<FetchTeamsResponse>;
+
+
+export type CreateTeamPayload = [{
+  name: TeamSchema['name'];
+  sportId: TeamSchema['SportId'];
+  imageUrl?: TeamSchema['imageUrl'];
+}]
+export type CreateTeamResponse = TeamSchema;
+export type CreateTeam = (...args: CreateTeamPayload) => Promise<CreateTeamResponse>
+
+
+
+export type DeleteTeamPayload = [teamId: TeamSchema['id']]
+export type DeleteTeamResponse = void;
+export type DeleteTeam = (...args: DeleteTeamPayload) => Promise<DeleteTeamResponse>
+
+
+export type UpdateTeamPayload = [teamId: TeamSchema['id'], body: {
+  name?: TeamSchema['name'];
+  imageUrl?: TeamSchema['imageUrl'];
+}]
+export type UpdateTeamResponse = TeamSchema;
+export type UpdateTeam = (...args: UpdateTeamPayload) => Promise<UpdateTeamResponse>

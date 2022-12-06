@@ -1,14 +1,12 @@
-import type {useLocation} from "react-router";
-
 import queryString from 'query-string';
 
-export const formatRedirectUrl = ({ path, params = {}, shouldKeepExistingParams = false, location }: {
+export const formatRedirectUrl = ({ path, params = {}, shouldKeepExistingParams = false, searchString }: {
   path: string;
   params?: Record<string, unknown>;
   shouldKeepExistingParams?: boolean;
-  location?: ReturnType<typeof useLocation>
+  searchString?: string;
 }) => {
-  const existingParams = queryString.parse(location?.search ?? '');
+  const existingParams = queryString.parse(searchString ?? '');
 
   const queryParams = {
     ...shouldKeepExistingParams && existingParams,

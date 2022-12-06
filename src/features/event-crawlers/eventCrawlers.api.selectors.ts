@@ -2,13 +2,13 @@ import type {FetchEventCrawlers} from "./eventCrawlers.api.types";
 import type { TableQuerySelectorReturn} from "../../components";
 import type {ReactNode} from "react";
 
-import { EVENT_CRAWLERS_TABLE_COLUMN_KEYS } from "views/SportsConfiguration/elements/Crawlers/Crawlers.constants";
+import { EVENT_CRAWLERS_TABLE_COLUMN_KEYS } from "views/Crawlers/elements/BookmakersCrawlers/elements/EventCrawlers/EventCrawlers.constants";
 
 export const formatEventCrawlersForTable = (response: Awaited<ReturnType<FetchEventCrawlers>>): TableQuerySelectorReturn => {
   return {
     rows: response.results.map((eventCrawler): Record<Exclude<EVENT_CRAWLERS_TABLE_COLUMN_KEYS, EVENT_CRAWLERS_TABLE_COLUMN_KEYS.ACTIONS>, ReactNode> => ({
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.ID]: eventCrawler.id,
-      [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.BOOKMAKER_NAME]: eventCrawler.Bookmaker?.name,
+      [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.SPORT_NAME]: eventCrawler.Sport.name,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.NAME]: eventCrawler.Crawler.name,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.TARGET_URL]: eventCrawler.Crawler.targetUrl,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.STATUS]: eventCrawler.Crawler.status,

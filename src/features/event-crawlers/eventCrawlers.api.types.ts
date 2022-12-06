@@ -19,11 +19,10 @@ export type EventCrawlerSchema = {
   Bookmaker?: BookmakerSchema;
 }
 
-
 export type FetchEventCrawlersPayload = [params: {
   name?: CrawlerSchema['name'];
-  SportId?: EventCrawlerSchema['SportId'];
-  BookmakerId?: EventCrawlerSchema['BookmakerId'];
+  sportId?: EventCrawlerSchema['SportId'];
+  bookmakerId?: EventCrawlerSchema['BookmakerId'];
 
   limit?: number;
   offset?: number;
@@ -31,7 +30,7 @@ export type FetchEventCrawlersPayload = [params: {
   sortOrder?: SORT_ORDERS;
 }]
 export type FetchEventCrawlersResponse = {
-  results: WithRequiredProperty<Omit<EventCrawlerSchema, 'Sport'>, 'Crawler'>[],
+  results: WithRequiredProperty<EventCrawlerSchema, 'Crawler' | 'Sport'>[],
   totalCount: number;
 };
 export type FetchEventCrawlers = (...args: FetchEventCrawlersPayload) => Promise<FetchEventCrawlersResponse>

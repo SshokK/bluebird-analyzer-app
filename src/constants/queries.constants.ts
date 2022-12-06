@@ -3,9 +3,10 @@ export enum QUERY_KEYS {
   SPORT_FAMILIES = 'sportFamilies',
   EVENTS = 'events',
   COEFFICIENTS = 'coefficients',
-  CRAWLERS = 'crawlers',
+  EVENT_CRAWLERS = 'eventCrawlers',
   REGIONS = 'regions',
   PROXIES = 'proxies',
   TEAMS = 'teams',
-  PLAYERS = 'players'
+  PLAYERS = 'players',
+  BOOKMAKERS = 'bookmakers'
 }

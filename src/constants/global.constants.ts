@@ -11,6 +11,7 @@ export enum ROUTES {
   DASHBOARD = 'dashboard',
   SPORT_FAMILY_EVENTS = 'sport-family-events',
   SPORTS_CONFIGURATION = 'sports-configuration',
+  CRAWLERS = 'crawlers',
   PROXIES = 'proxies'
 }
 

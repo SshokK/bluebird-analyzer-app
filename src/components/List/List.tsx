@@ -29,7 +29,9 @@ export const List: FC<ListProps> = (props) => {
   })
 
   return (
-    <div className={classnames('BB-list__container', props.classNames?.container)}>
+    <div className={classnames('BB-list__container', props.classNames?.container, {
+      'BB-list__container--is-full-width': props.isFullWidth
+    })}>
       {props.actions && (
         <Actions
           actions={props.actions}
@@ -42,7 +44,9 @@ export const List: FC<ListProps> = (props) => {
       <MUIList
         disablePadding
         classes={{
-          root: classnames('BB-list', props.classNames?.list)
+          root: classnames('BB-list', props.classNames?.list, {
+            'BB-list--is-full-width': props.isFullWidth
+          })
         }}
       >
         {props.options?.map?.(option => {
@@ -51,7 +55,11 @@ export const List: FC<ListProps> = (props) => {
           return (
             <MUIListItem
               key={String(option.key)}
-              classes={{ root: 'BB-list__option' }}
+              classes={{
+                root: classnames('BB-list__option', {
+                  'BB-list__option--is-selected': isSelected
+                })
+              }}
               disablePadding
             >
               <MUIListItemButton

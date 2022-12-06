@@ -1,6 +1,6 @@
 import React from 'react';
 import {ErrorBoundary, Grid, GRID_ALIGN_ITEMS, GRID_DIRECTION, GRID_SPACING, View} from "components";
-import {Crawlers, Players, SportFamilies, Sports, Teams} from "./elements";
+import { Players, SportFamilies, Sports, Teams} from "./elements";
 import {useSportsConfigurationData} from "./hooks";
 
 export const SportsConfiguration = () => {
@@ -45,11 +45,6 @@ export const SportsConfiguration = () => {
                   sportId={formattedData.sportId}
                 />
               </Grid>
-            </Grid>
-          )}
-          {formattedData.sportFamilyId && formattedData.sportId && (
-            <Grid isChild>
-              <Crawlers sportFamilyId={formattedData.sportFamilyId} sportId={formattedData.sportId} />
             </Grid>
           )}
         </Grid>

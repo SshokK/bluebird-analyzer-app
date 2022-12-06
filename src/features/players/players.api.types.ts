@@ -33,14 +33,20 @@ export type FetchPlayers = (...args: FetchPlayersPayload) => Promise<FetchPlayer
 export type CreatePlayerPayload = [{
   name: PlayerSchema['name'];
   sportFamilyId: PlayerSchema['SportFamilyId'];
-  imageUrl?: PlayerSchema['imageUrl'] | null;
+  imageUrl?: PlayerSchema['imageUrl'];
 }]
 export type CreatePlayerResponse = PlayerSchema;
 export type CreatePlayer = (...args: CreatePlayerPayload) => Promise<CreatePlayerResponse>
 
 
-export type DeletePlayersPayload = [{
-  playerIds: PlayerSchema['id'][]
+export type DeletePlayerPayload = [playerId: PlayerSchema['id']]
+export type DeletePlayerResponse = void;
+export type DeletePlayer = (...args: DeletePlayerPayload) => Promise<DeletePlayer>
+
+
+export type UpdatePlayerPayload = [playerId: PlayerSchema['id'], body: {
+  name?: PlayerSchema['name'];
+  imageUrl?: PlayerSchema['imageUrl'];
 }]
-export type DeletePlayersResponse = void;
-export type DeletePlayers = (...args: DeletePlayersPayload) => Promise<DeletePlayersResponse>
+export type UpdatePlayerResponse = PlayerSchema;
+export type UpdatePlayer = (...args: UpdatePlayerPayload) => Promise<UpdatePlayerResponse>

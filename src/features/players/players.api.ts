@@ -18,10 +18,17 @@ export const createPlayer: apiTypes.CreatePlayer = (data) => {
   })
 }
 
-export const deletePlayers: apiTypes.DeletePlayers = (params) => {
+export const updatePlayer: apiTypes.UpdatePlayer = (playerId, data) => {
   return fetch({
-    url: `/api/v1/players`,
-    method: 'DELETE',
-    params
+    url: `/api/v1/players/${playerId}`,
+    method: 'PATCH',
+    data
+  })
+}
+
+export const deletePlayer: apiTypes.DeletePlayer = (playerId) => {
+  return fetch({
+    url: `/api/v1/players/${playerId}`,
+    method: 'DELETE'
   })
 }

@@ -14,6 +14,7 @@ export type ListProps = {
   selectedOptionKeys?: ListOption['key'][];
   onSelectedOptionsChange?: (options: ListOption[]) => void;
   isMulti?: boolean;
+  isFullWidth?: boolean;
   actions?: ActionsProps['actions'];
   classNames?: {
     container?: string;

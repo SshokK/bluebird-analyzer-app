@@ -6,7 +6,7 @@ import {PLAYERS_TABLE_COLUMN_KEYS} from "../../views/SportsConfiguration/element
 
 export const formatPlayersForTable = (response: Awaited<ReturnType<typeof api.fetchPlayers>>): TableQuerySelectorReturn => {
   return {
-    rows: response.results.map((player): Record<PLAYERS_TABLE_COLUMN_KEYS, ReactNode> => ({
+    rows: response.results.map((player): Record<Exclude<PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMN_KEYS.ACTIONS>, ReactNode> => ({
       [PLAYERS_TABLE_COLUMN_KEYS.ID]: player.id,
       [PLAYERS_TABLE_COLUMN_KEYS.NAME]: player.name,
       [PLAYERS_TABLE_COLUMN_KEYS.IMAGE_URL]: player.imageUrl,

@@ -9,3 +9,26 @@ export const fetchTeams: apiTypes.FetchTeams = (params) => {
     params
   })
 }
+
+export const createTeam: apiTypes.CreateTeam = (data) => {
+  return fetch({
+    url: '/api/v1/teams',
+    method: 'POST',
+    data
+  })
+}
+
+export const updateTeam: apiTypes.UpdateTeam = (teamId, data) => {
+  return fetch({
+    url: `/api/v1/teams/${teamId}`,
+    method: 'PATCH',
+    data
+  })
+}
+
+export const deleteTeam: apiTypes.DeleteTeam = (teamId) => {
+  return fetch({
+    url: `/api/v1/teams/${teamId}`,
+    method: 'DELETE'
+  })
+}

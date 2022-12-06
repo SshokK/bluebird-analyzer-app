@@ -1,3 +1,3 @@
 export type QueryProviderHandlers = {
-  handleNetworkError: (e: unknown) => void
+  handleError: (e: unknown) => void
 }

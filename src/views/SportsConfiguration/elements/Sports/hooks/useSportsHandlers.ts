@@ -74,7 +74,7 @@ export const useSportsHandlers = ({
     navigate(utils.formatRedirectUrl({
       path: '',
       shouldKeepExistingParams: true,
-      location,
+      searchString: location.search,
       params: {
         [QUERY_PARAMS.SPORT_ID]: sportId
       }

@@ -1,6 +1,7 @@
 import type {TableProps} from "components";
 
 import {COLUMN_DATA_TYPES, COLUMN_TYPES} from "components";
+import {ActionsCell} from "./elements";
 
 export const ANIMATION_DELAY = 800;
 
@@ -10,7 +11,8 @@ export enum PLAYERS_TABLE_COLUMN_KEYS {
   IMAGE_URL = 'imageUrl',
   CREATED_AT = 'createdAt',
   UPDATED_AT = 'updatedAt',
-  DELETED_AT = 'deletedAt'
+  DELETED_AT = 'deletedAt',
+  ACTIONS = 'actions'
 }
 
 export const PLAYERS_PER_PAGE = 5;
@@ -48,6 +50,11 @@ export const PLAYERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.DATE_TIME,
     isSortable: true
+  },
+  {
+    key: PLAYERS_TABLE_COLUMN_KEYS.ACTIONS,
+    type: COLUMN_TYPES.DISPLAY_COLUMN,
+    CellComponent: ActionsCell
   }
 ]
 

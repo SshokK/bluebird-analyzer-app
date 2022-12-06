@@ -27,7 +27,7 @@ export const useRegionalProxiesHandlers = ({
         [QUERY_PARAMS.REGION_ID]: regionId
       },
       shouldKeepExistingParams: true,
-      location
+      searchString: location.search
     }), {
       relative: 'route',
       replace: true

@@ -3,7 +3,7 @@ import type {TeamsProps} from "./Teams.types";
 
 import React from 'react';
 import {CardsContainer, Table} from "components";
-import {useTeamsQueries, useTeamsTableQueryOptions} from './hooks';
+import {useTeamsMutations, useTeamsQueries, useTeamsTableActions, useTeamsTableQueryOptions} from './hooks';
 import {ANIMATION_DELAY, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
 
 export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
@@ -12,13 +12,22 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
       sportFamilyId,
       sportId
     }
-  })
+  });
+
+  const mutations = useTeamsMutations();
 
   const tableQueryOptions = useTeamsTableQueryOptions({
     props: {
       sportId
     }
   });
+
+  const tableActions = useTeamsTableActions({
+    props: {
+      sportId
+    },
+    mutations
+  })
 
   return (
     <CardsContainer
@@ -32,6 +41,7 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
       noDataMessage="Select a sport"
     >
       <Table
+        actions={tableActions}
         limit={TEAMS_PER_PAGE}
         columns={TEAMS_TABLE_COLUMNS}
         queryOptions={tableQueryOptions}

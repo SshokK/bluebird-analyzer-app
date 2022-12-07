@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid, GRID_HEIGHT, Separator, Typography, TYPOGRAPHY_TYPES} from "components";
+import {ErrorBoundary, Grid, GRID_HEIGHT, Separator} from "components";
 import {EventCrawlers, Bookmakers} from "./elements";
 import {useBookmakersCrawlersData} from "./hooks";
 
@@ -7,20 +7,20 @@ export const BookmakersCrawlers = () => {
   const { localState, localActions } = useBookmakersCrawlersData();
 
   return (
-    <Grid isContainer isWrapDisabled>
-      <Grid isChild xs={3} height={GRID_HEIGHT.XL}>
-        <Bookmakers onSelectedBookmakerChange={localActions.setBookmakerId} />
-      </Grid>
-      <Grid isChild xs={1} height={GRID_HEIGHT.XL}>
-        <Separator isVertical>
-          <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
+    <ErrorBoundary>
+      <Grid isContainer isWrapDisabled>
+        <Grid isChild xs={4} height={GRID_HEIGHT.XXXL}>
+          <Bookmakers onSelectedBookmakerChange={localActions.setBookmakerId} />
+        </Grid>
+        <Grid isChild xs={1} height={GRID_HEIGHT.XXXL}>
+          <Separator isVertical>
             Crawlers
-          </Typography>
-        </Separator>
+          </Separator>
+        </Grid>
+        <Grid isChild xs={8} height={GRID_HEIGHT.XXXL}>
+          <EventCrawlers bookmakerId={localState.bookmakerId} />
+        </Grid>
       </Grid>
-      <Grid isChild xs={9} height={GRID_HEIGHT.XL}>
-        <EventCrawlers bookmakerId={localState.bookmakerId} />
-      </Grid>
-    </Grid>
+    </ErrorBoundary>
   )
 }

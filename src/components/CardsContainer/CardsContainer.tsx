@@ -2,6 +2,7 @@ import type {CardsContainerProps} from "./CardsContainer.types";
 import type {FC} from 'react';
 
 import React from 'react';
+import {CARDS_CONTAINER_ORIENTATIONS} from "./CardsContainer.constants";
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
 import classnames from 'classnames';
 import {Animation, ANIMATION_TYPES, Card, Loader} from "components";
@@ -15,9 +16,10 @@ export const CardsContainer: FC<CardsContainerProps> = ({
   isAnimated,
   animationDelay,
   shouldShowNoDataMessage,
-  shouldDisableWrap,
+  isWrapDisabled,
   noDataMessage,
   isFullHeight,
+  orientation,
   classNames
 }) => {
   const content = (
@@ -53,7 +55,8 @@ export const CardsContainer: FC<CardsContainerProps> = ({
         )}
         {!shouldShowNoDataMessage && children && (
           <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
-            "BB-cards-container__cards-container--is-wrap-disabled": shouldDisableWrap,
+            "BB-cards-container__cards-container--is-wrap-disabled": isWrapDisabled,
+            "BB-cards-container__cards-container--id-column": orientation === CARDS_CONTAINER_ORIENTATIONS.COLUMN,
             "BB-cards-container__cards-container--is-full-height": isFullHeight
           })}>
             {children}

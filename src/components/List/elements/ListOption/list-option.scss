@@ -1,0 +1,19 @@
+@use "src/styles/variables";
+
+.BB-list-option {
+  border-left: variables.$border-secondary-1-l;
+  background-color: #{variables.$primary-color-5}10;
+  transition: variables.$animation-time-very-short;
+
+  &__label {
+    color: variables.$secondary-color-4;
+  }
+
+  &--is-selected {
+    border-left: variables.$border-primary-1-l;
+
+    .BB-list-option__label {
+      color: variables.$secondary-color-5;
+    }
+  }
+}

@@ -2,17 +2,12 @@ import type {ListProps} from "./List.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {ICON_BUTTON_GROUP_ORIENTATIONS} from "../IconButtonGroup";
-import {
-  List as MUIList,
-  ListItem as MUIListItem,
-  ListItemButton as MUIListItemButton,
-  ListItemIcon as MUIListItemIcon,
-  ListItemText as MUIListItemTExt
-} from '@mui/material';
-import {Actions} from "../Actions";
+import * as MUI from '@mui/material';
+import {Actions, ACTIONS_ORIENTATIONS} from "../Actions";
 import classnames from 'classnames';
 import {useListData, useListHandlers, useListLifecycle} from "./hooks";
+import {ListOption} from "./elements";
+import {Grid, GRID_DIRECTION, GRID_JUSTIFY_CONTENT, GRID_SPACING} from "../Grid";
 import './list.scss';
 
 export const List: FC<ListProps> = (props) => {
@@ -29,60 +24,50 @@ export const List: FC<ListProps> = (props) => {
   })
 
   return (
-    <div className={classnames('BB-list__container', props.classNames?.container, {
-      'BB-list__container--is-full-width': props.isFullWidth
-    })}>
-      {props.actions && (
-        <Actions
-          actions={props.actions}
-          orientation={ICON_BUTTON_GROUP_ORIENTATIONS.COLUMN}
-          classNames={{
-            container: props.classNames?.actions
-          }}
-        />
-      )}
-      <MUIList
-        disablePadding
-        classes={{
-          root: classnames('BB-list', props.classNames?.list, {
-            'BB-list--is-full-width': props.isFullWidth
-          })
-        }}
-      >
-        {props.options?.map?.(option => {
-          const isSelected = Boolean(localState.selectedOptions.find(({ key }) => key === option.key))
+    <Grid
+      isContainer
+      direction={GRID_DIRECTION.COLUMN}
+      spacing={GRID_SPACING.L}
+      classNames={{
+        container: classnames('BB-list__container', props.classNames?.container, {
+          'BB-list__container--is-full-width': props.isFullWidth
+        })
+      }}
+    >
+      <Grid isChild isContainer justifyContent={GRID_JUSTIFY_CONTENT.FLEX_END}>
+        <Actions actions={props.secondaryActions ?? {}} orientation={ACTIONS_ORIENTATIONS.ROW} />
+      </Grid>
+      <Grid isChild isContainer spacing={GRID_SPACING.L}>
+        <Grid isChild xs="auto">
+          <Actions actions={props.primaryActions ?? {}} orientation={ACTIONS_ORIENTATIONS.COLUMN} />
+        </Grid>
+        <Grid isChild xs>
+          <MUI.List
+            disablePadding
+            classes={{
+              root: classnames('BB-list', props.classNames?.list, {
+                'BB-list--is-full-width': props.isFullWidth
+              })
+            }}
+          >
+            {props.options?.map?.(option => {
+              const isSelected = Boolean(localState.selectedOptions.find(({ key }) => key === option.key))
 
-          return (
-            <MUIListItem
-              key={String(option.key)}
-              classes={{
-                root: classnames('BB-list__option', {
-                  'BB-list__option--is-selected': isSelected
-                })
-              }}
-              disablePadding
-            >
-              <MUIListItemButton
-                selected={isSelected}
-                onClick={handlers.handleOptionClick({
-                  option,
-                  isSelected
-                })}
-              >
-                {option.icon && (
-                  <MUIListItemIcon>
-                    {option.icon}
-                  </MUIListItemIcon>
-                )}
-                <MUIListItemTExt
-                  primary={option.label}
-                  secondary={option.caption}
+              return (
+                <ListOption
+                  key={String(option.key)}
+                  option={option}
+                  isSelected={Boolean(localState.selectedOptions.find(({ key }) => key === option.key))}
+                  onClick={handlers.handleOptionClick({
+                    option,
+                    isSelected
+                  })}
                 />
-              </MUIListItemButton>
-            </MUIListItem>
-          )
-        })}
-      </MUIList>
-    </div>
+              )
+            })}
+          </MUI.List>
+        </Grid>
+      </Grid>
+    </Grid>
   )
 }

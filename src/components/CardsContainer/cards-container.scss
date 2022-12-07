@@ -48,7 +48,7 @@
     padding-top: variables.$spacing-m;
     display: flex;
     justify-content: center;
-    color: variables.$secondary-color-4;
+    color: variables.$secondary-color-1;
     height: 100%;
 
     &--without-padding {
@@ -74,6 +74,10 @@
 
     &--is-full-height {
       height: 100%;
+    }
+
+    &--id-column {
+      flex-direction: column;
     }
 
     &:not(:empty) {

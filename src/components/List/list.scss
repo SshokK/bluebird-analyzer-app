@@ -18,13 +18,4 @@
       width: 100%;
     }
   }
-
-  &__option {
-    border-left: variables.$border-secondary-1-xl;
-    transition: variables.$animation-time-very-short;
-
-    &--is-selected {
-      border-left: variables.$border-primary-1-xl;
-    }
-  }
 }

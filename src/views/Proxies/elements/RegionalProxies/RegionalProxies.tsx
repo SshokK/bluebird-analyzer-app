@@ -1,14 +1,13 @@
 import type {FC} from "react";
-
 import React from 'react';
-import {CardsContainer, ErrorBoundary, List, Separator} from "components";
+import {CardsContainer, ErrorBoundary, Grid, List, Separator} from "components";
 import {RegionProxies} from "./elements";
 import {
   useRegionalProxiesActions,
   useRegionalProxiesData,
   useRegionalProxiesHandlers,
-  useRegionalProxiesQueries,
-  useRegionalProxiesMutations
+  useRegionalProxiesMutations,
+  useRegionalProxiesQueries
 } from "./hooks";
 import './regional-proxies.scss';
 
@@ -40,22 +39,27 @@ export const RegionalProxies: FC = () => {
       <CardsContainer
         title="Regions"
         isLoading={queries.fetchRegions.isLoading}
-        shouldDisableWrap
+        isWrapDisabled
         classNames={{
           cardsContainer: 'BB-regional-proxies'
         }}
       >
-        <List
-          actions={regionsActions}
-          options={queries.fetchRegions.data}
-          selectedOptionKeys={formattedData.regionId ? [formattedData.regionId] : []}
-          onSelectedOptionsChange={handlers.handleSelectedRegionOptionChange}
-          classNames={{
-            list: 'BB-regional-proxies__list'
-          }}
-        />
-        <Separator isVertical />
-        <RegionProxies regionId={formattedData.regionId} />
+        <Grid isContainer isWrapDisabled>
+          <Grid isChild xs={4}>
+            <List
+              primaryActions={regionsActions}
+              options={queries.fetchRegions.data}
+              selectedOptionKeys={formattedData.regionId ? [formattedData.regionId] : []}
+              onSelectedOptionsChange={handlers.handleSelectedRegionOptionChange}
+            />
+          </Grid>
+          <Separator isVertical>
+            Proxies
+          </Separator>
+          <Grid isChild xs={7}>
+            <RegionProxies regionId={formattedData.regionId} />
+          </Grid>
+        </Grid>
       </CardsContainer>
     </ErrorBoundary>
   )

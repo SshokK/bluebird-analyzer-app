@@ -8,9 +8,7 @@ export const SportsConfiguration = () => {
 
   return (
     <ErrorBoundary>
-      <View
-        title="Sports configuration"
-      >
+      <View>
         <Grid
           isContainer
           direction={GRID_DIRECTION.COLUMN}

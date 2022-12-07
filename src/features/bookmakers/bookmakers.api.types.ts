@@ -3,6 +3,7 @@ import type {SORT_ORDERS} from "constants/global.constants";
 export type BookmakerSchema = {
   id: number;
   name: string;
+  imageUrl: string | null;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;

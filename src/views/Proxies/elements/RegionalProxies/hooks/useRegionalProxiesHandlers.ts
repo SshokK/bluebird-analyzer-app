@@ -37,9 +37,7 @@ export const useRegionalProxiesHandlers = ({
   const handleSelectedRegionOptionChange: RegionalProxiesHandlers['handleSelectedRegionOptionChange'] = (options) => {
     const selectedRegionId = options.pop?.()?.key as RegionSchema['id'];
 
-    if (selectedRegionId) {
-      handleSelectedRegionChange(selectedRegionId ?? null);
-    }
+    handleSelectedRegionChange(selectedRegionId ?? null);
   }
 
   const handleRegionsFetchSuccess: RegionalProxiesHandlers['handleRegionsFetchSuccess'] = (regionOptions) => {

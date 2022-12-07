@@ -1,4 +1,5 @@
 import type {ReactNode} from "react";
+import type {CARDS_CONTAINER_ORIENTATIONS} from "./CardsContainer.constants";
 
 export type CardsContainerProps = {
   title?: ReactNode;
@@ -8,9 +9,10 @@ export type CardsContainerProps = {
   isAnimated?: boolean;
   animationDelay?: number;
   shouldShowNoDataMessage?: boolean;
-  shouldDisableWrap?: boolean;
+  isWrapDisabled?: boolean;
   isFullHeight?: boolean;
   noDataMessage?: ReactNode;
+  orientation?: CARDS_CONTAINER_ORIENTATIONS;
   classNames?: {
     outerContainer?: string;
     container?: string;

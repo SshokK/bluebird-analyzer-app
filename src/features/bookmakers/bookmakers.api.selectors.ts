@@ -7,6 +7,8 @@ export const formatBookmakersForList = (
 ): ListProps['options'] => {
   return response.map(bookmaker => ({
     key: bookmaker.id,
-    label: bookmaker.name
+    label: bookmaker.name,
+    imageSrc: bookmaker.imageUrl ?? '',
+    imageAlt: bookmaker.name
   }))
 }

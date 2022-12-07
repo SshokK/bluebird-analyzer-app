@@ -6,6 +6,8 @@ export type ListOption = {
   label?: ReactNode;
   caption?: ReactNode;
   icon?: ReactNode;
+  imageSrc?: string;
+  imageAlt?: string;
   [key: string]: unknown;
 }
 
@@ -15,7 +17,8 @@ export type ListProps = {
   onSelectedOptionsChange?: (options: ListOption[]) => void;
   isMulti?: boolean;
   isFullWidth?: boolean;
-  actions?: ActionsProps['actions'];
+  primaryActions?: ActionsProps['actions'];
+  secondaryActions?: ActionsProps['actions'];
   classNames?: {
     container?: string;
     actions?: string;

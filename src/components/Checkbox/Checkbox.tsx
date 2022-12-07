@@ -1,8 +1,7 @@
 import type {FC} from "react";
-import type {CheckboxProps} from "./Checkbox.types";
-
 import React from 'react';
-import { Checkbox as MUICheckbox, FormControlLabel as MUIFormControlLabel } from '@mui/material';
+import type {CheckboxProps} from "./Checkbox.types";
+import {Checkbox as MUICheckbox, FormControlLabel as MUIFormControlLabel} from '@mui/material';
 import classnames from 'classnames';
 import './checkbox.scss';
 

@@ -17,17 +17,13 @@ export const useBookmakersHandlers = ({
   const { onSelectedBookmakerChange } = props;
 
   const handleBookmakerIdChange: BookmakersHandlers['handleBookmakerIdChange'] = useCallback(() => {
-    if (localState.bookmakerId) {
-      onSelectedBookmakerChange(localState.bookmakerId);
-    }
+    onSelectedBookmakerChange(localState.bookmakerId);
   }, [localState.bookmakerId, onSelectedBookmakerChange])
 
   const handleBookmakersChange: BookmakersHandlers['handleBookmakersChange'] = (options) => {
     const selectedBookmakerId = options.pop?.()?.key as BookmakerSchema['id'];
 
-    if (selectedBookmakerId) {
-      localActions.setBookmakerId(selectedBookmakerId);
-    }
+    localActions.setBookmakerId(selectedBookmakerId ?? null);
   }
 
   return {

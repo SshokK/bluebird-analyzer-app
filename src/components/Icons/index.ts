@@ -22,3 +22,8 @@ export * from './IconError';
 export * from './IconNetworkError';
 export * from './IconAddImage';
 export * from './IconAddFile';
+export * from './IconSort';
+export * from './IconFilter';
+export * from './IconCheckboxEmpty';
+export * from './IconCheckboxSelected';
+export * from './IconCheckboxIntermediate';

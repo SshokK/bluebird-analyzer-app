@@ -1,5 +1,12 @@
 @use "src/styles/variables";
 
-.BB-separator.BB-separator {
-  border-color: #{variables.$primary-color-5}90;
+.BB-separator {
+  &.BB-separator {
+    border-color: #{variables.$primary-color-5}90;
+  }
+
+  &__text {
+    color: variables.$secondary-color-1;
+    display: block;
+  }
 }

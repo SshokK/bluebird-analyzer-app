@@ -5,7 +5,7 @@ import { BookmakersCrawlers} from "./elements";
 export const Crawlers = () => {
   return (
     <ErrorBoundary>
-      <View title="Crawlers">
+      <View>
         <BookmakersCrawlers />
       </View>
     </ErrorBoundary>

@@ -1,7 +1,7 @@
 import type {FC} from "react";
-import React from 'react';
-
 import type {IconButtonProps} from "./IconButton.types";
+
+import React from 'react';
 import {Button as MUIButton} from '@mui/material';
 import classnames from 'classnames';
 import {ICON_BUTTON_SIZES, ICON_BUTTON_TYPES} from "./IconButton.constants";
@@ -13,6 +13,7 @@ export const IconButton: FC<IconButtonProps> = ({
   icon,
   isDisabled,
   isSquared,
+  isPressed,
   onClick,
   classNames
 }) => {
@@ -27,6 +28,7 @@ export const IconButton: FC<IconButtonProps> = ({
           [`BB-icon-button--${type ?? ICON_BUTTON_TYPES.PRIMARY}`]: true,
           [`BB-icon-button--${size ?? ICON_BUTTON_SIZES.MEDIUM}`]: true,
           "BB-icon-button--is-squared": isSquared,
+          "BB-icon-button--is-pressed": isPressed,
         }),
         startIcon: classnames("BB-icon-button__icon", classNames?.icon)
       }}

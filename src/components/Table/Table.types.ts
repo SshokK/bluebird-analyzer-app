@@ -40,6 +40,8 @@ export type TableQueryOptions = Omit<UseQueryOptions<Awaited<ReturnType<TableQue
 
 export type TableProps = {
   isLoading?: boolean;
+  isAnimated?: boolean;
+  animationDelay?: number;
   columns?: TableColumn[];
   areRowsSelectable?: boolean;
   rowId?: unknown;
@@ -49,7 +51,6 @@ export type TableProps = {
   queryOptions?: TableQueryOptions;
   queryParams?: Record<string, unknown>;
   isFullWidth?: boolean;
-  isAutoPaginationEnabled?: boolean;
   noDataMessage?: string;
   actions?: ActionsProps['actions'];
 }

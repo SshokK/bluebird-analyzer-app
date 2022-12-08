@@ -1,0 +1,14 @@
+@use 'src/styles/variables';
+
+.BB-dropdown {
+  padding: variables.$spacing-m;
+  margin: variables.$spacing-s;
+
+  &__trigger-content-wrapper {
+    display: inline-flex;
+  }
+
+  &__backdrop.BB-dropdown__backdrop {
+    background-color: #{variables.$secondary-color-4}20;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Actions, ACTIONS_ORIENTATIONS, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
+import {Actions, CardsContainer, Chiclet, Grid, GRID_DIRECTION, GRID_SPACING} from "components";
 import {
   useSportFamiliesActionsConfig,
   useSportFamiliesData,
@@ -52,7 +52,7 @@ export const SportFamilies = () => {
           <Grid isChild>
             <Actions
               actions={actionsConfig}
-              orientation={ACTIONS_ORIENTATIONS.COLUMN}
+              direction={GRID_DIRECTION.COLUMN}
             />
           </Grid>
           <Grid isChild>

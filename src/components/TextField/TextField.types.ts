@@ -9,6 +9,7 @@ export type TextFieldProps = {
   label?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
+  shouldEnableAutoFocus?: boolean;
   shouldEnableAutoComplete?: boolean;
   inputProps?: MUITextFieldProps['inputProps'];
   classNames?: {

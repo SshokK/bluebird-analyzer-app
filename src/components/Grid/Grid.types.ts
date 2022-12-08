@@ -15,6 +15,7 @@ export type GridProps = {
   columnSpacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;
   columns?: Partial<Record<GRID_DEVICE_SCREEN, ArrayItem<typeof GRID_COLUMNS>>> | ArrayItem<typeof GRID_COLUMNS>;
   isWrapDisabled?: boolean;
+  isShrinkDisabled?: boolean;
   isContainer?: boolean;
   isChild?: boolean;
   childDisplay?: GRID_CHILD_DISPLAY;

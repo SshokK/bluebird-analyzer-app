@@ -16,11 +16,19 @@ export const useActionsHandlers = ({
       localActions.setOpenedModalKey(actionKey);
     }
 
+    if (action.shouldShowDropdown) {
+      localActions.setOpenedDropdownKey(actionKey);
+    }
+
     action.onClick?.(action);
   }
 
   const handleModalClose: ActionsHandlers['handleModalClose'] = () => {
     localActions.setOpenedModalKey(null);
+  }
+
+  const handleDropdownClose: ActionsHandlers['handleDropdownClose'] = () => {
+    localActions.setOpenedDropdownKey(null);
   }
 
   const handleModalSubmit: ActionsHandlers['handleModalSubmit'] = (actionKey) => async (fields) => {
@@ -35,6 +43,7 @@ export const useActionsHandlers = ({
   return {
     handleClick,
     handleModalClose,
+    handleDropdownClose,
     handleModalSubmit
   }
 }

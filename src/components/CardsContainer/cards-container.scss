@@ -26,24 +26,6 @@
     }
   }
 
-  &__title-container {
-    display: flex;
-    align-items: center;
-    column-gap: variables.$spacing-m;
-    position: absolute;
-    top: -#{variables.$spacing-m};
-    left: -#{variables.$spacing-m};
-    z-index: variables.$elevation-low + 1;
-  }
-
-  &__title {
-    background-color: variables.$primary-color-6;
-    color: variables.$primary-color-2;
-    padding: variables.$spacing-xxs variables.$spacing-s;
-    box-shadow: variables.$shadow-center-m;
-    display: block;
-  }
-
   &__no-data-message {
     padding-top: variables.$spacing-m;
     display: flex;

@@ -1,12 +1,12 @@
 import type {CardsContainerProps} from "./CardsContainer.types";
 import type {FC} from 'react';
-
 import React from 'react';
 import {CARDS_CONTAINER_ORIENTATIONS} from "./CardsContainer.constants";
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
 import classnames from 'classnames';
 import {Animation, ANIMATION_TYPES, Card, Loader} from "components";
 import './cards-container.scss';
+import {Title} from "./elements";
 
 export const CardsContainer: FC<CardsContainerProps> = ({
   title,
@@ -34,33 +34,28 @@ export const CardsContainer: FC<CardsContainerProps> = ({
         }}
       >
         <Loader isVisible={isLoading} shouldFitContainer />
-        {title && (
-          <span className={classnames("BB-cards-container__title-container")}>
-            <span className={classnames("BB-cards-container__title")}>
-              <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
-                {title}
-              </Typography>
-            </span>
-            {titleActions}
-          </span>
-        )}
+        <Title title={title} titleActions={titleActions} />
         {!isLoading && shouldShowNoDataMessage && (
-          <div className={classnames("BB-cards-container__no-data-message", classNames?.noDataMessage, {
-            "BB-cards-container__no-data-message--without-padding": !title
-          })}>
-            <Typography type={TYPOGRAPHY_TYPES.BODY2} alignment={TYPOGRAPHY_ALIGNMENT.CENTER}>
-              {noDataMessage}
-            </Typography>
-          </div>
+          <Animation type={ANIMATION_TYPES.GROW} shouldAppear>
+            <div className={classnames("BB-cards-container__no-data-message", classNames?.noDataMessage, {
+              "BB-cards-container__no-data-message--without-padding": !title
+            })}>
+              <Typography type={TYPOGRAPHY_TYPES.BODY2} alignment={TYPOGRAPHY_ALIGNMENT.CENTER}>
+                {noDataMessage}
+              </Typography>
+            </div>
+          </Animation>
         )}
         {!shouldShowNoDataMessage && children && (
-          <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
-            "BB-cards-container__cards-container--is-wrap-disabled": isWrapDisabled,
-            "BB-cards-container__cards-container--id-column": orientation === CARDS_CONTAINER_ORIENTATIONS.COLUMN,
-            "BB-cards-container__cards-container--is-full-height": isFullHeight
-          })}>
-            {children}
-          </div>
+          <Animation type={ANIMATION_TYPES.GROW} shouldAppear>
+            <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
+              "BB-cards-container__cards-container--is-wrap-disabled": isWrapDisabled,
+              "BB-cards-container__cards-container--id-column": orientation === CARDS_CONTAINER_ORIENTATIONS.COLUMN,
+              "BB-cards-container__cards-container--is-full-height": isFullHeight
+            })}>
+              {children}
+            </div>
+          </Animation>
         )}
       </Card>
     </div>

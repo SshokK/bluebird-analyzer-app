@@ -1,14 +1,18 @@
-import type {ListProps} from "components";
+import type {ListOption} from "components";
+import type {BookmakerSchema} from "./bookmakers.api.types";
 
 import * as api from "./bookmakers.api";
 
 export const formatBookmakersForList = (
   response: Awaited<ReturnType<typeof api.fetchBookmakers>>
-): ListProps['options'] => {
+): (ListOption & {
+  bookmaker: BookmakerSchema
+})[] => {
   return response.map(bookmaker => ({
     key: bookmaker.id,
     label: bookmaker.name,
     imageSrc: bookmaker.imageUrl ?? '',
-    imageAlt: bookmaker.name
+    imageAlt: bookmaker.name,
+    bookmaker: bookmaker
   }))
 }

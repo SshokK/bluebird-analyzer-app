@@ -4,6 +4,7 @@ import type {BookmakersProps} from "../Bookmakers.types";
 import type {BookmakersData} from "./useBookmakersData.types";
 
 import {useCallback} from "react";
+import {SORT_ORDERS} from "../../../../../../../constants/global.constants";
 
 export const useBookmakersHandlers = ({
   props,
@@ -26,8 +27,23 @@ export const useBookmakersHandlers = ({
     localActions.setBookmakerId(selectedBookmakerId ?? null);
   }
 
+  const handleSortChange: BookmakersHandlers['handleSortChange'] = () => {
+    localActions.setSortOrder((sortOrder) => {
+      if (sortOrder === SORT_ORDERS.DESC) {
+        return SORT_ORDERS.ASC
+      }
+
+      if (sortOrder === SORT_ORDERS.ASC) {
+        return null
+      }
+
+      return SORT_ORDERS.DESC
+    })
+  }
+
   return {
     handleBookmakerIdChange,
-    handleBookmakersChange
+    handleBookmakersChange,
+    handleSortChange
   }
 }

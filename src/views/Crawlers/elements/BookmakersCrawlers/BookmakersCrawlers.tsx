@@ -17,7 +17,7 @@ export const BookmakersCrawlers = () => {
             Crawlers
           </Separator>
         </Grid>
-        <Grid isChild xs={8} height={GRID_HEIGHT.XXXL}>
+        <Grid isChild xs={8} height={GRID_HEIGHT.XXXL} isShrinkDisabled>
           <EventCrawlers bookmakerId={localState.bookmakerId} />
         </Grid>
       </Grid>

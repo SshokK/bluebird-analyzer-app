@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {ActionsCellProps} from "./ActionsCell.types";
 
 import React from 'react';
-import {Actions, ACTIONS_ORIENTATIONS} from "components";
+import {Actions, GRID_DIRECTION} from "components";
 import {useActionsCellActions, useActionsCellMutations} from "./hooks";
 
 export const ActionsCell: FC<ActionsCellProps> = ({ row }) => {
@@ -22,7 +22,7 @@ export const ActionsCell: FC<ActionsCellProps> = ({ row }) => {
   return (
     <Actions
       actions={actions}
-      orientation={ACTIONS_ORIENTATIONS.ROW}
+      direction={GRID_DIRECTION.ROW}
       isWrapDisabled
     />
   )

@@ -1,5 +1,6 @@
 export enum QUERY_PARAMS {
-  BOOKMAKER_ID = 'bookmakerId'
+  BOOKMAKER_ID = 'bookmakerId',
+  BOOKMAKERS_SORT_ORDER = 'bookmakersSortOrder'
 }
 
 export enum BOOKMAKERS_ACTIONS {

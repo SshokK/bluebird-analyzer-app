@@ -1,0 +1,129 @@
+@use 'src/styles/variables';
+
+@mixin common-tooltip-preset() {
+  padding: variables.$spacing-s;
+  font-size: variables.$font-size-m;
+  display: flex;
+  align-items: center;
+}
+
+@mixin common-tooltip-arrow-preset() {
+  opacity: 1;
+}
+
+@mixin common-tooltip-close-icon-preset() {
+  cursor: pointer;
+  font-size: variables.$font-size-l;
+  transform: variables.$animation-time-short;
+  margin-left: variables.$spacing-xs;
+}
+
+@mixin common-tooltip-loader-preset() {
+  margin: 0 variables.$spacing-xs 0 variables.$spacing-m;
+}
+
+.BB-tooltip {
+  @include common-tooltip-preset();
+
+  &#{&}--primary {
+    background-color: variables.$primary-color-3;
+    color: variables.$primary-color-2;
+  }
+
+  &#{&}--secondary {
+    background-color: variables.$primary-color-2;
+    color: variables.$primary-color-3;
+    box-shadow: variables.$shadow-center-m;
+  }
+
+  &#{&}--tertiary {
+    background-color: variables.$primary-color-1;
+    color: variables.$primary-color-2;
+  }
+
+  &#{&}--error {
+    background-color: variables.$status-color-error;
+    color: variables.$primary-color-2;
+  }
+
+  &__arrow {
+    @include common-tooltip-arrow-preset();
+
+    &#{&}--primary {
+      color: variables.$primary-color-3;
+    }
+
+    &#{&}--secondary {
+      color: variables.$primary-color-2;
+    }
+
+    &#{&}--tertiary {
+      color: variables.$primary-color-1;
+    }
+
+    &#{&}--error {
+      color: variables.$status-color-error;
+    }
+  }
+
+  &__popper {
+    pointer-events: all;
+    z-index: variables.$elevation-highest;
+  }
+
+  &__close-icon {
+    @include common-tooltip-close-icon-preset();
+
+    &#{&}--primary {
+      color: variables.$primary-color-2;
+
+      &:hover {
+        color: variables.$primary-color-2;
+      }
+    }
+
+    &#{&}--secondary {
+      color: variables.$primary-color-3;
+
+      &:hover {
+        color: variables.$primary-color-3;
+      }
+    }
+
+    &#{&}--tertiary {
+      color: variables.$primary-color-2;
+
+      &:hover {
+        color: variables.$primary-color-2;
+      }
+    }
+
+    &#{&}--error {
+      color: variables.$primary-color-2;
+
+      &:hover {
+        color: variables.$secondary-color-3;
+      }
+    }
+  }
+
+  &__loader {
+    @include common-tooltip-loader-preset();
+
+    &--primary {
+      color: variables.$primary-color-2;
+    }
+
+    &--secondary {
+      color: variables.$primary-color-1;
+    }
+
+    &--tertiary {
+      color: variables.$primary-color-2;
+    }
+
+    &--error {
+      color: variables.$primary-color-2;
+    }
+  }
+}

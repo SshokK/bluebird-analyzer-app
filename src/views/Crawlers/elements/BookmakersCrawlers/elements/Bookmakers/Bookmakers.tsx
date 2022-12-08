@@ -12,13 +12,20 @@ import {
   useBookmakersData,
   useBookmakersHandlers,
   useBookmakersLifecycle,
+  useBookmakersMutations,
   useBookmakersQueries
 } from "./hooks";
 
 export const Bookmakers: FC<BookmakersProps> = ({ onSelectedBookmakerChange }) => {
-  const { localState, localActions } = useBookmakersData();
+  const { localState, localActions, formattedData } = useBookmakersData();
 
-  const queries = useBookmakersQueries();
+  const queries = useBookmakersQueries({
+    formattedData
+  });
+
+  const mutations = useBookmakersMutations({
+    localState
+  })
 
   const handlers = useBookmakersHandlers({
     localState,
@@ -29,7 +36,11 @@ export const Bookmakers: FC<BookmakersProps> = ({ onSelectedBookmakerChange }) =
   });
 
   const actions = useBookmakersActions({
-    localState
+    localState,
+    localActions,
+    queries,
+    mutations,
+    onSortChange: handlers.handleSortChange
   });
 
   useBookmakersLifecycle({
@@ -43,8 +54,6 @@ export const Bookmakers: FC<BookmakersProps> = ({ onSelectedBookmakerChange }) =
         isLoading={queries.fetchBookmakers.isFetching}
         isAnimated
         isFullHeight
-        shouldShowNoDataMessage={!queries.fetchBookmakers.data?.length}
-        noDataMessage="There are no bookmakers"
         orientation={CARDS_CONTAINER_ORIENTATIONS.COLUMN}
       >
         <List
@@ -52,6 +61,8 @@ export const Bookmakers: FC<BookmakersProps> = ({ onSelectedBookmakerChange }) =
           secondaryActions={actions.secondaryActions}
           options={queries.fetchBookmakers.data}
           isFullWidth
+          shouldShowNoDataMessage={!queries.fetchBookmakers.data?.length}
+          noDataMessage={localState.nameFilter ? "No bookmakers matching filter" : "No bookmakers"}
           selectedOptionKeys={localState.bookmakerId ? [localState.bookmakerId] : []}
           onSelectedOptionsChange={handlers.handleBookmakersChange}
         />

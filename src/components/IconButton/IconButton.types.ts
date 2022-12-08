@@ -7,6 +7,7 @@ export type IconButtonProps = {
   icon?: ReactNode;
   isDisabled?: boolean;
   isSquared?: boolean;
+  isPressed?: boolean;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   classNames?: {
     button?: string;

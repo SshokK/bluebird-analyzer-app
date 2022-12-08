@@ -1,6 +1,10 @@
 .BB-grid {
-  &--overflow-auto {
+  &--is-overflow-auto {
     overflow: auto;
+  }
+
+  &--is-shrink-disabled {
+    flex-shrink: 0;
   }
 
   &__child {

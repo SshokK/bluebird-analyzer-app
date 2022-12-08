@@ -6,7 +6,10 @@
     width: 100%;
     border-radius: variables.$border-radius-m;
     overflow: auto;
+  }
 
+  &__table-container {
+    overflow: auto;
     // These lines ensure that the rows shadows will be visible
     padding: 0.1rem;
   }

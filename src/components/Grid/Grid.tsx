@@ -20,6 +20,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
   columnSpacing,
   columns,
   isWrapDisabled,
+  isShrinkDisabled,
   classNames,
   childDisplay,
   children,
@@ -46,7 +47,8 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
       }}
       classes={{
         root: classnames(classNames?.container, 'BB-grid', {
-          'BB-grid--overflow-auto': shouldSetOverflowAuto,
+          'BB-grid--is-overflow-auto': shouldSetOverflowAuto,
+          'BB-grid--is-shrink-disabled': isShrinkDisabled,
           [`BB-grid__child--is-${childDisplay}`]: isChild && !isContainer && childDisplay
         })
       }}

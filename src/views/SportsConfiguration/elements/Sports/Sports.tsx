@@ -1,7 +1,8 @@
 import type {FC} from "react";
-import React from 'react';
 import type {SportsProps} from "./Sports.types";
-import {Actions, ACTIONS_ORIENTATIONS, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
+
+import React from 'react';
+import {Actions, GRID_DIRECTION, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
 import {useSportsActionsConfig, useSportsData, useSportsHandlers, useSportsMutations, useSportsQueries} from "./hooks";
 import {ANIMATION_DELAY} from "./Sports.constants";
 
@@ -54,7 +55,7 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
           <Grid isChild>
             <Actions
               actions={actionsConfig}
-              orientation={ACTIONS_ORIENTATIONS.COLUMN}
+              direction={GRID_DIRECTION.COLUMN}
             />
           </Grid>
           <Grid isChild>

@@ -31,6 +31,7 @@
     }
   }
 
+  &.BB-icon-button--is-pressed,
   &:focus:not(:disabled),
   &:hover:not(:disabled) {
     background-color: $background-hover-color;
@@ -80,7 +81,7 @@
         variables.$primary-color-2,
         variables.$secondary-color-2,
         variables.$secondary-color-3,
-        variables.$primary-color-3,
+        variables.$secondary-color-4,
         variables.$primary-color-5,
         variables.$shadow-center-s
       );

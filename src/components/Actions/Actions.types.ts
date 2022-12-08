@@ -1,4 +1,5 @@
-import type {IconButtonGroupProps, IconButtonProps, ModalFormProps} from "components/index";
+import type {DropdownProps, GridProps, IconButtonProps, ModalFormProps} from "components/index";
+import type {ReactNode} from "react";
 
 export type Action = {
   iconType?: IconButtonProps['type'];
@@ -8,6 +9,10 @@ export type Action = {
   modalTitle?: ModalFormProps['title'];
   modalSize?: ModalFormProps['size'];
   modalFields?: ModalFormProps['fields'];
+  shouldShowDropdown?: boolean;
+  dropdownContent?: ReactNode;
+  dropdownTransformOrigin?: DropdownProps['transformOrigin'];
+  dropdownAnchorOrigin?: DropdownProps['anchorOrigin'];
   onClick?: (action: Action) => void;
   onSubmit?: ModalFormProps['onSubmit'];
   onClose?: ModalFormProps['onClose'];
@@ -16,8 +21,8 @@ export type Action = {
 
 export type ActionsProps = {
   actions: Record<string, Action>;
-  orientation?: IconButtonGroupProps['orientation'];
-  isWrapDisabled?: IconButtonGroupProps['isWrapDisabled'];
+  direction?: GridProps['direction'];
+  isWrapDisabled?: GridProps['isWrapDisabled'];
   classNames?: {
     container?: string;
   }

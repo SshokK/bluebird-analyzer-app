@@ -1,18 +1,21 @@
 import type {ActionsProps} from "./Actions.types";
 import type {FC} from "react";
+
 import React from "react";
 import {
+  Dropdown,
+  Grid,
+  GRID_SPACING,
   ICON_BUTTON_SIZES,
   ICON_BUTTON_TYPES,
   IconButton,
-  IconButtonGroup,
   ModalForm
 } from "components/index";
 import {useActionsData, useActionsHandlers} from "./hooks";
 
 export const Actions: FC<ActionsProps> = ({
   actions,
-  orientation,
+  direction,
   isWrapDisabled,
   classNames
 }) => {
@@ -27,22 +30,40 @@ export const Actions: FC<ActionsProps> = ({
 
   return (
     <>
-      <IconButtonGroup
-        orientation={orientation}
-        className={classNames?.container}
+      <Grid
+        isChild
+        isContainer
+        xs="auto"
+        direction={direction}
         isWrapDisabled={isWrapDisabled}
+        spacing={GRID_SPACING.S}
+        classNames={{
+          container: classNames?.container
+        }}
       >
         {Object.entries(actions).map(([actionKey, action]) => (
-          <IconButton
-            key={actionKey}
-            type={action.iconType ?? ICON_BUTTON_TYPES.SECONDARY}
-            size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
-            icon={action.icon}
-            isDisabled={action.isDisabled}
-            onClick={handlers.handleClick(actionKey)}
-          />
+          <Grid key={actionKey} isChild>
+            <Dropdown
+              isOpen={localState.openedDropdownKey === actionKey}
+              onClose={handlers.handleDropdownClose}
+              transformOrigin={action.dropdownTransformOrigin}
+              anchorOrigin={action.dropdownAnchorOrigin}
+              trigger={(
+                <IconButton
+                  type={action.iconType ?? ICON_BUTTON_TYPES.SECONDARY}
+                  size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
+                  icon={action.icon}
+                  isPressed={localState.openedDropdownKey === actionKey}
+                  isDisabled={action.isDisabled}
+                  onClick={handlers.handleClick(actionKey)}
+                />
+              )}
+            >
+              {action.dropdownContent}
+            </Dropdown>
+          </Grid>
         ))}
-      </IconButtonGroup>
+      </Grid>
       {localState.openedModalKey && (
         <ModalForm
           isOpen

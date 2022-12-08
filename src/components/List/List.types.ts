@@ -19,6 +19,8 @@ export type ListProps = {
   isFullWidth?: boolean;
   primaryActions?: ActionsProps['actions'];
   secondaryActions?: ActionsProps['actions'];
+  shouldShowNoDataMessage?: boolean;
+  noDataMessage?: string;
   classNames?: {
     container?: string;
     actions?: string;

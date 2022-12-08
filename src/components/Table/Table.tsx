@@ -3,13 +3,16 @@ import type {TableProps} from "./Table.types";
 
 import React, {forwardRef} from "react";
 import {TableActions, TableBody, TableHeader} from "./elements";
+import {Animation, ANIMATION_TYPES} from "../Animation";
 import {DEFAULT_TABLE_LIMIT} from "./Table.constants";
-import {useReactTable, getCoreRowModel, getPaginationRowModel, getSortedRowModel} from '@tanstack/react-table';
+import {getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable} from '@tanstack/react-table';
 import {useTableData, useTableHandlers, useTableLifecycle, useTableQuery} from "./hooks";
 import './table.scss';
 
 export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProps>(({
   isLoading,
+  isAnimated,
+  animationDelay,
   columns,
   areRowsSelectable,
   rowId,
@@ -74,7 +77,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
     onSelectedRowKeysPropChange: handlers.handleSelectedRowKeysPropChange
   })
 
-  return (
+  const content = (
     <div ref={ref} className="BB-table__container" {...props}>
       <TableActions
         table={table}
@@ -82,16 +85,28 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
         limit={limit}
         totalCount={query.data?.totalCount}
       />
-      <table className="BB-table__table">
-        <TableHeader table={table} />
-        <TableBody
-          table={table}
-          noDataMessage={noDataMessage}
-          isLoading={isLoading || query.isLoading}
-        />
-      </table>
+      <div className="BB-table__table-container">
+        <table className="BB-table__table">
+          <TableHeader table={table} />
+          <TableBody
+            table={table}
+            noDataMessage={noDataMessage}
+            isLoading={isLoading || query.isLoading}
+          />
+        </table>
+      </div>
     </div>
   )
+
+  if (isAnimated) {
+    return (
+      <Animation type={ANIMATION_TYPES.GROW} shouldAppear animationDelay={animationDelay}>
+        {content}
+      </Animation>
+    )
+  }
+
+  return content
 })
 
 Table.defaultProps = {

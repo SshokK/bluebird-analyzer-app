@@ -4,13 +4,16 @@ import {useMemo, useState} from "react";
 
 export const useActionsData = (): ActionsData => {
   const [openedModalKey, setOpenedModalKey] = useState<ActionsData['localState']['openedModalKey']>(null);
+  const [openedDropdownKey, setOpenedDropdownKey] = useState<ActionsData['localState']['openedModalKey']>(null);
 
   const localState: ActionsData['localState'] = {
-    openedModalKey
+    openedModalKey,
+    openedDropdownKey
   }
 
   const localActions: ActionsData['localActions'] = useMemo(() => ({
-    setOpenedModalKey
+    setOpenedModalKey,
+    setOpenedDropdownKey
   }), []);
 
   return {

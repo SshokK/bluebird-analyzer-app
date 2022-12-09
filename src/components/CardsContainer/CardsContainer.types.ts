@@ -9,8 +9,10 @@ export type CardsContainerProps = {
   isAnimated?: boolean;
   animationDelay?: number;
   shouldShowNoDataMessage?: boolean;
+  isWithoutPadding?: boolean;
   isWrapDisabled?: boolean;
   isFullHeight?: boolean;
+  elevation?: number;
   noDataMessage?: ReactNode;
   orientation?: CARDS_CONTAINER_ORIENTATIONS;
   classNames?: {

@@ -1,4 +1,4 @@
-import type {BookmakersData} from "./useBookmakersData.types";
+import type {BookmakersCrawlersData} from "./useBookmakersCrawlersData.types";
 
 import {QUERY_KEYS} from "constants/queries.constants";
 
@@ -7,10 +7,10 @@ import * as bookmakersApiSelectors from "features/bookmakers/bookmakers.api.sele
 
 import {useQuery} from "@tanstack/react-query";
 
-export const useBookmakersQueries = ({
+export const useBookmakersCrawlersQueries = ({
   formattedData
 }: {
-  formattedData: BookmakersData['formattedData']
+  formattedData: BookmakersCrawlersData['formattedData']
 }) => {
   const fetchBookmakers = useQuery({
     queryKey: [QUERY_KEYS.BOOKMAKERS, formattedData.requestParams],

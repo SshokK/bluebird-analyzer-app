@@ -1,7 +1,6 @@
 import type {ListProps} from "components";
 
-export type BookmakersHandlers = {
-  handleBookmakerIdChange: () => void;
+export type BookmakersCrawlersHandlers = {
   handleBookmakersChange: Required<ListProps>['onSelectedOptionsChange'];
   handleSortChange: () => void;
 }

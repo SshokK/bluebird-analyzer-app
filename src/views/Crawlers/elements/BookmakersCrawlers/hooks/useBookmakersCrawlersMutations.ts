@@ -1,4 +1,5 @@
-import type {BookmakersData} from "./useBookmakersData.types";
+import type {BookmakersCrawlersData} from "./useBookmakersCrawlersData.types";
+import type {RequestError} from "fetch";
 
 import {QUERY_KEYS} from "constants/queries.constants";
 import {ALERT_TYPES} from "components";
@@ -7,12 +8,11 @@ import * as bookmakersApi from "features/bookmakers/bookmakers.api";
 
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import { useAlert} from "components";
-import {RequestError} from "../../../../../../../fetch";
 
-export const useBookmakersMutations = ({
+export const useBookmakersCrawlersMutations = ({
   localState
 }: {
-  localState: BookmakersData['localState']
+  localState: BookmakersCrawlersData['localState']
 }) => {
   const queryClient = useQueryClient();
   const alert = useAlert();

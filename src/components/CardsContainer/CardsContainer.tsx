@@ -1,12 +1,13 @@
 import type {CardsContainerProps} from "./CardsContainer.types";
 import type {FC} from 'react';
+
 import React from 'react';
 import {CARDS_CONTAINER_ORIENTATIONS} from "./CardsContainer.constants";
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
 import classnames from 'classnames';
 import {Animation, ANIMATION_TYPES, Card, Loader} from "components";
-import './cards-container.scss';
 import {Title} from "./elements";
+import './cards-container.scss';
 
 export const CardsContainer: FC<CardsContainerProps> = ({
   title,
@@ -16,21 +17,27 @@ export const CardsContainer: FC<CardsContainerProps> = ({
   isAnimated,
   animationDelay,
   shouldShowNoDataMessage,
+  isWithoutPadding,
   isWrapDisabled,
   noDataMessage,
   isFullHeight,
   orientation,
+  elevation,
   classNames
 }) => {
   const content = (
     <div className={classnames("BB-cards-container__outer-container", classNames?.outerContainer, {
       "BB-cards-container__outer-container--is-full-height": isFullHeight,
-      "BB-cards-container__outer-container--without-left-padding": !title
+      "BB-cards-container__outer-container--is-without-left-padding": !title,
+      "BB-cards-container__outer-container--is-without-padding": isWithoutPadding
     })}>
       <Card
+        elevation={elevation}
         isFullHeight={isFullHeight}
         classNames={{
-          container: classnames("BB-cards-container__container", classNames?.container)
+          container: classnames("BB-cards-container__container", classNames?.container, {
+            "BB-cards-container__container--is-without-padding": isWithoutPadding
+          })
         }}
       >
         <Loader isVisible={isLoading} shouldFitContainer />

@@ -56,7 +56,7 @@ export const RegionalProxies: FC = () => {
           <Separator isVertical>
             Proxies
           </Separator>
-          <Grid isChild xs={7}>
+          <Grid isChild xs={7} isShrinkDisabled>
             <RegionProxies regionId={formattedData.regionId} />
           </Grid>
         </Grid>

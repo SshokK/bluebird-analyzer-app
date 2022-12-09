@@ -9,8 +9,12 @@
       height: 100%;
     }
 
-    &--without-left-padding {
+    &--is-without-left-padding {
       padding-left: unset;
+    }
+
+    &--is-without-padding {
+      padding: unset;
     }
   }
 
@@ -23,6 +27,10 @@
 
     &--is-full-height {
       height: 100%;
+    }
+
+    &--is-without-padding {
+      padding: unset;
     }
   }
 

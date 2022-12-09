@@ -3,7 +3,7 @@ export enum QUERY_PARAMS {
   BOOKMAKERS_SORT_ORDER = 'bookmakersSortOrder'
 }
 
-export enum BOOKMAKERS_ACTIONS {
+export enum BOOKMAKERS_CRAWLERS_ACTIONS {
   ADD = 'add',
   EDIT = 'edit',
   DELETE = 'delete',

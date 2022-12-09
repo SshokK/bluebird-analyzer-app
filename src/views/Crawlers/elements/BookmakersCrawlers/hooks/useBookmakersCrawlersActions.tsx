@@ -1,6 +1,6 @@
 import type {ActionsProps} from "components";
-import type {BookmakersData} from "./useBookmakersData.types";
-import type {BookmakersHandlers} from "./useBookmakersHandlers.types";
+import type {BookmakersCrawlersData} from "./useBookmakersCrawlersData.types";
+import type {BookmakersCrawlersHandlers} from "./useBookmakersCrawlersHandlers.types";
 import type {BookmakerSchema} from "features/bookmakers/bookmakers.api.types";
 
 import {
@@ -14,31 +14,31 @@ import {
 } from "components";
 
 import { MODAL_FORM_FIELD_TYPES, MODAL_SIZES } from "components";
-import {BOOKMAKERS_ACTIONS, MODAL_FIELD_KEYS} from "../Bookmakers.constants";
+import {BOOKMAKERS_CRAWLERS_ACTIONS, MODAL_FIELD_KEYS} from "../BookmakersCrawlers.constants";
 import {SORT_ORDERS} from "constants/global.constants";
 
-import {useBookmakersMutations} from "./useBookmakersMutations";
-import {useBookmakersQueries} from "./useBookmakersQueries";
+import {useBookmakersCrawlersMutations} from "./useBookmakersCrawlersMutations";
+import {useBookmakersCrawlersQueries} from "./useBookmakersCrawlersQueries";
 
-export const useBookmakersActions = ({
+export const useBookmakersCrawlersActions = ({
   localState,
   localActions,
   queries,
   mutations,
   onSortChange
 }: {
-  localState: BookmakersData['localState'];
-  localActions: BookmakersData['localActions'];
-  queries: ReturnType<typeof useBookmakersQueries>
-  mutations: ReturnType<typeof useBookmakersMutations>
-  onSortChange: BookmakersHandlers['handleSortChange']
+  localState: BookmakersCrawlersData['localState'];
+  localActions: BookmakersCrawlersData['localActions'];
+  queries: ReturnType<typeof useBookmakersCrawlersQueries>
+  mutations: ReturnType<typeof useBookmakersCrawlersMutations>
+  onSortChange: BookmakersCrawlersHandlers['handleSortChange']
 }): {
   primaryActions: Required<ActionsProps>['actions'];
   secondaryActions: Required<ActionsProps>['actions'];
 } => {
   return {
     primaryActions: {
-      [BOOKMAKERS_ACTIONS.ADD]: {
+      [BOOKMAKERS_CRAWLERS_ACTIONS.ADD]: {
         icon: <IconAdd />,
         shouldShowModal: true,
         modalTitle: 'Add bookmaker',
@@ -59,7 +59,7 @@ export const useBookmakersActions = ({
           imageUrl: fields[MODAL_FIELD_KEYS.IMAGE_URL].value as BookmakerSchema['imageUrl']
         }])
       },
-      [BOOKMAKERS_ACTIONS.EDIT]: {
+      [BOOKMAKERS_CRAWLERS_ACTIONS.EDIT]: {
         icon: <IconEdit />,
         shouldShowModal: true,
         isDisabled: !localState.bookmakerId,
@@ -94,7 +94,7 @@ export const useBookmakersActions = ({
           }
         ])
       },
-      [BOOKMAKERS_ACTIONS.DELETE]: {
+      [BOOKMAKERS_CRAWLERS_ACTIONS.DELETE]: {
         icon: <IconDelete />,
         shouldShowModal: true,
         isDisabled: !localState.bookmakerId,
@@ -104,7 +104,7 @@ export const useBookmakersActions = ({
       }
     },
     secondaryActions: {
-      [BOOKMAKERS_ACTIONS.FILTER]: {
+      [BOOKMAKERS_CRAWLERS_ACTIONS.FILTER]: {
         icon: <IconFilter />,
         shouldShowDropdown: true,
         dropdownContent: (
@@ -116,7 +116,7 @@ export const useBookmakersActions = ({
           />
         )
       },
-      [BOOKMAKERS_ACTIONS.SORT]: {
+      [BOOKMAKERS_CRAWLERS_ACTIONS.SORT]: {
         icon: localState.sortOrder ? {
           [SORT_ORDERS.ASC]: <IconSortListAsc />,
           [SORT_ORDERS.DESC]: <IconSortListDesc />

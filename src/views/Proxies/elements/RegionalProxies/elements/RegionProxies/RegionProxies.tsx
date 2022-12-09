@@ -2,7 +2,10 @@ import type {FC} from "react";
 import type {RegionProxiesProps} from "./RegionProxies.types";
 
 import React from 'react';
-import {Animation, ANIMATION_DIRECTION, ANIMATION_ORIENTATION, ANIMATION_TYPES, Table} from "components";
+import {
+  CardsContainer,
+  Table
+} from "components";
 import {
   ANIMATION_DELAY,
   REGION_PROXIES_TABLE_COLUMN_KEYS,
@@ -40,12 +43,14 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
   });
 
   return (
-    <Animation
-      type={ANIMATION_TYPES.GROW}
-      shouldAppear={Boolean(regionId)}
-      direction={ANIMATION_DIRECTION.LEFT}
-      orientation={ANIMATION_ORIENTATION.HORIZONTAL}
+    <CardsContainer
+      isAnimated
       animationDelay={ANIMATION_DELAY}
+      isFullHeight
+      shouldShowNoDataMessage={!regionId}
+      elevation={0}
+      isWithoutPadding
+      noDataMessage="Select a region"
     >
       <Table
         actions={actions}
@@ -59,6 +64,6 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
           regionId
         }}
       />
-    </Animation>
+    </CardsContainer>
   )
 }

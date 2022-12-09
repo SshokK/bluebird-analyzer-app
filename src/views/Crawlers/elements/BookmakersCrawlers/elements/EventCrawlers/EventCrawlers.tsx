@@ -30,6 +30,8 @@ export const EventCrawlers: FC<CrawlersProps> = ({ bookmakerId }) => {
         animationDelay={ANIMATION_DELAY}
         isFullHeight
         shouldShowNoDataMessage={!bookmakerId}
+        elevation={0}
+        isWithoutPadding
         noDataMessage="Select a bookmaker"
       >
         <Table

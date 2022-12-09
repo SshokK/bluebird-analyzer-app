@@ -1,4 +1,5 @@
 import type {SportEventsData} from "./useSportFamilyEventsData.types";
+import type {SportSchema} from "features/sports/sports.api.types";
 
 import {useQuery} from "@tanstack/react-query";
 
@@ -13,8 +14,12 @@ export const useSportFamilyEventsQueries = ({
   formattedData: SportEventsData['formattedData']
 }) => {
   const fetchSports = useQuery({
-    queryKey: [QUERY_KEYS.SPORTS, formattedData.sportFamilyId],
-    queryFn: () => sportsApi.fetchSports(formattedData.sportFamilyId as number),
+    queryKey: [QUERY_KEYS.SPORTS, {
+      sportFamilyId: formattedData.sportFamilyId
+    }],
+    queryFn: () => sportsApi.fetchSports({
+      sportFamilyId: formattedData.sportFamilyId as SportSchema['SportFamilyId']
+    }),
     enabled: utils.isNumber(formattedData.sportFamilyId)
   });
 

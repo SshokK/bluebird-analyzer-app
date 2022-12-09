@@ -1,6 +1,7 @@
 import type {QueryProviderHandlers} from "./useQueryProviderHandlers.types";
 
 import {ALERT_TYPES, useAlert} from "components";
+import {DEFAULT_ERROR_MESSAGE} from "constants/global.constants";
 
 export const useQueryProviderHandlers = (): QueryProviderHandlers => {
   const alert = useAlert();
@@ -8,7 +9,7 @@ export const useQueryProviderHandlers = (): QueryProviderHandlers => {
   const handleError: QueryProviderHandlers['handleError'] = () => {
     alert.showAlert({
       type: ALERT_TYPES.ERROR,
-      message: 'Something went wrong'
+      message: DEFAULT_ERROR_MESSAGE
     });
   }
 

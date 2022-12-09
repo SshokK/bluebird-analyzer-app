@@ -23,8 +23,12 @@ export const useSportsQueries = ({ props }: {
     Awaited<ReturnType<typeof sportsApi.fetchSports>>,
     RequestError
   >({
-    queryKey: [QUERY_KEYS.SPORT_FAMILIES, props.sportFamilyId, QUERY_KEYS.SPORTS],
-    queryFn: () => sportsApi.fetchSports(props.sportFamilyId),
+    queryKey: [QUERY_KEYS.SPORTS, {
+      sportFamilyId: props.sportFamilyId
+    }],
+    queryFn: () => sportsApi.fetchSports({
+      sportFamilyId: props.sportFamilyId
+    }),
   });
 
   return {

@@ -57,6 +57,7 @@
     overflow: auto;
     column-gap: variables.$spacing-l;
     flex-wrap: wrap;
+    padding-top: variables.$spacing-m;
 
     &--is-wrap-disabled {
       flex-wrap: nowrap;
@@ -66,12 +67,17 @@
       height: 100%;
     }
 
+    &--is-without-top-padding {
+      padding-top: unset;
+    }
+
     &--id-column {
       flex-direction: column;
     }
 
     &:not(:empty) {
-      padding: variables.$spacing-m variables.$spacing-xxs variables.$spacing-xxs variables.$spacing-xxs;
+      // TODO Figure out if still required
+      //padding: variables.$spacing-m variables.$spacing-xxs variables.$spacing-xxs variables.$spacing-xxs;
     }
   }
 }

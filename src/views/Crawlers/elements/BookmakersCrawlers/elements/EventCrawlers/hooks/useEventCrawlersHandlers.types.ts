@@ -1,5 +1,5 @@
 import type {TableProps} from "components";
 
 export type EventCrawlersHandlers = {
-  handleSelectedRowsChange: Required<TableProps>['onSelectedRowsChange']
+  handleSelectedRowsChange: Required<TableProps>['onSelectedRowsChange'];
 }

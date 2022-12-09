@@ -58,7 +58,8 @@ export const CardsContainer: FC<CardsContainerProps> = ({
             <div className={classnames("BB-cards-container__cards-container", classNames?.cardsContainer, {
               "BB-cards-container__cards-container--is-wrap-disabled": isWrapDisabled,
               "BB-cards-container__cards-container--id-column": orientation === CARDS_CONTAINER_ORIENTATIONS.COLUMN,
-              "BB-cards-container__cards-container--is-full-height": isFullHeight
+              "BB-cards-container__cards-container--is-full-height": isFullHeight,
+              "BB-cards-container__cards-container--is-without-top-padding": !title,
             })}>
               {children}
             </div>

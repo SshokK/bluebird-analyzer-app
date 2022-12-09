@@ -1,4 +1,4 @@
-import type {CrawlersProps} from "../EventCrawlers.types";
+import type {EventCrawlersProps} from "../EventCrawlers.types";
 import type {EventCrawlerSchema} from "features/event-crawlers/eventCrawlers.api.types";
 
 import {QUERY_KEYS} from "constants/queries.constants";
@@ -7,7 +7,7 @@ import * as evnetCrawlersApi from "features/event-crawlers/eventCrawlers.api";
 import * as eventCrawlersApiSelectors from "features/event-crawlers/eventCrawlers.api.selectors";
 
 export const useEventCrawlersTableQueryOptions = ({ props }: {
-  props: Pick<CrawlersProps, 'bookmakerId'>
+  props: Pick<EventCrawlersProps, 'bookmakerId'>
 }) => {
   return {
     queryKey: [QUERY_KEYS.EVENT_CRAWLERS, {

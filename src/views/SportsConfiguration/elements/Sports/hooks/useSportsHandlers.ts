@@ -22,12 +22,10 @@ export const useSportsHandlers = ({
   const handleModalAddModalSubmit: SportsHandlers['handleModalAddModalSubmit'] = async (fields) => {
     try {
       if (formattedData.sportFamilyId) {
-        await mutations.createSport.mutateAsync([
-          formattedData.sportFamilyId,
-          {
-            name: fields[MODAL_FIELD_KEYS.NAME].value as string
-          }
-        ]);
+        await mutations.createSport.mutateAsync([{
+          name: fields[MODAL_FIELD_KEYS.NAME].value as string,
+          sportFamilyId: formattedData.sportFamilyId
+        }]);
       }
     } catch (e) {
       console.error(e)
@@ -38,10 +36,10 @@ export const useSportsHandlers = ({
     try {
       if (formattedData.sportId && formattedData.sportFamilyId) {
         await mutations.updateSport.mutateAsync([
-          formattedData.sportFamilyId,
           formattedData.sportId,
           {
-            name: fields[MODAL_FIELD_KEYS.NAME].value as string
+            name: fields[MODAL_FIELD_KEYS.NAME].value as string,
+            sportFamilyId: formattedData.sportFamilyId
           }
         ]);
       }
@@ -63,7 +61,7 @@ export const useSportsHandlers = ({
           replace: true
         });
 
-        await mutations.deleteSport.mutateAsync([formattedData.sportFamilyId, sportId]);
+        await mutations.deleteSport.mutateAsync([sportId]);
       }
     } catch (e) {
       console.error(e)

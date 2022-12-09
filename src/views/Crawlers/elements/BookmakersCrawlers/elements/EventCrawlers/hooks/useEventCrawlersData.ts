@@ -3,14 +3,14 @@ import type {EventCrawlersData} from "./useEventCrawlersData.types";
 import {useMemo, useState} from "react";
 
 export const useEventCrawlersData = (): EventCrawlersData => {
-  const [selectedRows, setSelectedRows] = useState<EventCrawlersData['localState']['selectedRows']>([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<EventCrawlersData['localState']['selectedRowKeys']>([]);
 
   const localState: EventCrawlersData['localState'] = {
-    selectedRows
+    selectedRowKeys
   }
 
   const localActions: EventCrawlersData['localActions'] = useMemo(() => ({
-    setSelectedRows
+    setSelectedRowKeys
   }), []);
 
   return {

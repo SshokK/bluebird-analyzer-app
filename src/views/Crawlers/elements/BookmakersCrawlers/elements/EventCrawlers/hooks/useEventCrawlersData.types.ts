@@ -1,12 +1,12 @@
 import type {Dispatch, SetStateAction} from "react";
-import type * as eventCrawlersApiSelectors from "features/event-crawlers/eventCrawlers.api.selectors";
+import type {EventCrawlerSchema} from "features/event-crawlers/eventCrawlers.api.types";
 
 export type EventCrawlersLocalState = {
-  selectedRows: ReturnType<typeof eventCrawlersApiSelectors.formatEventCrawlersForTable>['rows']
+  selectedRowKeys: EventCrawlerSchema['id'][]
 }
 
 export type EventCrawlersLocalActions = {
-  setSelectedRows: Dispatch<SetStateAction<EventCrawlersLocalState['selectedRows']>>
+  setSelectedRowKeys: Dispatch<SetStateAction<EventCrawlersLocalState['selectedRowKeys']>>
 }
 
 export type EventCrawlersData = {

@@ -19,7 +19,7 @@ export const SportFamilyEvents = () => {
         content: 'BB-sport-family-events'
       }}
     >
-      {queries.fetchSports.data?.map?.((sport, i) => (
+      {queries.fetchSports.data?.results?.map?.((sport, i) => (
         <SportEvents
           key={sport.id}
           sportId={sport.id}

@@ -13,8 +13,8 @@ export const useSportEventsQueries = ({ props }: {
   props: Pick<SportEventsProps, 'sportId' | 'sportFamilyId'>
 }) => {
   const fetchSport = useQuery({
-    queryKey: [QUERY_KEYS.SPORTS, props.sportFamilyId, props.sportId],
-    queryFn: () => sportsApi.fetchSport(props.sportFamilyId, props.sportId),
+    queryKey: [QUERY_KEYS.SPORTS, props.sportId],
+    queryFn: () => sportsApi.fetchSport(props.sportId),
   });
 
   const fetchSportEvents = useQuery({

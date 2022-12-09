@@ -5,8 +5,9 @@ import type {TextField} from "../TextField";
 import type {NumberField} from "../NumberField";
 import type {Select} from "../Select";
 import type {Dropzone} from "../Dropzone";
+import type {DataSelect} from "../DataSelect";
 
-export type ModalFormFieldComponent = typeof TextField | typeof NumberField | typeof Select | typeof Dropzone;
+export type ModalFormFieldComponent = typeof TextField | typeof NumberField | typeof Select | typeof Dropzone | typeof DataSelect;
 export type ModalFormFieldProps = ComponentProps<ModalFormFieldComponent>
 
 export type ModalFormField = {

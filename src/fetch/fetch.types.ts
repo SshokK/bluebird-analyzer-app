@@ -9,4 +9,5 @@ export type FetchConfig<Params = unknown> = AxiosRequestConfig<Params> & {
 
 export type Fetch = <Return = unknown, Params = unknown>(config: FetchConfig<Params>) => Promise<Return>
 
-export type RequestError = AxiosError;
+export type RequestError<T = unknown> = AxiosError<T, unknown>;
+export type ServerErrorResponse = { error: string }

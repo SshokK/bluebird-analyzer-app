@@ -44,6 +44,7 @@ export const useSportsActionsConfig = ({
           type: MODAL_FORM_FIELD_TYPES.TEXT,
           label: 'Name',
           value: queries.fetchSports.data
+            ?.results
             ?.find(sport => sport.id === formattedData.sportId)
             ?.name ?? '',
         }

@@ -9,15 +9,15 @@ import * as sportsApi from "features/sports/sports.api";
 import {useQuery} from "@tanstack/react-query";
 
 export const useTeamsQueries = ({ props }: {
-  props: Pick<TeamsProps, 'sportId' | 'sportFamilyId'>
+  props: Pick<TeamsProps, 'sportId'>
 }) => {
   const fetchSport = useQuery<
     Awaited<ReturnType<typeof sportsApi.fetchSport>>,
     RequestError
   >({
-    queryKey: [QUERY_KEYS.SPORT_FAMILIES, props.sportFamilyId, QUERY_KEYS.SPORTS, props.sportId],
-    queryFn: () => sportsApi.fetchSport(props.sportFamilyId, props.sportId as SportSchema['id']),
-    enabled: Boolean(props.sportId && props.sportFamilyId)
+    queryKey: [QUERY_KEYS.SPORTS, props.sportId],
+    queryFn: () => sportsApi.fetchSport(props.sportId as SportSchema['id']),
+    enabled: Boolean(props.sportId)
   });
 
   return {

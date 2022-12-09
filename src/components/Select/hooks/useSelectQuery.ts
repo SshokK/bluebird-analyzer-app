@@ -8,7 +8,7 @@ export const useSelectQuery = ({
   localState,
   localActions
 }: {
-  props: Pick<SelectProps, 'queryOptions' | 'queryParams' | 'isAsync' | 'isDisabled'>;
+  props: Pick<SelectProps, 'queryOptions' | 'queryParams' | 'isDisabled'>;
   localState: SelectData['localState'];
   localActions: SelectData['localActions'];
 }) => {

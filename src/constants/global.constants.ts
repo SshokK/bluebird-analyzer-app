@@ -20,6 +20,8 @@ export enum URL_PARAMS {
 }
 
 export enum DATE_FORMATS {
+  DATE = 'y-M-dd',
+  DATE_TIME = 'y-M-dd p',
   LOCALIZED_DATE_TIME = 'Pp',
   LOCALIZED_DATE = 'P',
   LOCALIZED_TIME = 'p'
@@ -29,3 +31,5 @@ export enum PARAM_TYPES {
   INTEGER = 'integer',
   STRING = 'string'
 }
+
+export const DEFAULT_ERROR_MESSAGE = 'Something went wrong'

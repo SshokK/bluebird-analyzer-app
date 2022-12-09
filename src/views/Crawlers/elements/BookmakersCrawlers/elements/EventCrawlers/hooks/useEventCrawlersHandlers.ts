@@ -9,7 +9,7 @@ export const useEventCrawlersHandlers = ({
   localActions: EventCrawlersData['localActions']
 }): EventCrawlersHandlers => {
   const handleSelectedRowsChange: EventCrawlersHandlers['handleSelectedRowsChange'] = useCallback((rows) => {
-    localActions.setSelectedRows(rows)
+    localActions.setSelectedRowKeys(rows)
   }, [localActions]);
 
   return {

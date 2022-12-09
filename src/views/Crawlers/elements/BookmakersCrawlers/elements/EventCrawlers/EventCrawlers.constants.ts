@@ -2,7 +2,7 @@ import type {TableProps} from "components";
 
 import {COLUMN_DATA_TYPES, COLUMN_TYPES} from "components";
 
-import {CrawlerActions} from "./elements";
+import {ActionsCell, StatusCell} from "./elements";
 
 export const ANIMATION_DELAY = 1000;
 
@@ -19,6 +19,13 @@ export enum EVENT_CRAWLERS_TABLE_COLUMN_KEYS {
 }
 
 export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
+  {
+    key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.STATUS,
+    title: 'Status',
+    type: COLUMN_TYPES.DATA_COLUMN,
+    CellComponent: StatusCell,
+    isSortable: true
+  },
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.SPORT_NAME,
     title: 'Sport',
@@ -37,13 +44,6 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     title: 'Target URL',
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.URL,
-    isSortable: true
-  },
-  {
-    key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.STATUS,
-    title: 'Status',
-    type: COLUMN_TYPES.DATA_COLUMN,
-    dataType: COLUMN_DATA_TYPES.TEXT,
     isSortable: true
   },
   {
@@ -70,7 +70,7 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.ACTIONS,
     type: COLUMN_TYPES.DISPLAY_COLUMN,
-    CellComponent: CrawlerActions
+    CellComponent: ActionsCell
   }
 ]
 

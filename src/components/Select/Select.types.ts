@@ -22,7 +22,6 @@ export type SelectProps = {
   value?: SelectOption['value'][];
   options?: SelectOption[];
   onChange?: (values: SelectOption['value'][], options: SelectOption[]) => void;
-  isAsync?: boolean;
   isMulti?: boolean;
   isDisabled?: boolean;
   isClearable?: boolean;

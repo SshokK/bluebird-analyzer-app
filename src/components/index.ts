@@ -37,3 +37,4 @@ export * from './Dropzone';
 export * from './PlayerCard';
 export * from './Dropdown';
 export * from './Tooltip';
+export * from './DataSelect';

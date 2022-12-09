@@ -4,7 +4,8 @@ export enum MODAL_SIZES {
 }
 
 export enum MODAL_FIELDS {
-  IP = 'ip',
-  PORT = 'type',
-  PROTOCOL = 'protocol'
+  NAME = 'name',
+  TARGET_URL = 'targetUrl',
+  REGION = 'region',
+  SPORT = 'sport'
 }

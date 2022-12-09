@@ -33,7 +33,7 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
     <CardsContainer
       title={queries.fetchSportFamily.data?.name}
       isAnimated
-      shouldShowNoDataMessage={!queries.fetchSports.data?.length}
+      shouldShowNoDataMessage={!queries.fetchSports.data?.results?.length}
       isFullHeight
       animationDelay={ANIMATION_DELAY}
       isLoading={
@@ -60,7 +60,7 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
           </Grid>
           <Grid isChild>
             <Grid isContainer spacing={GRID_SPACING.L}>
-              {queries.fetchSports.data?.map(sport => (
+              {queries.fetchSports.data?.results?.map(sport => (
                 <Grid key={sport.id} isChild>
                   <Chiclet
                     isDeletable

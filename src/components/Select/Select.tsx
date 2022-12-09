@@ -19,13 +19,15 @@ export const Select: FC<SelectProps> = ({
   isLoading,
   isRequired,
   onChange,
-  queryOptions
+  queryOptions,
+  queryParams
 }) => {
   const { localState, localActions, formattedData } = useSelectData({ options, value });
 
   const query = useSelectQuery({
     props: {
       queryOptions,
+      queryParams,
       isDisabled
     },
     localState,

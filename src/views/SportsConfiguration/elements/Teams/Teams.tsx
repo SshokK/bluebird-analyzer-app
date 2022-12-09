@@ -9,7 +9,6 @@ import {ANIMATION_DELAY, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.cons
 export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
   const queries = useTeamsQueries({
     props: {
-      sportFamilyId,
       sportId
     }
   });

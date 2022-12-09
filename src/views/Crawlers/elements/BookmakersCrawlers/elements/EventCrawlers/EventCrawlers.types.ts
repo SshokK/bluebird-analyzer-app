@@ -1,5 +1,5 @@
 import type {BookmakerSchema} from "features/bookmakers/bookmakers.api.types";
 
-export type CrawlersProps = {
+export type EventCrawlersProps = {
   bookmakerId: BookmakerSchema['id'] | null;
 }

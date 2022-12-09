@@ -35,5 +35,12 @@ export const VALIDATORS: Record<MODAL_FORM_FIELD_TYPES, ({ field, value }: {
     }
 
     return value
+  },
+  [MODAL_FORM_FIELD_TYPES.DATA_SELECT]: ({field, value }) => {
+    if (!Array.isArray(value)) {
+      return field.value
+    }
+
+    return value
   }
 }

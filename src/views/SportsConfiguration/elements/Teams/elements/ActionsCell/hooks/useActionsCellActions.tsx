@@ -3,7 +3,7 @@ import type {PlayerSchema} from "features/players/players.api.types";
 import type {ActionsCellProps} from "../ActionsCell.types";
 
 import { MODAL_FIELD_KEYS, TEAM_ACTIONS } from "../ActionsCell.constants";
-import { MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+import {ICON_BUTTON_SIZES, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
 import { TEAMS_TABLE_COLUMN_KEYS } from "../../../Teams.constants";
 
 import { IconEdit, IconDelete } from "components";
@@ -20,6 +20,7 @@ export const useActionsCellActions = ({
   return {
     [TEAM_ACTIONS.UPDATE]: {
       icon: <IconEdit />,
+      iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: "Update team",
       modalSize: MODAL_SIZES.SMALL,
@@ -43,6 +44,7 @@ export const useActionsCellActions = ({
     },
     [TEAM_ACTIONS.DELETE]: {
       icon: <IconDelete />,
+      iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: "Are you sure?",
       modalSize: MODAL_SIZES.SMALL,

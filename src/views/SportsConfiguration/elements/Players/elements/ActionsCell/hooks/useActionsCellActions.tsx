@@ -2,11 +2,9 @@ import type {TableProps} from "components";
 import type {PlayerSchema} from "features/players/players.api.types";
 import type {ActionsCellProps} from "../ActionsCell.types";
 
-import { MODAL_FIELD_KEYS, PLAYER_ACTIONS } from "../ActionsCell.constants";
-import { MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+import {MODAL_FIELD_KEYS, PLAYER_ACTIONS} from "../ActionsCell.constants";
 import {PLAYERS_TABLE_COLUMN_KEYS} from "../../../Players.constants";
-
-import { IconEdit, IconDelete } from "components";
+import {ICON_BUTTON_SIZES, IconDelete, IconEdit, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
 
 import {useActionsCellMutations} from "./useActionsCellMutations";
 
@@ -20,6 +18,7 @@ export const useActionsCellActions = ({
   return {
     [PLAYER_ACTIONS.UPDATE]: {
       icon: <IconEdit />,
+      iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: "Update player",
       modalSize: MODAL_SIZES.SMALL,
@@ -43,6 +42,7 @@ export const useActionsCellActions = ({
     },
     [PLAYER_ACTIONS.DELETE]: {
       icon: <IconDelete />,
+      iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: "Are you sure?",
       modalSize: MODAL_SIZES.SMALL,

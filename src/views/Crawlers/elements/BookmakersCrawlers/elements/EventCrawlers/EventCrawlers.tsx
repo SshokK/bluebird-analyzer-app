@@ -1,20 +1,34 @@
 import type {FC} from "react";
-import type {CrawlersProps} from "./EventCrawlers.types";
+import type {EventCrawlersProps} from "./EventCrawlers.types";
 
 import React from 'react';
 import {CardsContainer, ErrorBoundary, Table} from "components";
 import {ANIMATION_DELAY, EVENT_CRAWLERS_TABLE_COLUMNS} from "./EventCrawlers.constants";
-import {useEventCrawlersActions, useEventCrawlersData, useEventCrawlersHandlers, useEventCrawlersTableQueryOptions} from "./hooks";
+import {
+  useEventCrawlersTableActions,
+  useEventCrawlersData,
+  useEventCrawlersHandlers,
+  useEventCrawlersTableQueryOptions,
+  useEventCrawlersMutations
+} from "./hooks";
 
-export const EventCrawlers: FC<CrawlersProps> = ({ bookmakerId }) => {
+export const EventCrawlers: FC<EventCrawlersProps> = ({ bookmakerId }) => {
   const { localState, localActions } = useEventCrawlersData();
-
-  const actions = useEventCrawlersActions({
-    localState
-  });
 
   const handlers = useEventCrawlersHandlers({
     localActions
+  });
+
+  const mutations = useEventCrawlersMutations({
+    props: {
+      bookmakerId
+    },
+    localActions
+  })
+
+  const tableActions = useEventCrawlersTableActions({
+    localState,
+    mutations
   });
 
   const tableQueryOptions = useEventCrawlersTableQueryOptions({
@@ -35,14 +49,15 @@ export const EventCrawlers: FC<CrawlersProps> = ({ bookmakerId }) => {
         noDataMessage="Select a bookmaker"
       >
         <Table
+          columns={EVENT_CRAWLERS_TABLE_COLUMNS}
+          areRowsSelectable
+          actions={tableActions}
+          selectedRowKeys={localState.selectedRowKeys}
+          onSelectedRowsChange={handlers.handleSelectedRowsChange}
           queryOptions={tableQueryOptions}
           queryParams={{
             bookmakerId: bookmakerId
           }}
-          columns={EVENT_CRAWLERS_TABLE_COLUMNS}
-          areRowsSelectable
-          actions={actions}
-          onSelectedRowsChange={handlers.handleSelectedRowsChange}
         />
       </CardsContainer>
     </ErrorBoundary>

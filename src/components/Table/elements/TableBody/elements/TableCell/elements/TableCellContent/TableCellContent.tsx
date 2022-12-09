@@ -32,7 +32,7 @@ export const TableCellContent: FC<TableCellContentProps> = ({
         <Typography type={TYPOGRAPHY_TYPES.BODY2}>
           {utils.formatDate({
             date: cellValue,
-            format: DATE_FORMATS.LOCALIZED_DATE_TIME
+            format: DATE_FORMATS.DATE_TIME
           })}
         </Typography>
       </>
@@ -45,7 +45,7 @@ export const TableCellContent: FC<TableCellContentProps> = ({
         <Typography type={TYPOGRAPHY_TYPES.BODY2}>
           {utils.formatDate({
             date: cellValue,
-            format: DATE_FORMATS.LOCALIZED_DATE
+            format: DATE_FORMATS.DATE
           })}
         </Typography>
       </>

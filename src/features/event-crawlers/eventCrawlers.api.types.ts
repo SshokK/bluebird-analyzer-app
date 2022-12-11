@@ -26,7 +26,7 @@ export type FetchEventCrawlersPayload = [params: {
 
   limit?: number;
   offset?: number;
-  sortField?: Pick<EventCrawlerSchema, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
+  sortField?: string;
   sortOrder?: SORT_ORDERS;
 }]
 export type FetchEventCrawlersResponse = {

@@ -1,4 +1,5 @@
-export enum ELEVATION {
-  INITIAL = 1,
-  HOVER = 5
+export enum CLICKABLE_PAPER_ICON_SIZES {
+  S = 's',
+  M = 'm',
+  L = 'l'
 }

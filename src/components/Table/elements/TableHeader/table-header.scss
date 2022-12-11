@@ -1,35 +1,16 @@
 @use "src/styles/variables";
 
-.BB-table-header {
+@mixin cell-width($width) {
+  width: $width;
+  max-width: $width;
+}
 
+.BB-table-header {
   &__row {
     background-color: variables.$primary-color-1;
     color: variables.$primary-color-2;
     box-shadow: variables.$shadow-center-s;
     border-radius: variables.$border-radius-m;
-  }
-
-  &__cell {
-    padding: variables.$spacing-xs variables.$spacing-m;
-
-    &:first-child {
-      border-top-left-radius: variables.$border-radius-m;
-      border-bottom-left-radius: variables.$border-radius-m;
-    }
-
-    &:last-child {
-      border-top-right-radius: variables.$border-radius-m;
-      border-bottom-right-radius: variables.$border-radius-m;
-    }
-  }
-
-  &__cell-content {
-    display: flex;
-    text-align: left;
-    white-space: nowrap;
-    align-items: center;
-
-    column-gap: variables.$spacing-xs;
   }
 
   &__spacer {

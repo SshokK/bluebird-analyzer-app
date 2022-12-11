@@ -8,6 +8,7 @@ import {
   List,
   Separator
 } from "components";
+import {ANIMATION_TIMING} from "./BookmakersCrawlers.constants";
 import {EventCrawlers} from "./elements";
 import {
   useBookmakersCrawlersActions,
@@ -48,9 +49,10 @@ export const BookmakersCrawlers = () => {
         isAnimated
         isFullHeight
         orientation={CARDS_CONTAINER_ORIENTATIONS.COLUMN}
+        animationTiming={ANIMATION_TIMING}
       >
-        <Grid isContainer isWrapDisabled>
-          <Grid isChild xs={4} height={GRID_HEIGHT.XXXL}>
+        <Grid isContainer isWrapDisabled height={GRID_HEIGHT.FULL}>
+          <Grid isChild xs={4}>
             <List
               primaryActions={actions.primaryActions}
               secondaryActions={actions.secondaryActions}
@@ -62,12 +64,12 @@ export const BookmakersCrawlers = () => {
               onSelectedOptionsChange={handlers.handleBookmakersChange}
             />
           </Grid>
-          <Grid isChild xs={1} height={GRID_HEIGHT.XXXL}>
+          <Grid isChild xs={1}>
             <Separator isVertical>
               Crawlers
             </Separator>
           </Grid>
-          <Grid isChild xs={8} height={GRID_HEIGHT.XXXL} isShrinkDisabled>
+          <Grid isChild xs={8} isShrinkDisabled>
             <EventCrawlers bookmakerId={localState.bookmakerId} />
           </Grid>
         </Grid>

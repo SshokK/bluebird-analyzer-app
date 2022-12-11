@@ -54,10 +54,10 @@ export enum GRID_HEIGHT {
   XXS = '2rem',
   XS = '5rem',
   S = '8rem',
-  M = '10em',
+  M = '10rem',
   L = '15rem',
-  XL = '20rem',
-  XXL = '30rem',
-  XXXL = '40rem',
+  XL = '35rem',
+  XXL = '51rem',
+  XXXL = '70rem',
   FULL = '100%'
 }

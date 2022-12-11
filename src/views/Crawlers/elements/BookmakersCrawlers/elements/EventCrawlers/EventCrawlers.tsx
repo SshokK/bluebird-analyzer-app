@@ -3,7 +3,7 @@ import type {EventCrawlersProps} from "./EventCrawlers.types";
 
 import React from 'react';
 import {CardsContainer, ErrorBoundary, Table} from "components";
-import {ANIMATION_DELAY, EVENT_CRAWLERS_TABLE_COLUMNS} from "./EventCrawlers.constants";
+import {ANIMATION_TIMING, EVENT_CRAWLERS_TABLE_COLUMNS} from "./EventCrawlers.constants";
 import {
   useEventCrawlersTableActions,
   useEventCrawlersData,
@@ -41,7 +41,7 @@ export const EventCrawlers: FC<EventCrawlersProps> = ({ bookmakerId }) => {
     <ErrorBoundary>
       <CardsContainer
         isAnimated
-        animationDelay={ANIMATION_DELAY}
+        animationTiming={ANIMATION_TIMING}
         isFullHeight
         shouldShowNoDataMessage={!bookmakerId}
         elevation={0}

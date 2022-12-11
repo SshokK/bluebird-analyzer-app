@@ -1,14 +1,17 @@
 import type {ClickablePaperProps} from "./ClickablePaper.types";
 import type {FC} from 'react';
+
 import React from 'react';
 import {Button, Paper} from "@mui/material";
 import classnames from 'classnames';
+import {CLICKABLE_PAPER_ICON_SIZES} from "./ClickablePaper.constants";
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
 import {RestrictedBadge} from "../RestrictedBadge";
 import './clickable-paper.scss';
 
 export const ClickablePaper: FC<ClickablePaperProps> = ({
   icon,
+  iconSize,
   title,
   titleTypographyType,
   onClick,
@@ -35,7 +38,9 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
       {...restProps}
     >
       {icon && (
-        <span className={classnames('BB-clickable-paper__icon', classNames?.icon)}>
+        <span className={classnames('BB-clickable-paper__icon', classNames?.icon, {
+          [`BB-clickable-paper__icon--is-${iconSize ?? CLICKABLE_PAPER_ICON_SIZES.M}`]: true
+        })}>
           {icon}
         </span>
       )}

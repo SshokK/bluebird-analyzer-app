@@ -15,3 +15,5 @@ export enum MODAL_FIELD_KEYS {
   NAME = 'name',
   IMAGE_URL = 'imageUrl'
 }
+
+export const ANIMATION_TIMING = 500;

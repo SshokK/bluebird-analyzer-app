@@ -7,5 +7,5 @@ export enum MODAL_FIELD_KEYS {
   NAME = 'name'
 }
 
-export const ANIMATION_DELAY = 800;
+export const ANIMATION_TIMING = 800;
 

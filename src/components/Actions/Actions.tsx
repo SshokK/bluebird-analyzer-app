@@ -11,11 +11,14 @@ import {
   IconButton,
   ModalForm
 } from "components/index";
+import classnames from 'classnames';
 import {useActionsData, useActionsHandlers} from "./hooks";
+import './actions.scss';
 
 export const Actions: FC<ActionsProps> = ({
   actions,
   direction,
+  justifyContent,
   isWrapDisabled,
   classNames
 }) => {
@@ -35,10 +38,11 @@ export const Actions: FC<ActionsProps> = ({
         isContainer
         xs="auto"
         direction={direction}
+        justifyContent={justifyContent}
         isWrapDisabled={isWrapDisabled}
         spacing={GRID_SPACING.S}
         classNames={{
-          container: classNames?.container
+          container: classnames("BB-actions__container", classNames?.container)
         }}
       >
         {Object.entries(actions).map(([actionKey, action]) => (

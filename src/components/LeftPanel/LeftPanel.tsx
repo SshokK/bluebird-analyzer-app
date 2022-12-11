@@ -2,7 +2,7 @@ import type {LeftPanelProps} from "./LeftPanel.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {Card, ClickablePaper, Loader, TYPOGRAPHY_TYPES} from "components";
+import {Card, CLICKABLE_PAPER_ICON_SIZES, ClickablePaper, Loader, TYPOGRAPHY_TYPES} from "components";
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router";
 import './left-panel.scss';
@@ -21,6 +21,7 @@ export const LeftPanel: FC<LeftPanelProps> = ({ options, onOptionClick, onOption
               title={option.label}
               titleTypographyType={TYPOGRAPHY_TYPES.BUTTON}
               icon={option.icon}
+              iconSize={CLICKABLE_PAPER_ICON_SIZES.M}
               onClick={onOptionClick?.(option)}
               onRestrictedClick={onOptionRestrictedClick?.(option)}
               isDisabled={option.isDisabled}

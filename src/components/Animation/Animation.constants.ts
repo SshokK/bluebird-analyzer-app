@@ -21,6 +21,8 @@ export enum ANIMATION_DIRECTION {
   DOWN = 'down'
 }
 
+export const DEFAULT_ANIMATION_TIMING = 300;
+
 export const ANIMATION_COMPONENTS: Record<
   ANIMATION_TYPES,
   AnimationComponent

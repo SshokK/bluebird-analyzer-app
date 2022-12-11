@@ -11,3 +11,5 @@ export enum QUERY_PARAMS {
 export enum MODAL_FORM_FIELDS {
   NAME = 'name'
 }
+
+export const ANIMATION_TIMING = 500;

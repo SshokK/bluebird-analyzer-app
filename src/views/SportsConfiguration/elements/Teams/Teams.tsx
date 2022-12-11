@@ -4,7 +4,7 @@ import type {TeamsProps} from "./Teams.types";
 import React from 'react';
 import {CardsContainer, Table} from "components";
 import {useTeamsMutations, useTeamsQueries, useTeamsTableActions, useTeamsTableQueryOptions} from './hooks';
-import {ANIMATION_DELAY, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
+import {ANIMATION_TIMING, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
 
 export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
   const queries = useTeamsQueries({
@@ -36,7 +36,7 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
       }
       isFullHeight
       shouldShowNoDataMessage={!sportId}
-      animationDelay={ANIMATION_DELAY}
+      animationTiming={ANIMATION_TIMING}
       noDataMessage="Select a sport"
     >
       <Table

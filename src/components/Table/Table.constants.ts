@@ -15,3 +15,15 @@ export enum COLUMN_DATA_TYPES {
 export const CHECKBOX_COLUMN_ID = 'checkboxColumn';
 
 export const DEFAULT_TABLE_LIMIT = 10;
+
+export const EMPTY_CELL_VALUE = '-'
+
+export enum TABLE_COLUMN_WIDTHS {
+  XXS = 'xxs',
+  XS = 'xs',
+  S = 's',
+  M = 'm',
+  L = 'l',
+  XL = 'xl',
+  XXL = 'xxl'
+}

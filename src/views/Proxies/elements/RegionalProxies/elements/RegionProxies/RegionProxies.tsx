@@ -7,7 +7,7 @@ import {
   Table
 } from "components";
 import {
-  ANIMATION_DELAY,
+  ANIMATION_TIMING,
   REGION_PROXIES_TABLE_COLUMN_KEYS,
   REGION_PROXIES_TABLE_COLUMNS
 } from "./RegionProxies.constants";
@@ -45,7 +45,7 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
   return (
     <CardsContainer
       isAnimated
-      animationDelay={ANIMATION_DELAY}
+      animationTiming={ANIMATION_TIMING}
       isFullHeight
       shouldShowNoDataMessage={!regionId}
       elevation={0}

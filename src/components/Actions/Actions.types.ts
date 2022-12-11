@@ -22,6 +22,7 @@ export type Action = {
 export type ActionsProps = {
   actions: Record<string, Action>;
   direction?: GridProps['direction'];
+  justifyContent?: GridProps['justifyContent'];
   isWrapDisabled?: GridProps['isWrapDisabled'];
   classNames?: {
     container?: string;

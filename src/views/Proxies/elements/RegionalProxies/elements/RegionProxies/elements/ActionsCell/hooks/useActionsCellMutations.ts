@@ -1,9 +1,11 @@
 import type {ActionsCellProps} from "../ActionsCell.types";
 
 import {QUERY_KEYS} from "constants/queries.constants";
+import {ALERT_TYPES} from "components";
 
 import * as proxiesApi from "features/proxies/proxies.api";
 
+import { useAlert} from "components";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 export const useActionsCellMutations = ({
@@ -12,6 +14,7 @@ export const useActionsCellMutations = ({
   props: Pick<ActionsCellProps, 'row'>
 }) => {
   const queryClient = useQueryClient();
+  const alert = useAlert();
 
   const deleteProxy = useMutation<
     Awaited<ReturnType<typeof proxiesApi.deleteProxies>>,
@@ -20,7 +23,14 @@ export const useActionsCellMutations = ({
   >({
     mutationKey: [QUERY_KEYS.PROXIES],
     mutationFn: () => proxiesApi.deleteProxies([Number(props.row.id)]),
-    onSuccess: () => queryClient.invalidateQueries([QUERY_KEYS.PROXIES])
+    onSuccess: () => {
+      alert.showAlert({
+        type: ALERT_TYPES.SUCCESS,
+        message: 'Proxy deleted'
+      });
+
+      queryClient.invalidateQueries([QUERY_KEYS.PROXIES])
+    }
   });
 
   const updateProxy = useMutation<
@@ -30,7 +40,14 @@ export const useActionsCellMutations = ({
   >({
     mutationKey: [QUERY_KEYS.PROXIES],
     mutationFn: (body) => proxiesApi.updateProxy(Number(props.row.id), body),
-    onSuccess: () => queryClient.invalidateQueries([QUERY_KEYS.PROXIES])
+    onSuccess: () => {
+      alert.showAlert({
+        type: ALERT_TYPES.SUCCESS,
+        message: 'Proxy updated'
+      });
+
+      queryClient.invalidateQueries([QUERY_KEYS.PROXIES])
+    }
   });
 
   return {

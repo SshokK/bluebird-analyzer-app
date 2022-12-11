@@ -74,10 +74,5 @@
     &--id-column {
       flex-direction: column;
     }
-
-    &:not(:empty) {
-      // TODO Figure out if still required
-      //padding: variables.$spacing-m variables.$spacing-xxs variables.$spacing-xxs variables.$spacing-xxs;
-    }
   }
 }

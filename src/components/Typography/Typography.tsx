@@ -20,15 +20,16 @@ export const Typography: FC<TypographyProps> = ({
 }) => {
   return (
     <MUITypography
-      variant={type}
+      variant={type !== TYPOGRAPHY_TYPES.URL ? type : TYPOGRAPHY_TYPES.BODY2}
       align={alignment}
-      component={component as ElementType}
+      component={type === TYPOGRAPHY_TYPES.URL ? 'a' : component as ElementType}
       noWrap={shouldTruncate}
       paragraph={shouldRenderParagraph}
       gutterBottom={shouldAddBottomMargin}
       classes={{
         root: classnames('BB-typography', className, {
-          [`BB-typography--is-${status ?? TYPOGRAPHY_STATUS.INITIAL}`]: true
+          [`BB-typography--is-${status ?? TYPOGRAPHY_STATUS.INITIAL}`]: true,
+          [`BB-typography--url`]: type === TYPOGRAPHY_TYPES.URL
         }),
         inherit: 'BB-typography--inherit',
         h1: 'BB-typography--h1',
@@ -43,8 +44,15 @@ export const Typography: FC<TypographyProps> = ({
         subtitle1: 'BB-typography--subtitle1',
         subtitle2: 'BB-typography--subtitle2',
         body1: 'BB-typography--body1',
-        body2: 'BB-typography--body2'
+        body2: 'BB-typography--body2',
+        noWrap: 'BB-typography--nowrap'
       }}
+      {...(type === TYPOGRAPHY_TYPES.URL ? {
+        target: "_blank",
+        rel: "noreferrer",
+        title: children,
+        href: children
+      } : {})}
     >
       {children}
     </MUITypography>

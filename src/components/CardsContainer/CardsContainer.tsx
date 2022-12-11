@@ -16,6 +16,7 @@ export const CardsContainer: FC<CardsContainerProps> = ({
   children,
   isAnimated,
   animationDelay,
+  animationTiming,
   shouldShowNoDataMessage,
   isWithoutPadding,
   isWrapDisabled,
@@ -71,7 +72,12 @@ export const CardsContainer: FC<CardsContainerProps> = ({
 
   if (isAnimated) {
     return (
-      <Animation type={ANIMATION_TYPES.GROW} shouldAppear animationDelay={animationDelay}>
+      <Animation
+        type={ANIMATION_TYPES.GROW}
+        shouldAppear
+        animationDelay={animationDelay}
+        animationTiming={animationTiming}
+      >
         {content}
       </Animation>
     )

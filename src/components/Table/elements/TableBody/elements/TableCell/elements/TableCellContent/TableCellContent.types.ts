@@ -1,8 +1,8 @@
-import type {TableColumn} from "../../../../../../Table.types";
+import type {TableColumnMeta} from "../../../../../../Table.types";
 import type {ReactNode} from "react";
 
 export type TableCellContentProps = {
-  column: TableColumn;
+  column: TableColumnMeta;
   cellValue: unknown;
   cellContent: ReactNode;
 }

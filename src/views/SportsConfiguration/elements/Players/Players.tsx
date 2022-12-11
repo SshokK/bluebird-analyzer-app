@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {PlayersProps} from "./Players.types";
 
 import React from 'react';
-import {ANIMATION_DELAY, PLAYERS_PER_PAGE, PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMNS} from "./Players.constants";
+import {ANIMATION_TIMING, PLAYERS_PER_PAGE, PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMNS} from "./Players.constants";
 import { CardsContainer, Table} from "components";
 import {
   usePlayersMutations,
@@ -40,7 +40,7 @@ export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
         : `${queries.fetchSportFamily.data?.name} players`
       }
       isFullHeight
-      animationDelay={ANIMATION_DELAY}
+      animationTiming={ANIMATION_TIMING}
       shouldShowNoDataMessage={!sportFamilyId}
       noDataMessage="Select a sport family"
     >

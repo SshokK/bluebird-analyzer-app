@@ -14,6 +14,7 @@ export const StatusCell: FC<StatusCellProps> = ({ getValue, renderValue }) => {
         [PROXY_STATUSES.WORKING]: TYPOGRAPHY_STATUS.SUCCESS,
         [PROXY_STATUSES.DEAD]: TYPOGRAPHY_STATUS.ERROR
       }[getValue() as PROXY_STATUSES]}
+      shouldTruncate
     >
       {renderValue() as ReactNode}
     </Typography>

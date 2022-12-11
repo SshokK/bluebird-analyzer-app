@@ -8,7 +8,7 @@ export const AppContent = () => {
     <>
       <Header />
       <main className="BB-app-content__container">
-        <LeftNav />
+        {/*<LeftNav />*/}
         <Outlet />
       </main>
     </>

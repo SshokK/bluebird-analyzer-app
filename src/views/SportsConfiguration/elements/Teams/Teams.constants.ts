@@ -1,9 +1,8 @@
 import type {TableProps} from "components";
-
-import {COLUMN_DATA_TYPES, COLUMN_TYPES} from "components";
+import {COLUMN_DATA_TYPES, COLUMN_TYPES, TABLE_COLUMN_WIDTHS} from "components";
 import {ActionsCell} from "./elements";
 
-export const ANIMATION_DELAY = 1000;
+export const ANIMATION_TIMING = 1000;
 
 export enum TEAMS_TABLE_COLUMN_KEYS {
   ID = 'id',
@@ -21,11 +20,13 @@ export const TEAMS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: TEAMS_TABLE_COLUMN_KEYS.IMAGE_URL,
     type: COLUMN_TYPES.DATA_COLUMN,
+    width: TABLE_COLUMN_WIDTHS.L,
     dataType: COLUMN_DATA_TYPES.AVATAR
   },
   {
     key: TEAMS_TABLE_COLUMN_KEYS.NAME,
     title: 'Name',
+    width: TABLE_COLUMN_WIDTHS.XL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.TEXT,
     isSortable: true
@@ -33,6 +34,7 @@ export const TEAMS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: TEAMS_TABLE_COLUMN_KEYS.CREATED_AT,
     title: 'Created At',
+    width: TABLE_COLUMN_WIDTHS.XL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.DATE_TIME,
     isSortable: true
@@ -40,6 +42,7 @@ export const TEAMS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: TEAMS_TABLE_COLUMN_KEYS.UPDATED_AT,
     title: 'Updated At',
+    width: TABLE_COLUMN_WIDTHS.XL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.DATE_TIME,
     isSortable: true
@@ -47,6 +50,7 @@ export const TEAMS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: TEAMS_TABLE_COLUMN_KEYS.DELETED_AT,
     title: 'Deleted At',
+    width: TABLE_COLUMN_WIDTHS.XL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.DATE_TIME,
     isSortable: true

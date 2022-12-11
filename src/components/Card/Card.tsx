@@ -24,18 +24,20 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({
       "BB-card__container--with-avatars": Boolean(avatars?.length),
       "BB-card__container--is-full-height": isFullHeight
     })}>
-      <AvatarGroup classNames={{
-        container: classnames('BB-card__avatar-container', classNames?.avatarContainer)
-      }}>
-        {avatars?.map(({ src, alt }) => (
-          <Avatar
-            key={src}
-            src={src}
-            size={AVATAR_SIZES.MEDIUM}
-            alt={alt}
-          />
-        ))}
-      </AvatarGroup>
+      {Boolean(avatars?.length) && (
+        <AvatarGroup classNames={{
+          container: classnames('BB-card__avatar-container', classNames?.avatarContainer)
+        }}>
+          {avatars?.map(({ src, alt }) => (
+            <Avatar
+              key={src}
+              src={src}
+              size={AVATAR_SIZES.MEDIUM}
+              alt={alt}
+            />
+          ))}
+        </AvatarGroup>
+      )}
       <MUICard
         ref={ref}
         square={isSquared}

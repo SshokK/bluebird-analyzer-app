@@ -9,8 +9,10 @@ export type AnimationProps = {
   type: ANIMATION_TYPES;
   shouldAppear?: boolean;
   animationDelay?: number;
+  animationTiming?: number;
   direction?: ANIMATION_DIRECTION;
   orientation?: ANIMATION_ORIENTATION;
-  onExit?: Required<AnimationComponentProps>['onExit']
+  onExit?: Required<AnimationComponentProps>['onExit'];
+  onEntered?: Required<AnimationComponentProps>['onEntered'];
   children: ReactElement;
 }

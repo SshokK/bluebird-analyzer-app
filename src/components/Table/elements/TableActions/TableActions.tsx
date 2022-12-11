@@ -1,11 +1,11 @@
 import type {FC} from "react";
-import type {TableActionsProps} from "./TableActions.types";
-
 import React from 'react';
+import type {TableActionsProps} from "./TableActions.types";
 import {Actions} from "../../../Actions";
 import {Typography, TYPOGRAPHY_TYPES} from "../../../Typography";
 import {useTableActions, useTableActionsData} from "./hooks";
 import './table-actions.scss';
+import {Animation, ANIMATION_TYPES} from "../../../Animation";
 
 export const TableActions: FC<TableActionsProps> = ({
   table,
@@ -36,17 +36,21 @@ export const TableActions: FC<TableActionsProps> = ({
         )}
       </div>
       <div className="BB-table-actions__pagination-container">
-        <span className="BB-table-actions__pagination-info">
-          <Typography type={TYPOGRAPHY_TYPES.CAPTION}>
-            Showing
-            {' '}
-            {formattedData.intervalStart}
-            {' - '}
-            {formattedData.intervalEnd} of
-            {' '}
-            {totalCount}
-          </Typography>
-        </span>
+        {(totalCount ?? 0) > 0 && (
+          <Animation type={ANIMATION_TYPES.FADE} shouldAppear>
+            <span className="BB-table-actions__pagination-info">
+              <Typography type={TYPOGRAPHY_TYPES.CAPTION}>
+                Showing
+                {' '}
+                {formattedData.intervalStart}
+                {' - '}
+                {formattedData.intervalEnd} of
+                {' '}
+                {totalCount}
+              </Typography>
+            </span>
+          </Animation>
+        )}
         <Actions actions={tableActions} classNames={{
           container: "BB-table-actions__table-actions"
         }} />

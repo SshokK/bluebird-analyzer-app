@@ -18,4 +18,25 @@
   &--is-warning {
      color: variables.$status-color-warning;
   }
+
+  &--nowrap {
+
+  }
+
+  &--caption {
+    color: variables.$secondary-color-1;
+  }
+
+  &--url {
+    text-decoration: none;
+    color: variables.$primary-color-1;
+    transition: variables.$animation-time-short;
+    outline: none;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+      color: variables.$secondary-color-5;
+    }
+  }
 }

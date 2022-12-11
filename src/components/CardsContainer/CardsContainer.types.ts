@@ -1,5 +1,6 @@
 import type {ReactNode} from "react";
 import type {CARDS_CONTAINER_ORIENTATIONS} from "./CardsContainer.constants";
+import type {AnimationProps} from "../Animation";
 
 export type CardsContainerProps = {
   title?: ReactNode;
@@ -7,7 +8,8 @@ export type CardsContainerProps = {
   children?: ReactNode;
   isLoading?: boolean;
   isAnimated?: boolean;
-  animationDelay?: number;
+  animationDelay?: AnimationProps['animationDelay']
+  animationTiming?: AnimationProps['animationTiming']
   shouldShowNoDataMessage?: boolean;
   isWithoutPadding?: boolean;
   isWrapDisabled?: boolean;

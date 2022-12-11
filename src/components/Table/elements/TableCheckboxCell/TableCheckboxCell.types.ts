@@ -1,5 +1,4 @@
-import type {Row} from "@tanstack/react-table";
+import type {ComponentProps} from "react";
+import type {TableColumn} from "../../Table.types";
 
-export type TableCheckboxCellProps = {
-  row: Row<object>
-}
+export type TableCheckboxCellProps = ComponentProps<Required<TableColumn>['CellComponent']>;

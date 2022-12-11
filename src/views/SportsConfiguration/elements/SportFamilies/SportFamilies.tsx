@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Actions, CardsContainer, Chiclet, Grid, GRID_DIRECTION, GRID_SPACING} from "components";
+import {Actions, CardsContainer, Chiclet, Grid, GRID_DIRECTION, GRID_HEIGHT, GRID_SPACING} from "components";
 import {
   useSportFamiliesActionsConfig,
   useSportFamiliesData,
@@ -41,6 +41,7 @@ export const SportFamilies = () => {
       <Grid
         isContainer
         spacing={GRID_SPACING.L}
+        height={GRID_HEIGHT.M}
       >
         <Grid
           isChild
@@ -55,7 +56,7 @@ export const SportFamilies = () => {
               direction={GRID_DIRECTION.COLUMN}
             />
           </Grid>
-          <Grid isChild>
+          <Grid isChild shouldSetOverflowAuto>
             <Grid isContainer spacing={GRID_SPACING.L}>
               {queries.fetchSportFamilies.data?.map(sportFamily => (
                 <Grid key={sportFamily.id} isChild>

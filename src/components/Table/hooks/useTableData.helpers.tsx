@@ -55,7 +55,9 @@ export const formatColumns = ({
     tableColumns.unshift(columnHelper.display({
       id: CHECKBOX_COLUMN_ID,
       cell: TableCheckboxCell,
-      meta: {}
+      meta: {
+        isCheckbox: true
+      }
     }))
   }
 

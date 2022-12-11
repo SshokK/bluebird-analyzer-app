@@ -1,5 +1,5 @@
 import type {FC, ReactElement} from "react";
-import type {COLUMN_TYPES, COLUMN_DATA_TYPES } from "./Table.constants";
+import type {COLUMN_TYPES, COLUMN_DATA_TYPES, TABLE_COLUMN_WIDTHS } from "./Table.constants";
 import type {CellContext} from "@tanstack/table-core/build/lib/core/cell";
 import type {ActionsProps} from "../Actions";
 import type {UseQueryOptions} from "@tanstack/react-query/src/types";
@@ -8,12 +8,17 @@ import type {SORT_ORDERS} from "../../constants/global.constants";
 export type TableColumn = {
   key: string;
   type: COLUMN_TYPES;
+  width?: TABLE_COLUMN_WIDTHS;
   dataType?: COLUMN_DATA_TYPES;
   title?: ReactElement | string;
   CellComponent?: FC<CellContext<object, unknown>>;
   isSortable?: boolean;
   isInitialSortColumn?: boolean;
   initialSortOrder?: SORT_ORDERS
+}
+
+export type TableColumnMeta = TableColumn & {
+  isCheckbox?: boolean;
 }
 
 export type TableRow = {

@@ -42,6 +42,7 @@ export const useActionsCellMutations = ({
   >({
     mutationKey: [QUERY_KEYS.EVENT_CRAWLERS],
     mutationFn: () => eventCrawlersApi.deleteEventCrawler(Number(props.row.id)),
+    onError: utils.showServerErrorMessage(alert),
     onSuccess: () => {
       alert.showAlert({
         type: ALERT_TYPES.SUCCESS,

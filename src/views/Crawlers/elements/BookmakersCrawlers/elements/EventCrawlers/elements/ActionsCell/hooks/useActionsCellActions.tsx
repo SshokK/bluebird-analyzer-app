@@ -1,12 +1,12 @@
 import type {ActionsProps} from "components";
 import type {CrawlerSchema} from "features/crawlers/crawlers.api.types";
+import type {ActionsCellProps} from "../ActionsCell.types";
 
 import React from "react";
 import {ICON_BUTTON_SIZES, IconDelete, IconEdit, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
 import {EVENT_CRAWLER_ACTIONS, MODAL_FIELD_KEYS} from "../ActionsCell.constants";
-import {useActionsCellMutations} from "./useActionsCellMutations";
-import {ActionsCellProps} from "../ActionsCell.types";
 import {EVENT_CRAWLERS_TABLE_COLUMN_KEYS} from "../../../EventCrawlers.constants";
+import {useActionsCellMutations} from "./useActionsCellMutations";
 
 export const useActionsCellActions = ({
   props,

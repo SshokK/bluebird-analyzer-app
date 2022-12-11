@@ -4,7 +4,7 @@ import type {SportsProps} from "./Sports.types";
 import React from 'react';
 import {Actions, GRID_DIRECTION, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
 import {useSportsActionsConfig, useSportsData, useSportsHandlers, useSportsMutations, useSportsQueries} from "./hooks";
-import {ANIMATION_DELAY} from "./Sports.constants";
+import {ANIMATION_TIMING} from "./Sports.constants";
 
 export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
   const { formattedData } = useSportsData();
@@ -35,7 +35,7 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
       isAnimated
       shouldShowNoDataMessage={!queries.fetchSports.data?.results?.length}
       isFullHeight
-      animationDelay={ANIMATION_DELAY}
+      animationTiming={ANIMATION_TIMING}
       isLoading={
         queries.fetchSportFamily.isLoading ||
         queries.fetchSports.isLoading

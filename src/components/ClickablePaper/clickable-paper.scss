@@ -48,9 +48,20 @@
 
   &__icon {
     display: flex;
-    font-size: variables.$font-size-xxl;
     color: variables.$primary-color-1;
-    margin-bottom: variables.$spacing-s;
+    padding-bottom: variables.$spacing-xs;
     transition: color variables.$animation-time-medium;
+
+    &--is-s {
+      font-size: variables.$font-size-xl;
+    }
+
+    &--is-m {
+      font-size: variables.$font-size-xxl;
+    }
+
+    &--is-l {
+      font-size: variables.$font-size-xxxl;
+    }
   }
 }

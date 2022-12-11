@@ -1,11 +1,16 @@
 import type {MouseEvent, ReactNode} from 'react';
 import type {TYPOGRAPHY_TYPES} from "../Typography";
+import type {CLICKABLE_PAPER_ICON_SIZES} from "./ClickablePaper.constants";
 
 export type ClickablePaperProps = {
   /**
    * Icon to render
    */
   icon?: ReactNode;
+  /**
+   * Icon size
+   */
+  iconSize?: CLICKABLE_PAPER_ICON_SIZES;
   /**
    * Title to render
    */

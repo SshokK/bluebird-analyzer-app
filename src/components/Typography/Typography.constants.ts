@@ -12,7 +12,8 @@ export enum TYPOGRAPHY_TYPES {
   SUBTITLE1 = 'subtitle1',
   SUBTITLE2 = 'subtitle2',
   BODY1 = 'body1',
-  BODY2 = 'body2'
+  BODY2 = 'body2',
+  URL = 'url'
 }
 
 export enum TYPOGRAPHY_STATUS {

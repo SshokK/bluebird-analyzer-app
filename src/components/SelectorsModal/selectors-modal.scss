@@ -1,0 +1,13 @@
+.BB-selectors-modal {
+  &__modal {
+    height: 90vh;
+  }
+
+  &__container {
+    padding: unset;
+  }
+
+  &__chart-container {
+    height: 100%;
+  }
+}

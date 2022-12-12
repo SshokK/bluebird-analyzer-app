@@ -1,38 +1,51 @@
 import type {ActionsProps} from "components";
 import type {CrawlerSchema} from "features/crawlers/crawlers.api.types";
-import type {ActionsCellProps} from "../ActionsCell.types";
+import type {ActionsCellData} from "./useActionsCellData.types";
+import type {ActionsCellHandlers} from "./useActionsCellHandlers.types";
 
 import React from "react";
-import {ICON_BUTTON_SIZES, IconDelete, IconEdit, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+
 import {EVENT_CRAWLER_ACTIONS, MODAL_FIELD_KEYS} from "../ActionsCell.constants";
-import {EVENT_CRAWLERS_TABLE_COLUMN_KEYS} from "../../../EventCrawlers.constants";
+import {ICON_BUTTON_SIZES, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+
+import { IconDelete, IconDiagram, IconEdit } from 'components';
+
 import {useActionsCellMutations} from "./useActionsCellMutations";
 
 export const useActionsCellActions = ({
-  props,
-  mutations
+  formattedData,
+  mutations,
+  onSelectorsModalToggle
 }: {
-  props: Pick<ActionsCellProps, 'row'>
-  mutations: ReturnType<typeof useActionsCellMutations>
+  formattedData: ActionsCellData['formattedData'];
+  mutations: ReturnType<typeof useActionsCellMutations>;
+  onSelectorsModalToggle: ActionsCellHandlers['handleSelectorsModalToggle']
 }): Required<ActionsProps>['actions'] => {
   return {
+    [EVENT_CRAWLER_ACTIONS.EDIT_SELECTORS]: {
+      icon: <IconDiagram />,
+      iconSize: ICON_BUTTON_SIZES.SMALL,
+      onClick: onSelectorsModalToggle(true),
+      isDisabled: formattedData.isActiveCrawler,
+    },
     [EVENT_CRAWLER_ACTIONS.EDIT]: {
       icon: <IconEdit />,
       iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: 'Edit crawler',
       modalSize: MODAL_SIZES.SMALL,
+      isDisabled: formattedData.isActiveCrawler,
       modalFields: {
         [MODAL_FIELD_KEYS.NAME]: {
           type: MODAL_FORM_FIELD_TYPES.TEXT,
           label: 'name',
-          value: props.row.getValue(EVENT_CRAWLERS_TABLE_COLUMN_KEYS.NAME),
+          value: formattedData.row.name,
           isRequired: true
         },
         [MODAL_FIELD_KEYS.TARGET_URL]: {
           type: MODAL_FORM_FIELD_TYPES.TEXT,
           label: 'target URL',
-          value: props.row.getValue(EVENT_CRAWLERS_TABLE_COLUMN_KEYS.TARGET_URL),
+          value: formattedData.row.targetUrl,
           isRequired: true
         }
       },
@@ -46,6 +59,7 @@ export const useActionsCellActions = ({
       iconSize: ICON_BUTTON_SIZES.SMALL,
       shouldShowModal: true,
       modalTitle: 'Are you sure',
+      isDisabled: formattedData.isActiveCrawler,
       onSubmit: () => mutations.deleteEventCrawler.mutate()
     }
   }

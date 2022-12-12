@@ -38,3 +38,5 @@ export * from './PlayerCard';
 export * from './Dropdown';
 export * from './Tooltip';
 export * from './DataSelect';
+export * from './SelectorsModal';
+export * from './FlowChart';

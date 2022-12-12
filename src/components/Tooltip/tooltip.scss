@@ -1,10 +1,12 @@
 @use 'src/styles/variables';
 
 @mixin common-tooltip-preset() {
-  padding: variables.$spacing-s;
-  font-size: variables.$font-size-m;
-  display: flex;
-  align-items: center;
+  &.BB-tooltip {
+    padding: variables.$spacing-s;
+    font-size: variables.$font-size-m;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @mixin common-tooltip-arrow-preset() {
@@ -26,7 +28,7 @@
   @include common-tooltip-preset();
 
   &#{&}--primary {
-    background-color: variables.$primary-color-3;
+    background-color: #{variables.$primary-color-3}40;
     color: variables.$primary-color-2;
   }
 
@@ -50,7 +52,7 @@
     @include common-tooltip-arrow-preset();
 
     &#{&}--primary {
-      color: variables.$primary-color-3;
+      color: #{variables.$primary-color-3}40;
     }
 
     &#{&}--secondary {
@@ -66,7 +68,7 @@
     }
   }
 
-  &__popper {
+  &__popper.BB-tooltip__popper {
     pointer-events: all;
     z-index: variables.$elevation-highest;
   }
@@ -102,7 +104,7 @@
       color: variables.$primary-color-2;
 
       &:hover {
-        color: variables.$secondary-color-3;
+        color: variables.$secondary-color-2;
       }
     }
   }

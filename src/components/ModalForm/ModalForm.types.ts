@@ -22,7 +22,8 @@ export type ModalFormProps = {
   title?: ReactNode;
   size?: ModalProps['size'];
   isOpen: boolean;
-  fields: Record<string, ModalFormField>;
+  fields?: Record<string, ModalFormField>;
+  children?: ReactNode;
   shouldEnableAutoComplete?: boolean;
   onSubmit?: (fields: Record<string, ModalFormField>) => Promise<void> | void;
   onClose?: (fields: Record<string, ModalFormField>) => void;

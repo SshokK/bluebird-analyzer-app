@@ -2,29 +2,39 @@ import type {FC} from "react";
 import type {ActionsCellProps} from "./ActionsCell.types";
 
 import React from 'react';
-import {Actions, GRID_DIRECTION, GRID_JUSTIFY_CONTENT} from "components";
-import {useActionsCellActions, useActionsCellMutations} from "./hooks";
+import {Actions, GRID_DIRECTION, GRID_JUSTIFY_CONTENT, SelectorsModal} from "components";
+import {useActionsCellActions, useActionsCellData, useActionsCellHandlers, useActionsCellMutations} from "./hooks";
 
 export const ActionsCell: FC<ActionsCellProps>= ({ row }) => {
+  const { localState, localActions, formattedData } = useActionsCellData({ row });
+
+  const handlers = useActionsCellHandlers({
+    localActions
+  });
+
   const mutations = useActionsCellMutations({
-    props: {
-      row
-    }
+    formattedData
   });
 
   const actions = useActionsCellActions({
-    props: {
-      row
-    },
-    mutations
+    formattedData,
+    mutations,
+    onSelectorsModalToggle: handlers.handleSelectorsModalToggle
   });
 
   return (
-    <Actions
-      actions={actions}
-      direction={GRID_DIRECTION.ROW}
-      justifyContent={GRID_JUSTIFY_CONTENT.FLEX_END}
-      isWrapDisabled
-    />
+    <>
+      <Actions
+        actions={actions}
+        direction={GRID_DIRECTION.ROW}
+        justifyContent={GRID_JUSTIFY_CONTENT.FLEX_END}
+        isWrapDisabled
+      />
+      <SelectorsModal
+        isOpen={localState.isSelectorsModalOpen}
+        crawlerId={formattedData.row.CrawlerId}
+        onClose={handlers.handleSelectorsModalToggle(false)}
+      />
+    </>
   )
 }

@@ -11,3 +11,7 @@ export type CrawlerSchema = {
   updatedAt: string;
   deletedAt: string | null;
 }
+
+export type FetchCrawlerPayload = [crawlerId: CrawlerSchema['id']]
+export type FetchCrawlerResponse = CrawlerSchema;
+export type FetchCrawlers = (...args: FetchCrawlerPayload) => Promise<FetchCrawlerResponse>;

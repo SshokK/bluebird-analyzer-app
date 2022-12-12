@@ -1,4 +1,4 @@
-import type {DropdownProps, GridProps, IconButtonProps, ModalFormProps} from "components/index";
+import type {DropdownProps, GridProps, IconButtonProps, ModalFormProps, TooltipProps} from "components/index";
 import type {ReactNode} from "react";
 
 export type Action = {
@@ -9,8 +9,10 @@ export type Action = {
   modalTitle?: ModalFormProps['title'];
   modalSize?: ModalFormProps['size'];
   modalFields?: ModalFormProps['fields'];
+  modalContent?: ModalFormProps['children'];
   shouldShowDropdown?: boolean;
   dropdownContent?: ReactNode;
+  tooltip?: TooltipProps['title'];
   dropdownTransformOrigin?: DropdownProps['transformOrigin'];
   dropdownAnchorOrigin?: DropdownProps['anchorOrigin'];
   onClick?: (action: Action) => void;

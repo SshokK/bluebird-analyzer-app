@@ -1,0 +1,16 @@
+@use "src/styles/variables";
+
+.BB-flow-chart-node {
+  overflow: auto;
+
+  padding: variables.$spacing-m;
+  background-color: variables.$primary-color-2;
+  box-shadow: variables.$shadow-center-s;
+  border-radius: variables.$border-radius-m;
+  transition: variables.$animation-time-short;
+
+  &:hover,
+  &:focus {
+    background-color: variables.$secondary-color-2;
+  }
+}

@@ -1,6 +1,7 @@
 export enum MODAL_SIZES {
   SMALL = 'small',
-  MEDIUM = 'medium'
+  MEDIUM = 'medium',
+  LARGE = 'large'
 }
 
 export enum MODAL_FIELDS {

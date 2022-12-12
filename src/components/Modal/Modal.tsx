@@ -2,7 +2,6 @@ import type {ModalProps} from "./Modal.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {Fade as MUIGrow, Modal as MUIModal} from '@mui/material';
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {Card} from "../Card";
 import {Button, BUTTON_FORM_ROLES} from "../Button";
@@ -11,6 +10,7 @@ import {ICON_BUTTON_TYPES, IconButton} from "../IconButton";
 import {MODAL_SIZES} from "./Modal.constants";
 import {IconClose} from "../Icons";
 import classnames from 'classnames';
+import * as MUI from '@mui/material';
 import './modal.scss';
 
 export const Modal: FC<ModalProps> = ({
@@ -26,7 +26,7 @@ export const Modal: FC<ModalProps> = ({
   classNames
 }) => {
   return (
-    <MUIModal
+    <MUI.Modal
       open={isOpen}
       onClose={onClose}
       closeAfterTransition
@@ -34,7 +34,7 @@ export const Modal: FC<ModalProps> = ({
         root: classnames('BB-modal__container', classNames?.container)
       }}
     >
-      <MUIGrow in={isOpen}>
+      <MUI.Grow in={isOpen}>
         <div className={classnames("BB-modal__inner-container", classNames?.innerContainer)}>
           <IconButton
             type={ICON_BUTTON_TYPES.TERTIARY}
@@ -78,7 +78,7 @@ export const Modal: FC<ModalProps> = ({
             </form>
           </Card>
         </div>
-      </MUIGrow>
-    </MUIModal>
+      </MUI.Grow>
+    </MUI.Modal>
   )
 }

@@ -1,4 +1,5 @@
 import type {TableProps} from "components";
+
 import {COLUMN_DATA_TYPES, COLUMN_TYPES, TABLE_COLUMN_WIDTHS} from "components";
 
 import {ActionsCell, StatusCell} from "./elements";
@@ -7,6 +8,7 @@ export const ANIMATION_TIMING = 1000;
 
 export enum EVENT_CRAWLERS_TABLE_COLUMN_KEYS {
   ID= 'id',
+  CRAWLER_ID = 'CrawlerId',
   STATUS= 'Crawler.status',
   SPORT_NAME = 'Sport.name',
   NAME= 'Crawler.name',
@@ -65,6 +67,11 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.DATE_TIME,
     isSortable: true
+  },
+  {
+    key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CRAWLER_ID,
+    type: COLUMN_TYPES.DATA_COLUMN,
+    CellComponent: () => null
   },
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.ACTIONS,

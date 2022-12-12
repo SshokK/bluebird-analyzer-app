@@ -17,6 +17,7 @@
     position: absolute;
     right: -1rem;
     top: -1rem;
+    z-index: variables.$elevation-low + 1;
   }
 
   &__content {
@@ -37,6 +38,12 @@
       max-width: 70vw;
       max-height: 70vh;
     }
+
+    &--large {
+      width: 80rem;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
   }
 
   &__form {
@@ -55,7 +62,7 @@
     flex: 1;
     overflow: auto;
     border-top: variables.$border-primary-5-s;
-    background-color: variables.$secondary-color-3;
+    background-color: variables.$secondary-color-2;
     padding: variables.$spacing-l;
     box-shadow: variables.$shadow-inset-center-m;
   }

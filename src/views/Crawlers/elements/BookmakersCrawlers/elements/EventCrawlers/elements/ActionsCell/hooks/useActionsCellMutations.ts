@@ -1,4 +1,4 @@
-import type {ActionsCellProps} from "../ActionsCell.types";
+import type {ActionsCellData} from "./useActionsCellData.types";
 import type {RequestError} from "fetch";
 import type {ServerErrorResponse} from "fetch";
 
@@ -10,9 +10,9 @@ import * as eventCrawlersApi from "features/event-crawlers/eventCrawlers.api";
 import * as utils from "utils";
 
 export const useActionsCellMutations = ({
-  props
+  formattedData
 }: {
-  props: Pick<ActionsCellProps, 'row'>
+  formattedData: ActionsCellData['formattedData']
 }) => {
   const queryClient = useQueryClient();
   const alert = useAlert();
@@ -23,7 +23,7 @@ export const useActionsCellMutations = ({
     Parameters<typeof eventCrawlersApi.updateEventCrawler>[1]
   >({
     mutationKey: [QUERY_KEYS.EVENT_CRAWLERS],
-    mutationFn: (body) => eventCrawlersApi.updateEventCrawler(Number(props.row.id), body),
+    mutationFn: (body) => eventCrawlersApi.updateEventCrawler(formattedData.row.id, body),
     onError: utils.showServerErrorMessage(alert),
     onSuccess: () => {
       alert.showAlert({
@@ -41,7 +41,7 @@ export const useActionsCellMutations = ({
     void
   >({
     mutationKey: [QUERY_KEYS.EVENT_CRAWLERS],
-    mutationFn: () => eventCrawlersApi.deleteEventCrawler(Number(props.row.id)),
+    mutationFn: () => eventCrawlersApi.deleteEventCrawler(formattedData.row.id),
     onError: utils.showServerErrorMessage(alert),
     onSuccess: () => {
       alert.showAlert({

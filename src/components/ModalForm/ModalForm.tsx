@@ -15,7 +15,8 @@ export const ModalForm:FC<ModalFormProps> = ({
   shouldEnableAutoComplete,
   onClose,
   onSubmit,
-  classNames
+  classNames,
+  children
 }) => {
   const { localState, localActions, formattedData } = useModalFormData({ fields });
 
@@ -41,8 +42,7 @@ export const ModalForm:FC<ModalFormProps> = ({
       classNames={{
         body: "BB-modal-form__body",
         ...classNames
-    }}
-    >
+    }}>
       {
         Boolean(Object.keys(localState.fields).length) &&
         Object.entries(localState.fields).map(([fieldKey, field]) => {
@@ -65,6 +65,7 @@ export const ModalForm:FC<ModalFormProps> = ({
             />
           )
       })}
+      {children}
     </Modal>
   )
 }

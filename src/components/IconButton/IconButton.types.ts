@@ -13,4 +13,9 @@ export type IconButtonProps = {
     button?: string;
     icon?: string;
   }
+
+  /**
+   * Rest props
+   */
+  [key: string]: unknown;
 }

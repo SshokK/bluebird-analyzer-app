@@ -9,7 +9,8 @@ import {
   ICON_BUTTON_SIZES,
   ICON_BUTTON_TYPES,
   IconButton,
-  ModalForm
+  ModalForm,
+  Tooltip
 } from "components/index";
 import classnames from 'classnames';
 import {useActionsData, useActionsHandlers} from "./hooks";
@@ -53,31 +54,33 @@ export const Actions: FC<ActionsProps> = ({
               transformOrigin={action.dropdownTransformOrigin}
               anchorOrigin={action.dropdownAnchorOrigin}
               trigger={(
-                <IconButton
-                  type={action.iconType ?? ICON_BUTTON_TYPES.SECONDARY}
-                  size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
-                  icon={action.icon}
-                  isPressed={localState.openedDropdownKey === actionKey}
-                  isDisabled={action.isDisabled}
-                  onClick={handlers.handleClick(actionKey)}
-                />
+                <Tooltip title={action.tooltip}>
+                  <IconButton
+                    type={action.iconType ?? ICON_BUTTON_TYPES.SECONDARY}
+                    size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
+                    icon={action.icon}
+                    isPressed={localState.openedDropdownKey === actionKey}
+                    isDisabled={action.isDisabled}
+                    onClick={handlers.handleClick(actionKey)}
+                  />
+                </Tooltip>
               )}
             >
               {action.dropdownContent}
             </Dropdown>
+            <ModalForm
+              isOpen={localState.openedModalKey === actionKey}
+              title={action.modalTitle}
+              size={action.modalSize}
+              fields={action.modalFields ?? {}}
+              onClose={handlers.handleModalClose}
+              onSubmit={handlers.handleModalSubmit(actionKey)}
+            >
+              {action.modalContent}
+            </ModalForm>
           </Grid>
         ))}
       </Grid>
-      {localState.openedModalKey && (
-        <ModalForm
-          isOpen
-          title={actions[localState.openedModalKey]?.modalTitle}
-          size={actions[localState.openedModalKey]?.modalSize}
-          fields={actions[localState.openedModalKey]?.modalFields ?? {}}
-          onClose={handlers.handleModalClose}
-          onSubmit={handlers.handleModalSubmit(localState.openedModalKey)}
-        />
-      )}
     </>
   )
 }

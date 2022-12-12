@@ -1,0 +1,42 @@
+@use "src/styles/variables";
+
+.BB-flow-chart {
+  height: 100%;
+  width: 100%;
+
+  .react-flow__controls {
+    display: flex;
+    flex-direction: column;
+    row-gap: variables.$spacing-s;
+    box-shadow: unset;
+  }
+
+  .react-flow__controls-button {
+    box-shadow: variables.$shadow-center-s;
+    border-radius: variables.$border-radius-m;
+    transition: variables.$animation-time-short;
+  }
+
+  .react-flow__attribution {
+    display: none;
+  }
+
+  .react-flow__node-default.selectable.selected,
+  .react-flow__node-default {
+    border: unset;
+    padding: unset;
+    box-shadow: variables.$shadow-center-s;
+    border-radius: variables.$border-radius-m;
+
+    &:focus,
+    &:hover {
+      box-shadow: variables.$shadow-center-s;
+    }
+  }
+
+  .react-flow__node-default.selectable.selected {
+    .BB-flow-chart-node {
+      background-color: variables.$secondary-color-2;
+    }
+  }
+}

@@ -29,3 +29,4 @@ export * from './IconFilter';
 export * from './IconCheckboxEmpty';
 export * from './IconCheckboxSelected';
 export * from './IconCheckboxIntermediate';
+export * from './IconDiagram';

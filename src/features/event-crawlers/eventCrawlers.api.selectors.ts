@@ -12,6 +12,7 @@ export const formatEventCrawlersForTable = (response: Awaited<ReturnType<FetchEv
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.NAME]: eventCrawler.Crawler.name,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.TARGET_URL]: eventCrawler.Crawler.targetUrl,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.STATUS]: eventCrawler.Crawler.status,
+      [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CRAWLER_ID]: eventCrawler.Crawler.id,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CREATED_AT]: eventCrawler.createdAt,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.UPDATED_AT]: eventCrawler.updatedAt,
       [EVENT_CRAWLERS_TABLE_COLUMN_KEYS.DELETED_AT]: eventCrawler.deletedAt,

@@ -1,2 +1,1 @@
-export * from './useSelectorsModalMutations';
-export * from './useSelectorsModalQueries';
+export * from './useSelectorsModalData';

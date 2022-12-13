@@ -26,7 +26,6 @@ export const useActionsCellActions = ({
       icon: <IconDiagram />,
       iconSize: ICON_BUTTON_SIZES.SMALL,
       onClick: onSelectorsModalToggle(true),
-      isDisabled: formattedData.isActiveCrawler,
     },
     [EVENT_CRAWLER_ACTIONS.EDIT]: {
       icon: <IconEdit />,

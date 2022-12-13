@@ -1,5 +1,7 @@
 @use "src/styles/variables";
 
+$node-elevation: variables.$elevation-lowest;
+
 .BB-flow-chart {
   height: 100%;
   width: 100%;
@@ -9,12 +11,23 @@
     flex-direction: column;
     row-gap: variables.$spacing-s;
     box-shadow: unset;
+    margin: variables.$spacing-m;
   }
 
   .react-flow__controls-button {
     box-shadow: variables.$shadow-center-s;
     border-radius: variables.$border-radius-m;
     transition: variables.$animation-time-short;
+    color: variables.$secondary-color-4;
+
+    &:hover,
+    &:focus {
+      background-color: variables.$secondary-color-2;
+    }
+
+    svg {
+      fill: currentColor;
+    }
   }
 
   .react-flow__attribution {
@@ -27,6 +40,9 @@
     padding: unset;
     box-shadow: variables.$shadow-center-s;
     border-radius: variables.$border-radius-m;
+    z-index: $node-elevation;
+    color: variables.$primary-color-3;
+    width: unset;
 
     &:focus,
     &:hover {
@@ -38,5 +54,15 @@
     .BB-flow-chart-node {
       background-color: variables.$secondary-color-2;
     }
+  }
+
+  .react-flow__handle {
+    background-color: variables.$primary-color-5;
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  .react-flow__connectionline {
+    z-index: $node-elevation - 1;
   }
 }

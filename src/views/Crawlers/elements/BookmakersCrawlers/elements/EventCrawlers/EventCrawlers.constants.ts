@@ -31,7 +31,7 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.SPORT_NAME,
     title: 'Sport',
-    width: TABLE_COLUMN_WIDTHS.L,
+    width: TABLE_COLUMN_WIDTHS.XXL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.TEXT,
     isSortable: true
@@ -39,7 +39,7 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.NAME,
     title: 'Name',
-    width: TABLE_COLUMN_WIDTHS.XL,
+    width: TABLE_COLUMN_WIDTHS.XXL,
     type: COLUMN_TYPES.DATA_COLUMN,
     dataType: COLUMN_DATA_TYPES.TEXT,
     isSortable: true
@@ -52,22 +52,22 @@ export const EVENT_CRAWLERS_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     dataType: COLUMN_DATA_TYPES.URL,
     isSortable: true
   },
-  {
-    key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CREATED_AT,
-    title: 'Created At',
-    width: TABLE_COLUMN_WIDTHS.XL,
-    type: COLUMN_TYPES.DATA_COLUMN,
-    dataType: COLUMN_DATA_TYPES.DATE_TIME,
-    isSortable: true
-  },
-  {
-    key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.UPDATED_AT,
-    title: 'Updated At',
-    width: TABLE_COLUMN_WIDTHS.XL,
-    type: COLUMN_TYPES.DATA_COLUMN,
-    dataType: COLUMN_DATA_TYPES.DATE_TIME,
-    isSortable: true
-  },
+  // {
+  //   key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CREATED_AT,
+  //   title: 'Created At',
+  //   width: TABLE_COLUMN_WIDTHS.XL,
+  //   type: COLUMN_TYPES.DATA_COLUMN,
+  //   dataType: COLUMN_DATA_TYPES.DATE_TIME,
+  //   isSortable: true
+  // },
+  // {
+  //   key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.UPDATED_AT,
+  //   title: 'Updated At',
+  //   width: TABLE_COLUMN_WIDTHS.XL,
+  //   type: COLUMN_TYPES.DATA_COLUMN,
+  //   dataType: COLUMN_DATA_TYPES.DATE_TIME,
+  //   isSortable: true
+  // },
   {
     key: EVENT_CRAWLERS_TABLE_COLUMN_KEYS.CRAWLER_ID,
     type: COLUMN_TYPES.DATA_COLUMN,

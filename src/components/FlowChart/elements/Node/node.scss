@@ -13,4 +13,8 @@
   &:focus {
     background-color: variables.$secondary-color-2;
   }
+  
+  &__content {
+    overflow: auto;
+  }
 }

@@ -8,6 +8,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
 } from 'reactflow';
+import { FLOWCHART_EDGES} from "./FlowChart.constants";
 
 import {useFlowChartData} from "./hooks";
 
@@ -29,6 +30,7 @@ export const FlowChart: FC<FlowChartProps> = (props) => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
+        edgeTypes={FLOWCHART_EDGES}
       >
         <Controls />
         <Background />

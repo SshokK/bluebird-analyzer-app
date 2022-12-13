@@ -4,7 +4,10 @@ import type {FLOWCHART_DIRECTION} from "./FlowChart.constants";
 export type FlowChartNode = {
   key: string;
   content?: ReactNode;
-  connections?: FlowChartNode['key'][]
+  width?: number;
+  height?: number;
+  toConnections?: FlowChartNode['key'][]
+  fromConnections?: FlowChartNode['key'][]
 }
 
 export type FlowChartProps = {

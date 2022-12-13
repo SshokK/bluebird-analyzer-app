@@ -1,0 +1,11 @@
+@use "../../../../../../../../styles/variables";
+
+.BB-selector-node-content-list-item {
+  &__label {
+    color: variables.$secondary-color-1;
+  }
+
+  &__value {
+    //color: variables.$primary-color-3;
+  }
+}

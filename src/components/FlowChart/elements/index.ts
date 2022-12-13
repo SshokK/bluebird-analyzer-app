@@ -1,1 +1,2 @@
-export * from './FlowChartNode';
+export * from './Node';
+export * from './FloatingEdge';

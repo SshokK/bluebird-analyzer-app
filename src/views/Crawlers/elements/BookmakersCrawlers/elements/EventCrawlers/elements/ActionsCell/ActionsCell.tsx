@@ -32,6 +32,7 @@ export const ActionsCell: FC<ActionsCellProps>= ({ row }) => {
       />
       <SelectorsModal
         isOpen={localState.isSelectorsModalOpen}
+        isEditable={!formattedData.isActiveCrawler}
         crawlerId={formattedData.row.CrawlerId}
         onClose={handlers.handleSelectorsModalToggle(false)}
       />

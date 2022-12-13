@@ -3,54 +3,42 @@ import type {SelectorsModalProps} from "./SelectorsModal.types";
 
 import React from 'react';
 import {Modal, MODAL_SIZES} from "../Modal";
-import {FlowChart, FLOWCHART_DIRECTION} from "../FlowChart";
-import {useSelectorsModalMutations, useSelectorsModalQueries} from "./hooks";
+import {Selectors} from "./elements";
+import {useSelectorsModalData} from "./hooks";
 import './selectors-modal.scss';
 
 export const SelectorsModal: FC<SelectorsModalProps> = ({
   isOpen,
+  isEditable,
   crawlerId,
   onClose
 }) => {
-  const queries = useSelectorsModalQueries({
-    props: {
-      crawlerId,
-      isOpen
-    }
-  });
-
-  const mutations = useSelectorsModalMutations({
-    props: {
-      crawlerId
-    }
-  })
+  const { localState, localActions } = useSelectorsModalData();
 
   return (
     <Modal
       title={
-        queries.fetchCrawler.data
-          ? `${queries.fetchCrawler?.data?.name} selectors`
-         : 'Selectors'
+        localState.crawlerName
+          ? `${localState.crawlerName} selectors`
+          : 'Selectors'
       }
-      isLoading={
-        queries.fetchCrawler.isLoading ||
-        queries.fetchCrawlerPageSelectors.isLoading
-      }
+      isLoading={localState.isLoading}
       isOpen={isOpen}
       size={MODAL_SIZES.LARGE}
       onClose={onClose}
       shouldRenderFooter
+      isSubmitDisabled={!isEditable}
       classNames={{
         content: 'BB-selectors-modal__modal',
         body: 'BB-selectors-modal__container'
       }}
     >
-      <div className="BB-selectors-modal__chart-container">
-        <FlowChart
-          nodes={queries.fetchCrawlerPageSelectors.data}
-          direction={FLOWCHART_DIRECTION.TOP_TO_BOTTOM}
-        />
-      </div>
+      <Selectors
+        crawlerId={crawlerId}
+        isEditable={isEditable}
+        onCrawlerNameChange={localActions.setCrawlerName}
+        onIsLoadingChange={localActions.setIsLoading}
+      />
     </Modal>
   )
 }

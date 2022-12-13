@@ -1,8 +1,8 @@
 import type {CrawlerSchema} from "features/crawlers/crawlers.api.types";
 
-export type SelectorsModalProps = {
-  isOpen: boolean;
+export type SelectorsProps = {
   crawlerId: CrawlerSchema['id'];
   isEditable: boolean;
-  onClose: () => void;
+  onIsLoadingChange: (isLoading: boolean) => void;
+  onCrawlerNameChange: (name: string) => void;
 }

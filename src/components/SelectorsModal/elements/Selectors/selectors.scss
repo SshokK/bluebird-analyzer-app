@@ -1,0 +1,12 @@
+@use "src/styles/variables";
+
+.BB-selectors {
+  &__chart-container {
+    height: 100%;
+  }
+
+  &__actions {
+    position: absolute;
+    padding: variables.$spacing-m;
+  }
+}

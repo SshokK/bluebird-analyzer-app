@@ -1,6 +1,10 @@
 @use "src/styles/variables";
 
 .BB-select {
+  &--is-full-width {
+    width: 100%;
+  }
+
   &#{&} .MuiInputBase-root {
     color: variables.$primary-color-3;
 
@@ -12,5 +16,10 @@
     &:before {
       border-bottom: variables.$border-primary-3-s;
     }
+  }
+
+  &__option.BB-select__option.BB-select__option {
+    text-overflow: ellipsis;
+    display: block;
   }
 }

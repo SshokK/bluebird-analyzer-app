@@ -1,4 +1,5 @@
 import type {UseQueryOptions} from "@tanstack/react-query/src/types";
+import type {SELECT_SIZES} from "./Select.constants";
 
 export type SelectOption<T = unknown>= {
   value: T;
@@ -20,6 +21,7 @@ export type SelectQueryOptions = Omit<UseQueryOptions<Awaited<ReturnType<SelectQ
 
 export type SelectProps = {
   value?: SelectOption['value'][];
+  size?: SELECT_SIZES;
   options?: SelectOption[];
   onChange?: (values: SelectOption['value'][], options: SelectOption[]) => void;
   isMulti?: boolean;
@@ -27,6 +29,7 @@ export type SelectProps = {
   isClearable?: boolean;
   isRequired?: boolean;
   isLoading?: boolean;
+  isFullWidth?: boolean;
   label?: string;
   queryOptions?: SelectQueryOptions;
   queryParams?: Record<string, unknown>

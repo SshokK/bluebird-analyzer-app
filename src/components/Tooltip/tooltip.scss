@@ -7,6 +7,11 @@
     display: flex;
     align-items: center;
   }
+
+  &__title {
+    display: block;
+    width: 100%;
+  }
 }
 
 @mixin common-tooltip-arrow-preset() {
@@ -28,7 +33,7 @@
   @include common-tooltip-preset();
 
   &#{&}--primary {
-    background-color: #{variables.$primary-color-3}40;
+    background-color: #{variables.$primary-color-3}80;
     color: variables.$primary-color-2;
   }
 
@@ -52,7 +57,7 @@
     @include common-tooltip-arrow-preset();
 
     &#{&}--primary {
-      color: #{variables.$primary-color-3}40;
+      color: #{variables.$primary-color-3}80;
     }
 
     &#{&}--secondary {

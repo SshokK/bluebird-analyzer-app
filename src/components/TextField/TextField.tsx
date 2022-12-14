@@ -11,6 +11,7 @@ export const TextField: FC<TextFieldProps> = ({
   value,
   onChange,
   label,
+  size,
   shouldEnableAutoFocus,
   shouldEnableAutoComplete,
   inputType,
@@ -26,6 +27,7 @@ export const TextField: FC<TextFieldProps> = ({
       value={value}
       label={label}
       type={inputType}
+      size={size}
       onChange={(e) => onChange?.(e.target.value)}
       onBlur={onBlur}
       autoFocus={shouldEnableAutoFocus}

@@ -47,12 +47,14 @@ export const ModalForm:FC<ModalFormProps> = ({
         Boolean(Object.keys(localState.fields).length) &&
         Object.entries(localState.fields).map(([fieldKey, field]) => {
           const Component = MODAL_FORM_COMPONENTS[field.type];
-          const props = MODAL_FORM_COMPONENT_PROPS[field.type];
+          const props = {
+            ...MODAL_FORM_COMPONENT_PROPS[field.type],
+            ...field.props
+          };
 
           return (
             <Component
-              {...props}
-              {...field.props}
+              {...props as Record<string, unknown>}
               key={fieldKey}
               label={field.label}
               value={field.value as any}

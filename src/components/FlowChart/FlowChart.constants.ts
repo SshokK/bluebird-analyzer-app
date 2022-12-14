@@ -15,3 +15,7 @@ export const FLOWCHART_EDGES = {
 
 export const DEFAULT_FLOWCHART_NODE_WIDTH = 180;
 export const DEFAULT_FLOWCHART_NODE_HEIGHT = 40;
+
+export enum FLOWCHART_CLASSNAMES {
+  NO_WHEEL = 'nowheel'
+}

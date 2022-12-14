@@ -13,4 +13,8 @@ export type FlowChartNode = {
 export type FlowChartProps = {
   nodes?: FlowChartNode[];
   direction?: FLOWCHART_DIRECTION;
+  onSelectedNodesChange?: (nodes: FlowChartNode[]) => void;
+  onNodesDelete?: (deletedNodes: FlowChartNode[]) => void;
+  areElementsSelectable?: boolean;
+  areElementsDeletable?: boolean;
 }

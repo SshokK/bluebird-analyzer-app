@@ -6,6 +6,7 @@ import {
   Autocomplete as MUIAutocomplete,
   TextField as MUITextField
 } from '@mui/material';
+import classnames from 'classnames';
 import {useSelectData, useSelectHandlers, useSelectLifecycle, useSelectQuery} from "./hooks";
 import './select.scss';
 
@@ -14,10 +15,12 @@ export const Select: FC<SelectProps> = ({
   options,
   label,
   isMulti,
+  size,
   isDisabled,
   isClearable,
   isLoading,
   isRequired,
+  isFullWidth,
   onChange,
   queryOptions,
   queryParams
@@ -51,6 +54,7 @@ export const Select: FC<SelectProps> = ({
     <MUIAutocomplete
       multiple={isMulti}
       disabled={isDisabled}
+      size={size}
       disableClearable={!isClearable}
       options={localState.options}
       value={!localState.isFocused ? formattedData.value : null}
@@ -63,7 +67,10 @@ export const Select: FC<SelectProps> = ({
       onFocus={handlers.handleFocusToggle(true)}
       onBlur={handlers.handleFocusToggle(false)}
       classes={{
-        root: 'BB-select'
+        root: classnames('BB-select', {
+          'BB-select--is-full-width': isFullWidth
+        }),
+        option: 'BB-select__option'
       }}
       renderInput={(props) => (
         <MUITextField

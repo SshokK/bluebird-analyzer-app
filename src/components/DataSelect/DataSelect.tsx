@@ -9,7 +9,7 @@ export const DataSelect: FC<DataSelectProps> = (props) => {
   const dataProps = props.dataType ? {
     queryOptions: DATA_CONFIG[props.dataType].queryOptions,
     options: DATA_CONFIG[props.dataType].options,
-    label: DATA_CONFIG[props.dataType].label
+    label: props.shouldHideLabel ? '' : DATA_CONFIG[props.dataType].label
   } : {}
 
   return (

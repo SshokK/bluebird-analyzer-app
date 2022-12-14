@@ -11,7 +11,7 @@ export const Tooltip: FC<TooltipProps> = ({
   id,
   title,
   children,
-  placement,
+  position,
   type,
   shouldShowArrow,
   classNames
@@ -19,8 +19,8 @@ export const Tooltip: FC<TooltipProps> = ({
   return (
     <MUI.Tooltip
       id={id}
-      title={title}
-      placement={placement}
+      title={<span className="BB-tooltip__title">{title}</span>}
+      placement={position}
       arrow={shouldShowArrow}
       classes={{
         tooltip: classnames('BB-tooltip', `BB-tooltip--${type}`, classNames?.tooltip),

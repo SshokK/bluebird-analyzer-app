@@ -1,5 +1,5 @@
 import type {GridProps} from "./Grid.types";
-import type {FC} from 'react';
+import type {ElementType, FC} from 'react';
 
 import React, {forwardRef} from 'react';
 import classnames from 'classnames';
@@ -35,6 +35,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
       alignItems={alignItems}
       container={isContainer}
       item={isChild}
+      component={component as ElementType}
       columns={columns}
       columnSpacing={columnSpacing}
       rowSpacing={rowSpacing}

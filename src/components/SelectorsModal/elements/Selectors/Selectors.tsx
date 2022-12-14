@@ -2,16 +2,15 @@ import type {FC} from "react";
 import type {SelectorsProps} from "./Selectors.types";
 
 import React from "react";
-import {FlowChart, FLOWCHART_DIRECTION} from "../../../FlowChart";
+import {Actions, FlowChart, FLOWCHART_DIRECTION} from "components";
 import {
-  useSelectorsActions,
+  useSelectorsActions, useSelectorsData,
   useSelectorsHandlers,
   useSelectorsLifecycle,
   useSelectorsMutations,
   useSelectorsQueries
 } from "./hooks";
 import './selectors.scss';
-import {Actions} from "../../../Actions";
 
 export const Selectors: FC<SelectorsProps> = ({
   crawlerId,
@@ -19,10 +18,16 @@ export const Selectors: FC<SelectorsProps> = ({
   onIsLoadingChange,
   onCrawlerNameChange
 }) => {
+  const { localState, localActions, formattedData } = useSelectorsData({
+    isEditable
+  });
+
   const queries = useSelectorsQueries({
     props: {
       crawlerId
-    }
+    },
+    localState,
+    localActions
   });
 
   const mutations = useSelectorsMutations({
@@ -36,10 +41,14 @@ export const Selectors: FC<SelectorsProps> = ({
       onIsLoadingChange,
       onCrawlerNameChange
     },
-    queries
+    queries,
+    localState,
+    localActions
   });
 
-  const actions = useSelectorsActions();
+  const actions = useSelectorsActions({
+    localState
+  });
 
   useSelectorsLifecycle({
     onIsLoadingChange: handlers.handleIsLoadingChange,
@@ -55,8 +64,11 @@ export const Selectors: FC<SelectorsProps> = ({
         />
       )}
       <FlowChart
-        nodes={queries.fetchCrawlerPageSelectors.data}
+        nodes={formattedData.selectorNodes}
         direction={FLOWCHART_DIRECTION.LEFT_TO_RIGHT}
+        onSelectedNodesChange={handlers.handleSelectedNodesChange}
+        onNodesDelete={handlers.handleSelectedNodesDelete}
+        areElementsSelectable={isEditable}
       />
     </div>
   )

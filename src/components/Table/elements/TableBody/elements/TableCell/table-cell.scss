@@ -62,7 +62,7 @@
   }
 
   &__cell-stretcher {
-    overflow: auto;
+    overflow: hidden;
     text-overflow: ellipsis;
 
     // Prevents missing shadow caused by overflow:auto

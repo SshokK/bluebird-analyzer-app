@@ -43,6 +43,7 @@ $node-elevation: variables.$elevation-lowest;
     z-index: $node-elevation;
     color: variables.$primary-color-3;
     width: unset;
+    outline: none;
 
     &:focus,
     &:hover {

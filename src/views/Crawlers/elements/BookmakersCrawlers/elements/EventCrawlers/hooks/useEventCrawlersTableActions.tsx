@@ -4,7 +4,7 @@ import type {EventCrawlerSchema} from "features/event-crawlers/eventCrawlers.api
 import type {EventCrawlersData} from "./useEventCrawlersData.types";
 
 import {ACTION_KEYS} from "../EventCrawlers.constants";
-import {DATA_TYPES, IconAdd, IconPlay, IconStop, MODAL_FIELDS, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
+import {DATA_SELECT_DATA_TYPES, IconAdd, IconPlay, IconStop, MODAL_FIELDS, MODAL_FORM_FIELD_TYPES, MODAL_SIZES} from "components";
 
 import {useEventCrawlersMutations} from "./useEventCrawlersMutations";
 
@@ -37,7 +37,7 @@ export const useEventCrawlersTableActions = ({
           label: "region",
           isRequired: true,
           props: {
-            dataType: DATA_TYPES.REGIONS
+            dataType: DATA_SELECT_DATA_TYPES.REGIONS
           }
         },
         [MODAL_FIELDS.SPORT]: {
@@ -45,7 +45,7 @@ export const useEventCrawlersTableActions = ({
           label: "sport",
           isRequired: true,
           props: {
-            dataType: DATA_TYPES.SPORTS
+            dataType: DATA_SELECT_DATA_TYPES.SPORTS
           }
         }
       },

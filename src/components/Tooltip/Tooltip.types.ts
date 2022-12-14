@@ -6,7 +6,7 @@ export type TooltipProps = {
   type?: TOOLTIP_TYPES;
   title?: ReactNode;
   children?: ReactNode;
-  placement?: TOOLTIP_POSITION;
+  position?: TOOLTIP_POSITION;
   shouldShowArrow?: boolean;
   classNames?: {
     tooltip?: string;

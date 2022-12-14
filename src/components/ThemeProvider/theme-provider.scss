@@ -21,6 +21,12 @@ body {
   flex-direction: column;
 }
 
+ul,
+ol {
+  margin: unset;
+  padding: unset;
+}
+
 body,
 button,
 p,

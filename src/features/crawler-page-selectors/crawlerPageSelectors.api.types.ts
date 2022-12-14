@@ -19,7 +19,9 @@ export type CrawlerPageSelectorSchema = {
 }
 
 export type FetchCrawlerPageSelectorsPayload = [
-  crawlerId: CrawlerSchema['id']
+  params: {
+    crawlerId: CrawlerSchema['id']
+  }
 ]
 export type FetchCrawlerPageSelectorsResponse = {
   results: CrawlerPageSelectorSchema[];
@@ -28,17 +30,41 @@ export type FetchCrawlerPageSelectorsResponse = {
 export type FetchCrawlerPageSelectors = (...args: FetchCrawlerPageSelectorsPayload) => Promise<FetchCrawlerPageSelectorsResponse>;
 
 
+export type FetchCrawlerPageSelectorValueTypesPayload = undefined[]
+export type FetchCrawlerPageSelectorValueTypesResponse = {
+  results: Required<CrawlerPageSelectorSchema>['valueType'][];
+  totalCount: number;
+};
+export type FetchCrawlerPageSelectorValueTypes = (...args: FetchCrawlerPageSelectorValueTypesPayload) => Promise<FetchCrawlerPageSelectorValueTypesResponse>;
 
-export type CreateCrawlerPageSelectorsBody = {
-  value: CrawlerPageSelectorSchema["value"];
-  valueType: CrawlerPageSelectorSchema["valueType"];
-  targetType: CrawlerPageSelectorSchema["targetType"];
-  dataKey: CrawlerPageSelectorSchema["dataKey"];
-  children?: CreateCrawlerPageSelectorsBody;
+
+
+export type FetchCrawlerPageSelectorDataKeysPayload = undefined[]
+export type FetchCrawlerPageSelectorDataKeysResponse = {
+  results: Required<CrawlerPageSelectorSchema>['dataKey'][];
+  totalCount: number;
+};
+export type FetchCrawlerPageSelectorDataKeys = (...args: FetchCrawlerPageSelectorDataKeysPayload) => Promise<FetchCrawlerPageSelectorDataKeysResponse>;
+
+
+
+export type FetchCrawlerPageSelectorTargetTypesPayload = undefined[]
+export type FetchCrawlerPageSelectorTargetTypesResponse = {
+  results: Required<CrawlerPageSelectorSchema>['targetType'][];
+  totalCount: number;
+};
+export type FetchCrawlerPageSelectorTargetTypes = (...args: FetchCrawlerPageSelectorTargetTypesPayload) => Promise<FetchCrawlerPageSelectorTargetTypesResponse>;
+
+
+
+export type CreateCrawlerPageSelectorsBody = Pick<CrawlerPageSelectorSchema, 'value' | 'valueType' | "targetType" | 'dataKey' | 'parentSelectorId'>;
+export type CreateCrawlerPageSelectorsParams = {
+  shouldRemoveExistingSelectors?: boolean;
 }
 export type CreateCrawlerPageSelectorsPayload = [
   crawlerId: CrawlerSchema['id'],
-  body: CreateCrawlerPageSelectorsBody[]
+  body: CreateCrawlerPageSelectorsBody[],
+  params?: CreateCrawlerPageSelectorsParams
 ]
 export type CreateCrawlerPageSelectorsResponse = CrawlerPageSelectorSchema[];
 export type CreateCrawlerPageSelectors = (...args: CreateCrawlerPageSelectorsPayload) => Promise<CreateCrawlerPageSelectorsResponse>;

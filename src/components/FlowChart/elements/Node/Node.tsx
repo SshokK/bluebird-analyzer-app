@@ -6,10 +6,10 @@ import classnames from 'classnames';
 import {FLOWCHART_CLASSNAMES} from "../../FlowChart.constants";
 import './node.scss';
 
-export const Node: FC<NodeProps> = ({ maxHeight, maxWidth, children }) => {
+export const Node: FC<NodeProps> = ({ maxHeight, maxWidth, className, children }) => {
   return (
     <div
-      className={classnames("BB-flow-chart-node", FLOWCHART_CLASSNAMES.NO_WHEEL)}
+      className={classnames("BB-flow-chart-node", FLOWCHART_CLASSNAMES.NO_WHEEL, className)}
       style={{
         maxHeight: maxHeight,
         maxWidth: maxWidth

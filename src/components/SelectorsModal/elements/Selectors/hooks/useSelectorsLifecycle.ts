@@ -4,11 +4,14 @@ import {useEffect} from "react";
 
 export const useSelectorsLifecycle = ({
   onIsLoadingChange,
-  onCrawlerNameChange
+  onCrawlerNameChange,
+  onInvalidCrawlersChange
 }: {
   onIsLoadingChange: SelectorsHandlers['handleIsLoadingChange'];
-  onCrawlerNameChange: SelectorsHandlers['handleCrawlerNameChange']
+  onCrawlerNameChange: SelectorsHandlers['handleCrawlerNameChange'];
+  onInvalidCrawlersChange: SelectorsHandlers['handleInvalidCrawlersChange']
 }) => {
   useEffect(onIsLoadingChange, [onIsLoadingChange]);
   useEffect(onCrawlerNameChange, [onCrawlerNameChange]);
+  useEffect(onInvalidCrawlersChange, [onInvalidCrawlersChange])
 }

@@ -22,4 +22,8 @@
     text-overflow: ellipsis;
     display: block;
   }
+
+  &#{&} .MuiFormLabel-root {
+    color: #{variables.$primary-color-3}50
+  }
 }

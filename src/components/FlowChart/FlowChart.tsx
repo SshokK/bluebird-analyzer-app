@@ -14,10 +14,18 @@ import 'reactflow/dist/style.css';
 import './flow-chart.scss';
 
 export const FlowChart: FC<FlowChartProps> = (props) => {
-  const { formattedData, flowchartData, flowchartActions } = useFlowChartData(props);
+  const {
+    localState,
+    localActions,
+    formattedData,
+    flowchartData,
+    flowchartActions
+  } = useFlowChartData(props);
 
   const handlers = useFlowChartHandlers({
     props,
+    localState,
+    localActions,
     formattedData,
     flowchartActions
   });
@@ -29,15 +37,16 @@ export const FlowChart: FC<FlowChartProps> = (props) => {
   return (
     <div className="BB-flow-chart">
       <ReactFlow
+        fitView
         nodes={flowchartData.nodes}
         edges={flowchartData.edges}
+        edgeTypes={FLOWCHART_EDGES}
+        elementsSelectable={props.areElementsSelectable}
+        onInit={handlers.handleInit}
+        onNodesDelete={handlers.handleNodesDelete}
         onNodesChange={flowchartActions.onNodesChange}
         onEdgesChange={flowchartActions.onEdgesChange}
-        fitView
-        edgeTypes={FLOWCHART_EDGES}
         onSelectionChange={handlers.handleSelectionChange}
-        onNodesDelete={handlers.handleNodesDelete}
-        elementsSelectable={props.areElementsSelectable}
       >
         <Controls />
         <Background />

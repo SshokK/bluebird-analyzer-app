@@ -3,7 +3,7 @@ import type {SelectorsModalProps} from "./SelectorsModal.types";
 
 import React from 'react';
 import {Modal, MODAL_SIZES} from "../Modal";
-import {Selectors} from "./elements";
+import {Selectors, Legend} from "./elements";
 import {useSelectorsModalData} from "./hooks";
 import './selectors-modal.scss';
 
@@ -27,7 +27,8 @@ export const SelectorsModal: FC<SelectorsModalProps> = ({
       size={MODAL_SIZES.LARGE}
       onClose={onClose}
       shouldRenderFooter
-      isSubmitDisabled={!isEditable}
+      isSubmitDisabled={!isEditable || !localState.areAllSelectorsValid}
+      footerElements={<Legend />}
       classNames={{
         content: 'BB-selectors-modal__modal',
         body: 'BB-selectors-modal__container'
@@ -38,6 +39,7 @@ export const SelectorsModal: FC<SelectorsModalProps> = ({
         isEditable={isEditable}
         onCrawlerNameChange={localActions.setCrawlerName}
         onIsLoadingChange={localActions.setIsLoading}
+        onInvalidCrawlersChange={localActions.setAreAllSelectorsValid}
       />
     </Modal>
   )

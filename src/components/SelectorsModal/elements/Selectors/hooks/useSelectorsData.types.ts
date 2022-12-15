@@ -1,11 +1,10 @@
 import type {Dispatch, SetStateAction} from "react";
-import type {CrawlerPageSelectorSchema} from "features/crawler-page-selectors/crawlerPageSelectors.api.types";
-import type {FlowChartNode} from "../../../../FlowChart";
+import type {CrawlerPageSelectorForChart} from "../Selectors.types";
 
 export type SelectorsLocalState = {
   isInitialFetch: boolean;
-  selectors: Partial<CrawlerPageSelectorSchema>[]
-  selectedSelectors: Partial<CrawlerPageSelectorSchema>[];
+  selectors: CrawlerPageSelectorForChart[]
+  selectedSelectors: CrawlerPageSelectorForChart[];
 }
 
 export type SelectorsLocalActions = {
@@ -15,7 +14,7 @@ export type SelectorsLocalActions = {
 }
 
 export type SelectorsFormattedData = {
-  selectorNodes: FlowChartNode[];
+  areAllSelectorsValid: boolean
 }
 
 export type SelectorsData = {

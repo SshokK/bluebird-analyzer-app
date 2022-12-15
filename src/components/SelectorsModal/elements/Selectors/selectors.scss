@@ -5,6 +5,11 @@
     height: 100%;
   }
 
+  &__node {
+    width: 30rem;
+    height: 15rem;
+  }
+
   &__actions {
     position: absolute;
     padding: variables.$spacing-m;

@@ -10,6 +10,7 @@ export type ModalProps = {
   isLoading?: boolean;
   isSubmitDisabled?: boolean;
   shouldRenderFooter?: boolean;
+  footerElements?: ReactNode;
   onSubmit?: () => void;
   classNames?: {
     container?: string;

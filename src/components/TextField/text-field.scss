@@ -13,4 +13,8 @@
       border-bottom: variables.$border-primary-3-s;
     }
   }
+
+  &#{&} .MuiFormLabel-root {
+    color: variables.$primary-color-5
+  }
 }

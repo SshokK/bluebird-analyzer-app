@@ -1,0 +1,29 @@
+@use "src/styles/variables";
+
+.BB-selector-node-content {
+  &__container {
+    display: flex;
+    align-content: flex-start;
+    height: 100%;
+    padding: variables.$spacing-m;
+    border-bottom: variables.$border-secondary-4-l;
+
+    &--is-invalid {
+      border-bottom: variables.$border-error-l;
+    }
+  }
+
+  &__list {
+    width: calc(100% - 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

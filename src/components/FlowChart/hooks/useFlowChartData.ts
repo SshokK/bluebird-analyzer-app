@@ -3,12 +3,24 @@ import type {FlowChartData} from "./useFlowChartData.types";
 
 import * as helpers from "./useFlowChartData.helpers";
 
-import {useMemo} from "react";
+import {useMemo, useState} from "react";
 import {getLayoutedElements} from "./useFlowChartData.helpers";
 import {useEdgesState, useNodesState} from "reactflow";
 
 export const useFlowChartData = (props: Pick<FlowChartProps, 'nodes' | 'direction'>): FlowChartData => {
-  const formattedData = useMemo(() => {
+  const [flowchartInstance, setFlowchartInstance] = useState<
+    FlowChartData['localState']['flowchartInstance']
+  >(null);
+
+  const localState: FlowChartData['localState'] = {
+    flowchartInstance
+  }
+
+  const localActions: FlowChartData['localActions'] = useMemo(() => ({
+    setFlowchartInstance
+  }), [])
+
+  const formattedData: FlowChartData['formattedData'] = useMemo(() => {
     const { nodes, edges } = getLayoutedElements(
       helpers.formatNodes({ nodes: props.nodes }),
       helpers.formatEdges({ nodes: props.nodes }),
@@ -37,6 +49,8 @@ export const useFlowChartData = (props: Pick<FlowChartProps, 'nodes' | 'directio
   }), [onEdgesChange, onNodesChange, setEdges, setNodes]);
 
   return {
+    localState,
+    localActions,
     formattedData,
     flowchartData,
     flowchartActions

@@ -11,6 +11,9 @@ export type TextFieldProps = {
   label?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
+  isMultiline?: boolean;
+  maxLinesCount?: number;
+  minLinesCount?: number;
   shouldEnableAutoFocus?: boolean;
   shouldEnableAutoComplete?: boolean;
   inputProps?: MUITextFieldProps['inputProps'];

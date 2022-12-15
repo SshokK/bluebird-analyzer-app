@@ -6,14 +6,22 @@ import {useCallback} from "react";
 
 export const useFlowChartHandlers = ({
   props,
+  localState,
+  localActions,
   formattedData,
   flowchartActions
 }: {
-  props: Pick<FlowChartProps, 'nodes' | "onSelectedNodesChange" | 'onNodesDelete'>;
+  props: FlowChartProps;
+  localState: FlowChartData['localState'];
+  localActions: FlowChartData['localActions'];
   formattedData: FlowChartData['formattedData'];
   flowchartActions: FlowChartData['flowchartActions'];
 }): FlowChartHandlers => {
   const { onSelectedNodesChange, onNodesDelete } = props;
+
+  const handleInit: FlowChartHandlers['handleInit'] = useCallback((flowchartInstance) => {
+    localActions.setFlowchartInstance(flowchartInstance);
+  }, [localActions])
 
   const handleSelectionChange: FlowChartHandlers['handleSelectionChange'] = useCallback(({
     nodes
@@ -31,10 +39,17 @@ export const useFlowChartHandlers = ({
 
   const handleLayoutChange: FlowChartHandlers['handleLayoutChange'] = useCallback(() => {
     flowchartActions.setNodes(formattedData.nodes);
-    flowchartActions.setEdges(formattedData.edges)
-  }, [flowchartActions, formattedData.edges, formattedData.nodes])
+    flowchartActions.setEdges(formattedData.edges);
+
+    if (props.shouldFitIntoViewOnElementsChange) {
+      localState.flowchartInstance?.fitView?.({
+        minZoom: -100
+      });
+    }
+  }, [flowchartActions, formattedData.edges, formattedData.nodes, localState.flowchartInstance, props.shouldFitIntoViewOnElementsChange])
 
   return {
+    handleInit,
     handleSelectionChange,
     handleNodesDelete,
     handleLayoutChange

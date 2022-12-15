@@ -19,7 +19,7 @@ export const Tooltip: FC<TooltipProps> = ({
   return (
     <MUI.Tooltip
       id={id}
-      title={<span className="BB-tooltip__title">{title}</span>}
+      title={title ? <span className="BB-tooltip__title">{title}</span> : null}
       placement={position}
       arrow={shouldShowArrow}
       classes={{

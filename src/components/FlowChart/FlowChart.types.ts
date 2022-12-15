@@ -1,20 +1,22 @@
 import type {ReactNode} from "react";
 import type {FLOWCHART_DIRECTION} from "./FlowChart.constants";
 
-export type FlowChartNode = {
+export type FlowChartNodeData = {
   key: string;
   content?: ReactNode;
-  width?: number;
-  height?: number;
-  toConnections?: FlowChartNode['key'][]
-  fromConnections?: FlowChartNode['key'][]
+  maxWidth?: number;
+  maxHeight?: number;
+  className?: string;
+  toConnections?: FlowChartNodeData['key'][]
+  fromConnections?: FlowChartNodeData['key'][]
 }
 
 export type FlowChartProps = {
-  nodes?: FlowChartNode[];
+  nodes?: FlowChartNodeData[];
   direction?: FLOWCHART_DIRECTION;
-  onSelectedNodesChange?: (nodes: FlowChartNode[]) => void;
-  onNodesDelete?: (deletedNodes: FlowChartNode[]) => void;
+  onSelectedNodesChange?: (nodes: FlowChartNodeData[]) => void;
+  onNodesDelete?: (deletedNodes: FlowChartNodeData[]) => void;
   areElementsSelectable?: boolean;
   areElementsDeletable?: boolean;
+  shouldFitIntoViewOnElementsChange?: boolean;
 }

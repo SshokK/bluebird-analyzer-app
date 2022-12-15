@@ -2,12 +2,14 @@ import type {FC} from "react";
 import type {SelectorsProps} from "./Selectors.types";
 
 import React from "react";
-import {Actions, FlowChart, FLOWCHART_DIRECTION} from "components";
+import {Actions, FlowChart, FLOWCHART_DIRECTION } from "components";
 import {
-  useSelectorsActions, useSelectorsData,
+  useSelectorsActions,
+  useSelectorsData,
   useSelectorsHandlers,
   useSelectorsLifecycle,
   useSelectorsMutations,
+  useSelectorsNodes,
   useSelectorsQueries
 } from "./hooks";
 import './selectors.scss';
@@ -16,11 +18,10 @@ export const Selectors: FC<SelectorsProps> = ({
   crawlerId,
   isEditable,
   onIsLoadingChange,
-  onCrawlerNameChange
+  onCrawlerNameChange,
+  onInvalidCrawlersChange
 }) => {
-  const { localState, localActions, formattedData } = useSelectorsData({
-    isEditable
-  });
+  const { localState, localActions, formattedData } = useSelectorsData();
 
   const queries = useSelectorsQueries({
     props: {
@@ -33,26 +34,41 @@ export const Selectors: FC<SelectorsProps> = ({
   const mutations = useSelectorsMutations({
     props: {
       crawlerId
-    }
+    },
+    localState
   });
 
   const handlers = useSelectorsHandlers({
     props: {
       onIsLoadingChange,
-      onCrawlerNameChange
+      onCrawlerNameChange,
+      onInvalidCrawlersChange
     },
     queries,
     localState,
-    localActions
+    localActions,
+    formattedData
   });
 
   const actions = useSelectorsActions({
-    localState
+    props: {
+      isEditable
+    },
+    onCreateSelector: handlers.handleSelectorCreation
   });
+
+  const nodes = useSelectorsNodes({
+    props: {
+      isEditable
+    },
+    localState,
+    onSelectorChange: handlers.handleSelectorChange
+  })
 
   useSelectorsLifecycle({
     onIsLoadingChange: handlers.handleIsLoadingChange,
-    onCrawlerNameChange: handlers.handleCrawlerNameChange
+    onCrawlerNameChange: handlers.handleCrawlerNameChange,
+    onInvalidCrawlersChange: handlers.handleInvalidCrawlersChange
   });
 
   return (
@@ -64,7 +80,7 @@ export const Selectors: FC<SelectorsProps> = ({
         />
       )}
       <FlowChart
-        nodes={formattedData.selectorNodes}
+        nodes={nodes}
         direction={FLOWCHART_DIRECTION.LEFT_TO_RIGHT}
         onSelectedNodesChange={handlers.handleSelectedNodesChange}
         onNodesDelete={handlers.handleSelectedNodesDelete}

@@ -1,10 +1,9 @@
 import type {SelectorsData} from "./useSelectorsData.types";
-import type {SelectorsProps} from "../Selectors.types";
 
 import {useMemo, useState} from "react";
-import {formatSelectorsForFlowChart} from "./useSelectorsData.helpers";
+import {isCrawlerPageSelectorValid} from "../../../../../features/crawler-page-selectors/crawlerPageSelectors.utils";
 
-export const useSelectorsData = (props: Pick<SelectorsProps, 'isEditable'>): SelectorsData => {
+export const useSelectorsData = (): SelectorsData => {
   const [isInitialFetch, setIsInitialFetch] = useState<
     SelectorsData['localState']['isInitialFetch']
   >(true);
@@ -28,15 +27,12 @@ export const useSelectorsData = (props: Pick<SelectorsProps, 'isEditable'>): Sel
   }), []);
 
   const formattedData: SelectorsData['formattedData'] = useMemo(() => {
-    const selectorNodes = formatSelectorsForFlowChart({
-      selectors: localState.selectors,
-      isEditable: props.isEditable
-    });
+    const areAllSelectorsValid = localState.selectors.every(isCrawlerPageSelectorValid);
 
     return {
-      selectorNodes
+      areAllSelectorsValid
     }
-  }, [localState.selectors]);
+  }, [localState.selectors])
 
   return {
     localState,

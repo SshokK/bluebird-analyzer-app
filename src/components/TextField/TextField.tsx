@@ -18,6 +18,9 @@ export const TextField: FC<TextFieldProps> = ({
   onBlur,
   isRequired,
   isDisabled,
+  isMultiline,
+  maxLinesCount,
+  minLinesCount,
   inputProps,
   classNames
 }) => {
@@ -35,8 +38,11 @@ export const TextField: FC<TextFieldProps> = ({
       inputProps={inputProps}
       required={isRequired}
       disabled={isDisabled}
+      multiline={isMultiline}
+      maxRows={maxLinesCount}
+      minRows={minLinesCount}
       classes={{
-        root: classnames("BB-text-field", classNames?.container)
+        root: classnames("BB-text-field", classNames?.container),
       }}
     />
   )

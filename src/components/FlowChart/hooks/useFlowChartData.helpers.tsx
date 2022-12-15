@@ -1,29 +1,30 @@
 import type {FlowChartProps} from "../FlowChart.types";
 import type { Node, Edge } from 'reactflow';
-import type {FlowChartNode} from "../FlowChart.types";
+import type {FlowChartNodeData} from "../FlowChart.types";
 
 import dagre from 'dagre';
 import {MarkerType, Position} from 'reactflow';
 import * as components from "../elements";
 
 import {
-  DEFAULT_FLOWCHART_NODE_WIDTH,
-  DEFAULT_FLOWCHART_NODE_HEIGHT,
+  DEFAULT_FLOWCHART_NODE_MAX_WIDTH,
+  DEFAULT_FLOWCHART_NODE_MAX_HEIGHT,
   FLOWCHART_CUSTOM_EDGE_TYPES,
   FLOWCHART_DIRECTION
 } from "../FlowChart.constants";
 
-const dagreGraph = new dagre.graphlib.Graph();
-dagreGraph.setDefaultEdgeLabel(() => ({}));
+export const getLayoutedElements = (nodes: Node<FlowChartNodeData>[], edges: Edge[], direction = FLOWCHART_DIRECTION.TOP_TO_BOTTOM) => {
+  const dagreGraph = new dagre.graphlib.Graph();
 
-export const getLayoutedElements = (nodes: Node<FlowChartNode>[], edges: Edge[], direction = FLOWCHART_DIRECTION.TOP_TO_BOTTOM) => {
+  dagreGraph.setDefaultEdgeLabel(() => ({}));
+
   const isHorizontal = direction === FLOWCHART_DIRECTION.LEFT_TO_RIGHT;
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
     dagreGraph.setNode(node.id, {
-      width: node.data?.width ?? DEFAULT_FLOWCHART_NODE_WIDTH,
-      height: node.data?.height ?? DEFAULT_FLOWCHART_NODE_HEIGHT
+      width: node.data?.maxWidth ?? DEFAULT_FLOWCHART_NODE_MAX_WIDTH,
+      height: node.data?.maxHeight ?? DEFAULT_FLOWCHART_NODE_MAX_HEIGHT
     });
   });
 
@@ -42,8 +43,8 @@ export const getLayoutedElements = (nodes: Node<FlowChartNode>[], edges: Edge[],
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
     node.position = {
-      x: nodeWithPosition.x - (node.data?.width ?? DEFAULT_FLOWCHART_NODE_WIDTH) / 2,
-      y: nodeWithPosition.y - (node.data?.height ?? DEFAULT_FLOWCHART_NODE_HEIGHT) / 2,
+      x: nodeWithPosition.x - (node.data?.maxWidth ?? DEFAULT_FLOWCHART_NODE_MAX_WIDTH) / 2,
+      y: nodeWithPosition.y - (node.data?.maxHeight ?? DEFAULT_FLOWCHART_NODE_MAX_HEIGHT) / 2,
     };
 
     return node;
@@ -52,7 +53,7 @@ export const getLayoutedElements = (nodes: Node<FlowChartNode>[], edges: Edge[],
   return { nodes, edges };
 };
 
-export const formatNodes = ({ nodes }: Pick<FlowChartProps, 'nodes'>): Node<FlowChartNode>[] => {
+export const formatNodes = ({ nodes }: Pick<FlowChartProps, 'nodes'>): Node<FlowChartNodeData>[] => {
   return nodes?.map?.((node, i) => ({
     id: String(node.key || i),
     position: {
@@ -63,8 +64,9 @@ export const formatNodes = ({ nodes }: Pick<FlowChartProps, 'nodes'>): Node<Flow
       ...node,
       label: (
         <components.Node
-          maxHeight={node.height}
-          maxWidth={node.width}
+          maxHeight={node.maxHeight}
+          maxWidth={node.maxWidth}
+          className={node.className}
         >
           {node.content}
         </components.Node>

@@ -2,8 +2,6 @@
 
 .BB-flow-chart-node {
   overflow: auto;
-
-  padding: variables.$spacing-m;
   background-color: variables.$primary-color-2;
   box-shadow: variables.$shadow-center-s;
   border-radius: variables.$border-radius-m;
@@ -16,5 +14,6 @@
   
   &__content {
     overflow: auto;
+    height: 100%;
   }
 }

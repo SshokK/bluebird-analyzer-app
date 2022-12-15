@@ -1,6 +1,7 @@
-import type {CrawlerPageSelectorSchema} from "features/crawler-page-selectors/crawlerPageSelectors.api.types";
+import type {CrawlerPageSelectorForChart} from "../../Selectors.types";
 
 export type SelectorNodeContentProps = {
-  crawlerPageSelector: Partial<CrawlerPageSelectorSchema>;
+  crawlerPageSelector: CrawlerPageSelectorForChart;
+  onSelectorChange: (crawlerPageSelector: CrawlerPageSelectorForChart) => void;
   isEditable: boolean;
 }

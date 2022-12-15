@@ -72,6 +72,13 @@
     background-color: variables.$primary-color-2;
     padding: variables.$spacing-l;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+  }
+
+  &__content-footer-buttons-container {
+    display: flex;
+    align-items: center;
+    column-gap: variables.$spacing-m;
+    margin-left: auto;
   }
 }

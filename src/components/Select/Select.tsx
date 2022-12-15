@@ -2,10 +2,7 @@ import type {FC} from "react";
 import type {SelectOption, SelectProps} from "./Select.types";
 
 import React from 'react';
-import {
-  Autocomplete as MUIAutocomplete,
-  TextField as MUITextField
-} from '@mui/material';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import {useSelectData, useSelectHandlers, useSelectLifecycle, useSelectQuery} from "./hooks";
 import './select.scss';
@@ -51,7 +48,7 @@ export const Select: FC<SelectProps> = ({
   })
 
   return (
-    <MUIAutocomplete
+    <MUI.Autocomplete
       multiple={isMulti}
       disabled={isDisabled}
       size={size}
@@ -73,7 +70,7 @@ export const Select: FC<SelectProps> = ({
         option: 'BB-select__option'
       }}
       renderInput={(props) => (
-        <MUITextField
+        <MUI.TextField
           {...props}
           label={label}
           variant="standard"

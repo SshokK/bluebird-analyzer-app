@@ -1,3 +1,6 @@
 export enum SELECTORS_ACTIONS {
-  BULK_DELETE = 'bulkDelete'
+  ADD = 'add'
 }
+
+export const SELECTORS_FLOWCHART_NODE_MAX_HEIGHT = 100;
+export const SELECTORS_FLOWCHART_NODE_MAX_WIDTH = 220;

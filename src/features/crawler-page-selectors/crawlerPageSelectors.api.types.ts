@@ -13,7 +13,7 @@ export type CrawlerPageSelectorSchema = {
   value: string;
   valueType: CRAWLER_PAGE_SELECTOR_VALUE_TYPES;
   targetType: CRAWLER_PAGE_SELECTOR_TARGET_TYPES;
-  dataKey?: CRAWLER_PAGE_SELECTOR_DATA_KEYS;
+  dataKey: CRAWLER_PAGE_SELECTOR_DATA_KEYS | null;
   parentSelectorId: CrawlerPageSelectorSchema["id"] | null;
   CrawlerId: CrawlerSchema["id"];
 }
@@ -32,7 +32,7 @@ export type FetchCrawlerPageSelectors = (...args: FetchCrawlerPageSelectorsPaylo
 
 export type FetchCrawlerPageSelectorValueTypesPayload = undefined[]
 export type FetchCrawlerPageSelectorValueTypesResponse = {
-  results: Required<CrawlerPageSelectorSchema>['valueType'][];
+  results: CRAWLER_PAGE_SELECTOR_VALUE_TYPES[];
   totalCount: number;
 };
 export type FetchCrawlerPageSelectorValueTypes = (...args: FetchCrawlerPageSelectorValueTypesPayload) => Promise<FetchCrawlerPageSelectorValueTypesResponse>;
@@ -41,7 +41,7 @@ export type FetchCrawlerPageSelectorValueTypes = (...args: FetchCrawlerPageSelec
 
 export type FetchCrawlerPageSelectorDataKeysPayload = undefined[]
 export type FetchCrawlerPageSelectorDataKeysResponse = {
-  results: Required<CrawlerPageSelectorSchema>['dataKey'][];
+  results: CRAWLER_PAGE_SELECTOR_DATA_KEYS[];
   totalCount: number;
 };
 export type FetchCrawlerPageSelectorDataKeys = (...args: FetchCrawlerPageSelectorDataKeysPayload) => Promise<FetchCrawlerPageSelectorDataKeysResponse>;
@@ -50,7 +50,7 @@ export type FetchCrawlerPageSelectorDataKeys = (...args: FetchCrawlerPageSelecto
 
 export type FetchCrawlerPageSelectorTargetTypesPayload = undefined[]
 export type FetchCrawlerPageSelectorTargetTypesResponse = {
-  results: Required<CrawlerPageSelectorSchema>['targetType'][];
+  results: CRAWLER_PAGE_SELECTOR_TARGET_TYPES[];
   totalCount: number;
 };
 export type FetchCrawlerPageSelectorTargetTypes = (...args: FetchCrawlerPageSelectorTargetTypesPayload) => Promise<FetchCrawlerPageSelectorTargetTypesResponse>;

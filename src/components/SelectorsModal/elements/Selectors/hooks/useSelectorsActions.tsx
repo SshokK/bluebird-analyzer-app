@@ -1,18 +1,22 @@
 import type {ActionsProps} from "../../../../Actions";
-import type {SelectorsData} from "./useSelectorsData.types";
+import type {SelectorsProps} from "../Selectors.types";
+import type {SelectorsHandlers} from "./useSelectorsHandlers.types";
 
 import {SELECTORS_ACTIONS} from "../Selectors.constants";
-import {IconDelete} from "../../../../Icons";
+import {IconAddMultiple} from "../../../../Icons";
 
 export const useSelectorsActions = ({
-  localState
+  props,
+  onCreateSelector
 }: {
-  localState: SelectorsData['localState']
+  props: Pick<SelectorsProps, 'isEditable'>
+  onCreateSelector: SelectorsHandlers['handleSelectorCreation']
 }): Required<ActionsProps>['actions'] => {
   return {
-    [SELECTORS_ACTIONS.BULK_DELETE]: {
-      icon: <IconDelete />,
-      isDisabled: !localState.selectedSelectors.length
+    [SELECTORS_ACTIONS.ADD]: {
+      icon: <IconAddMultiple />,
+      isDisabled: !props.isEditable,
+      onClick: onCreateSelector
     }
   }
 }

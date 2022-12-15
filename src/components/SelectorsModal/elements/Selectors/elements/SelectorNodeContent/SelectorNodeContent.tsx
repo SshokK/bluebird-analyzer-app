@@ -1,40 +1,50 @@
 import type {FC} from "react";
-import React from 'react';
 import type {SelectorNodeContentProps} from "./SelectorNodeContent.types";
-import {Grid} from "../../../../../Grid";
-import {ListItem} from "./elements";
-import {DATA_SELECT_DATA_TYPES} from "../../../../../DataSelect";
 
-export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageSelector, isEditable }) => {
+import React from 'react';
+import {Actions} from "../../../../../Actions";
+import {isCrawlerPageSelectorValid} from "features/crawler-page-selectors/crawlerPageSelectors.utils";
+import {useSelectorNodeContentActions} from "./hooks";
+import classnames from 'classnames';
+import {ListItem} from "./elements";
+import './selector-node-content.scss';
+
+export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageSelector, onSelectorChange, isEditable }) => {
+  const actions = useSelectorNodeContentActions({
+    props: {
+      crawlerPageSelector,
+      isEditable,
+      onSelectorChange
+    }
+  });
+
   return (
-    <Grid
-      isContainer
-      component="ul"
-    >
-      <ListItem
-        label="Target type"
-        value={[crawlerPageSelector.targetType]}
-        isEditable={isEditable}
-        dataKey={DATA_SELECT_DATA_TYPES.CRAWLER_PAGE_SELECTOR_TARGET_TYPES}
-      />
-      <ListItem
-        label="Value Type"
-        value={[crawlerPageSelector.valueType]}
-        isEditable={isEditable}
-        dataKey={DATA_SELECT_DATA_TYPES.CRAWLER_PAGE_SELECTOR_VALUE_TYPES}
-      />
-      <ListItem
-        label="Value"
-        value={crawlerPageSelector.value}
-        isEditable={isEditable}
-        shouldShowTooltip
-      />
-      <ListItem
-        label="Data key"
-        value={[crawlerPageSelector.dataKey]}
-        isEditable={isEditable}
-        dataKey={DATA_SELECT_DATA_TYPES.CRAWLER_PAGE_SELECTOR_DATA_KEYS}
-      />
-    </Grid>
+    <div className={classnames("BB-selector-node-content__container", {
+      "BB-selector-node-content__container--is-invalid": !isCrawlerPageSelectorValid(crawlerPageSelector)
+    })}>
+      <ul className="BB-selector-node-content__list">
+        <ListItem
+          label="Target type"
+          value={crawlerPageSelector.targetType}
+        />
+        <ListItem
+          label="Value Type"
+          value={crawlerPageSelector.valueType}
+        />
+        <ListItem
+          label="Value"
+          value={crawlerPageSelector.value}
+        />
+        <ListItem
+          label="Data key"
+          value={crawlerPageSelector.dataKey}
+        />
+      </ul>
+      <div className='BB-selector-node-content__actions'>
+        <Actions
+          actions={actions}
+        />
+      </div>
+    </div>
   )
 }

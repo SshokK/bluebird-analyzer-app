@@ -1,0 +1,3 @@
+export enum SELECTOR_NODE_CONTENT_ACTION_KEYS {
+  EDIT = 'edit'
+}

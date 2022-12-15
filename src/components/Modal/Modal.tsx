@@ -21,6 +21,7 @@ export const Modal: FC<ModalProps> = ({
   isSubmitDisabled,
   onClose,
   shouldRenderFooter,
+  footerElements,
   onSubmit,
   children,
   classNames
@@ -66,13 +67,20 @@ export const Modal: FC<ModalProps> = ({
               )}
               {shouldRenderFooter && (
                 <footer className={classnames("BB-modal__content-footer", classNames?.footer)}>
-                  <Button
-                    onClick={onSubmit}
-                    formRole={BUTTON_FORM_ROLES.SUBMIT}
-                    isDisabled={isLoading || isSubmitDisabled}
-                  >
-                    Submit
-                  </Button>
+                  {footerElements && (
+                    <div className="BB-modal__content-footer-custom-container">
+                      {footerElements}
+                    </div>
+                  )}
+                  <div className="BB-modal__content-footer-buttons-container">
+                    <Button
+                      onClick={onSubmit}
+                      formRole={BUTTON_FORM_ROLES.SUBMIT}
+                      isDisabled={isLoading || isSubmitDisabled}
+                    >
+                      Submit
+                    </Button>
+                  </div>
                 </footer>
               )}
             </form>

@@ -12,6 +12,11 @@ export const Legend: FC = () => {
           Valid
         </Typography>
       </li>
+      <li className="BB-selectors-modal-legend__item--is-selected">
+        <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
+          Selected
+        </Typography>
+      </li>
       <li className="BB-selectors-modal-legend__item--is-invalid">
        <Typography type={TYPOGRAPHY_TYPES.OVERLINE}>
           Empty fields

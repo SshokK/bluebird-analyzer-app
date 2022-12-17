@@ -26,8 +26,12 @@
   flex-wrap: wrap;
 
   &__item {
-    &--is-valid {
+    &--is-selected {
       @include legend-item(variables.$status-color-info)
+    }
+
+    &--is-valid {
+      @include legend-item(variables.$secondary-color-4)
     }
 
     &--is-invalid {

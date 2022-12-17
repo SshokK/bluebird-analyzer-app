@@ -10,6 +10,7 @@ export type GridProps = {
   height?: GRID_HEIGHT;
   shouldSetOverflowAuto?: boolean;
   shouldSetZeroMinWidth?: boolean;
+  shouldSetEqualAspectRatio?: boolean;
   spacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;
   rowSpacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;
   columnSpacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;

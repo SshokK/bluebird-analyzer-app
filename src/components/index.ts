@@ -40,3 +40,4 @@ export * from './Tooltip';
 export * from './DataSelect';
 export * from './SelectorsModal';
 export * from './FlowChart';
+export * from './Charts';

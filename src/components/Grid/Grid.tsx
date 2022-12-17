@@ -15,6 +15,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
   height,
   shouldSetOverflowAuto,
   shouldSetZeroMinWidth,
+  shouldSetEqualAspectRatio,
   spacing,
   rowSpacing,
   columnSpacing,
@@ -50,6 +51,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
         root: classnames(classNames?.container, 'BB-grid', {
           'BB-grid--is-overflow-auto': shouldSetOverflowAuto,
           'BB-grid--is-shrink-disabled': isShrinkDisabled,
+          'BB-grid--is-equal-aspect-ratio': shouldSetEqualAspectRatio,
           [`BB-grid__child--is-${childDisplay}`]: isChild && !isContainer && childDisplay
         })
       }}

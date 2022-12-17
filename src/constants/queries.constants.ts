@@ -9,6 +9,7 @@ export enum QUERY_KEYS {
   CRAWLER_PAGE_SELECTOR_VALUE_TYPES = 'crawlerPageSelectorValueTypes',
   CRAWLER_PAGE_SELECTOR_DATA_KEYS = 'crawlerPageSelectorDataKeys',
   EVENT_CRAWLERS = 'eventCrawlers',
+  CRAWLERS_BY_NAME_AGGREGATION = 'crawlerByNameAggregation',
   REGIONS = 'regions',
   PROXIES = 'proxies',
   TEAMS = 'teams',

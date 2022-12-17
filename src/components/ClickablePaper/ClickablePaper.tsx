@@ -2,7 +2,7 @@ import type {ClickablePaperProps} from "./ClickablePaper.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {Button, Paper} from "@mui/material";
+import * as MUI from "@mui/material";
 import classnames from 'classnames';
 import {CLICKABLE_PAPER_ICON_SIZES} from "./ClickablePaper.constants";
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";
@@ -24,9 +24,9 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
   ...restProps
 }) => {
   const paper = (
-    <Paper
+    <MUI.Paper
       disabled={isDisabled}
-      component={(props) => <Button {...props} disableFocusRipple disableRipple={isActive} />}
+      component={(props) => <MUI.Button {...props} disableFocusRipple disableRipple={isActive} />}
       onClick={isRestricted ? onRestrictedClick : onClick}
       classes={{
         root: classnames(classNames?.container, {
@@ -48,7 +48,7 @@ export const ClickablePaper: FC<ClickablePaperProps> = ({
         {title}
       </Typography>
       {children}
-    </Paper>
+    </MUI.Paper>
   )
 
   if (isRestricted) {

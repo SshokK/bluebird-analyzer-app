@@ -3,13 +3,13 @@ import type {HeaderProps} from "./Header.types";
 
 import React from 'react';
 import {NavLink, Link} from "react-router-dom";
-import { AppBar } from '@mui/material';
+import * as MUI from '@mui/material';
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import './header.scss';
 
 export const Header: FC<HeaderProps> = ({ navLinks }) => {
   return (
-    <AppBar
+    <MUI.AppBar
       position="relative"
       classes={{
         root: 'BB-header__container'
@@ -31,6 +31,6 @@ export const Header: FC<HeaderProps> = ({ navLinks }) => {
           </NavLink>
         ))}
       </nav>
-    </AppBar>
+    </MUI.AppBar>
   )
 }

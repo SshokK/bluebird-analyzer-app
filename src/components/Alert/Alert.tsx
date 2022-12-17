@@ -1,6 +1,7 @@
 import type {FC, ReactElement, ReactNode} from 'react';
-import React, {forwardRef} from 'react';
 import type {AlertProps} from './Alert.types';
+
+import React, {forwardRef} from 'react';
 import classnames from 'classnames';
 import {ALERT_TYPES} from './Alert.constants';
 import {IconClose, IconError, IconInfo, IconSuccess, IconWarning} from '../Icons';

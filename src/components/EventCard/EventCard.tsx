@@ -1,7 +1,7 @@
 import type {EventCardProps} from "./EventCard.types";
 
 import React from 'react';
-import { Paper} from "@mui/material";
+import * as MUI from '@mui/material';
 import {Avatar, AVATAR_SIZES} from "../Avatar";
 import {AvatarGroup} from "../AvatarGroup";
 import classnames from 'classnames';
@@ -27,7 +27,7 @@ export const EventCard = ({ event, players, isAnimated, animationDelay, classNam
             />
           ))}
         </AvatarGroup>
-        <Paper
+        <MUI.Paper
           elevation={2}
           classes={{ root: classnames(classNames?.paper, {
             'BB-event-card__paper': true,
@@ -52,7 +52,7 @@ export const EventCard = ({ event, players, isAnimated, animationDelay, classNam
             })}
           </Typography>
           {children}
-        </Paper>
+        </MUI.Paper>
       </div>
     </Animation>
   )

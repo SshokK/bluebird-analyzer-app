@@ -2,14 +2,14 @@ import type {AvatarProps} from "./Avatar.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {Avatar as MUIAvatar} from '@mui/material';
+import * as MUI from '@mui/material';
 import {AVATAR_SIZES} from "./Avatar.constants";
 import classnames from 'classnames';
 import './avatar.scss';
 
 export const Avatar: FC<AvatarProps> = ({ size, src, alt, children, className }) => {
   return (
-    <MUIAvatar
+    <MUI.Avatar
       alt={alt}
       src={src}
       classes={{
@@ -20,7 +20,7 @@ export const Avatar: FC<AvatarProps> = ({ size, src, alt, children, className })
       }}
     >
       {children}
-    </MUIAvatar>
+    </MUI.Avatar>
   )
 }
 

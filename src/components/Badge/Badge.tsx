@@ -3,7 +3,7 @@ import type {BadgeProps} from "./Badge.types";
 
 import React from 'react';
 import classnames from 'classnames';
-import { Badge as MUIBadge } from '@mui/material';
+import * as MUI from '@mui/material';
 import './badge.scss';
 
 export const Badge: FC<BadgeProps> = ({
@@ -13,7 +13,7 @@ export const Badge: FC<BadgeProps> = ({
   classNames
 }) => {
   return (
-    <MUIBadge
+    <MUI.Badge
       badgeContent={content}
       color="primary"
       classes={{
@@ -21,6 +21,6 @@ export const Badge: FC<BadgeProps> = ({
       }}
     >
       {children}
-    </MUIBadge>
+    </MUI.Badge>
   )
 }

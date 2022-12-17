@@ -2,7 +2,7 @@ import type {FC} from 'react';
 import type {TabsProps} from "./Tabs.types";
 
 import React from 'react';
-import { Tabs as MUITabs, Tab as MUITab } from '@mui/material';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import {useTabsData, useTabsHandlers} from "./hooks";
 import './tabs.scss';
@@ -16,7 +16,7 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabKey }) => {
 
   return (
     <div className={classnames("BB-tabs__container")}>
-      <MUITabs
+      <MUI.Tabs
         value={localState.activeTabIndex}
         onChange={handlers.handleTabChange}
         component="header"
@@ -25,7 +25,7 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabKey }) => {
           indicator: classnames("BB-tabs__header-indicator")
         }}>
         {tabs?.map(tab => (
-          <MUITab
+          <MUI.Tab
             key={tab.key}
             label={tab.title}
             disableRipple
@@ -35,7 +35,7 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabKey }) => {
             }}
           />
         ))}
-      </MUITabs>
+      </MUI.Tabs>
       {tabs?.[localState.activeTabIndex]?.content}
     </div>
   )

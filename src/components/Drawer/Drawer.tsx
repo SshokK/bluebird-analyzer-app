@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type {DrawerProps} from "./Drawer.types";
 
 import React from 'react';
-import { Drawer as MUIDrawer } from '@mui/material';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import './drawer.scss';
 
@@ -16,7 +16,7 @@ export const Drawer: FC<DrawerProps> = ({
   classNames
 }) => {
   return (
-    <MUIDrawer
+    <MUI.Drawer
       variant={type}
       open={isOpen}
       onClose={onClose}
@@ -28,6 +28,6 @@ export const Drawer: FC<DrawerProps> = ({
       }}
     >
       {children}
-    </MUIDrawer>
+    </MUI.Drawer>
   )
 }

@@ -2,7 +2,7 @@ import type {FC} from 'react';
 import type {ChicletProps} from "./Chiclet.types";
 
 import React from 'react';
-import {Button} from "@mui/material";
+import * as MUI from "@mui/material";
 import {CHICLET_SIZES} from "./Chiclet.constants";
 import classnames from 'classnames';
 import { IconClose} from "../Icons";
@@ -27,7 +27,7 @@ export const Chiclet: FC<ChicletProps> = ({
       'BB-chiclet--is-full-width': isFullWidth
     })}>
       {isDisabled && <div className="BB-chiclet__disabled-overlay"/>}
-      <Button
+      <MUI.Button
         type="button"
         disabled={isDisabled}
         onClick={isClickable ? onClick : undefined}
@@ -47,7 +47,7 @@ export const Chiclet: FC<ChicletProps> = ({
         <span className={classnames("BB-chiclet__content", classNames?.content)}>
           {children}
         </span>
-      </Button>
+      </MUI.Button>
       {isDeletable && (
         <button
           type="button"

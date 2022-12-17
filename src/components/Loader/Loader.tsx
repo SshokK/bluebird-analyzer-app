@@ -1,5 +1,6 @@
 import type {LoaderProps} from "./Loader.types";
 import type {FC} from 'react';
+
 import React from 'react';
 import classnames from 'classnames';
 import {LOADER_SIZES} from "./Loader.constants";

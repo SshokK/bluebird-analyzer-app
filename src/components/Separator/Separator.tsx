@@ -1,5 +1,6 @@
 import type {SeparatorProps} from "./Separator.types";
 import type {ElementType, FC} from 'react';
+
 import React from 'react';
 import * as MUI from '@mui/material';
 import {Typography, TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_TYPES} from "../Typography";

@@ -3,7 +3,7 @@ import type {TextFieldProps} from "./TextField.types";
 
 import React from 'react';
 import {TEXT_FIELD_INPUT_TYPES} from "./TextField.constants";
-import {TextField as MUITextField} from '@mui/material';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import './text-field.scss';
 
@@ -25,7 +25,7 @@ export const TextField: FC<TextFieldProps> = ({
   classNames
 }) => {
   return (
-    <MUITextField
+    <MUI.TextField
       variant="standard"
       value={value}
       label={label}

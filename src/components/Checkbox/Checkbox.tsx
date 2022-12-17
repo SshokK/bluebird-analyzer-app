@@ -1,7 +1,8 @@
 import type {FC} from "react";
-import React from 'react';
 import type {CheckboxProps} from "./Checkbox.types";
-import {Checkbox as MUICheckbox, FormControlLabel as MUIFormControlLabel} from '@mui/material';
+
+import React from 'react';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import './checkbox.scss';
 
@@ -14,7 +15,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   classNames
 }) => {
   return (
-    <MUIFormControlLabel
+    <MUI.FormControlLabel
       label={label}
       disabled={isDisabled}
       classes={{
@@ -22,7 +23,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         label: classnames('BB-checkbox__label', classNames?.label),
       }}
       control={(
-        <MUICheckbox
+        <MUI.Checkbox
           checked={isChecked}
           indeterminate={isIndeterminate}
           onChange={(e, checked) => onChange?.(checked)}

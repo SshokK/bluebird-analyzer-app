@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {IconButtonProps} from "./IconButton.types";
 
 import React, {forwardRef} from 'react';
-import {Button as MUIButton} from '@mui/material';
+import * as MUI from '@mui/material';
 import classnames from 'classnames';
 import {ICON_BUTTON_SHAPES, ICON_BUTTON_SIZES, ICON_BUTTON_TYPES} from "./IconButton.constants";
 import './icon-button.scss';
@@ -19,7 +19,7 @@ export const IconButton: FC<IconButtonProps> = forwardRef<HTMLButtonElement, Ico
   ...restProps
 }, ref) => {
   return (
-    <MUIButton
+    <MUI.Button
       ref={ref}
       onClick={onClick}
       disabled={isDisabled}

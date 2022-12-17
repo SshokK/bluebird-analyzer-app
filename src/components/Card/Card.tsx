@@ -1,7 +1,7 @@
 import type {CardProps} from "./Card.types";
 
 import React, {forwardRef} from 'react';
-import { Card as MUICard } from '@mui/material'
+import * as MUI from '@mui/material'
 import classnames from 'classnames';
 import {Animation, ANIMATION_TYPES} from "../Animation";
 import {Avatar, AVATAR_SIZES} from "../Avatar";
@@ -38,7 +38,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({
           ))}
         </AvatarGroup>
       )}
-      <MUICard
+      <MUI.Card
         ref={ref}
         square={isSquared}
         elevation={elevation}
@@ -51,7 +51,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({
         {...props}
       >
         {children}
-      </MUICard>
+      </MUI.Card>
     </div>
   )
 

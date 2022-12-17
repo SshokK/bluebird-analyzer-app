@@ -1,5 +1,6 @@
 import type {ModalProps} from "./Modal.types";
 import type {FC} from 'react';
+
 import React from 'react';
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {Card} from "../Card";

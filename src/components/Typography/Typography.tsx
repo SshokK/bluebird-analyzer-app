@@ -2,7 +2,7 @@ import type {ElementType, FC} from 'react';
 import type {TypographyProps} from "./Typography.types";
 
 import React from 'react';
-import {Typography as MUITypography} from '@mui/material';
+import * as MUI from '@mui/material';
 import {TYPOGRAPHY_ALIGNMENT, TYPOGRAPHY_STATUS, TYPOGRAPHY_TYPES} from "./Typography.constants";
 import classnames from 'classnames';
 import './typography.scss';
@@ -19,7 +19,7 @@ export const Typography: FC<TypographyProps> = ({
   shouldAddBottomMargin
 }) => {
   return (
-    <MUITypography
+    <MUI.Typography
       variant={type !== TYPOGRAPHY_TYPES.URL ? type : TYPOGRAPHY_TYPES.BODY2}
       align={alignment}
       component={type === TYPOGRAPHY_TYPES.URL ? 'a' : component as ElementType}
@@ -55,7 +55,7 @@ export const Typography: FC<TypographyProps> = ({
       } : {})}
     >
       {children}
-    </MUITypography>
+    </MUI.Typography>
   )
 }
 

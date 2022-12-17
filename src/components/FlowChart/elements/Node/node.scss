@@ -7,6 +7,22 @@
   border-radius: variables.$border-radius-m;
   transition: variables.$animation-time-short;
 
+  &__handle.BB-flow-chart-node__handle.react-flow__handle {
+    display: block;
+    transition: variables.$animation-time-short;
+
+    &.BB-flow-chart-node__handle--is-target {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      opacity: 0;
+
+      right: unset;
+      top: unset;
+      transform: unset;
+    }
+  }
+
   &:hover,
   &:focus {
     background-color: variables.$secondary-color-2;

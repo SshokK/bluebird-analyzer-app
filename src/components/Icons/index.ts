@@ -31,3 +31,5 @@ export * from './IconCheckboxSelected';
 export * from './IconCheckboxIntermediate';
 export * from './IconDiagram';
 export * from './IconAddMultiple';
+export * from './IconLayout';
+export * from './IconLayoutAdd';

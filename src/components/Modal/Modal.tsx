@@ -1,12 +1,11 @@
 import type {ModalProps} from "./Modal.types";
 import type {FC} from 'react';
-
 import React from 'react';
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 import {Card} from "../Card";
 import {Button, BUTTON_FORM_ROLES} from "../Button";
 import {Loader} from "../Loader";
-import {ICON_BUTTON_TYPES, IconButton} from "../IconButton";
+import {ICON_BUTTON_SHAPES, ICON_BUTTON_TYPES, IconButton} from "../IconButton";
 import {MODAL_SIZES} from "./Modal.constants";
 import {IconClose} from "../Icons";
 import classnames from 'classnames';
@@ -39,9 +38,9 @@ export const Modal: FC<ModalProps> = ({
         <div className={classnames("BB-modal__inner-container", classNames?.innerContainer)}>
           <IconButton
             type={ICON_BUTTON_TYPES.TERTIARY}
+            shape={ICON_BUTTON_SHAPES.SQUARE}
             icon={<IconClose />}
             onClick={onClose}
-            isSquared
             classNames={{
               button: classnames('BB-modal__close-button', classNames?.closeButton)
             }}
@@ -60,7 +59,7 @@ export const Modal: FC<ModalProps> = ({
                   {title}
                 </Typography>
               </header>
-              {Array.isArray(children) ? Boolean(children.length) : children && (
+              {(Array.isArray(children) ? Boolean(children.length) : children) && (
                 <main className={classnames("BB-modal__content-body", classNames?.body)}>
                   {children}
                 </main>

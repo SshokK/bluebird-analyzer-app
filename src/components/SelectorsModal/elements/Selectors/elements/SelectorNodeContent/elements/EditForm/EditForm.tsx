@@ -1,6 +1,6 @@
 import type {FC} from "react";
 import type {EditFormProps} from "./EditForm.types";
-import type {CreateCrawlerPageSelectorsBody} from "features/crawler-page-selectors/crawlerPageSelectors.api.types";
+import type {CrawlerPageSelectorSchema} from "features/crawler-page-selectors/crawlerPageSelectors.api.types";
 
 import React from 'react';
 import {INPUTS, INPUTS_CONFIG} from "./EditForm.constants";
@@ -23,8 +23,7 @@ export const EditForm: FC<EditFormProps> = ({ crawlerPageSelector, onSelectorCha
     >
       {Object.entries(INPUTS_CONFIG).map(([field, config]) => {
         const Component = INPUTS[config.type];
-        const fieldKey = field as keyof CreateCrawlerPageSelectorsBody;
-        const value = crawlerPageSelector[fieldKey];
+        const value = crawlerPageSelector[field as keyof typeof crawlerPageSelector];
 
         return (
           <Grid key={field} isChild>
@@ -34,7 +33,7 @@ export const EditForm: FC<EditFormProps> = ({ crawlerPageSelector, onSelectorCha
               label={config.label}
               value={config.onFormatValue(value) as never} // Hack to silence TS
               onChange={handlers.handleChange({
-                field: fieldKey,
+                field: field,
                 onFormatOutputValue: config.onFormatOutputValue
               })}
             />

@@ -9,6 +9,7 @@ import {
   CRAWLER_PAGE_SELECTOR_TARGET_TYPES,
   CRAWLER_PAGE_SELECTOR_VALUE_TYPES
 } from "features/crawler-page-selectors/crawlerPageSelectors.api.constants";
+import {DATE_FORMATS} from "constants/global.constants";
 
 import * as utils from "utils";
 
@@ -19,13 +20,13 @@ export const useSelectorsHandlers = ({
   localActions,
   formattedData
 }: {
-  props: Pick<SelectorsProps, 'onCrawlerNameChange' | 'onIsLoadingChange' | 'onInvalidCrawlersChange'>
+  props: Pick<SelectorsProps, 'crawlerId' | 'onCrawlerNameChange' | 'onIsLoadingChange' | 'onInvalidCrawlersChange' | 'onSelectorsChange'>
   queries: ReturnType<typeof useSelectorsQueries>;
   localState: SelectorsData['localState'];
   localActions: SelectorsData['localActions'];
   formattedData: SelectorsData['formattedData']
 }): SelectorsHandlers => {
-  const { onIsLoadingChange, onCrawlerNameChange, onInvalidCrawlersChange } = props;
+  const { onIsLoadingChange, onCrawlerNameChange, onInvalidCrawlersChange, onSelectorsChange } = props;
 
   const handleIsLoadingChange: SelectorsHandlers['handleIsLoadingChange'] = useCallback(() => {
     onIsLoadingChange(
@@ -48,10 +49,35 @@ export const useSelectorsHandlers = ({
     }))
   }, [localActions, localState.selectors]);
 
+  const handleSelectorsChange: SelectorsHandlers['handleSelectorsChange'] = useCallback(() => {
+    onSelectorsChange(localState.selectors)
+  }, [localState.selectors, onSelectorsChange])
+
   const handleSelectedNodesDelete: SelectorsHandlers['handleSelectedNodesDelete'] = useCallback((nodes) => {
     localActions.setSelectors((selectors) => {
       return selectors.filter(selector => {
         return !nodes.find(node => String(node.key) === String(selector.id))
+      })
+    })
+  }, [localActions]);
+
+  const handleSelectedEdgesDelete: SelectorsHandlers['handleSelectedEdgesDelete'] = useCallback((deletedEdges) => {
+    localActions.setSelectors((selectors) => {
+      const targetSelectorIds = selectors.flatMap(selector => {
+        const isTargetSelector = deletedEdges.find(edge => String(edge.target) === String(selector.id))
+        if (isTargetSelector) return [selector.id];
+        return []
+      })
+
+      return selectors.map(selector => {
+        if (targetSelectorIds.includes(selector.id)) {
+          return {
+            ...selector,
+            parentSelectorId: null
+          }
+        }
+
+        return selector
       })
     })
   }, [localActions]);
@@ -64,10 +90,51 @@ export const useSelectorsHandlers = ({
         valueType: CRAWLER_PAGE_SELECTOR_VALUE_TYPES.CSS_SELECTOR,
         targetType: CRAWLER_PAGE_SELECTOR_TARGET_TYPES.CONTAINER,
         dataKey: null,
-        parentSelectorId: null
+        parentSelectorId: null,
+        CrawlerId: props.crawlerId,
+        createdAt: utils.formatDate({
+          date: new Date(),
+          format: DATE_FORMATS.DATE
+        }),
+        updatedAt: utils.formatDate({
+          date: new Date(),
+          format: DATE_FORMATS.DATE
+        }),
+        deletedAt: null
       }]
     })
-  }, [localActions]);
+  }, [localActions, props.crawlerId]);
+
+  const handleNodesConnect: SelectorsHandlers['handleNodesConnect'] = useCallback((sourceNode, targetNode) => {
+    localActions.setSelectors((selectors) => {
+      const sourceSelector = selectors.find(selector => String(selector.id) === String(sourceNode.key));
+      const targetSelector = selectors.find(selector => String(selector.id) === String(targetNode.key));
+
+      if (sourceSelector && targetSelector) {
+        const updatedSelectors = selectors.map(selector => {
+          if (selector.id === targetSelector.id && targetSelector.parentSelectorId !== selector.id) {
+            return {
+              ...selector,
+              parentSelectorId: sourceSelector.id
+            }
+          }
+
+          return selector
+        });
+
+        const isLoop = updatedSelectors.every(selector => selector.parentSelectorId);
+
+        if (isLoop) {
+          return selectors;
+        } else {
+          return updatedSelectors
+        }
+      }
+
+      return selectors
+    })
+
+  }, [localActions])
 
   const handleSelectorChange: SelectorsHandlers['handleSelectorChange'] = useCallback((crawlerPageSelector) => {
     localActions.setSelectors((selectors) => {
@@ -79,15 +146,18 @@ export const useSelectorsHandlers = ({
         return [selector]
       })
     })
-  }, [localActions])
+  }, [localActions]);
 
   return {
     handleIsLoadingChange,
     handleInvalidCrawlersChange,
     handleCrawlerNameChange,
+    handleSelectorsChange,
     handleSelectedNodesChange,
     handleSelectedNodesDelete,
     handleSelectorCreation,
+    handleSelectedEdgesDelete,
+    handleNodesConnect,
     handleSelectorChange
   }
 }

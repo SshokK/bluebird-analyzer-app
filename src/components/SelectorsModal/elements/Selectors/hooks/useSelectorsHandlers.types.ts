@@ -1,5 +1,5 @@
 import type {FlowChartProps} from "../../../../FlowChart";
-import type {CrawlerPageSelectorForChart} from "../Selectors.types";
+import type {CrawlerPageSelector} from "features/crawler-page-selectors/crawlerPageSelectors.types";
 
 export type SelectorsHandlers = {
   handleIsLoadingChange: () => void;
@@ -7,6 +7,9 @@ export type SelectorsHandlers = {
   handleCrawlerNameChange: () => void;
   handleSelectedNodesChange: Required<FlowChartProps>['onSelectedNodesChange'];
   handleSelectedNodesDelete: Required<FlowChartProps>['onNodesDelete'];
+  handleSelectedEdgesDelete: Required<FlowChartProps>['onEdgesDelete'];
   handleSelectorCreation: () => void;
-  handleSelectorChange: (crawlerPageSelector: CrawlerPageSelectorForChart) => void;
+  handleSelectorsChange: () => void;
+  handleNodesConnect: Required<FlowChartProps>['onConnect'];
+  handleSelectorChange: (crawlerPageSelector: CrawlerPageSelector) => void;
 }

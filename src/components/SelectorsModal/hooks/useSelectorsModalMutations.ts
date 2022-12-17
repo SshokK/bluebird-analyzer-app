@@ -1,23 +1,25 @@
-import type {SelectorsData} from "./useSelectorsData.types";
-import type {SelectorsProps} from "../Selectors.types";
+import type {SelectorsModalData} from "./useSelectorsModalData.types";
+import type {SelectorsModalProps} from "../SelectorsModal.types";
 
-import {useMutation} from "@tanstack/react-query";
 import {QUERY_KEYS} from "constants/queries.constants";
+
 import * as crawlerPageSelectorsApi from "features/crawler-page-selectors/crawlerPageSelectors.api";
 
-export const useSelectorsMutations = ({
+import {useMutation} from "@tanstack/react-query";
+
+export const useSelectorsModalMutations = ({
   props,
   localState
 }: {
-  props: Pick<SelectorsProps, 'crawlerId'>;
-  localState: SelectorsData['localState']
+  props: Pick<SelectorsModalProps, 'crawlerId'>;
+  localState: SelectorsModalData['localState']
 }) => {
   const createCrawlerPageSelectors = useMutation({
     mutationKey: [QUERY_KEYS.CRAWLER_PAGE_SELECTORS],
     mutationFn: () => crawlerPageSelectorsApi.createCrawlerPageSelectors(
-      props.crawlerId,
       localState.selectors,
       {
+        crawlerId: props.crawlerId,
         shouldRemoveExistingSelectors: true
       }
     )

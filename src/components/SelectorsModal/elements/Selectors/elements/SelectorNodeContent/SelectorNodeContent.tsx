@@ -2,14 +2,14 @@ import type {FC} from "react";
 import type {SelectorNodeContentProps} from "./SelectorNodeContent.types";
 
 import React from 'react';
-import {Actions} from "../../../../../Actions";
+import { Actions} from "components";
 import {isCrawlerPageSelectorValid} from "features/crawler-page-selectors/crawlerPageSelectors.utils";
 import {useSelectorNodeContentActions} from "./hooks";
 import classnames from 'classnames';
 import {ListItem} from "./elements";
 import './selector-node-content.scss';
 
-export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageSelector, onSelectorChange, isEditable }) => {
+export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageSelector, onSelectorChange, isEditable, isSelected }) => {
   const actions = useSelectorNodeContentActions({
     props: {
       crawlerPageSelector,
@@ -20,7 +20,8 @@ export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageS
 
   return (
     <div className={classnames("BB-selector-node-content__container", {
-      "BB-selector-node-content__container--is-invalid": !isCrawlerPageSelectorValid(crawlerPageSelector)
+      "BB-selector-node-content__container--is-invalid": !isCrawlerPageSelectorValid(crawlerPageSelector),
+      "BB-selector-node-content__container--is-selected": isSelected
     })}>
       <ul className="BB-selector-node-content__list">
         <ListItem
@@ -28,12 +29,12 @@ export const SelectorNodeContent: FC<SelectorNodeContentProps> = ({ crawlerPageS
           value={crawlerPageSelector.targetType}
         />
         <ListItem
-          label="Value Type"
-          value={crawlerPageSelector.valueType}
-        />
-        <ListItem
           label="Value"
           value={crawlerPageSelector.value}
+        />
+        <ListItem
+          label="Value Type"
+          value={crawlerPageSelector.valueType}
         />
         <ListItem
           label="Data key"

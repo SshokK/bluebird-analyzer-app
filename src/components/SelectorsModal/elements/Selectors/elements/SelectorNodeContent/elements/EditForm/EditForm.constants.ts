@@ -31,7 +31,7 @@ export const INPUT_OUTPUT_VALUE_FORMATTERS = {
   SINGLE: (value: unknown): unknown => value ? (Array.isArray(value) && value.length) ? value[0] : value : null,
 }
 
-export const INPUTS_CONFIG: Record<Exclude<keyof CreateCrawlerPageSelectorsBody, 'parentSelectorId'>, {
+export const INPUTS_CONFIG: Record<string, {
   type: INPUTS_CONFIG_INPUT_TYPES,
   label: string;
   onFormatValue: typeof INPUT_VALUE_FORMATTERS[keyof typeof INPUT_VALUE_FORMATTERS];

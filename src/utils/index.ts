@@ -3,3 +3,4 @@ export * from './date.utils';
 export * from './url.utils';
 export * from './string.utils';
 export * from './error.utils';
+export * from './object.utils';

@@ -1,10 +1,10 @@
 import type {Dispatch, SetStateAction} from "react";
-import type {CrawlerPageSelectorForChart} from "../Selectors.types";
+import type {CrawlerPageSelector} from "features/crawler-page-selectors/crawlerPageSelectors.types";
 
 export type SelectorsLocalState = {
   isInitialFetch: boolean;
-  selectors: CrawlerPageSelectorForChart[]
-  selectedSelectors: CrawlerPageSelectorForChart[];
+  selectors: CrawlerPageSelector[]
+  selectedSelectors: CrawlerPageSelector[];
 }
 
 export type SelectorsLocalActions = {

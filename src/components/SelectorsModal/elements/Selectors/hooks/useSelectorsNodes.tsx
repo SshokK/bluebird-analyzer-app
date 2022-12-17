@@ -29,7 +29,9 @@ export const useSelectorsNodes = ({
         ),
         maxWidth: SELECTORS_FLOWCHART_NODE_MAX_WIDTH,
         maxHeight: SELECTORS_FLOWCHART_NODE_MAX_HEIGHT,
-        className: "BB-selectors__node",
+        classNames: {
+          container: "BB-selectors__node"
+        },
         toConnections: selector.parentSelectorId
           ? [String(selector.parentSelectorId)]
           : []

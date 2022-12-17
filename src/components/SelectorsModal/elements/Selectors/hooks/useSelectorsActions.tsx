@@ -3,7 +3,7 @@ import type {SelectorsProps} from "../Selectors.types";
 import type {SelectorsHandlers} from "./useSelectorsHandlers.types";
 
 import {SELECTORS_ACTIONS} from "../Selectors.constants";
-import {IconAddMultiple} from "../../../../Icons";
+import { IconLayoutAdd} from "../../../../Icons";
 
 export const useSelectorsActions = ({
   props,
@@ -14,7 +14,7 @@ export const useSelectorsActions = ({
 }): Required<ActionsProps>['actions'] => {
   return {
     [SELECTORS_ACTIONS.ADD]: {
-      icon: <IconAddMultiple />,
+      icon: <IconLayoutAdd />,
       isDisabled: !props.isEditable,
       onClick: onCreateSelector
     }

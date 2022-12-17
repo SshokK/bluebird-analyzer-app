@@ -8,7 +8,6 @@ import {
   useSelectorsData,
   useSelectorsHandlers,
   useSelectorsLifecycle,
-  useSelectorsMutations,
   useSelectorsNodes,
   useSelectorsQueries
 } from "./hooks";
@@ -19,7 +18,8 @@ export const Selectors: FC<SelectorsProps> = ({
   isEditable,
   onIsLoadingChange,
   onCrawlerNameChange,
-  onInvalidCrawlersChange
+  onInvalidCrawlersChange,
+  onSelectorsChange
 }) => {
   const { localState, localActions, formattedData } = useSelectorsData();
 
@@ -31,18 +31,13 @@ export const Selectors: FC<SelectorsProps> = ({
     localActions
   });
 
-  const mutations = useSelectorsMutations({
-    props: {
-      crawlerId
-    },
-    localState
-  });
-
   const handlers = useSelectorsHandlers({
     props: {
+      crawlerId,
       onIsLoadingChange,
       onCrawlerNameChange,
-      onInvalidCrawlersChange
+      onInvalidCrawlersChange,
+      onSelectorsChange
     },
     queries,
     localState,
@@ -68,7 +63,8 @@ export const Selectors: FC<SelectorsProps> = ({
   useSelectorsLifecycle({
     onIsLoadingChange: handlers.handleIsLoadingChange,
     onCrawlerNameChange: handlers.handleCrawlerNameChange,
-    onInvalidCrawlersChange: handlers.handleInvalidCrawlersChange
+    onInvalidCrawlersChange: handlers.handleInvalidCrawlersChange,
+    onSelectorsChange: handlers.handleSelectorsChange
   });
 
   return (
@@ -84,6 +80,8 @@ export const Selectors: FC<SelectorsProps> = ({
         direction={FLOWCHART_DIRECTION.LEFT_TO_RIGHT}
         onSelectedNodesChange={handlers.handleSelectedNodesChange}
         onNodesDelete={handlers.handleSelectedNodesDelete}
+        onEdgesDelete={handlers.handleSelectedEdgesDelete}
+        onConnect={handlers.handleNodesConnect}
         areElementsSelectable={isEditable}
       />
     </div>

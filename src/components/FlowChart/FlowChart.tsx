@@ -6,33 +6,38 @@ import ReactFlow, {
   Controls,
   Background
 } from 'reactflow';
-import { FLOWCHART_EDGES} from "./FlowChart.constants";
+import {FLOWCHART_EDGES, FLOWCHART_NODES} from "./FlowChart.constants";
 
-import {useFlowChartData, useFlowChartHandlers, useFlowChartLifecycle} from "./hooks";
+import {useFlowChartActions, useFlowChartData, useFlowChartHandlers, useFlowChartLifecycle} from "./hooks";
 
 import 'reactflow/dist/style.css';
 import './flow-chart.scss';
+
+import {Actions} from "../Actions";
 
 export const FlowChart: FC<FlowChartProps> = (props) => {
   const {
     localState,
     localActions,
-    formattedData,
     flowchartData,
     flowchartActions
-  } = useFlowChartData(props);
+  } = useFlowChartData();
 
   const handlers = useFlowChartHandlers({
     props,
     localState,
     localActions,
-    formattedData,
+    flowchartData,
     flowchartActions
   });
 
-  useFlowChartLifecycle({
-    onLayoutChange: handlers.handleLayoutChange
+  const actions = useFlowChartActions({
+    onAutoresize: handlers.handleFlowchartAutoresize
   })
+
+  useFlowChartLifecycle({
+    onDataSet: handlers.handleDataSet
+  });
 
   return (
     <div className="BB-flow-chart">
@@ -41,14 +46,22 @@ export const FlowChart: FC<FlowChartProps> = (props) => {
         nodes={flowchartData.nodes}
         edges={flowchartData.edges}
         edgeTypes={FLOWCHART_EDGES}
+        nodeTypes={FLOWCHART_NODES}
         elementsSelectable={props.areElementsSelectable}
         onInit={handlers.handleInit}
+        onConnect={handlers.handleConnect}
+        onEdgesDelete={handlers.handleEdgesDelete}
         onNodesDelete={handlers.handleNodesDelete}
         onNodesChange={flowchartActions.onNodesChange}
         onEdgesChange={flowchartActions.onEdgesChange}
         onSelectionChange={handlers.handleSelectionChange}
       >
-        <Controls />
+        <div className="BB-flow-chart__controls-container">
+          <div className="BB-flow-chart__controls-aligner">
+            <Actions actions={actions} />
+            <Controls />
+          </div>
+        </div>
         <Background />
       </ReactFlow>
     </div>

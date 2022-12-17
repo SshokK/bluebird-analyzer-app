@@ -5,16 +5,11 @@ import type {useEdgesState, useNodesState} from "reactflow";
 import type {ReactFlowInstance} from "@reactflow/core/dist/esm/types/instance";
 
 export type FlowChartLocalState = {
-  flowchartInstance: ReactFlowInstance<FlowChartNodeData, unknown> | null
+  flowchartInstance: ReactFlowInstance<FlowChartNodeData, unknown> | null;
 }
 
 export type FlowChartLocalActions = {
-  setFlowchartInstance: Dispatch<SetStateAction<FlowChartLocalState['flowchartInstance']>>
-}
-
-export type FlowChartFormattedData = {
-  nodes: Node<FlowChartNodeData>[];
-  edges: Edge<unknown>[];
+  setFlowchartInstance: Dispatch<SetStateAction<FlowChartLocalState['flowchartInstance']>>;
 }
 
 export type FlowChartFlowchartData = {
@@ -32,7 +27,6 @@ export type FlowChartFlowchartActions = {
 export type FlowChartData = {
   localState: FlowChartLocalState;
   localActions: FlowChartLocalActions;
-  formattedData: FlowChartFormattedData;
   flowchartData: FlowChartFlowchartData;
   flowchartActions: FlowChartFlowchartActions
 }

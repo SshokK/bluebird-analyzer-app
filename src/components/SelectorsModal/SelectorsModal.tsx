@@ -4,7 +4,7 @@ import type {SelectorsModalProps} from "./SelectorsModal.types";
 import React from 'react';
 import {Modal, MODAL_SIZES} from "../Modal";
 import {Selectors, Legend} from "./elements";
-import {useSelectorsModalData} from "./hooks";
+import {useSelectorsModalData, useSelectorsModalMutations} from "./hooks";
 import './selectors-modal.scss';
 
 export const SelectorsModal: FC<SelectorsModalProps> = ({
@@ -14,6 +14,13 @@ export const SelectorsModal: FC<SelectorsModalProps> = ({
   onClose
 }) => {
   const { localState, localActions } = useSelectorsModalData();
+
+  const mutations = useSelectorsModalMutations({
+    props: {
+      crawlerId
+    },
+    localState
+  })
 
   return (
     <Modal
@@ -28,6 +35,7 @@ export const SelectorsModal: FC<SelectorsModalProps> = ({
       onClose={onClose}
       shouldRenderFooter
       isSubmitDisabled={!isEditable || !localState.areAllSelectorsValid}
+      onSubmit={mutations.createCrawlerPageSelectors.mutate}
       footerElements={<Legend />}
       classNames={{
         content: 'BB-selectors-modal__modal',
@@ -40,6 +48,7 @@ export const SelectorsModal: FC<SelectorsModalProps> = ({
         onCrawlerNameChange={localActions.setCrawlerName}
         onIsLoadingChange={localActions.setIsLoading}
         onInvalidCrawlersChange={localActions.setAreAllSelectorsValid}
+        onSelectorsChange={localActions.setSelectors}
       />
     </Modal>
   )

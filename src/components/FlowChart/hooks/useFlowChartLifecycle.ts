@@ -3,9 +3,9 @@ import type {FlowChartHandlers} from "./useFlowChartHandlers.types";
 import {useEffect} from "react";
 
 export const useFlowChartLifecycle = ({
-  onLayoutChange
+  onDataSet
 }: {
-  onLayoutChange: FlowChartHandlers['handleLayoutChange']
+  onDataSet: FlowChartHandlers['handleDataSet']
 }) => {
-  useEffect(onLayoutChange, [onLayoutChange])
+  useEffect(onDataSet, [onDataSet])
 }

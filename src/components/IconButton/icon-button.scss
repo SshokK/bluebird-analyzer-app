@@ -17,8 +17,12 @@
   outline: none;
   box-shadow: $shadow;
 
-  &.BB-icon-button--is-squared {
+  &.BB-icon-button--is-square {
     border-radius: 0;
+  }
+
+  &.BB-icon-button--is-circle {
+    border-radius: 50%;
   }
 
   &:disabled {

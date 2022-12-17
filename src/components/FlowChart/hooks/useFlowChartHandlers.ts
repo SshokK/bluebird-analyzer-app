@@ -3,21 +3,22 @@ import type {FlowChartProps} from "../FlowChart.types";
 import type {FlowChartData} from "./useFlowChartData.types";
 
 import {useCallback} from "react";
+import * as helpers from "./useFlowChartHandlers.helpers";
 
 export const useFlowChartHandlers = ({
   props,
   localState,
   localActions,
-  formattedData,
+  flowchartData,
   flowchartActions
 }: {
   props: FlowChartProps;
   localState: FlowChartData['localState'];
   localActions: FlowChartData['localActions'];
-  formattedData: FlowChartData['formattedData'];
+  flowchartData: FlowChartData['flowchartData']
   flowchartActions: FlowChartData['flowchartActions'];
 }): FlowChartHandlers => {
-  const { onSelectedNodesChange, onNodesDelete } = props;
+  const { onSelectedNodesChange, onNodesDelete, onEdgesDelete, onConnect } = props;
 
   const handleInit: FlowChartHandlers['handleInit'] = useCallback((flowchartInstance) => {
     localActions.setFlowchartInstance(flowchartInstance);
@@ -37,21 +38,72 @@ export const useFlowChartHandlers = ({
     }) ?? [])
   }, [onNodesDelete, props.nodes]);
 
-  const handleLayoutChange: FlowChartHandlers['handleLayoutChange'] = useCallback(() => {
-    flowchartActions.setNodes(formattedData.nodes);
-    flowchartActions.setEdges(formattedData.edges);
+  const handleEdgesDelete: FlowChartHandlers['handleEdgesDelete'] = useCallback((edges) => {
+    onEdgesDelete?.(edges)
+  }, [onEdgesDelete]);
 
-    if (props.shouldFitIntoViewOnElementsChange) {
-      localState.flowchartInstance?.fitView?.({
-        minZoom: -100
-      });
+  const handleConnect: FlowChartHandlers['handleConnect'] = useCallback(({
+    source,
+    target
+  }) => {
+    const nodeA = props.nodes?.find?.(node => String(node.key) === String(source))
+    const nodeB = props.nodes?.find?.(node => String(node.key) === String(target))
+
+    if (nodeA && nodeB) {
+      onConnect?.(
+        nodeA,
+        nodeB
+      )
     }
-  }, [flowchartActions, formattedData.edges, formattedData.nodes, localState.flowchartInstance, props.shouldFitIntoViewOnElementsChange])
+  }, [onConnect, props.nodes]);
+
+  const handleDataSet: FlowChartHandlers['handleDataSet'] = useCallback(() => {
+    const nodes = helpers.formatNodes({ nodes: props.nodes, direction: props.direction });
+    const edges = helpers.formatEdges({ nodes: props.nodes });
+
+    flowchartActions.setNodes((currentNodes) => {
+      const newNodes = nodes.filter(node => !currentNodes.find(currentNode => currentNode.id === node.id));
+      const existingNodes = nodes.filter(node => currentNodes.find(currentNode => currentNode.id === node.id));
+
+      const layoutedElements = helpers.getLayoutedElements(
+        newNodes,
+        edges,
+        props.direction
+      );
+
+      return [
+        ...layoutedElements.nodes,
+        ...existingNodes.map(node => ({
+          ...node,
+          position: currentNodes.find(currentNode => currentNode.id === node.id)?.position ?? node.position
+        }))
+      ]
+    })
+    flowchartActions.setEdges(edges)
+  }, [flowchartActions, props.direction, props.nodes]);
+
+  const handleFlowchartAutoresize: FlowChartHandlers['handleFlowchartAutoresize'] = () => {
+    const { nodes, edges } = helpers.getLayoutedElements(
+      flowchartData.nodes,
+      flowchartData.edges,
+      props.direction
+    )
+
+    localState.flowchartInstance?.setNodes?.(
+      nodes
+    )
+    localState.flowchartInstance?.setEdges?.(
+      edges
+    )
+  }
 
   return {
     handleInit,
     handleSelectionChange,
     handleNodesDelete,
-    handleLayoutChange
+    handleEdgesDelete,
+    handleConnect,
+    handleDataSet,
+    handleFlowchartAutoresize
   }
 }

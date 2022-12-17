@@ -34,29 +34,6 @@ $node-elevation: variables.$elevation-lowest;
     display: none;
   }
 
-  .react-flow__node-default.selectable.selected,
-  .react-flow__node-default {
-    border: unset;
-    padding: unset;
-    box-shadow: variables.$shadow-center-s;
-    border-radius: variables.$border-radius-m;
-    z-index: $node-elevation;
-    color: variables.$primary-color-3;
-    width: unset;
-    outline: none;
-
-    &:focus,
-    &:hover {
-      box-shadow: variables.$shadow-center-s;
-    }
-  }
-
-  .react-flow__node-default.selectable.selected {
-    .BB-flow-chart-node {
-      background-color: variables.$secondary-color-2;
-    }
-  }
-
   .react-flow__handle {
     background-color: variables.$primary-color-5;
     width: 0.7rem;
@@ -65,5 +42,20 @@ $node-elevation: variables.$elevation-lowest;
 
   .react-flow__connectionline {
     z-index: $node-elevation - 1;
+  }
+
+  .react-flow__handle {
+    display: none;
+  }
+
+  &__controls-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: variables.$elevation-low;
+  }
+
+  &__controls-aligner {
+    padding: variables.$spacing-m variables.$spacing-m 12.5rem variables.$spacing-m;
   }
 }

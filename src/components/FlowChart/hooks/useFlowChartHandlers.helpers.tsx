@@ -3,14 +3,13 @@ import type { Node, Edge } from 'reactflow';
 import type {FlowChartNodeData} from "../FlowChart.types";
 
 import dagre from 'dagre';
-import {MarkerType, Position} from 'reactflow';
-import * as components from "../elements";
+import {MarkerType} from 'reactflow';
 
 import {
   DEFAULT_FLOWCHART_NODE_MAX_WIDTH,
   DEFAULT_FLOWCHART_NODE_MAX_HEIGHT,
   FLOWCHART_CUSTOM_EDGE_TYPES,
-  FLOWCHART_DIRECTION
+  FLOWCHART_DIRECTION, FLOWCHART_CUSTOM_NODE_TYPES
 } from "../FlowChart.constants";
 
 export const getLayoutedElements = (nodes: Node<FlowChartNodeData>[], edges: Edge[], direction = FLOWCHART_DIRECTION.TOP_TO_BOTTOM) => {
@@ -18,7 +17,6 @@ export const getLayoutedElements = (nodes: Node<FlowChartNodeData>[], edges: Edg
 
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-  const isHorizontal = direction === FLOWCHART_DIRECTION.LEFT_TO_RIGHT;
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
@@ -37,9 +35,6 @@ export const getLayoutedElements = (nodes: Node<FlowChartNodeData>[], edges: Edg
   nodes.forEach((node) => {
     const nodeWithPosition = dagreGraph.node(node.id);
 
-    node.targetPosition = isHorizontal ? Position.Left : Position.Top;
-    node.sourcePosition = isHorizontal ? Position.Right : Position.Bottom;
-
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
     node.position = {
@@ -53,24 +48,19 @@ export const getLayoutedElements = (nodes: Node<FlowChartNodeData>[], edges: Edg
   return { nodes, edges };
 };
 
-export const formatNodes = ({ nodes }: Pick<FlowChartProps, 'nodes'>): Node<FlowChartNodeData>[] => {
+export const formatNodes = ({ nodes, direction }: Pick<FlowChartProps, 'nodes' | 'direction'>): Node<FlowChartNodeData>[] => {
+  const isHorizontal = direction === FLOWCHART_DIRECTION.LEFT_TO_RIGHT;
+
   return nodes?.map?.((node, i) => ({
     id: String(node.key || i),
+    type: FLOWCHART_CUSTOM_NODE_TYPES.NODE,
     position: {
       x: 0,
       y: 0
     },
     data: {
-      ...node,
-      label: (
-        <components.Node
-          maxHeight={node.maxHeight}
-          maxWidth={node.maxWidth}
-          className={node.className}
-        >
-          {node.content}
-        </components.Node>
-      )
+      isHorizontal,
+      ...node
     }
   })) ?? []
 }
@@ -79,7 +69,6 @@ export const formatEdges = ({ nodes }: Pick<FlowChartProps, 'nodes'>): Edge<unkn
   return nodes?.flatMap?.(node => {
     const edgeConfig: Partial<Edge> = {
       type: FLOWCHART_CUSTOM_EDGE_TYPES.FLOATING,
-      animated: true,
       markerEnd: {
         type: MarkerType.Arrow,
         width: 20,

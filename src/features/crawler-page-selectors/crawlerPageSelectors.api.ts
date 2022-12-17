@@ -2,6 +2,8 @@ import * as apiTypes from "./crawlerPageSelectors.api.types";
 
 import {fetch} from "fetch";
 
+import * as helpers from "./crawlerPageSelectors.api.helpers";
+
 export const fetchCrawlerPageSelectors: apiTypes.FetchCrawlerPageSelectors = (params) => {
   return fetch({
     url: `/api/v1/crawler-page-selectors`,
@@ -31,11 +33,11 @@ export const fetchCrawlerPageSelectorTargetTypes: apiTypes.FetchCrawlerPageSelec
   })
 }
 
-export const createCrawlerPageSelectors: apiTypes.CreateCrawlerPageSelectors = (crawlerId, data, params) => {
+export const createCrawlerPageSelectors: apiTypes.CreateCrawlerPageSelectors = (selectors, params) => {
   return fetch({
-    url: `/api/v1/crawlers/${crawlerId}/selectors`,
+    url: `/api/v1/crawler-page-selectors`,
     method: 'POST',
     params,
-    data
+    data: helpers.formatCreateCrawlerPageSelectorsBody(selectors)
   })
 }

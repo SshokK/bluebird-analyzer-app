@@ -4,6 +4,7 @@ import type {
   CRAWLER_PAGE_SELECTOR_TARGET_TYPES,
   CRAWLER_PAGE_SELECTOR_VALUE_TYPES
 } from "./crawlerPageSelectors.api.constants";
+import {CrawlerPageSelector} from "./crawlerPageSelectors.types";
 
 export type CrawlerPageSelectorSchema = {
   id: number;
@@ -57,13 +58,19 @@ export type FetchCrawlerPageSelectorTargetTypes = (...args: FetchCrawlerPageSele
 
 
 
-export type CreateCrawlerPageSelectorsBody = Pick<CrawlerPageSelectorSchema, 'value' | 'valueType' | "targetType" | 'dataKey' | 'parentSelectorId'>;
+export type CreateCrawlerPageSelectorsBody = {
+  value: CrawlerPageSelectorSchema["value"];
+  valueType: CrawlerPageSelectorSchema["valueType"];
+  targetType: CrawlerPageSelectorSchema["targetType"];
+  dataKey: CrawlerPageSelectorSchema["dataKey"];
+  children?: CreateCrawlerPageSelectorsBody[];
+}
 export type CreateCrawlerPageSelectorsParams = {
+  crawlerId: CrawlerSchema['id'];
   shouldRemoveExistingSelectors?: boolean;
 }
 export type CreateCrawlerPageSelectorsPayload = [
-  crawlerId: CrawlerSchema['id'],
-  body: CreateCrawlerPageSelectorsBody[],
+  selectors: CrawlerPageSelector[],
   params?: CreateCrawlerPageSelectorsParams
 ]
 export type CreateCrawlerPageSelectorsResponse = CrawlerPageSelectorSchema[];

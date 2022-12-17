@@ -44,8 +44,7 @@ export const ModalForm:FC<ModalFormProps> = ({
         ...classNames
     }}>
       {
-        Boolean(Object.keys(localState.fields).length) &&
-        Object.entries(localState.fields).map(([fieldKey, field]) => {
+        Boolean(Object.keys(localState.fields).length) && Object.entries(localState.fields).map(([fieldKey, field]) => {
           const Component = MODAL_FORM_COMPONENTS[field.type];
           const props = {
             ...MODAL_FORM_COMPONENT_PROPS[field.type],

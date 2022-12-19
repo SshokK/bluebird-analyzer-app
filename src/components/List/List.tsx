@@ -2,13 +2,10 @@ import type {ListProps} from "./List.types";
 import type {FC} from 'react';
 
 import React from 'react';
-
-import { GRID_DIRECTION, GRID_JUSTIFY_CONTENT, GRID_SPACING} from "../Grid";
-import { TYPOGRAPHY_TYPES} from "../Typography";
+import {Grid, GRID_DIRECTION, GRID_JUSTIFY_CONTENT, GRID_SPACING} from "../Grid";
+import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 
 import {ListOption} from "./elements";
-import {Grid} from "../Grid";
-import {Typography} from "../Typography";
 import {Actions} from "../Actions";
 import * as MUI from '@mui/material';
 
@@ -27,7 +24,16 @@ export const List: FC<ListProps> = (props) => {
 
   useListLifecycle({
     onSelectedOptionKeysPropChange: handlers.handleSelectedOptionKeysPropChange
-  })
+  });
+
+  const primaryActions = (
+    <Actions
+      actions={props.primaryActions ?? {}}
+      direction={props.isHorizontal ? GRID_DIRECTION.ROW : GRID_DIRECTION.COLUMN}
+    />
+  );
+  const secondaryActions = (
+    <Actions actions={props.secondaryActions ?? {}} direction={GRID_DIRECTION.ROW} />);
 
   return (
     <Grid
@@ -40,14 +46,21 @@ export const List: FC<ListProps> = (props) => {
         })
       }}
     >
-      <Grid isChild isContainer justifyContent={GRID_JUSTIFY_CONTENT.FLEX_END}>
-        <Actions actions={props.secondaryActions ?? {}} direction={GRID_DIRECTION.ROW} />
+      <Grid
+        isChild
+        isContainer
+        justifyContent={props.isHorizontal ? GRID_JUSTIFY_CONTENT.SPACE_BETWEEN : GRID_JUSTIFY_CONTENT.FLEX_END}
+      >
+        {props.isHorizontal && primaryActions}
+        {secondaryActions}
       </Grid>
       <Grid isChild isContainer spacing={GRID_SPACING.L}>
-        <Grid isChild xs="auto">
-          <Actions actions={props.primaryActions ?? {}} direction={GRID_DIRECTION.COLUMN} />
-        </Grid>
-        <Grid isChild xs>
+        {!props.isHorizontal && (
+          <Grid isChild xs="auto">
+            {primaryActions}
+          </Grid>
+        )}
+        <Grid isChild xs={props.isHorizontal ? 12 : true}>
           {props.shouldShowNoDataMessage ? (
             <Typography type={TYPOGRAPHY_TYPES.BODY2} className="BB-list__no-data-message">
               {props.noDataMessage}
@@ -57,7 +70,8 @@ export const List: FC<ListProps> = (props) => {
               disablePadding
               classes={{
                 root: classnames('BB-list', props.classNames?.list, {
-                  'BB-list--is-full-width': props.isFullWidth
+                  'BB-list--is-full-width': props.isFullWidth,
+                  'BB-list--is-horizontal': props.isHorizontal
                 })
               }}
             >
@@ -68,6 +82,7 @@ export const List: FC<ListProps> = (props) => {
                   <ListOption
                     key={String(option.key)}
                     option={option}
+                    isHorizontal={props.isHorizontal}
                     isSelected={Boolean(localState.selectedOptions.find(({ key }) => key === option.key))}
                     onClick={handlers.handleOptionClick({
                       option,

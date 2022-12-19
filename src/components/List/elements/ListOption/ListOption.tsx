@@ -1,15 +1,17 @@
 import type {ListOptionProps} from "./ListOption.types";
 import type {FC} from "react";
+
 import React from 'react';
 import * as MUI from "@mui/material";
 import classnames from "classnames";
 import {Avatar, AVATAR_SIZES} from "../../../Avatar";
-import './list-option.scss';
 import {Typography, TYPOGRAPHY_TYPES} from "../../../Typography";
+import './list-option.scss';
 
 export const ListOption: FC<ListOptionProps> = ({
   option,
   isSelected,
+  isHorizontal,
   onClick
 }) => {
   return (
@@ -17,7 +19,8 @@ export const ListOption: FC<ListOptionProps> = ({
       key={String(option.key)}
       classes={{
         root: classnames('BB-list-option', {
-          'BB-list-option--is-selected': isSelected
+          'BB-list-option--is-selected': isSelected,
+          'BB-list-option--is-horizontal': isHorizontal
         })
       }}
       disablePadding

@@ -5,7 +5,7 @@ import React from 'react';
 
 import { COLUMN_DATA_TYPES, COLUMN_TYPES, EMPTY_CELL_VALUE } from "../../../../../../Table.constants";
 import { DATE_FORMATS } from "constants/global.constants";
-import { TYPOGRAPHY_TYPES } from "components";
+import {ColorBall, TYPOGRAPHY_TYPES} from "components";
 
 import {Typography, Avatar} from "components";
 
@@ -21,6 +21,9 @@ export const TableCellContent: FC<TableCellContentProps> = ({
   }
 
   const content = {
+    [COLUMN_DATA_TYPES.COLOR]: (
+      <ColorBall color={cellValue as string} />
+    ),
     [COLUMN_DATA_TYPES.TEXT]: (
       <Typography type={TYPOGRAPHY_TYPES.BODY2} shouldTruncate>
         {cellValue as ReactNode}

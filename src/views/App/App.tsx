@@ -1,16 +1,18 @@
 import React from 'react';
 
 import {Router} from "router";
-import { AlertProvider, ThemeProvider } from "components";
+import {AlertProvider, DrawerProvider, ThemeProvider} from "components";
 import { QueryProvider } from "./elements";
 
 export const App = () => {
   return (
     <ThemeProvider>
       <AlertProvider>
-        <QueryProvider>
-          <Router />
-        </QueryProvider>
+          <QueryProvider>
+            <DrawerProvider>
+              <Router />
+            </DrawerProvider>
+          </QueryProvider>
       </AlertProvider>
     </ThemeProvider>
   );

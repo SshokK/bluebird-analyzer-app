@@ -2,7 +2,7 @@ import type {FC} from "react";
 
 import React from 'react';
 import {ANIMATION_TIMING} from "./RegionalProxies.constants";
-import {CardsContainer, ErrorBoundary, Grid, List, Separator} from "components";
+import {Container, ErrorBoundary, Grid, List, Separator} from "components";
 import {RegionProxies} from "./elements";
 import {
   useRegionalProxiesActions,
@@ -37,7 +37,7 @@ export const RegionalProxies: FC = () => {
 
   return (
     <ErrorBoundary>
-      <CardsContainer
+      <Container
         title="Regions"
         isLoading={queries.fetchRegions.isLoading}
         isWrapDisabled
@@ -63,7 +63,7 @@ export const RegionalProxies: FC = () => {
             <RegionProxies regionId={formattedData.regionId} />
           </Grid>
         </Grid>
-      </CardsContainer>
+      </Container>
     </ErrorBoundary>
   )
 }

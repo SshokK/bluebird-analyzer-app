@@ -10,7 +10,7 @@ import './table-body.scss';
 export const TableBody: FC<TableBodyProps> = ({ table, noDataMessage, isLoading }) => {
   return (
     <tbody className="BB-table-body">
-      <TableLoader isLoading={isLoading} />
+      <TableLoader table={table} isLoading={isLoading} />
       {!table.getRowModel().rows.length ? (
         <TableNoDataMessage table={table}>
           {isLoading ? "" : noDataMessage}

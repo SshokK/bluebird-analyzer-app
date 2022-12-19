@@ -3,6 +3,8 @@ import type {BookmakerSchema} from "../bookmakers/bookmakers.api.types";
 import type {CrawlerSchema} from "../crawlers/crawlers.api.types";
 import type {SORT_ORDERS} from "constants/global.constants";
 import type {WithRequiredProperty} from "types/global.types";
+import {CRAWLER_STATUSES} from "../crawlers/crawlers.constants";
+import {EVENT_CRAWLER_AGGREGATION_TYPES} from "./eventCrawlers.api.constants";
 
 export type EventCrawlerSchema = {
   id: number;
@@ -82,4 +84,18 @@ export type StopEventCrawlers = (...args: StopEventCrawlersPayload) => Promise<S
 
 export type StartEventCrawlersPayload = [EventCrawlerSchema['id'][]]
 export type StartEventCrawlersResponse = number;
-export type StartEventCrawlers = (...args: StartEventCrawlersPayload) => Promise<StartEventCrawlersResponse>
+export type StartEventCrawlers = (...args: StartEventCrawlersPayload) => Promise<StartEventCrawlersResponse>;
+
+
+
+export type EventCrawlersByNameAggregation = {
+  status: CRAWLER_STATUSES;
+  count: number
+}
+
+export type FetchEventCrawlersAggregationPayload = [params: {
+  aggregateBy: EVENT_CRAWLER_AGGREGATION_TYPES;
+  bookmakerId?: EventCrawlerSchema['BookmakerId'] | EventCrawlerSchema['BookmakerId'][]
+}]
+export type FetchEventCrawlersAggregationResponse = EventCrawlersByNameAggregation[];
+export type FetchEventCrawlersAggregation = (...args: FetchEventCrawlersAggregationPayload) => Promise<FetchEventCrawlersAggregationResponse>;

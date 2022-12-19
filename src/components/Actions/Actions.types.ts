@@ -1,5 +1,6 @@
 import type {DropdownProps, GridProps, IconButtonProps, ModalFormProps, TooltipProps} from "components/index";
 import type {ReactNode} from "react";
+import {ICON_BUTTON_SIZES, ICON_BUTTON_TYPES} from "components/index";
 
 export type Action = {
   iconType?: IconButtonProps['type'];
@@ -26,6 +27,8 @@ export type ActionsProps = {
   direction?: GridProps['direction'];
   justifyContent?: GridProps['justifyContent'];
   isWrapDisabled?: GridProps['isWrapDisabled'];
+  iconType?: ICON_BUTTON_TYPES;
+  iconSize?: ICON_BUTTON_SIZES;
   classNames?: {
     container?: string;
   }

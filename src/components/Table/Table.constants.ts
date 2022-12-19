@@ -5,6 +5,7 @@ export enum COLUMN_TYPES {
 }
 
 export enum COLUMN_DATA_TYPES {
+  COLOR = 'color',
   TEXT = 'text',
   URL = 'url',
   DATE = 'date',

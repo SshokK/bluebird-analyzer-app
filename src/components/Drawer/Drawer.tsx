@@ -13,6 +13,7 @@ export const Drawer: FC<DrawerProps> = ({
   shouldHideBackdrop,
   onClose,
   isOpen,
+  isCard,
   classNames
 }) => {
   return (
@@ -24,10 +25,16 @@ export const Drawer: FC<DrawerProps> = ({
       hideBackdrop={shouldHideBackdrop}
       classes={{
         root: classnames('BB-drawer', classNames?.container),
-        paper: classnames('BB-drawer__paper', classNames?.paper)
+        paper: classnames('BB-drawer__paper', classNames?.paper, {
+          'BB-drawer__paper--is-card': isCard
+        })
       }}
     >
-      {children}
+      <div className={classnames('BB-drawer__content', classNames?.container, {
+        'BB-drawer__content--is-card': isCard
+      })}>
+        {children}
+      </div>
     </MUI.Drawer>
   )
 }

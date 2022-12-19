@@ -51,6 +51,8 @@ export type TableProps = {
   areRowsSelectable?: boolean;
   rowId?: unknown;
   limit?: number;
+  isHeaderless?: boolean;
+  isFixed?: boolean;
   selectedRowKeys?: unknown[];
   onSelectedRowsChange?: <T extends any[] = any[]>(rowKeys: T) => void;
   queryOptions?: TableQueryOptions;

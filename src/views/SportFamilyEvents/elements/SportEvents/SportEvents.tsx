@@ -2,7 +2,7 @@ import type {SportEventsProps} from "./SportEvents.types";
 import type {FC} from "react";
 
 import React from "react";
-import {CardsContainer, EventCard} from "../../../../components";
+import {Container, EventCard} from "../../../../components";
 import {SPORT_EVENTS_ANIMATION_DELAY} from "../../SportFamilyEvents.constants";
 import {useSportEventsQueries} from "./hooks";
 
@@ -15,7 +15,7 @@ export const SportEvents: FC<SportEventsProps> = ({ sportId, sportFamilyId, anim
   })
 
   return (
-    <CardsContainer
+    <Container
       title={queries.fetchSport.data?.name}
       isAnimated
       shouldShowNoDataMessage={
@@ -41,6 +41,6 @@ export const SportEvents: FC<SportEventsProps> = ({ sportId, sportFamilyId, anim
           }}
         />
       ))}
-    </CardsContainer>
+    </Container>
   )
 }

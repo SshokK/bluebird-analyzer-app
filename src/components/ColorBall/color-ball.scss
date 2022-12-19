@@ -1,0 +1,18 @@
+.BB-color-ball {
+  border-radius: 50%;
+
+  &--is-s {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  &--is-m {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &--is-l {
+    width: 2rem;
+    height: 2rem;
+  }
+}

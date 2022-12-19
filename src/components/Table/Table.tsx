@@ -5,6 +5,7 @@ import React, {forwardRef} from "react";
 import {TableActions, TableBody, TableHeader} from "./elements";
 import {Animation, ANIMATION_TYPES} from "../Animation";
 import {DEFAULT_TABLE_LIMIT} from "./Table.constants";
+import classnames from 'classnames';
 import {getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable} from '@tanstack/react-table';
 import {useTableData, useTableHandlers, useTableLifecycle, useTableQuery} from "./hooks";
 import './table.scss';
@@ -20,6 +21,8 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
   selectedRowKeys,
   onSelectedRowsChange,
   isFullWidth,
+  isHeaderless,
+  isFixed,
   noDataMessage,
   actions,
   queryOptions,
@@ -86,8 +89,10 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
         totalCount={query.data?.totalCount}
       />
       <div className="BB-table__table-container">
-        <table className="BB-table__table">
-          <TableHeader table={table} />
+        <table className={classnames("BB-table__table", {
+          "BB-table__table--is-fixed": isFixed
+        })}>
+          {!isHeaderless && <TableHeader table={table} />}
           <TableBody
             table={table}
             noDataMessage={noDataMessage}

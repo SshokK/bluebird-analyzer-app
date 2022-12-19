@@ -15,14 +15,3 @@ export type CrawlerSchema = {
 export type FetchCrawlerPayload = [crawlerId: CrawlerSchema['id']]
 export type FetchCrawlerResponse = CrawlerSchema;
 export type FetchCrawlers = (...args: FetchCrawlerPayload) => Promise<FetchCrawlerResponse>;
-
-
-export type CrawlersByNameAggregation = {
-  status: CRAWLER_STATUSES;
-  count: number
-}
-
-
-export type FetchCrawlersByNamesAggregationPayload = []
-export type FetchCrawlersByNamesAggregationResponse = CrawlersByNameAggregation[];
-export type FetchCrawlersByNamesAggregation = (...args: FetchCrawlersByNamesAggregationPayload) => Promise<FetchCrawlersByNamesAggregationResponse>;

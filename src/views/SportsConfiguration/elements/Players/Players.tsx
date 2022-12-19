@@ -3,7 +3,7 @@ import type {PlayersProps} from "./Players.types";
 
 import React from 'react';
 import {ANIMATION_TIMING, PLAYERS_PER_PAGE, PLAYERS_TABLE_COLUMN_KEYS, PLAYERS_TABLE_COLUMNS} from "./Players.constants";
-import { CardsContainer, Table} from "components";
+import { Container, Table} from "components";
 import {
   usePlayersMutations,
   usePlayersQueries,
@@ -34,7 +34,7 @@ export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
   })
 
   return (
-    <CardsContainer
+    <Container
       title={!sportFamilyId
         ? "Players"
         : `${queries.fetchSportFamily.data?.name} players`
@@ -54,6 +54,6 @@ export const Players: FC<PlayersProps> = ({ sportFamilyId }) => {
           sportFamilyId: sportFamilyId
         }}
       />
-    </CardsContainer>
+    </Container>
   )
 }

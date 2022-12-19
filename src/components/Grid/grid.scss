@@ -1,3 +1,5 @@
+@use "src/styles/variables";
+
 .BB-grid {
   &--is-overflow-auto {
     overflow: auto;
@@ -9,6 +11,38 @@
 
   &--is-equal-aspect-ratio {
     aspect-ratio: 1 / 1;
+  }
+
+  &--is-xxs-padding {
+    padding: variables.$spacing-xxs;
+  }
+
+  &--is-xs-padding {
+    padding: variables.$spacing-xs;
+  }
+
+  &--is-s-padding {
+    padding: variables.$spacing-s;
+  }
+
+  &--is-m-padding {
+    padding: variables.$spacing-m;
+  }
+
+  &--is-l-padding {
+    padding: variables.$spacing-l;
+  }
+
+  &--is-xl-padding {
+    padding: variables.$spacing-xl;
+  }
+
+  &--is-xxl-padding {
+    padding: variables.$spacing-xxl;
+  }
+
+  &--is-xxxl-padding {
+    padding: variables.$spacing-xxxl;
   }
 
   &__child {

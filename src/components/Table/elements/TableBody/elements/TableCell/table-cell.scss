@@ -9,7 +9,7 @@
 .BB-table-cell {
   text-align: left;
   white-space: nowrap;
-  padding: variables.$spacing-xs variables.$spacing-m;
+  padding: variables.$spacing-xs variables.$spacing-s;
   background-color: variables.$primary-color-2;
   color: variables.$secondary-color-4;
 
@@ -38,11 +38,11 @@
   }
 
   &--is-xs {
-    @include cell-width(1rem);
+    @include cell-width(1.5rem);
   }
 
   &--is-s {
-    @include cell-width(3rem);
+    @include cell-width(3.5rem);
   }
 
   &--is-m {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Actions, CardsContainer, Chiclet, Grid, GRID_DIRECTION, GRID_HEIGHT, GRID_SPACING} from "components";
+import {Actions, Container, Chiclet, Grid, GRID_DIRECTION, GRID_HEIGHT, GRID_SPACING} from "components";
 import {
   useSportFamiliesActionsConfig,
   useSportFamiliesData,
@@ -29,7 +29,7 @@ export const SportFamilies = () => {
   })
 
   return (
-    <CardsContainer
+    <Container
       title="Sport families"
       isAnimated
       isFullHeight
@@ -75,6 +75,6 @@ export const SportFamilies = () => {
           </Grid>
         </Grid>
       </Grid>
-    </CardsContainer>
+    </Container>
   )
 }

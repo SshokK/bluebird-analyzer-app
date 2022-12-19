@@ -9,8 +9,19 @@
     color: variables.$secondary-color-4;
   }
 
+  &--is-horizontal {
+    border-left: unset;
+    border-bottom: variables.$border-secondary-1-l;
+    max-width: 15rem;
+  }
+
   &--is-selected {
     border-left: variables.$border-primary-1-l;
+
+    &.BB-list-option--is-horizontal {
+      border-left: unset;
+      border-bottom: variables.$border-primary-1-l;
+    }
 
     .BB-list-option__label {
       color: variables.$secondary-color-5;

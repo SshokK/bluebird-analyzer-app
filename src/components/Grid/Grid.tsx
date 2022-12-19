@@ -16,6 +16,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
   shouldSetOverflowAuto,
   shouldSetZeroMinWidth,
   shouldSetEqualAspectRatio,
+  padding,
   spacing,
   rowSpacing,
   columnSpacing,
@@ -52,6 +53,7 @@ export const Grid: FC<GridProps> = forwardRef<HTMLDivElement, GridProps>(({
           'BB-grid--is-overflow-auto': shouldSetOverflowAuto,
           'BB-grid--is-shrink-disabled': isShrinkDisabled,
           'BB-grid--is-equal-aspect-ratio': shouldSetEqualAspectRatio,
+          [`BB-grid--is-${padding}-padding`]: Boolean(padding),
           [`BB-grid__child--is-${childDisplay}`]: isChild && !isContainer && childDisplay
         })
       }}

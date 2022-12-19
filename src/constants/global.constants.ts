@@ -11,7 +11,7 @@ export enum ROUTES {
   DASHBOARD = 'dashboard',
   SPORT_FAMILY_EVENTS = 'sport-family-events',
   SPORTS_CONFIGURATION = 'sports-configuration',
-  CRAWLERS = 'crawlers',
+  BOOKMAKER_CRAWLERS = 'bookmaker-crawlers',
   PROXIES = 'proxies'
 }
 
@@ -32,4 +32,4 @@ export enum PARAM_TYPES {
   STRING = 'string'
 }
 
-export const DEFAULT_ERROR_MESSAGE = 'Something went wrong'
+export const DEFAULT_ERROR_MESSAGE = 'Something went wrong';

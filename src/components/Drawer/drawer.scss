@@ -2,5 +2,26 @@
 
 .BB-drawer {
   &__paper.BB-drawer__paper {
+    width: 30rem;
+    max-width: 30%;
+    height: auto;
+    max-height: 100%;
+    box-shadow: unset;
+    background-color: variables.$secondary-color-2;
+
+    &--is-card {
+      background-color: unset;
+      padding: variables.$spacing-xl variables.$spacing-xl;
+    }
+  }
+
+  &__content {
+    background-color: unset;
+
+    &--is-card {
+      background-color: variables.$primary-color-2;
+      border-radius: variables.$border-radius-m;
+      overflow: auto;
+    }
   }
 }

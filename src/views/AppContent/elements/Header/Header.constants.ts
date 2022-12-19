@@ -16,7 +16,7 @@ export const NAV_LINKS: NavLink[] = [
     title: 'Sports Configuration'
   },
   {
-    path: ROUTES.CRAWLERS,
+    path: ROUTES.BOOKMAKER_CRAWLERS,
     title: 'Crawlers'
   }
 ]

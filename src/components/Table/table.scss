@@ -16,5 +16,9 @@
 
   &__table {
     width: 100%;
+
+    &--is-fixed {
+      table-layout: fixed;
+    }
   }
 }

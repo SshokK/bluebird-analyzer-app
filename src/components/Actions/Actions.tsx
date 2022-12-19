@@ -21,6 +21,8 @@ export const Actions: FC<ActionsProps> = ({
   direction,
   justifyContent,
   isWrapDisabled,
+  iconType,
+  iconSize,
   classNames
 }) => {
   const { localState, localActions } = useActionsData();
@@ -56,8 +58,8 @@ export const Actions: FC<ActionsProps> = ({
               trigger={(
                 <Tooltip title={action.tooltip}>
                   <IconButton
-                    type={action.iconType ?? ICON_BUTTON_TYPES.SECONDARY}
-                    size={action.iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
+                    type={action.iconType ?? iconType ?? ICON_BUTTON_TYPES.SECONDARY}
+                    size={action.iconSize ?? iconSize ?? ICON_BUTTON_SIZES.MEDIUM}
                     icon={action.icon}
                     isPressed={localState.openedDropdownKey === actionKey}
                     isDisabled={action.isDisabled}

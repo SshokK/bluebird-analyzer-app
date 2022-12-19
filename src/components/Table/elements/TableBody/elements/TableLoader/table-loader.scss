@@ -1,0 +1,35 @@
+@mixin cell-width($width) {
+  width: $width;
+  min-width: $width;
+  max-width: $width;
+}
+
+.BB-table-loader-cell {
+  &--is-xxs {
+    @include cell-width(0.5rem);
+  }
+
+  &--is-xs {
+    @include cell-width(1.5rem);
+  }
+
+  &--is-s {
+    @include cell-width(3.5rem);
+  }
+
+  &--is-m {
+    @include cell-width(5rem);
+  }
+
+  &--is-l {
+    @include cell-width(8rem);
+  }
+
+  &--is-xl {
+    @include cell-width(12rem);
+  }
+
+  &--is-xxl {
+    @include cell-width(15rem);
+  }
+}

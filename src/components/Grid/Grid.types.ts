@@ -1,9 +1,9 @@
 import type {ReactNode} from "react";
 import type {ArrayItem} from "../../types/global.types";
-import type {GRID_HEIGHT, GRID_CHILD_DISPLAY, GRID_DIRECTION, GRID_COLUMNS, GRID_ALIGN_ITEMS, GRID_JUSTIFY_CONTENT, GRID_SPACING, GRID_DEVICE_SCREEN  } from "./Grid.constants";
+import type {GRID_PADDING, GRID_HEIGHT, GRID_CHILD_DISPLAY, GRID_DIRECTION, GRID_COLUMNS, GRID_ALIGN_ITEMS, GRID_JUSTIFY_CONTENT, GRID_SPACING, GRID_DEVICE_SCREEN  } from "./Grid.constants";
 
 export type GridProps = {
-  children: ReactNode;
+  children?: ReactNode;
   direction?: Partial<Record<GRID_DEVICE_SCREEN, GRID_DIRECTION>> | GRID_DIRECTION;
   justifyContent?: GRID_JUSTIFY_CONTENT;
   alignItems?: GRID_ALIGN_ITEMS;
@@ -15,6 +15,7 @@ export type GridProps = {
   rowSpacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;
   columnSpacing?: Partial<Record<GRID_DEVICE_SCREEN, GRID_SPACING>> | GRID_SPACING;
   columns?: Partial<Record<GRID_DEVICE_SCREEN, ArrayItem<typeof GRID_COLUMNS>>> | ArrayItem<typeof GRID_COLUMNS>;
+  padding?: GRID_PADDING
   isWrapDisabled?: boolean;
   isShrinkDisabled?: boolean;
   isContainer?: boolean;

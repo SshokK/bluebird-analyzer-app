@@ -20,6 +20,10 @@ export type DrawerProps = {
    */
   shouldHideBackdrop?: boolean;
   /**
+   * If true, will render drawer as a card
+   */
+  isCard?: boolean;
+  /**
    * Callback fired when the component requests to be closed.
    */
   onClose?: ComponentProps<typeof Drawer>['onClose'];
@@ -33,5 +37,6 @@ export type DrawerProps = {
   classNames?: {
     container?: string;
     paper?: string;
+    content?: string;
   };
 }

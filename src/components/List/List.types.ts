@@ -21,6 +21,7 @@ export type ListProps = {
   secondaryActions?: ActionsProps['actions'];
   shouldShowNoDataMessage?: boolean;
   noDataMessage?: string;
+  isHorizontal?: boolean;
   classNames?: {
     container?: string;
     actions?: string;

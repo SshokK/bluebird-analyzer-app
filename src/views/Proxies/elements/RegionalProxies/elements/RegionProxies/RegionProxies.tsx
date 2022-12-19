@@ -3,7 +3,7 @@ import type {RegionProxiesProps} from "./RegionProxies.types";
 
 import React from 'react';
 import {
-  CardsContainer,
+  Container,
   Table
 } from "components";
 import {
@@ -43,7 +43,7 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
   });
 
   return (
-    <CardsContainer
+    <Container
       isAnimated
       animationTiming={ANIMATION_TIMING}
       isFullHeight
@@ -64,6 +64,6 @@ export const RegionProxies: FC<RegionProxiesProps> = ({
           regionId
         }}
       />
-    </CardsContainer>
+    </Container>
   )
 }

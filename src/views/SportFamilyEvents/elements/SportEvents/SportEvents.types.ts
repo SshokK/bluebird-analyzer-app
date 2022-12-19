@@ -1,8 +1,8 @@
 import type {SportSchema} from "features/sports/sports.api.types";
-import type {CardsContainerProps} from "../../../../components";
+import type {ContainerProps} from "../../../../components";
 
 export type SportEventsProps = {
   sportId: SportSchema['id'];
   sportFamilyId: SportSchema['SportFamilyId'];
-  animationDelay: CardsContainerProps['animationDelay'];
+  animationDelay: ContainerProps['animationDelay'];
 }

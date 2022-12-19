@@ -10,7 +10,7 @@ const Dashboard = lazy(() => import("../views/Dashboard"))
 const SportFamilyEvents = lazy(() => import("../views/SportFamilyEvents"))
 const SportsConfiguration = lazy(() => import("../views/SportsConfiguration"));
 const Proxies = lazy(() => import("../views/Proxies"))
-const Crawlers = lazy(() => import("../views/Crawlers"))
+const EventCrawlers = lazy(() => import("../views/EventCrawlers"))
 
 export const ROUTES_CONFIG:  RouteObject[] = [
   {
@@ -46,10 +46,10 @@ export const ROUTES_CONFIG:  RouteObject[] = [
         )
       },
       {
-        path: ROUTES.CRAWLERS,
+        path: ROUTES.BOOKMAKER_CRAWLERS,
         element: (
           <LazyComponent>
-            <Crawlers />
+            <EventCrawlers />
           </LazyComponent>
         )
       },

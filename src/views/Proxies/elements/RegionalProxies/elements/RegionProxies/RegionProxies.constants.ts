@@ -70,7 +70,7 @@ export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
   {
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.ACTIONS,
     type: COLUMN_TYPES.DISPLAY_COLUMN,
-    width: TABLE_COLUMN_WIDTHS.M,
+    width: TABLE_COLUMN_WIDTHS.L,
     CellComponent: ActionsCell
   }
 ]

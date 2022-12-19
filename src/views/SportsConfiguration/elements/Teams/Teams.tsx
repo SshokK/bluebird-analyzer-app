@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {TeamsProps} from "./Teams.types";
 
 import React from 'react';
-import {CardsContainer, Table} from "components";
+import {Container, Table} from "components";
 import {useTeamsMutations, useTeamsQueries, useTeamsTableActions, useTeamsTableQueryOptions} from './hooks';
 import {ANIMATION_TIMING, TEAMS_PER_PAGE, TEAMS_TABLE_COLUMNS} from "./Teams.constants";
 
@@ -29,7 +29,7 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
   })
 
   return (
-    <CardsContainer
+    <Container
       title={(!sportId || !sportFamilyId)
         ? "Teams"
         : `${queries.fetchSport.data?.name} teams`
@@ -48,6 +48,6 @@ export const Teams: FC<TeamsProps> = ({ sportFamilyId, sportId }) => {
           sportId: sportId
         }}
       />
-    </CardsContainer>
+    </Container>
   )
 }

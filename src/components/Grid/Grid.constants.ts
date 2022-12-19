@@ -49,6 +49,17 @@ export enum GRID_SPACING {
   XXXL = '4rem'
 }
 
+export enum GRID_PADDING {
+  XXS = 'xss',
+  XS = 'xs',
+  S = 's',
+  M = 'm',
+  L = 'l',
+  XL = 'xl',
+  XXL = 'xxl',
+  XXXL = 'xxxl'
+}
+
 export enum GRID_HEIGHT {
   AUTO = 'auto',
   XXS = '2rem',

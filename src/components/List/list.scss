@@ -3,10 +3,14 @@
 .BB-list {
   display: flex;
   flex-direction: column;
-  row-gap: variables.$spacing-s;
+  gap: variables.$spacing-s;
 
   &--is-full-width {
     width: 100%;
+  }
+
+  &--is-horizontal {
+    flex-direction: row;
   }
 
   &__container {

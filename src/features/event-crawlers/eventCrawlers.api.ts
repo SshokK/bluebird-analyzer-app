@@ -3,6 +3,7 @@ import type * as apiTypes from "./eventCrawlers.api.types";
 import {fetch} from "../../fetch";
 import {formatEventCrawlersBulkUpdateBody} from "./eventCrawlers.api.helpers";
 import {CRAWLER_STATUSES} from "../crawlers/crawlers.constants";
+import {EVENT_CRAWLER_AGGREGATION_TYPES} from "./eventCrawlers.api.constants";
 
 export const fetchEventCrawlers: apiTypes.FetchEventCrawlers = async (params) => {
   return fetch({
@@ -72,5 +73,14 @@ export const startEventCrawlers: apiTypes.StartEventCrawlers = async (eventCrawl
     url: `/api/v1/event-crawlers`,
     method: 'PATCH',
     data
+  })
+}
+
+
+export const fetchEventCrawlerAggregations: apiTypes.FetchEventCrawlersAggregation = (params) => {
+  return fetch({
+    url: '/api/v1/aggregations/event-crawlers',
+    method: 'GET',
+    params
   })
 }

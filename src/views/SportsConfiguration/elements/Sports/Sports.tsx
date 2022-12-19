@@ -2,7 +2,7 @@ import type {FC} from "react";
 import type {SportsProps} from "./Sports.types";
 
 import React from 'react';
-import {Actions, GRID_DIRECTION, CardsContainer, Chiclet, Grid, GRID_SPACING} from "components";
+import {Actions, GRID_DIRECTION, Container, Chiclet, Grid, GRID_SPACING} from "components";
 import {useSportsActionsConfig, useSportsData, useSportsHandlers, useSportsMutations, useSportsQueries} from "./hooks";
 import {ANIMATION_TIMING} from "./Sports.constants";
 
@@ -30,7 +30,7 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
   })
 
   return (
-    <CardsContainer
+    <Container
       title={queries.fetchSportFamily.data?.name}
       isAnimated
       shouldShowNoDataMessage={!queries.fetchSports.data?.results?.length}
@@ -77,6 +77,6 @@ export const Sports: FC<SportsProps> = ({ sportFamilyId }) => {
           </Grid>
         </Grid>
       </Grid>
-    </CardsContainer>
+    </Container>
   )
 }

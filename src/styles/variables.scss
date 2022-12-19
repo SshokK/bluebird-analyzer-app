@@ -1,6 +1,5 @@
 @use "colors";
 
-
 $primary-color-1: colors.$curious-blue;
 $primary-color-2: colors.$white;
 $primary-color-3: colors.$oxford-blue;
@@ -10,15 +9,28 @@ $primary-color-6: colors.$calico;
 
 $secondary-color-1: colors.$bermuda-gray;
 $secondary-color-2: colors.$athens-gray;
-// TODO Replace with some other color
-$secondary-color-3: red;
+$secondary-color-3: colors.$alabaster;
 $secondary-color-4: colors.$blue-bayoux;
 $secondary-color-5: colors.$science-blue;
 
+$status-color-inactive: colors.$blue-bayoux;
 $status-color-info: colors.$curious-blue;
 $status-color-success: colors.$caribbean-green;
 $status-color-warning: colors.$equator;
 $status-color-error: colors.$night-shadz;
+
+$chart-color-1: colors.$curious-blue;
+$chart-color-2: colors.$moody-blue;
+$chart-color-3: colors.$danube;
+$chart-color-4: colors.$turquoise-blue;
+$chart-color-5: colors.$turquoise;
+$chart-color-6: colors.$emerald;
+$chart-color-7: colors.$tacha;
+$chart-color-8: colors.$ronchi;
+$chart-color-9: colors.$di-sierra;
+$chart-color-10: colors.$coral;
+$chart-color-11: colors.$night-shadz;
+$chart-color-12: colors.$cerize-red;
 
 $font-size-base: 13px;
 

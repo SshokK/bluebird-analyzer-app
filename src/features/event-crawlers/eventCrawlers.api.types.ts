@@ -3,7 +3,7 @@ import type {BookmakerSchema} from "../bookmakers/bookmakers.api.types";
 import type {CrawlerSchema} from "../crawlers/crawlers.api.types";
 import type {SORT_ORDERS} from "constants/global.constants";
 import type {WithRequiredProperty} from "types/global.types";
-import {CRAWLER_STATUSES} from "../crawlers/crawlers.constants";
+import {CRAWLER_STATUSES} from "../crawlers/crawlers.api.constants";
 import {EVENT_CRAWLER_AGGREGATION_TYPES} from "./eventCrawlers.api.constants";
 
 export type EventCrawlerSchema = {

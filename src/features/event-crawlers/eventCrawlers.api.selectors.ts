@@ -3,14 +3,15 @@ import type { TableQuerySelectorReturn, DonutChartProps} from "components";
 import type {ReactNode} from "react";
 
 import { EVENT_CRAWLERS_TABLE_COLUMN_KEYS } from "views/EventCrawlers/elements/BookmakersCrawlers/elements/EventCrawlers/EventCrawlers.constants";
-import {CRAWLER_STATUSES} from "./eventCrawlers.api.constants";
+import {CRAWLER_STATUSES} from "../crawlers/crawlers.api.constants";
 import STYLE_VARIABLES from 'styles';
 
 const CRAWLER_STATUS_COLOR: Record<CRAWLER_STATUSES, string> = {
   [CRAWLER_STATUSES.WAITING]: STYLE_VARIABLES.STATUS_COLOR_WARNING,
   [CRAWLER_STATUSES.ACTIVE]: STYLE_VARIABLES.STATUS_COLOR_SUCCESS,
   [CRAWLER_STATUSES.INACTIVE]: STYLE_VARIABLES.STATUS_COLOR_INACTIVE,
-  [CRAWLER_STATUSES.FAILED]: STYLE_VARIABLES.STATUS_COLOR_ERROR
+  [CRAWLER_STATUSES.FAILED]: STYLE_VARIABLES.STATUS_COLOR_ERROR,
+  [CRAWLER_STATUSES.STOPPING]: STYLE_VARIABLES.STATUS_COLOR_WARNING
 }
 
 export const getEventCrawlersForTable = (response: Awaited<ReturnType<typeof api.fetchEventCrawlers>>): TableQuerySelectorReturn => {

@@ -16,7 +16,12 @@ export const DEFAULT_OPTIONS: Required<ComponentProps<typeof reactChartJs.Doughn
     },
     legend: {
       position: 'top',
-      align: 'start'
+      align: 'start',
+      labels: {
+        font: {
+
+        }
+      }
     }
   }
 }

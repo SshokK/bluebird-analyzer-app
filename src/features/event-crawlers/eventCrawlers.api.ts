@@ -2,7 +2,7 @@ import type * as apiTypes from "./eventCrawlers.api.types";
 
 import {fetch} from "../../fetch";
 import {formatEventCrawlersBulkUpdateBody} from "./eventCrawlers.api.helpers";
-import {CRAWLER_STATUSES} from "../crawlers/crawlers.constants";
+import {CRAWLER_STATUSES} from "../crawlers/crawlers.api.constants";
 import {EVENT_CRAWLER_AGGREGATION_TYPES} from "./eventCrawlers.api.constants";
 
 export const fetchEventCrawlers: apiTypes.FetchEventCrawlers = async (params) => {
@@ -46,7 +46,7 @@ export const updateEventCrawlers: apiTypes.UpdateEventCrawlers = (data) => {
 
 export const stopEventCrawlers: apiTypes.StopEventCrawlers = async (eventCrawlerIds) => {
   const data = formatEventCrawlersBulkUpdateBody(eventCrawlerIds, {
-    status: CRAWLER_STATUSES.INACTIVE
+    status: CRAWLER_STATUSES.STOPPING
   })
 
   if (!data) {

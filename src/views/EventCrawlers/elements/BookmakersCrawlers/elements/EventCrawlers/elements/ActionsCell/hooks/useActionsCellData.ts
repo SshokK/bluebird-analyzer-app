@@ -1,7 +1,7 @@
 import type {ActionsCellProps} from "../ActionsCell.types";
 import type {ActionsCellData} from "./useActionsCellData.types";
 
-import {CRAWLER_STATUSES} from "features/crawlers/crawlers.constants";
+import {CRAWLER_STATUSES} from "features/crawlers/crawlers.api.constants";
 import {EVENT_CRAWLERS_TABLE_COLUMN_KEYS} from "../../../EventCrawlers.constants";
 
 import {useMemo, useState} from "react";

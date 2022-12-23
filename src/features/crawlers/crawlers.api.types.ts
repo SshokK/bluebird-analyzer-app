@@ -1,4 +1,4 @@
-import type {CRAWLER_STATUSES} from "./crawlers.constants";
+import type {CRAWLER_STATUSES} from "./crawlers.api.constants";
 import type {RegionSchema} from "../regions/regions.api.types";
 
 export type CrawlerSchema = {

@@ -60,7 +60,7 @@ export const Modal: FC<ModalProps> = ({
                   {title}
                 </Typography>
               </header>
-              {(Array.isArray(children) ? Boolean(children.length) : children) && (
+              {(Array.isArray(children) ? Boolean(children.filter(Boolean).length) : children) && (
                 <main className={classnames("BB-modal__content-body", classNames?.body)}>
                   {children}
                 </main>

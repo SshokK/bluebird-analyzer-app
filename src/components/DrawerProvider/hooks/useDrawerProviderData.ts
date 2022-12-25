@@ -6,18 +6,23 @@ export const useDrawerProviderData = (): DrawerProviderData => {
   const [isOpen, setIsOpen] = useState<
     DrawerProviderData['localState']['isOpen']
   >(false);
-  const [drawer, setDrawer] = useState<
-    DrawerProviderData['localState']['drawer']
+  const [leftDrawer, setLeftDrawer] = useState<
+    DrawerProviderData['localState']['leftDrawer']
+  >(null);
+  const [rightDrawer, setRightDrawer] = useState<
+    DrawerProviderData['localState']['rightDrawer']
   >(null);
 
   const localState: DrawerProviderData['localState'] = {
     isOpen,
-    drawer
+    leftDrawer,
+    rightDrawer
   }
 
   const localActions: DrawerProviderData['localActions'] = useMemo(() => ({
     setIsOpen,
-    setDrawer
+    setLeftDrawer,
+    setRightDrawer
   }), []);
 
   return {

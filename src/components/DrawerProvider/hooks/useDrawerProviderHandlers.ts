@@ -6,9 +6,21 @@ export const useDrawerProviderHandlers = ({
 }: {
   localActions: DrawerProviderData['localActions']
 }): DrawerProviderHandlers => {
-  const handleOpen: DrawerProviderHandlers['handleOpen'] = (drawer) => {
-    localActions.setIsOpen(true);
-    localActions.setDrawer(drawer)
+  const handleOpen: DrawerProviderHandlers['handleOpen'] = ({
+    leftDrawer,
+    rightDrawer
+  }) => {
+    if (leftDrawer || rightDrawer) {
+      localActions.setIsOpen(true);
+    }
+
+    if (leftDrawer) {
+      localActions.setLeftDrawer(leftDrawer);
+    }
+
+    if (rightDrawer) {
+      localActions.setRightDrawer(rightDrawer);
+    }
   }
 
   const handleClose: DrawerProviderHandlers['handleClose'] = () => {

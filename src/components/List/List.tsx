@@ -2,7 +2,7 @@ import type {ListProps} from "./List.types";
 import type {FC} from 'react';
 
 import React from 'react';
-import {Grid, GRID_DIRECTION, GRID_JUSTIFY_CONTENT, GRID_SPACING} from "../Grid";
+import {Grid, GRID_DIRECTION, GRID_HEIGHT, GRID_JUSTIFY_CONTENT, GRID_SPACING} from "../Grid";
 import {Typography, TYPOGRAPHY_TYPES} from "../Typography";
 
 import {ListOption} from "./elements";
@@ -39,28 +39,42 @@ export const List: FC<ListProps> = (props) => {
     <Grid
       isContainer
       direction={GRID_DIRECTION.COLUMN}
-      spacing={GRID_SPACING.L}
+      rowSpacing={GRID_SPACING.L}
+      height={props.isFullHeight ? GRID_HEIGHT.FULL : undefined}
+      isWrapDisabled
       classNames={{
         container: classnames('BB-list__container', props.classNames?.container, {
           'BB-list__container--is-full-width': props.isFullWidth
         })
       }}
     >
+      {Boolean(props.secondaryActions || (props.isHorizontal && props.primaryActions)) && (
+        <Grid
+          isChild
+          isContainer
+          justifyContent={props.isHorizontal ? GRID_JUSTIFY_CONTENT.SPACE_BETWEEN : GRID_JUSTIFY_CONTENT.FLEX_END}
+        >
+          {props.isHorizontal && primaryActions}
+          {secondaryActions}
+        </Grid>
+      )}
       <Grid
         isChild
         isContainer
-        justifyContent={props.isHorizontal ? GRID_JUSTIFY_CONTENT.SPACE_BETWEEN : GRID_JUSTIFY_CONTENT.FLEX_END}
+        spacing={GRID_SPACING.L}
+        shouldSetOverflowAuto
       >
-        {props.isHorizontal && primaryActions}
-        {secondaryActions}
-      </Grid>
-      <Grid isChild isContainer spacing={GRID_SPACING.L}>
         {!props.isHorizontal && (
           <Grid isChild xs="auto">
             {primaryActions}
           </Grid>
         )}
-        <Grid isChild xs={props.isHorizontal ? 12 : true}>
+        <Grid
+          isChild
+          xs={props.isHorizontal ? 12 : true}
+          shouldSetOverflowAuto
+          height={GRID_HEIGHT.FULL}
+        >
           {props.shouldShowNoDataMessage ? (
             <Typography type={TYPOGRAPHY_TYPES.BODY2} className="BB-list__no-data-message">
               {props.noDataMessage}

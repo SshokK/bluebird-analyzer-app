@@ -45,3 +45,4 @@ export * from './SelectorsModal';
 export * from './FlowChart';
 export * from './Charts';
 export * from './ColorBall';
+export * from './CrawlerLogs';

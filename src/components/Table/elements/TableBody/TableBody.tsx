@@ -7,7 +7,7 @@ import {TableCell, TableLoader, TableNoDataMessage} from "./elements";
 import {Animation, ANIMATION_TYPES} from "../../../Animation";
 import './table-body.scss';
 
-export const TableBody: FC<TableBodyProps> = ({ table, noDataMessage, isLoading }) => {
+export const TableBody: FC<TableBodyProps> = ({ table, noDataMessage, isLoading, isAnimated }) => {
   return (
     <tbody className="BB-table-body">
       <TableLoader table={table} isLoading={isLoading} />
@@ -15,15 +15,25 @@ export const TableBody: FC<TableBodyProps> = ({ table, noDataMessage, isLoading 
         <TableNoDataMessage table={table}>
           {isLoading ? "" : noDataMessage}
         </TableNoDataMessage>
-      ) : table.getRowModel().rows.map((row, i) => (
-        <Animation key={row.id} type={ANIMATION_TYPES.FADE} shouldAppear animationDelay={ROW_ANIMATION_DELAY * i}>
-          <tr className="BB-table-body__row">
+      ) : table.getRowModel().rows.map((row, i) => {
+        const rowElement = (
+          <tr key={row.id} className="BB-table-body__row">
             {row.getVisibleCells().map(cell => (
               <TableCell key={cell.id} cell={cell} />
             ))}
           </tr>
-        </Animation>
-      ))}
+        )
+
+        if (isAnimated) {
+          return (
+            <Animation key={row.id} type={ANIMATION_TYPES.FADE} shouldAppear animationDelay={ROW_ANIMATION_DELAY * i}>
+              {rowElement}
+            </Animation>
+          )
+        }
+
+        return rowElement
+      })}
     </tbody>
   )
 }

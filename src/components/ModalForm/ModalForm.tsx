@@ -3,7 +3,7 @@ import type { FC} from 'react';
 
 import React from 'react';
 import {Modal} from "../Modal";
-import {useModalFormData, useModalFormHandlers} from "./hooks";
+import {useModalFormData, useModalFormHandlers, useModalFormLifecycle} from "./hooks";
 import {MODAL_FORM_COMPONENT_PROPS, MODAL_FORM_COMPONENTS} from "./ModalForm.constants";
 import './modal-form.scss';
 
@@ -22,11 +22,16 @@ export const ModalForm:FC<ModalFormProps> = ({
 
   const handlers = useModalFormHandlers({
     props: {
+      fields,
       onSubmit,
       onClose
     },
     localState,
     localActions
+  });
+
+  useModalFormLifecycle({
+    onFieldsPropChange: handlers.handleFieldsPropChange
   })
 
   return (

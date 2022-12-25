@@ -18,12 +18,15 @@ chartJs.Chart.register(
 
 export const DonutChart: FC<DonutChartProps> = ({ series, noDataMessage }) => {
   const data = useMemo(() => {
+    const labels = series?.flatMap?.(item => item.data.map(dataItem => dataItem.label)) ?? [];
+
     return {
-      labels: series?.flatMap?.(item => item.data.map(dataItem => dataItem.label)),
+      labels,
       datasets: series?.map?.(item => ({
         label: item.label,
         backgroundColor: item.data.map(dataItem => dataItem.color),
         borderColor: STYLE_VARIABLES.PRIMARY_COLOR_2,
+        borderWidth: labels.length === 1 ? 0 : 4,
         hoverBorderColor: STYLE_VARIABLES.PRIMARY_COLOR_2,
         hoverBorderWidth: 8,
         hoverBackgroundColor: item.data.map(dataItem => dataItem.color),

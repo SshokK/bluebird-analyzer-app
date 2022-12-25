@@ -17,6 +17,7 @@ export type ListProps = {
   onSelectedOptionsChange?: (options: ListOption[]) => void;
   isMulti?: boolean;
   isFullWidth?: boolean;
+  isFullHeight?: boolean;
   primaryActions?: ActionsProps['actions'];
   secondaryActions?: ActionsProps['actions'];
   shouldShowNoDataMessage?: boolean;

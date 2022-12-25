@@ -97,6 +97,7 @@ export const Table: FC<TableProps> = forwardRef<HTMLDivElement | null, TableProp
             table={table}
             noDataMessage={noDataMessage}
             isLoading={isLoading || query.isLoading}
+            isAnimated={isAnimated}
           />
         </table>
       </div>

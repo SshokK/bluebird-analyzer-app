@@ -1,14 +1,12 @@
-import type {DonutChartProps} from "components";
+import type {DonutChartProps, TableQuerySelectorReturn } from "components";
+import type {ReactNode} from "react";
 
 import * as api from "./crawlerErrors.api";
 import * as utils from "utils";
 
 import {CRAWLER_ERROR_TYPES} from "./crawlerErrors.api.constants";
-import STYLE_VARIABLES from 'styles';
-import {TableQuerySelectorReturn} from "components";
-import {TEAMS_TABLE_COLUMN_KEYS} from "../../views/SportsConfiguration/elements/Teams/Teams.constants";
-import {ReactNode} from "react";
 import {ERRORS_TABLE_COLUMN_KEYS} from "../../components/EventCrawlerErrors/elements/ErrorsList/ErrorsList.constants";
+import STYLE_VARIABLES from 'styles';
 
 
 const CRAWLER_ERROR_TYPE_COLOR: Record<CRAWLER_ERROR_TYPES, string> = {

@@ -4,4 +4,5 @@ export type TableBodyProps = {
   table: ReturnType<typeof useReactTable<object>>;
   noDataMessage?: string;
   isLoading?: boolean;
+  isAnimated?: boolean;
 }

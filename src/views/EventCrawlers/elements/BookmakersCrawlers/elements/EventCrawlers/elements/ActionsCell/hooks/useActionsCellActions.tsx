@@ -7,8 +7,9 @@ import React from "react";
 
 import {EVENT_CRAWLER_ACTIONS, MODAL_FIELD_KEYS} from "../ActionsCell.constants";
 import {
+  CrawlerLogs,
   EventCrawlerErrors,
-  IconWarning,
+  IconInfo,
   MODAL_FORM_FIELD_TYPES,
   MODAL_SIZES,
   useDrawer
@@ -30,13 +31,12 @@ export const useActionsCellActions = ({
   const drawer = useDrawer();
 
   return {
-    ...Boolean(formattedData.isFailedCrawler) && {
-      [EVENT_CRAWLER_ACTIONS.SHOW_ERRORS]: {
-        icon: <IconWarning />,
-        onClick: () => drawer.showDrawer(
-          <EventCrawlerErrors eventCrawlerId={formattedData.row.id} />
-        )
-      }
+    [EVENT_CRAWLER_ACTIONS.SHOW_LOGS]: {
+      icon: <IconInfo />,
+      onClick: () => drawer.showDrawer({
+        leftDrawer: <CrawlerLogs crawlerIds={[formattedData.row.CrawlerId]} />,
+        rightDrawer: <EventCrawlerErrors eventCrawlerId={formattedData.row.id} />
+      })
     },
     [EVENT_CRAWLER_ACTIONS.EDIT_SELECTORS]: {
       icon: <IconDiagram />,

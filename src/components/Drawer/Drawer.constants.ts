@@ -4,9 +4,7 @@ export enum DRAWER_TYPES {
   TEMPORARY = 'temporary'
 }
 
-export enum DRAWER_ANCHOR_POSITION {
-  BOTTOM = 'bottom',
+export enum DRAWER_PLACEMENT {
   LEFT = 'left',
   RIGHT = 'right',
-  TOP = 'top'
 }

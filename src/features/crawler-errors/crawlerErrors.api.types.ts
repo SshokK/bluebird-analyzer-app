@@ -1,8 +1,7 @@
 import type {CRAWLER_ERROR_TYPES, CRAWLER_ERROR_AGGREGATION_TYPES} from "./crawlerErrors.api.constants";
 import type {CrawlerSchema} from "../crawlers/crawlers.api.types";
 import type {EventCrawlerSchema} from "../event-crawlers/eventCrawlers.api.types";
-import type {SORT_ORDERS} from "constants/global.constants";
-import {ListRequestParams, ListResponse} from "../../types/global.types";
+import type {ListRequestParams, ListResponse} from "../../types/global.types";
 
 export type CrawlerErrorSchema = {
   id: number;

@@ -2,8 +2,6 @@
 
 .BB-drawer {
   &__paper.BB-drawer__paper {
-    width: 30rem;
-    max-width: 30%;
     height: auto;
     max-height: 100%;
     box-shadow: unset;
@@ -12,6 +10,17 @@
     &--is-card {
       background-color: unset;
       padding: variables.$spacing-xl variables.$spacing-xl;
+    }
+
+    &--is-right {
+      width: 25%;
+      max-width: 40rem;
+    }
+
+    &--is-left {
+      width: 75%;
+      max-width: 120rem;
+      padding-right: unset;
     }
   }
 

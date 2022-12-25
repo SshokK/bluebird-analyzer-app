@@ -1,6 +1,9 @@
 import type {DrawerProviderData} from "./useDrawerProviderData.types";
 
 export type DrawerProviderHandlers = {
-  handleOpen: (drawer: DrawerProviderData['localState']['drawer']) => void;
+  handleOpen: (args: {
+    leftDrawer?: DrawerProviderData['localState']['leftDrawer'];
+    rightDrawer?: DrawerProviderData['localState']['rightDrawer']
+  }) => void;
   handleClose: () => void;
 }

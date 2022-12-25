@@ -1,0 +1,1 @@
+export const DUAL_DRAWERS_ANIMATION_DELAY = 500;

@@ -37,7 +37,8 @@ export const REGION_PROXIES_TABLE_COLUMNS: Required<TableProps>['columns'] = [
     title: 'IP',
     width: TABLE_COLUMN_WIDTHS.M,
     type: COLUMN_TYPES.DATA_COLUMN,
-    dataType: COLUMN_DATA_TYPES.TEXT
+    dataType: COLUMN_DATA_TYPES.TEXT,
+    isSortable: true
   },
   {
     key: REGION_PROXIES_TABLE_COLUMN_KEYS.PORT,

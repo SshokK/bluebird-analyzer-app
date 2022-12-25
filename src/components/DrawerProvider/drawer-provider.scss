@@ -1,0 +1,21 @@
+@use "src/styles/variables";
+
+.BB-drawer-provider {
+  &__left-drawer,
+  &__left-drawer-backdrop {
+    width: 75%;
+    left: 0;
+  }
+
+  &__right-drawer.BB-drawer-provider__right-drawer,
+  &__right-drawer-backdrop.BB-drawer-provider__right-drawer-backdrop {
+    width: 25%;
+    right: 0;
+    left: unset;
+  }
+
+  &__right-drawer-paper {
+    position: relative;
+    width: 100%;
+  }
+}

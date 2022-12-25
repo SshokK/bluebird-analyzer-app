@@ -2,7 +2,7 @@ import type {FC} from "react";
 
 import React from 'react';
 import {ANIMATION_TIMING} from "./RegionalProxies.constants";
-import {Container, ErrorBoundary, Grid, List, Separator} from "components";
+import {Container, ErrorBoundary, Grid, GRID_HEIGHT, List, Separator} from "components";
 import {RegionProxies} from "./elements";
 import {
   useRegionalProxiesActions,
@@ -45,13 +45,24 @@ export const RegionalProxies: FC = () => {
         isAnimated
         animationTiming={ANIMATION_TIMING}
       >
-        <Grid isContainer isWrapDisabled>
-          <Grid isChild xs={3}>
+        <Grid
+          isContainer
+          isWrapDisabled
+          height={GRID_HEIGHT.FULL}
+          shouldSetOverflowAuto
+        >
+          <Grid
+            isChild
+            xs={3}
+            height={GRID_HEIGHT.FULL}
+            shouldSetOverflowAuto
+          >
             <List
               primaryActions={regionsActions}
               options={queries.fetchRegions.data}
               selectedOptionKeys={formattedData.regionId ? [formattedData.regionId] : []}
               onSelectedOptionsChange={handlers.handleSelectedRegionOptionChange}
+              isFullHeight
             />
           </Grid>
           <Grid isChild xs isShrinkDisabled>

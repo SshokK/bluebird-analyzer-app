@@ -3,8 +3,10 @@ import type {DrawerProviderProps} from "./DrawerProvider.types";
 
 import React from 'react';
 import {DrawerProviderContext} from "./contexts/DrawerProviderContext";
-import {Drawer, DRAWER_ANCHOR_POSITION} from "../Drawer";
+import {Drawer, DRAWER_PLACEMENT} from "../Drawer";
 import {useDrawerProviderData, useDrawerProviderHandlers} from "./hooks";
+import {DUAL_DRAWERS_ANIMATION_DELAY} from "./DrawerProvider.constants";
+import './drawer-provider.scss';
 
 export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
   const { localState, localActions } = useDrawerProviderData();
@@ -21,10 +23,29 @@ export const DrawerProvider: FC<DrawerProviderProps> = ({ children }) => {
       <Drawer
         isOpen={localState.isOpen}
         onClose={handlers.handleClose}
-        anchorPosition={DRAWER_ANCHOR_POSITION.RIGHT}
+        placement={DRAWER_PLACEMENT.LEFT}
         isCard
+        animationDelay={localState.leftDrawer && localState.rightDrawer ? DUAL_DRAWERS_ANIMATION_DELAY : 0}
+        classNames={{
+          container: "BB-drawer-provider__left-drawer",
+          backdrop: "BB-drawer-provider__left-drawer-backdrop"
+        }}
       >
-        {localState.drawer}
+        {localState.leftDrawer}
+      </Drawer>
+      <Drawer
+        isOpen={localState.isOpen}
+        onClose={handlers.handleClose}
+        placement={DRAWER_PLACEMENT.RIGHT}
+        animationDelay={localState.leftDrawer && localState.rightDrawer ? DUAL_DRAWERS_ANIMATION_DELAY : 0}
+        isCard
+        classNames={{
+          container: "BB-drawer-provider__right-drawer",
+          backdrop: "BB-drawer-provider__right-drawer-backdrop",
+          paper: "BB-drawer-provider__right-drawer-paper"
+        }}
+      >
+        {localState.rightDrawer}
       </Drawer>
       {children}
     </DrawerProviderContext.Provider>
